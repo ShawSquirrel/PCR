@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3583578152192048006}
   - component: {fileID: 454124787542942368}
   - component: {fileID: 9153975830883937576}
+  - component: {fileID: 8824107110087574163}
   m_Layer: 0
   m_Name: "\u4F18\u8863"
   m_TagString: Untagged
@@ -115,3 +116,19 @@ MonoBehaviour:
   _animationName: 07_idle
   loop: 1
   timeScale: 1
+--- !u!114 &8824107110087574163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097141007155356031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc076f0574ab62243ab1d13aa3328982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NormalPrefix: 07
+  _SkillPrefix: 100201
+  _AnimState: 0
+  _TestState: 41

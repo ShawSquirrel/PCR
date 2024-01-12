@@ -12,10 +12,11 @@ namespace GameLogic
         {
             base.Awake();
             FSM = new FSM<EProcedure>();
+            FSM.AddState(EProcedure.LoadConfigs, new ProcedureMenu(FSM, this));
             FSM.AddState(EProcedure.ProcedureMenu, new ProcedureMenu(FSM, this));
             FSM.AddState(EProcedure.ProcedureLevel, new ProcedureLevel(FSM, this));
             
-            FSM.StartState(EProcedure.ProcedureMenu);
+            FSM.StartState(EProcedure.LoadConfigs);
         }
 
         public void Init()
