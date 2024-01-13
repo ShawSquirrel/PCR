@@ -16,6 +16,4 @@ MonoBehaviour:
   defaultEditorBehaviour: 11
   processMouseMoveInInspector: 1
   drawingConfig:
-    configs:
-    - DrawnTypeName: UnityEditor.Rendering.DebugStateEnum, Unity.RenderPipelines.Core.Editor
-      EditorTypeName: 
+    configs: []
