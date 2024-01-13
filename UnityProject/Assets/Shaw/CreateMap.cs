@@ -99,6 +99,13 @@ public class CreateMap : MonoBehaviour
 
                 TextMeshPro tmp = new GameObject("Text").AddComponent<TextMeshPro>();
                 tmp.transform.SetParent(mapItem.transform);
+                tmp.transform.localPosition = Vector3.zero;
+                tmp.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                tmp.transform.localScale = Vector3.one;
+                tmp.fontSize = 4;
+                tmp.alignment = TextAlignmentOptions.Center;
+                tmp.text = mapItem.name;
+                tmp.color = Color.cyan;
                 mapItem.GetComponent<MapItem>()._Text = tmp;
             }
         }
