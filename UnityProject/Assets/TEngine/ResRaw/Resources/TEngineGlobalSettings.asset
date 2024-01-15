@@ -38,23 +38,23 @@ MonoBehaviour:
     m_ServerChannelInfos: []
     namespace: GameLogic
     scriptGenerateRule:
-    - uiElementRegex: m_go
+    - uiElementRegex: _GO_
       componentName: GameObject
-    - uiElementRegex: m_item
+    - uiElementRegex: _ITEM_
       componentName: GameObject
-    - uiElementRegex: m_tf
+    - uiElementRegex: _TF_
       componentName: Transform
-    - uiElementRegex: m_rect
+    - uiElementRegex: _RECT_
       componentName: RectTransform
-    - uiElementRegex: m_text
+    - uiElementRegex: _TEXT_
       componentName: Text
-    - uiElementRegex: m_richText
+    - uiElementRegex: _RTEXT
       componentName: RichTextItem
-    - uiElementRegex: m_btn
+    - uiElementRegex: _BTN_
       componentName: Button
-    - uiElementRegex: m_img
+    - uiElementRegex: _IMG_
       componentName: Image
-    - uiElementRegex: m_rimg
+    - uiElementRegex: _RIMG_
       componentName: RawImage
     - uiElementRegex: m_scrollBar
       componentName: Scrollbar

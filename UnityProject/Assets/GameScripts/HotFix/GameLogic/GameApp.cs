@@ -39,7 +39,6 @@ public partial class GameApp:Singleton<GameApp>
     private void StartGameLogic()
     {
         GameModule.Resource.LoadAsset<GameObject>("CustomModule");
-        GameModule.Resource.LoadAsset<GameObject>("优衣");
     }
 
     /// <summary>

@@ -29,11 +29,4 @@ namespace GameLogic
             FSM.Update();
         }
     }
-
-    public class CustomProcedureBase : AbstractState<EProcedure, CustomProcedureModule>
-    {
-        protected CustomProcedureBase(FSM<EProcedure> fsm, CustomProcedureModule target) : base(fsm, target)
-        {
-        }
-    }
 }

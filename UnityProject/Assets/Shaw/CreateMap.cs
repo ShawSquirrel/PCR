@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
 
-
-
-
 public class MapItem : MonoBehaviour
 {
     public TextMeshPro _Text;
+    public int Cost;
+
     private void OnMouseEnter()
     {
         transform.GetComponent<SpriteRenderer>().color = Color.red;
@@ -37,13 +38,51 @@ public class CreateMap : MonoBehaviour
     public Sprite _Sprite;
     public Transform _Player;
 
+    public MapItem[,] MapItemList = new MapItem[6, 6];
+
     private void Awake()
     {
         Load();
-        ClickMapItem += (v3) =>
+        ClickMapItem += OnClickMapItem;
+
+
+        AStar.Instance.Init(_MapList);
+    }
+
+
+    private void Update()
+    {
+        var result = AStar.Instance.GetAllCost(TransTo(_Player.position));
+        for (int i = 0; i < 6; i++)
         {
-            _Player.position = new Vector3(v3.x, v3.y, 0);
-        };
+            for (int ii = 0; ii < 6; ii++)
+            {
+                MapItemList[i, ii]._Text.text = $"{MapItemList[i, ii].Cost}|{result[i, ii]}";
+            }
+        }
+    }
+
+    public async void OnClickMapItem(Vector3 v3)
+    {
+        List<AStar.Node> path = AStar.Instance.FindPath(TransTo(_Player.position), TransTo(v3));
+        Debug.Log(path[^1].FCost);
+        foreach (AStar.Node node in path)
+        {
+            bool isComplete = false;
+            DOTween.To(() => _Player.position,
+                       (value) => _Player.position = value,
+                       new Vector3(node.GridX, node.GridY), 1f).OnComplete(() => isComplete = true);
+
+            while (!isComplete)
+            {
+                await UniTask.DelayFrame(1);
+            }
+        }
+    }
+
+    public Vector2Int TransTo(Vector3 pos)
+    {
+        return new Vector2Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
     }
 
     [Button("Load")]
@@ -80,33 +119,29 @@ public class CreateMap : MonoBehaviour
                 mapItem.transform.SetParent(_MapRoot);
                 SpriteRenderer spriteRenderer = mapItem.AddComponent<SpriteRenderer>();
                 spriteRenderer.sprite = _Sprite;
-                spriteRenderer.color = _MapList[i][ii] switch
-                {
-                    0 => Color.black,
-                    1 => Color.blue,
-                    2 => Color.clear,
-                    3 => Color.red,
-                    _ => Color.white
-                };
 
                 mapItem.AddComponent<BoxCollider2D>();
-                mapItem.AddComponent<MapItem>();
+                MapItem item = mapItem.AddComponent<MapItem>();
+                item.Cost                       = _MapList[i][ii];
                 mapItem.transform.localPosition = new Vector3(ii, i);
                 mapItem.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                mapItem.transform.localScale = Vector3.one;
-
+                mapItem.transform.localScale    = Vector3.one;
 
 
                 TextMeshPro tmp = new GameObject("Text").AddComponent<TextMeshPro>();
                 tmp.transform.SetParent(mapItem.transform);
-                tmp.transform.localPosition = Vector3.zero;
+                tmp.transform.localPosition = new Vector3(0, 0, -1);
                 tmp.transform.localRotation = Quaternion.Euler(Vector3.zero);
-                tmp.transform.localScale = Vector3.one;
-                tmp.fontSize = 4;
-                tmp.alignment = TextAlignmentOptions.Center;
-                tmp.text = mapItem.name;
-                tmp.color = Color.cyan;
+                tmp.transform.localScale    = Vector3.one;
+                tmp.fontSize                = 3;
+                tmp.alignment               = TextAlignmentOptions.Center;
+                tmp.text                    = _MapList[i][ii].ToString();
+                tmp.color                   = Color.cyan;
+
                 mapItem.GetComponent<MapItem>()._Text = tmp;
+
+
+                MapItemList[i, ii] = item;
             }
         }
     }

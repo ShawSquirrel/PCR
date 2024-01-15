@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameBase;
 using UnityEngine;
 
-public class AStar : MonoBehaviour
+public class AStar : Singleton<AStar>
 {
-    public Transform start;
-    public Transform goal;
-
-    public LayerMask obstacleLayer;
-
     private Node[,] _grid;
     private List<Node> _openSet;
     private List<Node> _closedSet;
@@ -16,37 +12,64 @@ public class AStar : MonoBehaviour
     public int gridSizeX;
     public int gridSizeY;
 
-    private void Start()
+    public void Init(List<List<int>> mapList)
     {
         // 初始化网格
-        InitializeGrid();
+        InitializeGrid(mapList);
 
         // 执行A*算法
-        FindPath();
+        // FindPath();
     }
 
-    private void InitializeGrid()
+    public int[,] GetAllCost(Vector2Int start)
+    {
+        int[,] result = new int[6, 6];
+        for (int i = 0; i < 6; i++)
+        {
+            for (int ii = 0; ii < 6; ii++)
+            {
+                var pathList = FindPath(start, _grid[i, ii].Pos);
+                if (pathList == null || pathList.Count == 0)
+                {
+                    result[i, ii] = 0;
+                }
+                else
+                {
+                    result[i, ii] = pathList[^1].FCost;
+                }
+            } 
+        }
+
+        return result;
+    }
+
+    private void InitializeGrid(List<List<int>> mapList)
     {
         // 根据你的场景设置网格的大小和每个格子的大小
 
         // 计算网格大小和每个格子的大小
-
+        gridSizeX = mapList.Count;
+        gridSizeY = mapList[0].Count;
         // 创建网格
         _grid = new Node[gridSizeX, gridSizeY];
         for (int x = 0; x < gridSizeX; x++)
         {
             for (int y = 0; y < gridSizeY; y++)
             {
-                Vector3 worldPosition = new Vector3(x, y, 0);
-                bool walkable = !Physics2D.OverlapCircle(worldPosition, 0.1f, obstacleLayer);
-                _grid[x, y] = new Node(walkable, worldPosition, x, y);
+                bool walkable = mapList[x][y] != 0;
+                _grid[x, y] = new Node
+                              {
+                                  Walkable = walkable,
+                                  GridX    = x,
+                                  GridY    = y,
+                                  CurCost  = mapList[y][x],
+                              };
             }
         }
     }
 
-    private void FindPath()
+    public List<Node> FindPath(Vector2Int start, Vector2Int end)
     {
-        _grid = new Node[gridSizeX, gridSizeY];
         for (int x = 0; x < gridSizeX; x++)
         {
             for (int y = 0; y < gridSizeY; y++)
@@ -55,12 +78,11 @@ public class AStar : MonoBehaviour
             }
         }
 
-        _openSet = new List<Node>();
+        _openSet   = new List<Node>();
         _closedSet = new List<Node>();
 
-        Node startNode = NodeFromWorldPoint(start.position);
-        Node goalNode = NodeFromWorldPoint(goal.position);
-
+        Node startNode = _grid[start.x, start.y];
+        Node goalNode = _grid[end.x, end.y];
         _openSet.Add(startNode);
 
         while (_openSet.Count > 0)
@@ -80,8 +102,7 @@ public class AStar : MonoBehaviour
             if (currentNode == goalNode)
             {
                 // 找到路径
-                RetracePath(startNode, goalNode);
-                return;
+                return RetracePath(startNode, goalNode);
             }
 
             foreach (Node neighbor in GetNeighbors(currentNode))
@@ -91,11 +112,11 @@ public class AStar : MonoBehaviour
                     continue;
                 }
 
-                int newCostToNeighbor = currentNode.GCost + GetDistance(currentNode, neighbor);
+                int newCostToNeighbor = currentNode.GCost + GetDistance(currentNode, neighbor) + currentNode.CurCost;
                 if (newCostToNeighbor < neighbor.GCost || !_openSet.Contains(neighbor))
                 {
-                    neighbor.GCost = newCostToNeighbor;
-                    neighbor.HCost = GetDistance(neighbor, goalNode);
+                    neighbor.GCost  = newCostToNeighbor;
+                    neighbor.HCost  = GetDistance(neighbor, goalNode);
                     neighbor.Parent = currentNode;
 
                     if (!_openSet.Contains(neighbor))
@@ -108,9 +129,10 @@ public class AStar : MonoBehaviour
 
         // 没有找到路径
         Debug.Log("No path found");
+        return null;
     }
 
-    private void RetracePath(Node startNode, Node endNode)
+    private List<Node> RetracePath(Node startNode, Node endNode)
     {
         List<Node> path = new List<Node>();
         Node currentNode = endNode;
@@ -122,9 +144,9 @@ public class AStar : MonoBehaviour
         }
 
         path.Reverse();
-
+        // Debug.Log("Path found!");
+        return path;
         // 在这里你可以处理路径，比如移动角色等
-        Debug.Log("Path found!");
     }
 
     private List<Node> GetNeighbors(Node node)
@@ -135,9 +157,7 @@ public class AStar : MonoBehaviour
         {
             for (int y = -1; y <= 1; y++)
             {
-                if (x == 0 && y == 0)
-                    continue;
-
+                if (x != 0 && y != 0) continue;
                 int checkX = node.GridX + x;
                 int checkY = node.GridY + y;
 
@@ -159,41 +179,27 @@ public class AStar : MonoBehaviour
         return dstX + dstY;
     }
 
-    private Node NodeFromWorldPoint(Vector3 worldPosition)
-    {
-        int x = Mathf.RoundToInt(worldPosition.x);
-        int y = Mathf.RoundToInt(worldPosition.y);
-        return _grid[x, y];
-    }
-
     // Node类表示网格中的一个节点
     public class Node
     {
         public bool Walkable;
-        public Vector3 WorldPosition;
         public int GridX;
         public int GridY;
 
-        public int GCost; // 从起始点到此点的实际代价
-        public int HCost; // 从此点到目标点的估算代价
-        public int CurCost;
+        public int GCost;   // 从起始点到此点的实际代价
+        public int HCost;   // 从此点到目标点的估算代价
+        public int CurCost; // 这个瓦块的消费
         public Node Parent; // 在路径中的上一个节点
 
-        public Node(bool walkable, Vector3 worldPosition, int gridX, int gridY)
-        {
-            Walkable = walkable;
-            WorldPosition = worldPosition;
-            GridX = gridX;
-            GridY = gridY;
-        }
+        public Vector2Int Pos => new Vector2Int(GridX, GridY);
 
         public void Reset()
         {
-            GCost = 0;
-            HCost = 0;
+            GCost  = 0;
+            HCost  = 0;
             Parent = null;
         }
 
-        public int FCost => GCost + HCost + CurCost;
+        public int FCost => GCost + HCost;
     }
 }

@@ -37,11 +37,7 @@ namespace GameLogic
 
         private async void Start()
         {
-            while (true)
-            {
-                await UniTask.Delay(1000);
-                Play(_AnimState + 1);
-            }
+            
         }
 
         public void Play(EAnimState animState, bool loop = true)
