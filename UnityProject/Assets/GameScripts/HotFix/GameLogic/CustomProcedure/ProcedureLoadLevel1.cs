@@ -1,0 +1,81 @@
+﻿using TEngine;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+namespace GameLogic
+{
+    public class ProcedureLoadLevel1 : CustomProcedureBase
+    {
+        public ProcedureLoadLevel1(FSM<EProcedure> fsm, CustomProcedureModule target) : base(fsm, target)
+        {
+        }
+
+        protected override void OnEnter()
+        {
+            base.OnEnter();
+            LoadLevel();
+            LoadMap();
+            LoadCharacter();
+        }
+
+        private void LoadLevel()
+        {
+            LevelManager.Instance.Init();
+        }
+
+        private void LoadCharacter()
+        {
+            LevelManager.Instance._Player = GameModule.Resource.LoadAsset<GameObject>("优衣").transform;
+        }
+
+        private void LoadMap()
+        {
+            TextAsset textAsset = GameModule.Resource.LoadAsset<TextAsset>("Map");
+            MapData mapData = DealText(textAsset.text);
+            
+
+            GameObject mapObj = new GameObject("Map");
+            MapManager map = mapObj.AddComponent<MapManager>();
+            map.Init(mapData);
+
+
+            GameObject aStarObj = new GameObject("AStar");
+            AStarManager aStar = aStarObj.AddComponent<AStarManager>();
+            aStar.Init(mapData);
+        }
+
+        private MapData DealText(string mapText)
+        {
+            string text = mapText;
+            string[] mapRow = text.Trim('\n').Split('\n');
+            string[] mapCol = mapRow[0].Trim('\t').Split('\t');
+            int x = mapRow.Length;
+            int y = mapCol.Length;
+
+            int[,] mapList = new int[x, y];
+
+            for (int i = 0; i < x; i++)
+            {
+                mapCol = mapRow[i].Trim('\t').Split('\t');
+                for (int ii = 0; ii < y; ii++)
+                {
+                    mapList[ii, i] = int.Parse(mapCol[ii]);
+                }
+            }
+
+            return new MapData
+                   {
+                       _MapList = mapList,
+                       _Width   = x,
+                       _Length  = y
+                   };
+        }
+    }
+}
+
+public struct MapData
+{
+    public int[,] _MapList;
+    public int _Width;
+    public int _Length;
+}

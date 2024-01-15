@@ -14,6 +14,7 @@ namespace GameLogic
             FSM = new FSM<EProcedure>();
             FSM.AddState(EProcedure.LoadConfigs, new ProcedureMenu(FSM, this));
             FSM.AddState(EProcedure.ProcedureMenu, new ProcedureMenu(FSM, this));
+            FSM.AddState(EProcedure.LoadLevel1, new ProcedureLoadLevel1(FSM, this));
             FSM.AddState(EProcedure.ProcedureLevel, new ProcedureLevel(FSM, this));
             
             FSM.StartState(EProcedure.LoadConfigs);

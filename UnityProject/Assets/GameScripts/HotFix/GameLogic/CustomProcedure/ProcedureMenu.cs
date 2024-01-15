@@ -32,7 +32,8 @@ namespace GameLogic
 
         private void StartGame()
         {
-            GameModule.Resource.LoadAsset<GameObject>("优衣");
+            mFSM.ChangeState(EProcedure.LoadLevel1);
+            // GameModule.Resource.LoadAsset<GameObject>("优衣");
         }
 
     }
