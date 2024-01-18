@@ -8,7 +8,8 @@ namespace GameLogic
 {
     public class MapItemData
     {
-        public MapItem MapItem;
+        public MapItem _MapItem;
+        public Character _Character;
     }
 
     public class MapManager : MonoBehaviour
@@ -19,7 +20,7 @@ namespace GameLogic
         private void Awake()
         {
             LevelManager.Instance._MapManager = this;
-            
+
             _MapRoot = new GameObject("MapRoot").transform;
         }
 
@@ -37,9 +38,28 @@ namespace GameLogic
                     mapItemObj.transform.SetParent(_MapRoot);
                     MapItem mapItem = mapItemObj.AddComponent<MapItem>();
                     mapItem.Init(sprite, new Vector2Int(i, ii));
-                    _MapItemDataDict[new Vector2Int(i, ii)] = new MapItemData { MapItem = mapItem };
+                    _MapItemDataDict[new Vector2Int(i, ii)] = new MapItemData { _MapItem = mapItem };
                 }
             }
+        }
+
+        
+        /// <summary>
+        /// 设置角色位置
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="targetPos"></param>
+        /// <param name="init"></param>
+        public void SetCharacterPos(Character character, Vector2Int targetPos, bool init = false)
+        {
+            if (_MapItemDataDict[character._CurPos]._Character != null)
+            {
+                Log.Error("有问题");
+                return;
+            }
+            if (!init) _MapItemDataDict[character._CurPos] = null;
+            character._CurPos                              = targetPos;
+            _MapItemDataDict[character._CurPos]._Character = character;
         }
     }
 }

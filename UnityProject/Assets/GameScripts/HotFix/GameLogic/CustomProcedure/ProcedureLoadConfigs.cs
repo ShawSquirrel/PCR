@@ -15,6 +15,7 @@ namespace GameLogic
         {
             base.OnEnter();
             ConfigSystem.Instance.Load();
+            GameModule.Audio.Play(AudioType.Music, "主题音乐", true, 0.5f);
         }
 
         protected override void OnUpdate()

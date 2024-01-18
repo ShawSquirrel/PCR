@@ -13,9 +13,17 @@ namespace GameLogic
         protected override void OnEnter()
         {
             base.OnEnter();
-            LoadLevel();
             LoadMap();
             LoadCharacter();
+            LoadCommandManager();
+            
+            LoadLevel();
+        }
+
+        private void LoadCommandManager()
+        {
+            GameObject commandObj = new GameObject("Command");
+            commandObj.AddComponent<CommandManager>();
         }
 
         private void LoadLevel()
@@ -25,7 +33,27 @@ namespace GameLogic
 
         private void LoadCharacter()
         {
-            LevelManager.Instance._Player = GameModule.Resource.LoadAsset<GameObject>("优衣").transform;
+            GameObject characterObj = new GameObject("Character");
+            characterObj.AddComponent<CharacterManager>();
+
+            LoadFriendly();
+            LoadEnemy();
+        }
+
+        private void LoadFriendly()
+        {
+            GameObject player = GameModule.Resource.LoadAsset<GameObject>("优衣");
+            Character character = player.AddComponent<Character>();
+            LevelManager.Instance._CharacterManager.AddFriendlyCharacter(character);
+            LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(1,1), true);
+        }
+
+        private void LoadEnemy()
+        {
+            GameObject player = GameModule.Resource.LoadAsset<GameObject>("优衣");
+            Character character = player.AddComponent<Character>();
+            LevelManager.Instance._CharacterManager.AddEnemyCharacter(character);
+            LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(2,1), true);
         }
 
         private void LoadMap()

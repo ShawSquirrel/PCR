@@ -4,6 +4,7 @@ using TEngine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 namespace GameLogic
 {
@@ -13,7 +14,7 @@ namespace GameLogic
         public Transform _TF;
         public SpriteRenderer _SpriteRenderer;
         public TextMeshPro _TextMesh;
-        public Vector2Int Pos;
+        public Vector2Int _Pos;
 
         private void Awake()
         {
@@ -32,7 +33,7 @@ namespace GameLogic
         public void Init(Sprite sprite, Vector2Int pos)
         {
             _SpriteRenderer.sprite = sprite;
-            Pos                    = pos;
+            _Pos                    = pos;
 
             _GO.AddComponent<BoxCollider2D>();
             _TF.localPosition = new Vector3(pos.x, pos.y);
@@ -44,7 +45,7 @@ namespace GameLogic
 
         public void OnMouseDown()
         {
-            GameEvent.Send(EventID.ClickMapItemID, Pos);
+            LevelManager.Instance.ClickMapItem(_Pos);
         }
     }
 }

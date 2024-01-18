@@ -11,30 +11,32 @@ namespace GameLogic
     {
         public MapManager _MapManager;
         public AStarManager _AStarManager;
+        public CharacterManager _CharacterManager;
+        public CommandManager _CommandManager;
 
-        public Transform _Player;
+        public int _RoundCount;
 
         public void Init()
         {
-            GameEvent.AddEventListener<Vector2Int>(EventID.ClickMapItemID, OnClickMapItem);
+            AddRound();
         }
 
-        private async void OnClickMapItem(Vector2Int v2)
+        public void ClickMapItem(Vector2Int end)
         {
-            List<AStarNode> path = _AStarManager.FindPath(_Player.position.ToVector2Int(), v2);
-            Debug.Log(path[^1].FCost);
-            foreach (AStarNode node in path)
-            {
-                bool isComplete = false;
-                DOTween.To(() => _Player.position,
-                           (value) => _Player.position = value,
-                           new Vector3(node.GridX, node.GridY), 1f).OnComplete(() => isComplete = true);
-
-                while (!isComplete)
-                {
-                    await UniTask.DelayFrame(1);
-                }
-            }
+            MoveCommand moveCommand = new MoveCommand
+                                      {
+                                          _Move     = _CharacterManager._FriendlyCharacter[0],
+                                          _StartPos = _CharacterManager._FriendlyCharacter[0]._CurPos,
+                                          _EndPos   = end
+                                      };
+            _CommandManager.Execute(moveCommand);
         }
+
+        public void AddRound()
+        {
+            _RoundCount++;
+            _CommandManager.AddRound();
+        }
+        
     }
 }
