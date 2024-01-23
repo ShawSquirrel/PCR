@@ -16,8 +16,14 @@ namespace GameLogic
             LoadMap();
             LoadCharacter();
             LoadCommandManager();
-            
+            LoadBattleManager();
             LoadLevel();
+        }
+
+        private void LoadBattleManager()
+        {
+            GameObject battleArea = GameModule.Resource.LoadAsset<GameObject>("BattleArea");
+            battleArea.name = "BattleArea";
         }
 
         private void LoadCommandManager()
@@ -44,6 +50,7 @@ namespace GameLogic
         {
             GameObject player = GameModule.Resource.LoadAsset<GameObject>("优衣");
             Character character = player.AddComponent<Character>();
+            character.name = "优衣1";
             LevelManager.Instance._CharacterManager.AddFriendlyCharacter(character);
             LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(1,1), true);
         }
@@ -52,6 +59,7 @@ namespace GameLogic
         {
             GameObject player = GameModule.Resource.LoadAsset<GameObject>("优衣");
             Character character = player.AddComponent<Character>();
+            character.name = "优衣2";
             LevelManager.Instance._CharacterManager.AddEnemyCharacter(character);
             LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(2,1), true);
         }

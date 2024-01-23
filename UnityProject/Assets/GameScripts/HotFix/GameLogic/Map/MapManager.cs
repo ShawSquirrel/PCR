@@ -4,6 +4,7 @@ using TEngine;
 using TMPro;
 using UnityEngine;
 
+
 namespace GameLogic
 {
     public class MapItemData
@@ -12,16 +13,19 @@ namespace GameLogic
         public Character _Character;
     }
 
-    public class MapManager : MonoBehaviour
+    public class MapManager : Entity
     {
         public Transform _MapRoot;
         public Dictionary<Vector2Int, MapItemData> _MapItemDataDict = new Dictionary<Vector2Int, MapItemData>();
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             LevelManager.Instance._MapManager = this;
+            _TF.SetParent(LevelManager.Instance._Root);
 
             _MapRoot = new GameObject("MapRoot").transform;
+            _MapRoot.SetParent(_TF);
         }
 
         public void Init(MapData mapData)

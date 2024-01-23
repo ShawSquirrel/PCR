@@ -22,6 +22,11 @@ namespace GameLogic
             _MainCamera.GetComponent<UniversalAdditionalCameraData>().cameraStack.Add(GameModule.UI.UICamera);
         }
 
+        public void AddCameraStack(Camera camera)
+        {
+            _MainCamera.GetComponent<UniversalAdditionalCameraData>().cameraStack.Add(camera);
+        }
+
         public void SetCameraSolo(int id)
         {
             m_virtualCameraDict[id].enabled = false;

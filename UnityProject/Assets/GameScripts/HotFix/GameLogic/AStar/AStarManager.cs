@@ -15,6 +15,7 @@ namespace GameLogic
         private void Awake()
         {
             LevelManager.Instance._AStarManager = this;
+            transform.SetParent(LevelManager.Instance._Root);
         }
 
         public void Init(MapData mapList)

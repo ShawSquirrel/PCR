@@ -6,12 +6,32 @@ using UnityEngine;
 
 namespace GameLogic
 {
-    public class Character : MonoBehaviour, IMove
+    public struct BaseCharacterConstantAttribute
     {
+        public int _AttackValue;
+        public int _DefenseValue;
+        public int _SpeedValue;
+    }
+
+    public struct BaseCharacterChangedAttribute
+    {
+        public int _HealthPoint;
+    }
+
+    public struct CharacterAttribute
+    {
+        public BaseCharacterConstantAttribute Constant;
+        public BaseCharacterChangedAttribute Changed;
+    }
+
+    public class Character : Entity, IMove
+    {
+        public CharacterAttribute _Attribute;
+
+
         private Vector2Int _pos;
 
         public Vector2Int _CurPos
-
         {
             get => _pos;
             set
@@ -20,7 +40,8 @@ namespace GameLogic
                 transform.position = new Vector3(_pos.x, _pos.y);
             }
         }
-        
+
+
         public async void Move(Vector2Int start, Vector2Int end)
         {
             List<AStarNode> path = LevelManager.Instance._AStarManager.FindPath(start, end);

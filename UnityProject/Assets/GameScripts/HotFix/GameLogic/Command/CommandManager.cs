@@ -8,11 +8,12 @@ namespace GameLogic
     {
         public Dictionary<int, Stack<ICommand>> _CommandDict = new Dictionary<int, Stack<ICommand>>();
         public int RoundCount => LevelManager.Instance._RoundCount;
-        
+
         private void Awake()
         {
             LevelManager.Instance._CommandManager = this;
-            _CommandDict[0]                       = new Stack<ICommand>();
+            transform.SetParent(LevelManager.Instance._Root);
+            _CommandDict[0] = new Stack<ICommand>();
         }
 
         public void AddRound()
