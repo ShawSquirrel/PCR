@@ -4,16 +4,31 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using GameConfig;
 using Sirenix.OdinInspector;
+using Spine;
 using Spine.Unity;
 using TEngine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameLogic
 {
+    public struct AnimEvent
+    {
+        public Action OnComplete;
+
+
+        public void Reset()
+        {
+            OnComplete = null;
+        }
+    }
+
     [RequireComponent(typeof(SkeletonAnimation))]
-    public class AnimComponent : MonoBehaviour
+    public class AnimComponent : Entity
     {
         private static Dictionary<EAnimState, string> S_AnimNameDict;
+
+        public AnimEvent _Event;
 
         public string _NormalPrefix;
         public string _SkillPrefix;
@@ -21,8 +36,10 @@ namespace GameLogic
         private Dictionary<EAnimState, string> _animNameDict = new Dictionary<EAnimState, string>();
         private SkeletonAnimation _anim;
 
-        private void Awake()
+
+        protected override void Awake()
         {
+            base.Awake();
             _anim = GetComponent<SkeletonAnimation>();
 
             if (S_AnimNameDict == null)
@@ -35,13 +52,20 @@ namespace GameLogic
             }
         }
 
-        private async void Start()
+        private void Start()
         {
-            
+            _anim.AnimationState.Complete += OnComplete;
         }
 
-        public void Play(EAnimState animState, bool loop = true)
+        private void OnComplete(TrackEntry trackentry)
         {
+            _Event.OnComplete?.Invoke();
+            _Event.Reset();
+        }
+
+        public void Play(EAnimState animState, bool loop = true, Action OnComplete = null)
+        {
+            _Event.Reset();
             switch (animState)
             {
                 case EAnimState.BalloonFlyingDown:
@@ -102,9 +126,10 @@ namespace GameLogic
                     break;
             }
 
-            _AnimState = animState;
+            _AnimState        = animState;
+            _Event.OnComplete = OnComplete;
         }
-        
+
         private void PlayNormalAnim(EAnimState animState, bool loop = true)
         {
             if (_AnimState == animState) return;

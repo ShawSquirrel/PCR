@@ -27,7 +27,7 @@ namespace GameLogic
     public class Character : Entity, IMove
     {
         public CharacterAttribute _Attribute;
-
+        public AnimComponent _Anim;
 
         private Vector2Int _pos;
 
@@ -41,6 +41,11 @@ namespace GameLogic
             }
         }
 
+        protected override void Awake()
+        {
+            base.Awake();
+            _Anim = GetComponentInChildren<AnimComponent>();
+        }
 
         public async void Move(Vector2Int start, Vector2Int end)
         {

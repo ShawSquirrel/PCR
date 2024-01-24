@@ -50,16 +50,16 @@ namespace GameLogic
         {
             GameObject player = GameModule.Resource.LoadAsset<GameObject>("优衣");
             Character character = player.AddComponent<Character>();
-            character.name = "优衣1";
+            character.name = "优衣";
             LevelManager.Instance._CharacterManager.AddFriendlyCharacter(character);
             LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(1,1), true);
         }
 
         private void LoadEnemy()
         {
-            GameObject player = GameModule.Resource.LoadAsset<GameObject>("优衣");
+            GameObject player = GameModule.Resource.LoadAsset<GameObject>("镜华");
             Character character = player.AddComponent<Character>();
-            character.name = "优衣2";
+            character.name = "镜华";
             LevelManager.Instance._CharacterManager.AddEnemyCharacter(character);
             LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(2,1), true);
         }
