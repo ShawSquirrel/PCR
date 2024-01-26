@@ -16,9 +16,6 @@ public class AStar : Singleton<AStar>
     {
         // 初始化网格
         InitializeGrid(mapList);
-
-        // 执行A*算法
-        // FindPath();
     }
 
     public int[,] GetAllCost(Vector2Int start)

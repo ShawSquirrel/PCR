@@ -41,28 +41,6 @@ namespace GameLogic
         }
 
 
-        public int[,] GetAllCost(Vector2Int start)
-        {
-            int[,] result = new int[6, 6];
-            for (int i = 0; i < 6; i++)
-            {
-                for (int ii = 0; ii < 6; ii++)
-                {
-                    var pathList = FindPath(start, _grid[i, ii].Pos);
-                    if (pathList == null || pathList.Count == 0)
-                    {
-                        result[i, ii] = 0;
-                    }
-                    else
-                    {
-                        result[i, ii] = pathList[^1].FCost;
-                    }
-                }
-            }
-
-            return result;
-        }
-        
         public List<AStarNode> FindPath(Vector2Int start, Vector2Int end)
         {
             for (int x = 0; x < _gridSizeX; x++)

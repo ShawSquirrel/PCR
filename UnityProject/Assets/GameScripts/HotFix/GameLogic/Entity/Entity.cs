@@ -9,14 +9,14 @@ namespace GameLogic
         [HideInInspector]
         public Transform _TF;
 
-        public Camera _Camera;
+        // public Camera _Camera;
 
         protected virtual void Awake()
         {
             _GO = gameObject;
             _TF = transform;
 
-            CustomModule.CameraModule.AddCameraStack(_Camera);
+            // CustomModule.CameraModule.AddCameraStack(_Camera);
         }
 
         
