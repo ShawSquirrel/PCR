@@ -15,8 +15,8 @@ namespace GameLogic
         public CharacterManager _CharacterManager;
         public CommandManager _CommandManager;
         public BattleManager _BattleManager;
+        public RoundManager _RoundManager;
 
-        public int _RoundCount;
 
 
         public LevelManager()
@@ -54,9 +54,9 @@ namespace GameLogic
             
         }
 
-        public void AddRound()
+        private void AddRound()
         {
-            _RoundCount++;
+            _RoundManager.AddRound();
             _CommandManager.AddRound();
         }
 

@@ -13,16 +13,16 @@ namespace GameLogic
 
     public class BattleManager : Entity
     {
-        public Character _Attacker;
-        public Character _Attacked;
+        private Character _attacker;
+        private Character _attacked;
 
         public Transform _AttackerPos;
         public Transform _AttackedPos;
 
-        public AnimComponent _AttackerAnim;
-        public AnimComponent _AttackedAnim;
+        private AnimComponent _attackerAnim;
+        private AnimComponent _attackedAnim;
 
-        public Queue<BattleItem> _BattleQueue = new Queue<BattleItem>();
+        private Queue<BattleItem> _battleQueue = new Queue<BattleItem>();
 
         protected override void Awake()
         {
@@ -34,50 +34,50 @@ namespace GameLogic
 
         public void InitBattle(Character attacker, Character attacked)
         {
-            _Attacker = attacker;
-            _Attacked = attacked;
+            _attacker = attacker;
+            _attacked = attacked;
 
-            _AttackerAnim                   = GameModule.Resource.LoadAsset<GameObject>("优衣Body").GetComponent<AnimComponent>();
-            _AttackerAnim._TF.localScale    = new Vector3(0.5f, 0.5f, 0.5f);
-            _AttackerAnim._TF.SetParent(_AttackerPos);
-            _AttackerAnim._TF.localPosition = Vector3.zero;
+            _attackerAnim                   = GameModule.Resource.LoadAsset<GameObject>("优衣Body").GetComponent<AnimComponent>();
+            _attackerAnim._TF.localScale    = new Vector3(0.5f, 0.5f, 0.5f);
+            _attackerAnim._TF.SetParent(_AttackerPos);
+            _attackerAnim._TF.localPosition = Vector3.zero;
 
-            _AttackedAnim                = GameModule.Resource.LoadAsset<GameObject>("镜华Body").GetComponent<AnimComponent>();
-            _AttackedAnim._TF.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
-            _AttackedAnim._TF.SetParent(_AttackedPos);
-            _AttackedAnim._TF.localPosition   = Vector3.zero;
+            _attackedAnim                = GameModule.Resource.LoadAsset<GameObject>("镜华Body").GetComponent<AnimComponent>();
+            _attackedAnim._TF.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            _attackedAnim._TF.SetParent(_AttackedPos);
+            _attackedAnim._TF.localPosition   = Vector3.zero;
 
-            int speedAttacker = _Attacker._Attribute.Constant._SpeedValue;
-            int speedAttacked = _Attacked._Attribute.Constant._SpeedValue;
+            int speedAttacker = _attacker._Attribute.Constant._SpeedValue;
+            int speedAttacked = _attacked._Attribute.Constant._SpeedValue;
 
 
-            _BattleQueue.Clear();
+            _battleQueue.Clear();
             switch (speedAttacker - speedAttacked)
             {
                 case < 0:
                 {
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
                 }
                     break;
                 case > 0:
                 {
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
                 }
                     break;
                 default:
                 {
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
-                    _BattleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = true });
+                    _battleQueue.Enqueue(new BattleItem() { _IsAttacker = false });
                 }
                     break;
             }
@@ -85,25 +85,25 @@ namespace GameLogic
 
         public async void PlayBattle()
         {
-            while (_BattleQueue.Count != 0)
+            while (_battleQueue.Count != 0)
             {
                 bool animComplete = false;
-                bool isAttacker = _BattleQueue.Dequeue()._IsAttacker;
+                bool isAttacker = _battleQueue.Dequeue()._IsAttacker;
                 if (isAttacker)
                 {
-                    Debug.Log($"{_Attacker.name}攻击了{_Attacked.name}");
-                    _AttackerAnim.Play(EAnimState.Attack, false, () =>
+                    Debug.Log($"{_attacker.name}攻击了{_attacked.name}");
+                    _attackerAnim.Play(EAnimState.Attack, false, () =>
                                                                  {
-                                                                     _AttackerAnim.Play(EAnimState.Idle);
+                                                                     _attackerAnim.Play(EAnimState.Idle);
                                                                      animComplete = true;
                                                                  });
                 }
                 else
                 {
-                    Debug.Log($"{_Attacked.name}攻击了{_Attacker.name}");
-                    _AttackedAnim.Play(EAnimState.Attack, false, () =>
+                    Debug.Log($"{_attacked.name}攻击了{_attacker.name}");
+                    _attackedAnim.Play(EAnimState.Attack, false, () =>
                                                                  {
-                                                                     _AttackedAnim.Play(EAnimState.Idle);
+                                                                     _attackedAnim.Play(EAnimState.Idle);
                                                                      animComplete = true;
                                                                  });
                 }
@@ -119,11 +119,11 @@ namespace GameLogic
 
         private void EndBattle()
         {
-            Destroy(_AttackerAnim._GO);
-            Destroy(_AttackedAnim._GO);
+            Destroy(_attackerAnim._GO);
+            Destroy(_attackedAnim._GO);
 
-            _AttackerAnim = null;
-            _AttackedAnim = null;
+            _attackerAnim = null;
+            _attackedAnim = null;
         }
     }
 }

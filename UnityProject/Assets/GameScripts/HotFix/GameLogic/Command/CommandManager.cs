@@ -6,8 +6,8 @@ namespace GameLogic
 {
     public class CommandManager : MonoBehaviour
     {
-        public Dictionary<int, Stack<ICommand>> _CommandDict = new Dictionary<int, Stack<ICommand>>();
-        public int RoundCount => LevelManager.Instance._RoundCount;
+        private readonly Dictionary<int, Stack<ICommand>> _CommandDict = new Dictionary<int, Stack<ICommand>>();
+        private static int RoundCount => LevelManager.Instance._RoundManager._RoundCount;
 
         private void Awake()
         {

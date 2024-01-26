@@ -17,7 +17,15 @@ namespace GameLogic
             LoadCharacter();
             LoadCommandManager();
             LoadBattleManager();
+            LoadRoundManager();
             LoadLevel();
+        }
+
+        private void LoadRoundManager()
+        {
+            GameObject round = new GameObject("Round");
+            round.AddComponent<RoundManager>();
+
         }
 
         private void LoadBattleManager()
