@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TEngine;
 using UnityEngine;
 
@@ -14,13 +15,18 @@ public class StateMachine : MonoBehaviour
     public FSM<State> _FSM = new FSM<State>();
 
 
-    public Action<GameObject> ClickMapItem;
-    public Action<GameObject> ClickCharacter;
+    public Action<MapItem> ClickMapItem;
+    public Action<Character> ClickCharacter;
     public Action ClickNull;
 
 
+    public MapItem[,] LeftMap = new MapItem[3, 3];
+    public MapItem[,] RightMap = new MapItem[3, 3];
+
     public Character Character;
-    public GameObject Effect;
+    // public GameObject Effect;
+
+    public LayerMask _LayerMask;
 
     private void Awake()
     {
@@ -31,22 +37,32 @@ public class StateMachine : MonoBehaviour
         _FSM.StartState(State.NoSelected);
     }
 
+    protected virtual void SelectCharacter(Character character)
+    {
+        if (Character != null)
+        {
+            Character.NoSelect();
+        }
+
+        Character = character;
+        Character.Select();
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _LayerMask))
             {
                 GameObject obj = hit.collider.gameObject;
                 Log.Info($"点击的物体 {obj.name}");
-                if (obj.tag.Contains("Character"))
+                if (obj.CompareTag("Character"))
                 {
-                    ClickCharacter?.Invoke(obj);
+                    ClickCharacter?.Invoke(obj.GetComponent<Character>());
                 }
-                else if (obj.tag.Contains("MapItem"))
+                else if (obj.CompareTag("MapItem"))
                 {
-                    ClickMapItem?.Invoke(obj);
+                    ClickMapItem?.Invoke(obj.GetComponent<MapItem>());
                 }
                 else
                 {
@@ -70,20 +86,23 @@ public class StateMachine : MonoBehaviour
         protected virtual void OnClickNull()
         {
             mTarget.Character.NoSelect();
+            mTarget.Character = null;
             mFSM.ChangeState(State.NoSelected);
         }
 
-        protected virtual void OnClickCharacter(GameObject obj)
+        protected virtual void OnClickCharacter(Character character)
         {
-            mTarget.Character.Select();
+            mTarget.SelectCharacter(character);
             mFSM.ChangeState(State.Selected);
         }
 
-        protected virtual void OnClickMapItem(GameObject obj)
+        protected virtual void OnClickMapItem(MapItem mapItem)
         {
-            GameObject effect = Instantiate(mTarget.Effect);
-            effect.SetActive(true);
-            effect.transform.position = obj.transform.position + new Vector3(0, 1f, 0);
+            if (mapItem.gameObject.layer != mTarget.Character.gameObject.layer)
+            {
+                Skill skill = new Skill(Enum_SkillState.Skill1);
+                skill.SetPos(mapItem);
+            }
         }
     }
 
