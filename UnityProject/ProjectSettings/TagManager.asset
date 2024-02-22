@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Left/MapItem
-  - Left/Character
-  - Right/MapItem
-  - Right/Character
+  - MapItem
+  - Character
   layers:
   - Default
   - TransparentFX

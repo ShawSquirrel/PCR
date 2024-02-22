@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using TEngine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum State
 {
     NoSelected,
     Selected,
+    Action,
 }
 
 public class StateMachine : MonoBehaviour
@@ -20,9 +22,6 @@ public class StateMachine : MonoBehaviour
     public Action ClickNull;
 
 
-    public MapItem[,] LeftMap = new MapItem[3, 3];
-    public MapItem[,] RightMap = new MapItem[3, 3];
-
     public Character Character;
     // public GameObject Effect;
 
@@ -33,6 +32,7 @@ public class StateMachine : MonoBehaviour
         _Instance = this;
         _FSM.AddState(State.NoSelected, new State_NoSelected(_FSM, this));
         _FSM.AddState(State.Selected, new State_Selected(_FSM, this));
+        _FSM.AddState(State.Action, new State_Action(_FSM, this));
 
         _FSM.StartState(State.NoSelected);
     }
@@ -47,10 +47,25 @@ public class StateMachine : MonoBehaviour
         Character = character;
         Character.Select();
     }
+
+    protected virtual void ResetCharacter()
+    {
+        if (Character != null)
+        {
+            Character.NoSelect();
+        }
+
+        Character = null;
+    }
+
+
     private void Update()
     {
+        _FSM.Update();
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _LayerMask))
             {
@@ -100,9 +115,21 @@ public class StateMachine : MonoBehaviour
         {
             if (mapItem.gameObject.layer != mTarget.Character.gameObject.layer)
             {
-                Skill skill = new Skill(Enum_SkillState.Skill1);
+                Skill skill = new Skill(OnSelectSkill(SkillUIManager._Instance.Type_Skill));
                 skill.SetPos(mapItem);
+                mFSM.ChangeState(State.Action);
             }
+        }
+
+        private Enum_SkillState OnSelectSkill(int obj)
+        {
+            return obj switch
+            {
+                1 => Enum_SkillState.Skill1,
+                2 => Enum_SkillState.Skill2,
+                3 => Enum_SkillState.Skill3,
+                _ => throw new ArgumentOutOfRangeException(nameof(obj), obj, null)
+            };
         }
     }
 
@@ -144,6 +171,36 @@ public class StateMachine : MonoBehaviour
             base.OnExit();
             mTarget.ClickNull -= OnClickNull;
             mTarget.ClickMapItem -= OnClickMapItem;
+        }
+    }
+
+    public class State_Action : GameState
+    {
+        public bool isComplele;
+
+        public State_Action(FSM<State> fsm, StateMachine target) : base(fsm, target)
+        {
+        }
+
+        protected override void OnEnter()
+        {
+            base.OnEnter();
+            isComplele = false;
+        }
+
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+            if (isComplele)
+            {
+                mFSM.ChangeState(State.NoSelected);
+                mTarget.ResetCharacter();
+            }
+        }
+
+        protected override void OnExit()
+        {
+            base.OnExit();
         }
     }
 }
