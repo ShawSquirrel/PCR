@@ -16,14 +16,21 @@ public class MapItem : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        _Mat_Item.SetColor("_MainColor", Color.cyan);
-        // Log.Info("OnMouseUp");
+        StateMachine._Instance.MapItemMouseEnterEvent?.Invoke(this);
     }
 
+    private void OnMouseOver()
+    {
+        StateMachine._Instance.MapItemMouseOverEvent?.Invoke(this);
+    }
+
+    private void OnMouseDown()
+    {
+        StateMachine._Instance.MapItemMouseDownEvent?.Invoke(this);
+    }
 
     private void OnMouseExit()
     {
-        _Mat_Item.SetColor("_MainColor", Color.white);
-        // Log.Info("OnMouseExit");
+        StateMachine._Instance.MapItemMouseExitEvent?.Invoke(this);
     }
 }

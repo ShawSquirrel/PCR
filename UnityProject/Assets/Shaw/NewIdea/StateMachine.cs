@@ -17,13 +17,22 @@ public class StateMachine : MonoBehaviour
     public FSM<State> _FSM = new FSM<State>();
 
 
-    public Action<MapItem> ClickMapItem;
-    public Action<Character> ClickCharacter;
-    public Action ClickNull;
+    // public Action<MapItem> ClickMapItem;
+    // public Action<Character> ClickCharacter;
+    public Action NullMouseDown;
+
+    public Action<MapItem> MapItemMouseEnterEvent;
+    public Action<MapItem> MapItemMouseOverEvent;
+    public Action<MapItem> MapItemMouseDownEvent;
+    public Action<MapItem> MapItemMouseExitEvent;
+
+    public Action<Character> CharacterMouseEnterEvent;
+    public Action<Character> CharacterMouseOverEvent;
+    public Action<Character> CharacterMouseDownEvent;
+    public Action<Character> CharacterMouseExitEvent;
 
 
     public Character Character;
-    // public GameObject Effect;
 
     public LayerMask _LayerMask;
 
@@ -37,7 +46,7 @@ public class StateMachine : MonoBehaviour
         _FSM.StartState(State.NoSelected);
     }
 
-    protected virtual void SelectCharacter(Character character)
+    public virtual void SelectCharacter(Character character)
     {
         if (Character != null)
         {
@@ -48,7 +57,7 @@ public class StateMachine : MonoBehaviour
         Character.Select();
     }
 
-    protected virtual void ResetCharacter()
+    public virtual void ResetCharacter()
     {
         if (Character != null)
         {
@@ -69,25 +78,25 @@ public class StateMachine : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _LayerMask))
             {
-                GameObject obj = hit.collider.gameObject;
-                Log.Info($"点击的物体 {obj.name}");
-                if (obj.CompareTag("Character"))
-                {
-                    ClickCharacter?.Invoke(obj.GetComponent<Character>());
-                }
-                else if (obj.CompareTag("MapItem"))
-                {
-                    ClickMapItem?.Invoke(obj.GetComponent<MapItem>());
-                }
-                else
-                {
-                    ClickNull?.Invoke();
-                }
+                // GameObject obj = hit.collider.gameObject;
+                // Log.Info($"点击的物体 {obj.name}");
+                // if (obj.CompareTag("Character"))
+                // {
+                //     ClickCharacter?.Invoke(obj.GetComponent<Character>());
+                // }
+                // else if (obj.CompareTag("MapItem"))
+                // {
+                //     ClickMapItem?.Invoke(obj.GetComponent<MapItem>());
+                // }
+                // else
+                // {
+                //     ClickNull?.Invoke();
+                // }
             }
 
             else
             {
-                ClickNull?.Invoke();
+                NullMouseDown?.Invoke();
             }
         }
     }
@@ -143,13 +152,13 @@ public class StateMachine : MonoBehaviour
         {
             base.OnEnter();
 
-            mTarget.ClickCharacter += OnClickCharacter;
+            mTarget.CharacterMouseDownEvent += OnClickCharacter;
         }
 
         protected override void OnExit()
         {
             base.OnExit();
-            mTarget.ClickCharacter -= OnClickCharacter;
+            mTarget.CharacterMouseDownEvent -= OnClickCharacter;
         }
     }
 
@@ -162,15 +171,15 @@ public class StateMachine : MonoBehaviour
         protected override void OnEnter()
         {
             base.OnEnter();
-            mTarget.ClickNull += OnClickNull;
-            mTarget.ClickMapItem += OnClickMapItem;
+            mTarget.NullMouseDown += OnClickNull;
+            mTarget.MapItemMouseDownEvent += OnClickMapItem;
         }
 
         protected override void OnExit()
         {
             base.OnExit();
-            mTarget.ClickNull -= OnClickNull;
-            mTarget.ClickMapItem -= OnClickMapItem;
+            mTarget.NullMouseDown -= OnClickNull;
+            mTarget.MapItemMouseDownEvent -= OnClickMapItem;
         }
     }
 

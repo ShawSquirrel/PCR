@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public CharacterData CharacterData;
+    
     public Material _Mat_Character;
 
-    public BindableProperty<int> _Hp;
+    public BindableProperty<int> _Hp = new BindableProperty<int>();
     public int atk;
     private static readonly int MainColor = Shader.PropertyToID("_MainColor");
 
@@ -34,18 +36,25 @@ public class Character : MonoBehaviour
         _Mat_Character.SetColor(MainColor, Color.white);
     }
     
-    
+    private void OnMouseEnter()
+    {
+        StateMachine._Instance.CharacterMouseEnterEvent?.Invoke(this);
+    }
 
-    // private void OnMouseDown()
-    // {
-    //     _Mat_Character.SetColor("_MainColor", Color.cyan);
-    //     // Log.Info("OnMouseUp");
-    // }
+    private void OnMouseOver()
+    {
+        StateMachine._Instance.CharacterMouseOverEvent?.Invoke(this);
+    }
+
+    private void OnMouseDown()
+    {
+        StateMachine._Instance.CharacterMouseDownEvent?.Invoke(this);
+    }
+
+    private void OnMouseExit()
+    {
+        StateMachine._Instance.CharacterMouseExitEvent?.Invoke(this);
+    }
 
 
-    // private void OnMouseExit()
-    // {
-    //     _Mat_Character.SetColor("_MainColor", Color.white);
-    //     // Log.Info("OnMouseExit");
-    // }
 }
