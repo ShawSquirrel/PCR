@@ -7,4 +7,6 @@ public class CharacterData : ScriptableObject
 {
     public int _Hp;
     public int _Atk;
+
+    public Vector2Int pos;
 }

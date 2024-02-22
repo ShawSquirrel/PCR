@@ -13,10 +13,12 @@ public class Character : MonoBehaviour
     public int atk;
     private static readonly int MainColor = Shader.PropertyToID("_MainColor");
 
-    private void Awake()
+    private void Start()
     {
         _Mat_Character = GetComponent<MeshRenderer>().material;
 
+        //MapItem mapItem= MapController._Instance.map
+        //MapController._Instance.MapItemToCharacter[]
 
         _Hp.Register((i) =>
         {

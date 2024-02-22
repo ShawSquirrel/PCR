@@ -16,11 +16,12 @@ public class Skill
     private GameObject _Owner;
     private GameObject _GO;
     private Enum_SkillState _enumSkillState;
+    private int _Atk;
 
-    public Skill(Enum_SkillState skillState)
+    public Skill(Enum_SkillState skillState, int atk)
     {
         _enumSkillState = skillState;
-
+        _Atk            = atk;
         LoadEffect();
     }
 
@@ -58,8 +59,13 @@ public class Skill
             // MapController._Instance.GetTargetUpMapItem(mapItem),
         };
         
+        
         foreach (MapItem item in allMapItem)
         {
+            if (MapController._Instance.MapItemToCharacter.TryGetValue(item, out Character character))
+            {
+                character._Hp.Value -= _Atk;
+            }
             InstantiateEffect(item);
         }
     }
@@ -70,6 +76,8 @@ public class Skill
         GameObject effectObj = Object.Instantiate(_GO);
         effectObj.transform.position = targetMapItem.transform.position + new Vector3(0, 1, 0);
         effectObj.GetComponent<Effect>().AddListen(OnDestroy);
+        
+        
     }
 
     private void OnDestroy()

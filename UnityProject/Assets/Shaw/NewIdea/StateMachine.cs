@@ -17,8 +17,6 @@ public class StateMachine : MonoBehaviour
     public FSM<State> _FSM = new FSM<State>();
 
 
-    // public Action<MapItem> ClickMapItem;
-    // public Action<Character> ClickCharacter;
     public Action NullMouseDown;
 
     public Action<MapItem> MapItemMouseEnterEvent;
@@ -124,7 +122,7 @@ public class StateMachine : MonoBehaviour
         {
             if (mapItem.gameObject.layer != mTarget.Character.gameObject.layer)
             {
-                Skill skill = new Skill(OnSelectSkill(SkillUIManager._Instance.Type_Skill));
+                Skill skill = new Skill(OnSelectSkill(SkillUIManager._Instance.Type_Skill), _Instance.Character.atk);
                 skill.SetPos(mapItem);
                 mFSM.ChangeState(State.Action);
             }
@@ -133,12 +131,12 @@ public class StateMachine : MonoBehaviour
         private Enum_SkillState OnSelectSkill(int obj)
         {
             return obj switch
-            {
-                1 => Enum_SkillState.Skill1,
-                2 => Enum_SkillState.Skill2,
-                3 => Enum_SkillState.Skill3,
-                _ => throw new ArgumentOutOfRangeException(nameof(obj), obj, null)
-            };
+                   {
+                       1 => Enum_SkillState.Skill1,
+                       2 => Enum_SkillState.Skill2,
+                       3 => Enum_SkillState.Skill3,
+                       _ => throw new ArgumentOutOfRangeException(nameof(obj), obj, null)
+                   };
         }
     }
 
@@ -171,14 +169,14 @@ public class StateMachine : MonoBehaviour
         protected override void OnEnter()
         {
             base.OnEnter();
-            mTarget.NullMouseDown += OnClickNull;
+            mTarget.NullMouseDown         += OnClickNull;
             mTarget.MapItemMouseDownEvent += OnClickMapItem;
         }
 
         protected override void OnExit()
         {
             base.OnExit();
-            mTarget.NullMouseDown -= OnClickNull;
+            mTarget.NullMouseDown         -= OnClickNull;
             mTarget.MapItemMouseDownEvent -= OnClickMapItem;
         }
     }

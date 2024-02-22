@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Hp: 5
   _Atk: 7
+  pos: {x: 1, y: 1}

@@ -13,6 +13,7 @@ public class MapController : MonoBehaviour
     public MapItem[,] RightMap = new MapItem[3, 3];
 
     public Dictionary<MapItem, Vector2Int> MapItemToVec = new Dictionary<MapItem, Vector2Int>();
+    public Dictionary<MapItem, Character> MapItemToCharacter = new Dictionary<MapItem, Character>();
 
 
     private void Awake()
