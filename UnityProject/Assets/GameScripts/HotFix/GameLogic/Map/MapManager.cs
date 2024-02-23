@@ -1,69 +1,93 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TEngine;
-using TMPro;
 using UnityEngine;
-
 
 namespace GameLogic
 {
     public class MapItemData
     {
-        public MapItem _MapItem;
+        public Vector2Int _Index;
         public Character _Character;
     }
 
-    public class MapManager : Entity
+    public class MapManager : MonoBehaviour
     {
-        public Transform _MapRoot;
-        public Dictionary<Vector2Int, MapItemData> _MapItemDataDict = new Dictionary<Vector2Int, MapItemData>();
+        private Transform _leftRoot;
+        private Transform _rightRoot;
 
-        protected override void Awake()
+        public Dictionary<Vector2Int, MapItem> Dict_VecToMapItem = new Dictionary<Vector2Int, MapItem>();
+        public Dictionary<MapItem, MapItemData> Dict_MapItemToData = new Dictionary<MapItem, MapItemData>();
+
+        private void Awake()
         {
-            base.Awake();
-            LevelManager.Instance._MapManager = this;
-            _TF.SetParent(LevelManager.Instance._Root);
+            InitName();
+            LoadMap();
 
-            _MapRoot = new GameObject("MapRoot").transform;
-            _MapRoot.SetParent(_TF);
+            AddListen();
         }
 
-        public void Init(MapData mapData)
+        private void AddListen()
         {
-            _MapItemDataDict.Clear();
+            GameEvent.AddEventListener<MapItem>(MapItemEvent.MouseEnterEvent, OnMapItemMouseEnterEvent);
+            GameEvent.AddEventListener<MapItem>(MapItemEvent.MouseExitEvent, OnMapItemMouseExitEvent);
+        }
 
+        private void OnMapItemMouseExitEvent(MapItem item)
+        {
+            item.SetColor(Color.white);
+        }
 
-            Sprite sprite = GameModule.Resource.LoadAsset<Sprite>("MapItem@98x98");
-            for (int i = 0; i < mapData._Width; i++)
+        private void OnMapItemMouseEnterEvent(MapItem item)
+        {
+            item.SetColor(Color.cyan);
+        }
+
+        protected void InitName()
+        {
+            name = "MapManager";
+        }
+
+        protected void LoadMap()
+        {
+            _leftRoot = GameModule.Resource.LoadAsset<GameObject>("Left").transform;
+            _rightRoot = GameModule.Resource.LoadAsset<GameObject>("Right").transform;
+
+            _leftRoot.SetParent(transform);
+            _rightRoot.SetParent(transform);
+
+            Vector2Int v2 = Vector2Int.zero;
+            for (int i = 0; i < _leftRoot.childCount; i++)
             {
-                for (int ii = 0; ii < mapData._Length; ii++)
+                MapItem item = _leftRoot.GetChild(i).gameObject.AddComponent<MapItem>();
+
+                v2.Set(-i / 3 - 1, -i % 3 - 1);
+                Dict_VecToMapItem[v2] = item;
+                Dict_MapItemToData[item] = new MapItemData
                 {
-                    GameObject mapItemObj = new GameObject($"({i},{ii})");
-                    mapItemObj.transform.SetParent(_MapRoot);
-                    MapItem mapItem = mapItemObj.AddComponent<MapItem>();
-                    mapItem.Init(sprite, new Vector2Int(i, ii));
-                    _MapItemDataDict[new Vector2Int(i, ii)] = new MapItemData { _MapItem = mapItem };
-                }
-            }
-        }
+                    _Index = v2,
+                    _Character = null
+                };
 
-        
-        /// <summary>
-        /// 设置角色位置
-        /// </summary>
-        /// <param name="character"></param>
-        /// <param name="targetPos"></param>
-        /// <param name="init"></param>
-        public void SetCharacterPos(Character character, Vector2Int targetPos, bool init = false)
-        {
-            if (_MapItemDataDict[character._CurPos]._Character != null)
-            {
-                Log.Error("有问题");
-                return;
+                item.name = v2.ToString();
             }
-            if (!init) _MapItemDataDict[character._CurPos] = null;
-            character._CurPos                              = targetPos;
-            _MapItemDataDict[character._CurPos]._Character = character;
+
+            for (int i = 0; i < _rightRoot.childCount; i++)
+            {
+                MapItem item = _rightRoot.GetChild(i).gameObject.AddComponent<MapItem>();
+
+                v2.Set(i / 3 + 1, i % 3 + 1);
+                Dict_VecToMapItem[v2] = item;
+
+                Dict_MapItemToData[item] = new MapItemData
+                {
+                    _Index = v2,
+                    _Character = null
+                };
+
+                item.name = v2.ToString();
+            }
         }
     }
 }

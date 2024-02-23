@@ -122,7 +122,7 @@ public class StateMachine : MonoBehaviour
         {
             if (mapItem.gameObject.layer != mTarget.Character.gameObject.layer)
             {
-                Skill skill = new Skill(OnSelectSkill(SkillUIManager._Instance.Type_Skill), _Instance.Character.atk);
+                Skill skill = new Skill(OnSelectSkill(SkillUIManager._Instance.Type_Skill), _Instance.Character._Atk);
                 skill.SetPos(mapItem);
                 mFSM.ChangeState(State.Action);
             }

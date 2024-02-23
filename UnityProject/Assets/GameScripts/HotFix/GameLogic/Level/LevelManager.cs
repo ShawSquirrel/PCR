@@ -10,9 +10,9 @@ namespace GameLogic
     public class LevelManager : Singleton<LevelManager>
     {
         public Transform _Root;
-        public MapManager _MapManager;
+        public MapManager_Old _MapManager;
         public AStarManager _AStarManager;
-        public CharacterManager _CharacterManager;
+        public CharacterManager_Old _CharacterManager;
         public CommandManager _CommandManager;
         public BattleManager _BattleManager;
         public RoundManager _RoundManager;
@@ -31,12 +31,12 @@ namespace GameLogic
 
         public void ClickMapItem(Vector2Int end)
         {
-            if (_MapManager._MapItemDataDict[end]._Character != null)
+            if (_MapManager._MapItemDataDict[end].CharacterOld != null)
             {
                 AttackCommand attackCommand = new AttackCommand
                                               {
                                                   _Attacker = _CharacterManager._FriendlyCharacter[0],
-                                                  _Attacked = _MapManager._MapItemDataDict[end]._Character
+                                                  _Attacked = _MapManager._MapItemDataDict[end].CharacterOld
                                               };
                 _CommandManager.Execute(attackCommand);
             }

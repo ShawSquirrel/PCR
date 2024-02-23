@@ -8,7 +8,7 @@ namespace GameLogic
 {
     public class ProcedureLevel : CustomProcedureBase
     {
-        public ProcedureLevel(FSM<EProcedure> fsm, CustomProcedureModule target) : base(fsm, target)
+        public ProcedureLevel(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
         }
 

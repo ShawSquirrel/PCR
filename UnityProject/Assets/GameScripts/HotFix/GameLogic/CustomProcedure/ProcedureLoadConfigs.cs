@@ -7,7 +7,7 @@ namespace GameLogic
 {
     public class ProcedureLoadConfigs : CustomProcedureBase
     {
-        public ProcedureLoadConfigs(FSM<EProcedure> fsm, CustomProcedureModule target) : base(fsm, target)
+        public ProcedureLoadConfigs(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
         }
 
@@ -21,7 +21,7 @@ namespace GameLogic
         protected override void OnUpdate()
         {
             base.OnUpdate();
-            mFSM.ChangeState(EProcedure.ProcedureMenu);
+            mFSM.ChangeState(Enum_Procedure.Menu);
         }
     }
 }

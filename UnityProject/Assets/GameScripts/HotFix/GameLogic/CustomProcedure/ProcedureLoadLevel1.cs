@@ -6,7 +6,7 @@ namespace GameLogic
 {
     public class ProcedureLoadLevel1 : CustomProcedureBase
     {
-        public ProcedureLoadLevel1(FSM<EProcedure> fsm, CustomProcedureModule target) : base(fsm, target)
+        public ProcedureLoadLevel1(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
         }
 
@@ -48,7 +48,7 @@ namespace GameLogic
         private void LoadCharacter()
         {
             GameObject characterObj = new GameObject("Character");
-            characterObj.AddComponent<CharacterManager>();
+            characterObj.AddComponent<CharacterManager_Old>();
 
             LoadFriendly();
             LoadEnemy();
@@ -57,19 +57,19 @@ namespace GameLogic
         private void LoadFriendly()
         {
             GameObject player = GameModule.Resource.LoadAsset<GameObject>("优衣");
-            Character character = player.AddComponent<Character>();
-            character.name = "优衣";
-            LevelManager.Instance._CharacterManager.AddFriendlyCharacter(character);
-            LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(1,1), true);
+            Character_Old characterOld = player.AddComponent<Character_Old>();
+            characterOld.name = "优衣";
+            LevelManager.Instance._CharacterManager.AddFriendlyCharacter(characterOld);
+            LevelManager.Instance._MapManager.SetCharacterPos(characterOld, new Vector2Int(1,1), true);
         }
 
         private void LoadEnemy()
         {
             GameObject player = GameModule.Resource.LoadAsset<GameObject>("镜华");
-            Character character = player.AddComponent<Character>();
-            character.name = "镜华";
-            LevelManager.Instance._CharacterManager.AddEnemyCharacter(character);
-            LevelManager.Instance._MapManager.SetCharacterPos(character, new Vector2Int(2,1), true);
+            Character_Old characterOld = player.AddComponent<Character_Old>();
+            characterOld.name = "镜华";
+            LevelManager.Instance._CharacterManager.AddEnemyCharacter(characterOld);
+            LevelManager.Instance._MapManager.SetCharacterPos(characterOld, new Vector2Int(2,1), true);
         }
 
         private void LoadMap()
@@ -79,7 +79,7 @@ namespace GameLogic
             
 
             GameObject mapObj = new GameObject("Map");
-            MapManager map = mapObj.AddComponent<MapManager>();
+            MapManager_Old map = mapObj.AddComponent<MapManager_Old>();
             map.Init(mapData);
 
 

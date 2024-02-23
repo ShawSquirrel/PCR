@@ -4,8 +4,8 @@ namespace GameLogic
 {
     public class AttackCommand : ICommand
     {
-        public Character _Attacker;
-        public Character _Attacked;
+        public Character_Old _Attacker;
+        public Character_Old _Attacked;
         
         public void Do()
         {

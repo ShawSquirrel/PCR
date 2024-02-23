@@ -2,9 +2,9 @@
 
 namespace GameLogic
 {
-    public class CustomProcedureBase : AbstractState<EProcedure, CustomProcedureModule>
+    public class CustomProcedureBase : AbstractState<Enum_Procedure, CustomProcedureModule>
     {
-        protected CustomProcedureBase(FSM<EProcedure> fsm, CustomProcedureModule target) : base(fsm, target)
+        protected CustomProcedureBase(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
         }
 
@@ -25,6 +25,11 @@ namespace GameLogic
             
         }
         protected virtual void RemoveEvent()
+        {
+            
+        }
+
+        protected virtual void LoadMap()
         {
             
         }

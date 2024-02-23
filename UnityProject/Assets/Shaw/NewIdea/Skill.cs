@@ -62,19 +62,25 @@ public class Skill
         
         foreach (MapItem item in allMapItem)
         {
-            if (MapController._Instance.MapItemToCharacter.TryGetValue(item, out Character character))
-            {
-                character._Hp.Value -= _Atk;
-            }
+            AttackMapItem(item);
             InstantiateEffect(item);
         }
     }
 
-    private void InstantiateEffect(MapItem targetMapItem)
+    private void AttackMapItem(MapItem item)
     {
-        if (targetMapItem == null) return;
+        if (item == null) return;
+        if (MapController._Instance.MapItemToCharacter.TryGetValue(item, out Character character))
+        {
+            character._Hp.Value -= _Atk;
+        }
+    }
+
+    private void InstantiateEffect(MapItem item)
+    {
+        if (item == null) return;
         GameObject effectObj = Object.Instantiate(_GO);
-        effectObj.transform.position = targetMapItem.transform.position + new Vector3(0, 1, 0);
+        effectObj.transform.position = item.transform.position + new Vector3(0, 1, 0);
         effectObj.GetComponent<Effect>().AddListen(OnDestroy);
         
         

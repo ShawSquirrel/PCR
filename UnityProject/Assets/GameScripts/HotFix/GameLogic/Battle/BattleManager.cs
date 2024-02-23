@@ -13,8 +13,8 @@ namespace GameLogic
 
     public class BattleManager : Entity
     {
-        private Character _attacker;
-        private Character _attacked;
+        private Character_Old _attacker;
+        private Character_Old _attacked;
 
         public Transform _AttackerPos;
         public Transform _AttackedPos;
@@ -32,7 +32,7 @@ namespace GameLogic
         }
 
 
-        public void InitBattle(Character attacker, Character attacked)
+        public void InitBattle(Character_Old attacker, Character_Old attacked)
         {
             _attacker = attacker;
             _attacked = attacked;

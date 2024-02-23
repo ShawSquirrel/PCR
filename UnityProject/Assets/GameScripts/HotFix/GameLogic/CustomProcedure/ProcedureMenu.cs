@@ -8,7 +8,7 @@ namespace GameLogic
 {
     public class ProcedureMenu : CustomProcedureBase
     {
-        public ProcedureMenu(FSM<EProcedure> fsm, CustomProcedureModule target) : base(fsm, target)
+        public ProcedureMenu(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
         }
 
@@ -32,8 +32,7 @@ namespace GameLogic
 
         private void StartGame()
         {
-            mFSM.ChangeState(EProcedure.LoadLevel1);
-            // GameModule.Resource.LoadAsset<GameObject>("优衣");
+            mFSM.ChangeState(Enum_Procedure.LoadGame);
         }
 
     }

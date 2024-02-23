@@ -6,18 +6,27 @@ namespace GameLogic
 {
     public class CustomProcedureModule : Module
     {
-        public FSM<EProcedure> FSM;
-        public IState CurrentState => FSM.CurrentState;
+        public FSM<Enum_Procedure> _FSM;
         protected override void Awake()
         {
             base.Awake();
-            FSM = new FSM<EProcedure>();
-            FSM.AddState(EProcedure.LoadConfigs, new ProcedureLoadConfigs(FSM, this));
-            FSM.AddState(EProcedure.ProcedureMenu, new ProcedureMenu(FSM, this));
-            FSM.AddState(EProcedure.LoadLevel1, new ProcedureLoadLevel1(FSM, this));
-            FSM.AddState(EProcedure.ProcedureLevel, new ProcedureLevel(FSM, this));
+            // StartFlag();
+            _FSM = new FSM<Enum_Procedure>();
+            _FSM.AddState(Enum_Procedure.Menu, new ProcedureMenu(_FSM, this));
+            _FSM.AddState(Enum_Procedure.LoadGame, new ProcedureLoadGame(_FSM, this));
             
-            FSM.StartState(EProcedure.LoadConfigs);
+            _FSM.StartState(Enum_Procedure.Menu);
+        }
+
+        private void StartFlag()
+        {
+            _FSM = new FSM<Enum_Procedure>();
+            _FSM.AddState(Enum_Procedure.LoadConfigs, new ProcedureLoadConfigs(_FSM, this));
+            _FSM.AddState(Enum_Procedure.Menu, new ProcedureMenu(_FSM, this));
+            _FSM.AddState(Enum_Procedure.LoadLevel1, new ProcedureLoadLevel1(_FSM, this));
+            _FSM.AddState(Enum_Procedure.ProcedureLevel, new ProcedureLevel(_FSM, this));
+            
+            _FSM.StartState(Enum_Procedure.LoadConfigs);
         }
 
         public void Init()
@@ -27,7 +36,7 @@ namespace GameLogic
 
         private void Update()
         {
-            FSM.Update();
+            _FSM.Update();
         }
     }
 }

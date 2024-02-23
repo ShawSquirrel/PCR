@@ -1,51 +1,38 @@
-﻿using System;
-using GameBase;
-using TEngine;
-using TMPro;
+﻿using TEngine;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 namespace GameLogic
 {
     public class MapItem : MonoBehaviour
     {
-        public GameObject _GO;
-        public Transform _TF;
-        public SpriteRenderer _SpriteRenderer;
-        public TextMeshPro _TextMesh;
-        public Vector2Int _Pos;
+        public MapManager MapRoot => GameRoot._Instance.GetManager<MapManager>();
 
-        private void Awake()
+        private static readonly int MainColor = Shader.PropertyToID("_MainColor");
+
+        public void SetColor(Color color)
         {
-            _GO             = gameObject;
-            _TF             = transform;
-            _SpriteRenderer = _GO.AddComponent<SpriteRenderer>();
-            _TextMesh       = new GameObject("Text").AddComponent<TextMeshPro>();
-            _TextMesh.transform.SetParent(_TF);
-            _TextMesh.transform.Reset();
-            _TextMesh.fontSize                                             = 3;
-            _TextMesh.alignment                                            = TextAlignmentOptions.Center;
-            _TextMesh.color                                                = Color.cyan;
-            _TextMesh.gameObject.AddComponent<SortingGroup>().sortingOrder = 1;
+            Material mat = GetComponent<MeshRenderer>().material;
+            mat.SetColor(MainColor, color);
         }
 
-        public void Init(Sprite sprite, Vector2Int pos)
+        private void OnMouseEnter()
         {
-            _SpriteRenderer.sprite = sprite;
-            _Pos                    = pos;
-
-            _GO.AddComponent<BoxCollider2D>();
-            _TF.localPosition = new Vector3(pos.x, pos.y);
-            _TF.localRotation = Quaternion.Euler(Vector3.zero);
-            _TF.localScale    = Vector3.one;
-
-            _TextMesh.text = pos.ToString();
+            GameEvent.Send(MapItemEvent.MouseEnterEvent, this);
         }
 
-        public void OnMouseDown()
+        private void OnMouseOver()
         {
-            LevelManager.Instance.ClickMapItem(_Pos);
+            GameEvent.Send(MapItemEvent.MouseOverEvent, this);
+        }
+
+        private void OnMouseDown()
+        {
+            GameEvent.Send(MapItemEvent.MouseDownEvent, this);
+        }
+
+        private void OnMouseExit()
+        {
+            GameEvent.Send(MapItemEvent.MouseExitEvent, this);
         }
     }
 }
