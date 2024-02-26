@@ -14,6 +14,11 @@ namespace GameLogic
             base.OnEnter();
             GameRoot._Instance.AddManager<MapManager>();
             GameRoot._Instance.AddManager<CharacterManager>();
+
+
+            UI_ActionBar bar = GameModule.UI.ShowUI<UI_ActionBar>().Window as UI_ActionBar;
+            bar.AddActionBarItem(null, 5, 0);
+
         }
     }
 }

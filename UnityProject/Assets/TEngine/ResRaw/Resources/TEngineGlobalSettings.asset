@@ -38,45 +38,39 @@ MonoBehaviour:
     m_ServerChannelInfos: []
     namespace: GameLogic
     scriptGenerateRule:
-    - uiElementRegex: _GO_
+    - uiElementRegex: _Obj_
       componentName: GameObject
-    - uiElementRegex: _ITEM_
+    - uiElementRegex: _Item_
       componentName: GameObject
     - uiElementRegex: _TF_
       componentName: Transform
-    - uiElementRegex: _RECT_
+    - uiElementRegex: _Rect_
       componentName: RectTransform
-    - uiElementRegex: _TEXT_
+    - uiElementRegex: _Text_
       componentName: Text
-    - uiElementRegex: _RTEXT
-      componentName: RichTextItem
-    - uiElementRegex: _BTN_
+    - uiElementRegex: _Btn_
       componentName: Button
-    - uiElementRegex: _IMG_
+    - uiElementRegex: _Img_
       componentName: Image
-    - uiElementRegex: _RIMG_
+    - uiElementRegex: _RImg_
       componentName: RawImage
-    - uiElementRegex: m_scrollBar
+    - uiElementRegex: _ScrollB_
       componentName: Scrollbar
-    - uiElementRegex: m_scrollRect
+    - uiElementRegex: _ScrollR_
       componentName: ScrollRect
-    - uiElementRegex: m_input
+    - uiElementRegex: _Input_
       componentName: InputField
-    - uiElementRegex: m_grid
+    - uiElementRegex: _GLayout_
       componentName: GridLayoutGroup
-    - uiElementRegex: m_hlay
+    - uiElementRegex: _HLayout_
       componentName: HorizontalLayoutGroup
-    - uiElementRegex: m_vlay
+    - uiElementRegex: _VLayout_
       componentName: VerticalLayoutGroup
-    - uiElementRegex: m_red
-      componentName: RedNoteBehaviour
-    - uiElementRegex: m_slider
+    - uiElementRegex: _Slider_
       componentName: Slider
-    - uiElementRegex: m_group
+    - uiElementRegex: _ToggleGroup_
       componentName: ToggleGroup
-    - uiElementRegex: m_curve
-      componentName: AnimationCurve
-    - uiElementRegex: m_canvasGroup
+    - uiElementRegex: _Canvas_
       componentName: CanvasGroup
   m_BybridCLRCustomGlobalSettings:
     m_Enable: 1
