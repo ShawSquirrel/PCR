@@ -30,7 +30,7 @@ namespace GameLogic
         }
         private void OnClick_BTN_Level1Btn()
         {
-            GameEvent.Send(UIEvent.StartGameID);
+            GameEvent.Send(UIEvent.StartGameEventID);
             Close();
         }
         private void OnClick_BTN_Level2Btn()

@@ -30,8 +30,8 @@ namespace GameLogic
 
         private void AddListen()
         {
-            GameEvent.AddEventListener<MapItem>(MapItemEvent.MouseEnterEvent, OnMapItemMouseEnterEvent);
-            GameEvent.AddEventListener<MapItem>(MapItemEvent.MouseExitEvent, OnMapItemMouseExitEvent);
+            GameEvent.AddEventListener<MapItem>(MapItemEvent.MouseEnterEventID, OnMapItemMouseEnterEvent);
+            GameEvent.AddEventListener<MapItem>(MapItemEvent.MouseExitEventID, OnMapItemMouseExitEvent);
         }
 
         private void OnMapItemMouseExitEvent(MapItem item)

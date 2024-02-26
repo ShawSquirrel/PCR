@@ -15,13 +15,13 @@ namespace GameLogic
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener(UIEvent.StartGameID, StartGame);
+            GameEvent.AddEventListener(UIEvent.StartGameEventID, StartGame);
         }
 
         protected override void RemoveEvent()
         {
             base.RegisterEvent();
-            GameEvent.RemoveEventListener(UIEvent.StartGameID, StartGame);
+            GameEvent.RemoveEventListener(UIEvent.StartGameEventID, StartGame);
         }
 
         protected override void OnEnter()

@@ -17,22 +17,22 @@ namespace GameLogic
 
         private void OnMouseEnter()
         {
-            GameEvent.Send(MapItemEvent.MouseEnterEvent, this);
+            GameEvent.Send(MapItemEvent.MouseEnterEventID, this);
         }
 
         private void OnMouseOver()
         {
-            GameEvent.Send(MapItemEvent.MouseOverEvent, this);
+            GameEvent.Send(MapItemEvent.MouseOverEventID, this);
         }
 
         private void OnMouseDown()
         {
-            GameEvent.Send(MapItemEvent.MouseDownEvent, this);
+            GameEvent.Send(MapItemEvent.MouseDownEventID, this);
         }
 
         private void OnMouseExit()
         {
-            GameEvent.Send(MapItemEvent.MouseExitEvent, this);
+            GameEvent.Send(MapItemEvent.MouseExitEventID, this);
         }
     }
 }
