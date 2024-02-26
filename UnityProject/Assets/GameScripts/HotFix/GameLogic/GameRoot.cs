@@ -8,7 +8,7 @@ namespace GameLogic
 {
     public class GameRoot : MonoSingleton<GameRoot>
     {
-        private Dictionary<Type, MonoBehaviour> _Dict_Manager = new Dictionary<Type, MonoBehaviour>();
+        private Dictionary<Type, Manager> _Dict_Manager = new Dictionary<Type, Manager>();
 
         private Transform _managerRoot;
         private Transform _controllerRoot;
@@ -41,9 +41,9 @@ namespace GameLogic
             }
         }
 
-        public T AddManager<T>() where T : Component
+        public T AddManager<T>() where T : Manager
         {
-            MonoBehaviour t;
+            Manager t;
             if (_Dict_Manager.TryGetValue(typeof(T), out t))
             {
                 return t as T;
@@ -52,16 +52,16 @@ namespace GameLogic
             {
                 GameObject gameObject = new GameObject();
                 gameObject.transform.SetParent(_ManagerRoot);
-                t = gameObject.AddComponent<T>() as MonoBehaviour;
+                t = gameObject.AddComponent<T>();
                 _Dict_Manager.Add(typeof(T), t);
             }
 
             return t as T;
         }
 
-        public T GetManager<T>() where T : Component
+        public T GetManager<T>() where T : Manager
         {
-            MonoBehaviour t;
+            Manager t;
             if (_Dict_Manager.TryGetValue(typeof(T), out t))
             {
                 return t as T;

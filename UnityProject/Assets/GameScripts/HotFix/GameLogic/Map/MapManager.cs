@@ -12,7 +12,7 @@ namespace GameLogic
         public Character _Character;
     }
 
-    public class MapManager : MonoBehaviour
+    public class MapManager : Manager
     {
         private Transform _leftRoot;
         private Transform _rightRoot;
@@ -89,5 +89,6 @@ namespace GameLogic
                 item.name = v2.ToString();
             }
         }
+        
     }
 }
