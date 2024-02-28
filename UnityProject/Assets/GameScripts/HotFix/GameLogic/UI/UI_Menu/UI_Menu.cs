@@ -8,33 +8,18 @@ namespace GameLogic
     class UI_Menu : UIWindow
     {
         #region 脚本工具生成的代码
-        private Button _BTN_Start;
-        private Button _BTN_Level1;
-        private Button _BTN_Level2;
+        private Button _Btn_PushBox;
         public override void ScriptGenerator()
         {
-            _BTN_Start  = FindChildComponent<Button>("BtnGroup/_BTN_Start");
-            _BTN_Level1 = FindChildComponent<Button>("BtnGroup/_BTN_Level1");
-            _BTN_Level2 = FindChildComponent<Button>("BtnGroup/_BTN_Level2");
-            _BTN_Start.onClick.AddListener(OnClick_BTN_StartBtn);
-            _BTN_Level1.onClick.AddListener(OnClick_BTN_Level1Btn);
-            _BTN_Level2.onClick.AddListener(OnClick_BTN_Level2Btn);
+            _Btn_PushBox = FindChildComponent<Button>("Image/_Btn_PushBox");
+            _Btn_PushBox.onClick.AddListener(OnClick_Btn_PushBoxBtn);
         }
         #endregion
 
         #region 事件
-        private void OnClick_BTN_StartBtn()
-        {
-            _BTN_Level1.gameObject.SetActive(true);
-            _BTN_Level2.gameObject.SetActive(true);
-        }
-        private void OnClick_BTN_Level1Btn()
+        private void OnClick_Btn_PushBoxBtn()
         {
             GameEvent.Send(UIEvent.StartGameEventID);
-            Close();
-        }
-        private void OnClick_BTN_Level2Btn()
-        {
         }
         #endregion
 
