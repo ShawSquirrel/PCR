@@ -6,26 +6,23 @@ using UnityEngine;
 
 namespace GameLogic
 {
-    public class MapItemData
-    {
-        public Vector2Int _Index;
-        public Character _Character;
-    }
-
     public class MapManager : Manager
     {
         private Transform _leftRoot;
         private Transform _rightRoot;
 
         public Dictionary<Vector2Int, MapItem> Dict_VecToMapItem = new Dictionary<Vector2Int, MapItem>();
-        public Dictionary<MapItem, MapItemData> Dict_MapItemToData = new Dictionary<MapItem, MapItemData>();
 
         private void Awake()
         {
             InitName();
             LoadMap();
-
             AddListen();
+        }
+
+        public MapItem GetMapItemByPos(Vector2Int pos)
+        {
+            return Dict_VecToMapItem.GetValueOrDefault(pos);
         }
 
         private void AddListen()
@@ -64,12 +61,7 @@ namespace GameLogic
 
                 v2.Set(-i / 3 - 1, -i % 3 - 1);
                 Dict_VecToMapItem[v2] = item;
-                Dict_MapItemToData[item] = new MapItemData
-                {
-                    _Index = v2,
-                    _Character = null
-                };
-
+                item._Pos = v2;
                 item.name = v2.ToString();
             }
 
@@ -79,16 +71,8 @@ namespace GameLogic
 
                 v2.Set(i / 3 + 1, i % 3 + 1);
                 Dict_VecToMapItem[v2] = item;
-
-                Dict_MapItemToData[item] = new MapItemData
-                {
-                    _Index = v2,
-                    _Character = null
-                };
-
                 item.name = v2.ToString();
             }
         }
-        
     }
 }

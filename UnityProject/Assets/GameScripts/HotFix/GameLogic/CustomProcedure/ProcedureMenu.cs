@@ -32,6 +32,7 @@ namespace GameLogic
 
         private void StartGame()
         {
+            mFSM.AddState(Enum_Procedure.LoadGame, new ProcedureLoadGame(mFSM, mTarget));
             mFSM.ChangeState(Enum_Procedure.LoadGame);
         }
 

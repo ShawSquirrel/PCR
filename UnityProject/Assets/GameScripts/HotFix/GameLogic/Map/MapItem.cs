@@ -5,6 +5,7 @@ namespace GameLogic
 {
     public class MapItem : MonoBehaviour
     {
+        public Vector2Int _Pos;
         public MapManager MapRoot => GameRoot._Instance.GetManager<MapManager>();
 
         private static readonly int MainColor = Shader.PropertyToID("_MainColor");

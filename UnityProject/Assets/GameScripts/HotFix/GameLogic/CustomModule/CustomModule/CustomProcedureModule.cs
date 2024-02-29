@@ -13,7 +13,6 @@ namespace GameLogic
             // StartFlag();
             _FSM = new FSM<Enum_Procedure>();
             _FSM.AddState(Enum_Procedure.Menu, new ProcedureMenu(_FSM, this));
-            _FSM.AddState(Enum_Procedure.LoadGame, new ProcedureLoadGame(_FSM, this));
             
             _FSM.StartState(Enum_Procedure.Menu);
         }
