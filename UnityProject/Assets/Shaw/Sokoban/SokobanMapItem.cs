@@ -1,19 +1,34 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace Shaw.Sokoban
 {
     public class SokobanMapItem
     {
+        private Enum_Sokoban _type;
         public GameObject _Obj;
         public Vector2Int _Pos;
-        public Enum_Sokoban _Type;
+
+        public Enum_Sokoban Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                UpdateState();
+            }
+        }
         public SpriteRenderer _Sprite;
+        public TextMeshPro _TextMesh;
 
 
+        
         public void UpdateState()
         {
-            switch (_Type)
+            if (_Sprite == null) return;
+            _TextMesh.text = $"{(int)_type}";
+            switch (_type)
             {
                 case Enum_Sokoban.Empty:
                     _Sprite.color = Color.clear;
