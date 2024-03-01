@@ -7,5 +7,6 @@
         LoadLevel1,     // 加载关卡1
         ProcedureLevel, // 关卡流程
         LoadGame,       // 加载游戏
+        SokobanGame,    //推箱子
     }
 }

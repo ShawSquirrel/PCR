@@ -15,13 +15,13 @@ namespace GameLogic
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener(UIEvent.StartGameEventID, StartGame);
+            GameEvent.AddEventListener(UIEvent.StartSokoban, StartSokoban);
         }
 
         protected override void RemoveEvent()
         {
             base.RegisterEvent();
-            GameEvent.RemoveEventListener(UIEvent.StartGameEventID, StartGame);
+            GameEvent.RemoveEventListener(UIEvent.StartSokoban, StartSokoban);
         }
 
         protected override void OnEnter()
@@ -30,10 +30,10 @@ namespace GameLogic
             GameModule.UI.ShowUI<UI_Menu>();
         }
 
-        private void StartGame()
+        private void StartSokoban()
         {
-            mFSM.AddState(Enum_Procedure.LoadGame, new ProcedureLoadGame(mFSM, mTarget));
-            mFSM.ChangeState(Enum_Procedure.LoadGame);
+            mFSM.AddState(Enum_Procedure.SokobanGame, new ProcedureSokoban(mFSM, mTarget));
+            mFSM.ChangeState(Enum_Procedure.SokobanGame);
         }
 
     }

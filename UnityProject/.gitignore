@@ -54,6 +54,7 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
+Out/
 *.apk
 
 # Crashlytics generated file
