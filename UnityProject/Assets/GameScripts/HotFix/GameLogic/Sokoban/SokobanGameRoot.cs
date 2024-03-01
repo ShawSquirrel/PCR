@@ -7,20 +7,17 @@
         public PlayerInputManager _Input => GetManager<PlayerInputManager>();
         public PlayerManager _Player => GetManager<PlayerManager>();
         public CameraManager _Camera => GetManager<CameraManager>();
+        public SokobanLevelManager _Level => GetManager<SokobanLevelManager>();
 
         protected override void Awake()
         {
             base.Awake();
             AddManager<SokobanLevelManager>();
-            // AddManager<SokobanMapManager>();
-            // AddManager<PlayerInputManager>();
-            // AddManager<PlayerManager>();
-            // AddManager<CameraManager>();
+            AddManager<SokobanMapManager>();
+            AddManager<PlayerInputManager>();
+            AddManager<PlayerManager>();
+            AddManager<CameraManager>();
 
-
-            // _Player.LoadCharacter("优衣");
-            // _Camera.SetFollowAndLookAt(_Player.Character.transform);
-            //
         }
     }
 }

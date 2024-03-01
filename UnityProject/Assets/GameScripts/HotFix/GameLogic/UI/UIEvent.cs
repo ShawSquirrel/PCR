@@ -8,7 +8,9 @@ namespace GameLogic
     {
         public const int StartGameEventID = 10000;       //开始游戏
         public const int CharacterActionEventID = 10001; //人物回合开始
-        public const int StartSokoban = 10002; //开始推箱子
+        public const int Sokoban_StartGame = 10002;           //开始推箱子
+        public const int Sokoban_SelectLevel = 10003;            //选中关卡
+        public const int Sokoban_Success = 10004;        //推箱子胜利
     }
 
     public class MapItemEvent

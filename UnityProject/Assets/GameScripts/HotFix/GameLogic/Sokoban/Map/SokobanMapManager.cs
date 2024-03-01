@@ -20,10 +20,7 @@ namespace GameLogic.Sokoban
         public override void Awake()
         {
             LoadSprite();
-            AddListen();
-            
-            
-            CreateMap(_Dict_Map);
+            // CreateMap(_Dict_Map);
             
         }
 
@@ -32,14 +29,14 @@ namespace GameLogic.Sokoban
             UpdatePlayerPos(_PlayerPos);
         }
 
-        private void AddListen()
+        public void AddListen()
         {
             PlayerInputManager.PlayerUpEvent += MoveUp;
             PlayerInputManager.PlayerDownEvent += MoveDown;
             PlayerInputManager.PlayerLeftEvent += MoveLeft;
             PlayerInputManager.PlayerRightEvent += MoveRight;
         }
-        private void RemoveListen()
+        public void RemoveListen()
         {
             PlayerInputManager.PlayerUpEvent -= MoveUp;
             PlayerInputManager.PlayerDownEvent -= MoveDown;
@@ -67,31 +64,34 @@ namespace GameLogic.Sokoban
             return _Dict_Sprite.GetValueOrDefault(type);
         }
 
-        private void CreateMap(Dictionary<Vector2Int, SokobanMapItem> dictMap)
+        public void CreateMap(Dictionary<Vector2Int, Enum_MaptemType> dictMap)
         {
             _List_TargetPos.Clear();
+            _Dict_Map.Clear();
             GameObject prefab = GameModule.Resource.LoadAsset<GameObject>("SokobanMapItem");
             foreach (var (key, value) in dictMap)
             {
-                if (IsContain(value.Type, Enum_MaptemType.Player))
+                SokobanMapItem sokobanMapItem = new SokobanMapItem(); 
+                if (IsContain(value, Enum_MaptemType.Player))
                 {
                     _PlayerPos = key;
                 }
 
-                if (IsContain(value.Type, Enum_MaptemType.Target))
+                if (IsContain(value, Enum_MaptemType.Target))
                 {
                     _List_TargetPos.Add(key);
                 }
 
                 GameObject obj = GameObject.Instantiate(prefab, _Obj.transform);
-                obj.transform.position = new Vector3(key.x, key.y);
-                obj.name = key.ToString();
-                value._Obj = obj;
-                value._Pos = key;
-                value._Sprite = obj.GetComponent<SpriteRenderer>();
-                value._TextMesh = obj.GetComponentInChildren<TextMeshPro>();
-
-                value.UpdateState();
+                obj.transform.position   = new Vector3(key.x, key.y);
+                obj.name                 = key.ToString();
+                sokobanMapItem._Obj      = obj;
+                sokobanMapItem._Pos      = key;
+                sokobanMapItem._Sprite   = obj.GetComponent<SpriteRenderer>();
+                sokobanMapItem._TextMesh = obj.GetComponentInChildren<TextMeshPro>();
+                sokobanMapItem.Type      = value;
+                
+                _Dict_Map.Add(key, sokobanMapItem);
             }
 
             GameObject.Destroy(prefab);
@@ -189,7 +189,7 @@ namespace GameLogic.Sokoban
 
             if (isCompelte)
             {
-                GameModule.UI.ShowUI<UI_SokobanSuccess>();
+                GameEvent.Send(UIEvent.Sokoban_Success);
             }
         }
 

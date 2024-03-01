@@ -23,7 +23,7 @@ namespace GameLogic
 
         private void OnClick_Btn_SokobanBtn()
         {
-            GameEvent.Send(UIEvent.StartSokoban);
+            GameEvent.Send(UIEvent.Sokoban_StartGame);
             Close();
         }
 

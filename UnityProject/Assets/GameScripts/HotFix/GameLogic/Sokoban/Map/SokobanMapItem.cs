@@ -26,7 +26,7 @@ namespace GameLogic.Sokoban
         public void UpdateState()
         {
             if (_Sprite == null) return;
-            _TextMesh.text = $"";
+            _TextMesh.text = $"{(int)_type}";
             _Sprite.sprite = SokobanGameRoot._Instance._Map.GetSprite(_type);
             _Sprite.size = Vector2.one;
             switch (_type)
