@@ -11,18 +11,16 @@
         protected override void Awake()
         {
             base.Awake();
-            AddManager<SokobanMapManager>();
-            AddManager<PlayerInputManager>();
-            AddManager<PlayerManager>();
-            AddManager<CameraManager>();
+            AddManager<SokobanLevelManager>();
+            // AddManager<SokobanMapManager>();
+            // AddManager<PlayerInputManager>();
+            // AddManager<PlayerManager>();
+            // AddManager<CameraManager>();
 
 
-            _Player.LoadCharacter("优衣");
-            _Camera.SetFollowAndLookAt(_Player.Character.transform);
-            
-            
-            _Map.Init();
-
+            // _Player.LoadCharacter("优衣");
+            // _Camera.SetFollowAndLookAt(_Player.Character.transform);
+            //
         }
     }
 }

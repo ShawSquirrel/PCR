@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace GameLogic.Sokoban
 {
+
+
     public class SokobanMapManager : GameBase.Manager
     {
         public Dictionary<Vector2Int, SokobanMapItem> _Dict_Map = new Dictionary<Vector2Int, SokobanMapItem>();
@@ -18,12 +20,10 @@ namespace GameLogic.Sokoban
         public override void Awake()
         {
             LoadSprite();
-
-            LoadMap();
-
-            CreateMap(_Dict_Map);
-
             AddListen();
+            
+            
+            CreateMap(_Dict_Map);
             
         }
 
@@ -39,28 +39,17 @@ namespace GameLogic.Sokoban
             PlayerInputManager.PlayerLeftEvent += MoveLeft;
             PlayerInputManager.PlayerRightEvent += MoveRight;
         }
+        private void RemoveListen()
+        {
+            PlayerInputManager.PlayerUpEvent -= MoveUp;
+            PlayerInputManager.PlayerDownEvent -= MoveDown;
+            PlayerInputManager.PlayerLeftEvent -= MoveLeft;
+            PlayerInputManager.PlayerRightEvent -= MoveRight;
+        }
 
         private void LoadMap()
         {
-            TextAsset textAsset = GameModule.Resource.LoadAsset<TextAsset>("Map");
-            string[] mapRow = textAsset.text.Trim('\n').Split('\n');
-            int y = 0;
-            foreach (string row in mapRow)
-            {
-                int x = 0;
-                string[] split = row.Trim(' ').Split('|');
-                foreach (string s in split)
-                {
-                    if (int.TryParse(s, out int value))
-                    {
-                        _Dict_Map[new Vector2Int(x, y)] = new SokobanMapItem { Type = (Enum_MaptemType)value };
-                    }
-
-                    x++;
-                }
-
-                y++;
-            }
+            
         }
 
         private void LoadSprite()
