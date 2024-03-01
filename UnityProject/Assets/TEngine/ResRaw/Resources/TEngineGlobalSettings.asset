@@ -26,14 +26,14 @@ MonoBehaviour:
       m_ExtraResourceSourceUrl: http://127.0.0.1:8088
       m_FormalResourceSourceUrl: http://127.0.0.1:8088
     m_AtlasFolder: Assets/AssetRaw/Atlas
-    HostServerURL: http://127.0.0.1:8081/AssetRoot
-    FallbackHostServerURL: http://127.0.0.1:8081/AssetRoot
+    HostServerURL: http://10.1.0.18:8081/AssetRoot
+    FallbackHostServerURL: http://10.1.0.18:8081/AssetRoot
     EnableUpdateData: 0
-    WindowsUpdateDataUrl: http://127.0.0.1
-    MacOSUpdateDataUrl: http://127.0.0.1
-    IOSUpdateDataUrl: http://127.0.0.1
-    AndroidUpdateDataUrl: http://127.0.0.1
-    WebGLUpdateDataUrl: http://127.0.0.1
+    WindowsUpdateDataUrl: http://10.1.0.18
+    MacOSUpdateDataUrl: http://10.1.0.18
+    IOSUpdateDataUrl: http://10.1.0.18
+    AndroidUpdateDataUrl: http://10.1.0.18
+    WebGLUpdateDataUrl: http://10.1.0.18
     m_CurUseServerChannel: 
     m_ServerChannelInfos: []
     namespace: GameLogic

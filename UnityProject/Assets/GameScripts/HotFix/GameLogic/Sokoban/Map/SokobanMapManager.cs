@@ -10,11 +10,37 @@ namespace GameLogic.Sokoban
     public class SokobanMapManager : GameBase.Manager
     {
         public Dictionary<Vector2Int, SokobanMapItem> _Dict_Map = new Dictionary<Vector2Int, SokobanMapItem>();
+        public Dictionary<Enum_MaptemType, Sprite> _Dict_Sprite = new Dictionary<Enum_MaptemType, Sprite>();
 
         public Vector2Int _PlayerPos;
         public List<Vector2Int> _List_TargetPos = new List<Vector2Int>();
 
         public override void Awake()
+        {
+            LoadSprite();
+
+            LoadMap();
+
+            CreateMap(_Dict_Map);
+
+            AddListen();
+            
+        }
+
+        public void Init()
+        {
+            UpdatePlayerPos(_PlayerPos);
+        }
+
+        private void AddListen()
+        {
+            PlayerInputManager.PlayerUpEvent += MoveUp;
+            PlayerInputManager.PlayerDownEvent += MoveDown;
+            PlayerInputManager.PlayerLeftEvent += MoveLeft;
+            PlayerInputManager.PlayerRightEvent += MoveRight;
+        }
+
+        private void LoadMap()
         {
             TextAsset textAsset = GameModule.Resource.LoadAsset<TextAsset>("Map");
             string[] mapRow = textAsset.text.Trim('\n').Split('\n');
@@ -35,15 +61,21 @@ namespace GameLogic.Sokoban
 
                 y++;
             }
+        }
 
+        private void LoadSprite()
+        {
+            _Dict_Sprite[(Enum_MaptemType)1] = GameModule.Resource.LoadAsset<Sprite>("White");
+            _Dict_Sprite[(Enum_MaptemType)2] = GameModule.Resource.LoadAsset<Sprite>("White");
+            _Dict_Sprite[(Enum_MaptemType)4] = GameModule.Resource.LoadAsset<Sprite>("Blue");
+            _Dict_Sprite[(Enum_MaptemType)10] = GameModule.Resource.LoadAsset<Sprite>("Green");
+            _Dict_Sprite[(Enum_MaptemType)12] = GameModule.Resource.LoadAsset<Sprite>("Gold");
+            _Dict_Sprite[(Enum_MaptemType)20] = GameModule.Resource.LoadAsset<Sprite>("Blue");
+        }
 
-            CreateMap(_Dict_Map);
-
-
-            PlayerInputManager.PlayerUpEvent += MoveUp;
-            PlayerInputManager.PlayerDownEvent += MoveDown;
-            PlayerInputManager.PlayerLeftEvent += MoveLeft;
-            PlayerInputManager.PlayerRightEvent += MoveRight;
+        public Sprite GetSprite(Enum_MaptemType type)
+        {
+            return _Dict_Sprite.GetValueOrDefault(type);
         }
 
         private void CreateMap(Dictionary<Vector2Int, SokobanMapItem> dictMap)
@@ -72,6 +104,7 @@ namespace GameLogic.Sokoban
 
                 value.UpdateState();
             }
+
             GameObject.Destroy(prefab);
         }
 
@@ -162,10 +195,18 @@ namespace GameLogic.Sokoban
                 isCompelte = isCompelte && IsEqual(_Dict_Map[pos].Type, (Enum_MaptemType)12);
             }
 
+
+            UpdatePlayerPos(newPos);
+
             if (isCompelte)
             {
-                Log.Info("游戏结束");
+                GameModule.UI.ShowUI<UI_SokobanSuccess>();
             }
+        }
+
+        private static void UpdatePlayerPos(Vector2Int newPos)
+        {
+            SokobanGameRoot._Instance._Player.SetPos(newPos);
         }
     }
 }

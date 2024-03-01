@@ -7,7 +7,7 @@ namespace TEngine
 {
     public class StreamingAssetsDefine
     {
-        public const string RootFolderName = "yoo";
+        public const string RootFolderName = "Shaw";
     }
 
 #if UNITY_EDITOR

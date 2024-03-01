@@ -35,14 +35,14 @@ namespace GameMain
                 if (SettingsUtils.EnableUpdateData())
                 {
                     UpdateData updateData = await RequestUpdateData();
-
+                
                     if (updateData != null)
                     {
                         if (!string.IsNullOrEmpty(updateData.HostServerURL))
                         {
                             SettingsUtils.FrameworkGlobalSettings.HostServerURL = updateData.HostServerURL;
                         }
-
+                
                         if (!string.IsNullOrEmpty(updateData.FallbackHostServerURL))
                         {
                             SettingsUtils.FrameworkGlobalSettings.FallbackHostServerURL =

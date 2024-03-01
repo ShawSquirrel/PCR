@@ -13,24 +13,24 @@ namespace GameLogic.Sokoban
         Player = 1 << 4, // 玩家
     }
 /*
-switch (_Dict_Map[newPos]._Type)
+switch (_type)
 {
-    case (Enum_Sokoban)0: // 空
-        break;
-    case (Enum_Sokoban)1: // 墙
-        break;
-    case (Enum_Sokoban)2: // 空地
-        break;
-    case (Enum_Sokoban)4: // 目标位置
-        break;
-    case (Enum_Sokoban)10: // 箱子 | 空地
-        break;
-    case (Enum_Sokoban)12: // 箱子 | 目标位置
-        break;
-    case (Enum_Sokoban)18: // 玩家 | 空地
-        break;
-    case (Enum_Sokoban)20: // 玩家 | 目标位置
-        break;
+     case (Enum_MaptemType)0: // 空
+         break;
+     case (Enum_MaptemType)1: // 墙
+         break;
+     case (Enum_MaptemType)2: // 空地
+         break;
+     case (Enum_MaptemType)4: // 目标位置
+         break;
+     case (Enum_MaptemType)10: // 箱子 | 空地
+         break;
+     case (Enum_MaptemType)12: // 箱子 | 目标位置
+         break;
+     case (Enum_MaptemType)18: // 玩家 | 空地
+         break;
+     case (Enum_MaptemType)20: // 玩家 | 目标位置
+         break;
 }
 */
     

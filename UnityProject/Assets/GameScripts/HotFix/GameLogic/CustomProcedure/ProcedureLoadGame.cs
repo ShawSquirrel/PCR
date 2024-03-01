@@ -6,7 +6,6 @@ namespace GameLogic
 {
     public class ProcedureLoadGame : CustomProcedureBase
     {
-        private UI_ActionBar _actionBar;
         public CharacterManager _CharacterManager;
         public MapManager _MapManager;
 
@@ -31,7 +30,6 @@ namespace GameLogic
 
             await UniTask.Delay(3000);
 
-            _actionBar.ResetCharacterPercentByName(name);
         }
 
         protected override void OnEnter()
@@ -39,10 +37,6 @@ namespace GameLogic
             base.OnEnter();
 
 
-            _actionBar = GameModule.UI.ShowUI<UI_ActionBar>().Window as UI_ActionBar;
-
-            _actionBar.AddActionBarItem("优衣", null, 30, 0);
-            _actionBar.AddActionBarItem("镜华", null, 20, 0);
 
 
             Character character1 = CreateCharacter("优衣");
