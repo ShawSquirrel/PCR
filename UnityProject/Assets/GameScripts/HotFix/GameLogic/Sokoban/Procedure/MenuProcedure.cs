@@ -23,12 +23,15 @@ namespace GameLogic.Sokoban
         {
             base.RegisterEvent();
             GameEvent.AddEventListener<string>(UIEvent.Sokoban_SelectLevel, OnSelectLevelEvent);
+            GameEvent.AddEventListener(UIEvent.Sokoban_MakeMap, OnMakeMap);
         }
+        
 
         protected override void RemoveEvent()
         {
             base.RemoveEvent();
             GameEvent.RemoveEventListener<string>(UIEvent.Sokoban_SelectLevel, OnSelectLevelEvent);
+            GameEvent.RemoveEventListener(UIEvent.Sokoban_MakeMap, OnMakeMap);
         }
 
 

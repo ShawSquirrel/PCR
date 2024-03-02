@@ -11,6 +11,9 @@ namespace GameLogic.Sokoban
         Target = 1 << 2, // 目标位置
         Box = 1 << 3,    // 箱子
         Player = 1 << 4, // 玩家
+        
+        
+        Null = 99
     }
 /*
 switch (_type)

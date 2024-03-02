@@ -6,6 +6,7 @@ namespace GameBase
     {
         public GameRoot _GameRoot;
         public GameObject _Obj;
+        public Transform _TF;
 
 
         public virtual void Awake()

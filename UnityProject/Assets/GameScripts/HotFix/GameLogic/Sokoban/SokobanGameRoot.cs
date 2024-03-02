@@ -8,6 +8,7 @@
         public PlayerManager _Player => GetManager<PlayerManager>();
         public CameraManager _Camera => GetManager<CameraManager>();
         public SokobanLevelManager _Level => GetManager<SokobanLevelManager>();
+        public MapMakeManager _Make => GetManager<MapMakeManager>();
 
         protected override void Awake()
         {
@@ -17,6 +18,7 @@
             AddManager<PlayerInputManager>();
             AddManager<PlayerManager>();
             AddManager<CameraManager>();
+            AddManager<MapMakeManager>();
 
         }
 
@@ -27,6 +29,7 @@
             _Input.OnReset();
             _Camera.OnReset();
             _Level.OnReset();
+            _Make.OnReset();
         }
         
         

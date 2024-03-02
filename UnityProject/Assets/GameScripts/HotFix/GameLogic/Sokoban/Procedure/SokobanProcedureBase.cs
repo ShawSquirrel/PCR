@@ -53,5 +53,10 @@ namespace GameLogic.Sokoban
                 mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
             }
         }
+        
+        protected void OnMakeMap()
+        {
+            mFSM.ChangeState(Enum_SokobanProcedure.GameMakeMap);
+        }
     }
 }

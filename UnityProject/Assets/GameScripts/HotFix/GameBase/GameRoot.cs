@@ -36,10 +36,11 @@ namespace GameBase
                 return t as T;
             }
 
-            GameObject gameObject = new GameObject($"{typeof(T).Name}");
-            gameObject.transform.SetParent(_ManagerRoot);
+            GameObject obj = new GameObject($"{typeof(T).Name}");
+            obj.transform.SetParent(_ManagerRoot);
             t = new T();
-            t._Obj = gameObject;
+            t._Obj = obj;
+            t._TF = obj.transform;
             t._GameRoot = this;
             _Dict_Manager.Add(typeof(T), t);
             

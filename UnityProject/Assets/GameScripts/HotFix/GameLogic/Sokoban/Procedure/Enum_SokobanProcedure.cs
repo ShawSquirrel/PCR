@@ -6,6 +6,6 @@
         GameMenu,
         GameLaunching,
         GameSuccess,
-        GameFailure
+        GameMakeMap
     }
 }

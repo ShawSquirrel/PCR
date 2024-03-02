@@ -18,6 +18,7 @@ namespace GameLogic
             _FSM.AddState(Enum_SokobanProcedure.GameLoading, new GameLoadingProcedure(_FSM, this));
             _FSM.AddState(Enum_SokobanProcedure.GameLaunching, new GameLaunchingProcedure(_FSM, this));
             _FSM.AddState(Enum_SokobanProcedure.GameSuccess, new GameSuccessProcedure(_FSM, this));
+            _FSM.AddState(Enum_SokobanProcedure.GameMakeMap, new GameMakeMapProcedure(_FSM, this));
             
             _FSM.StartState(Enum_SokobanProcedure.GameMenu);
 
