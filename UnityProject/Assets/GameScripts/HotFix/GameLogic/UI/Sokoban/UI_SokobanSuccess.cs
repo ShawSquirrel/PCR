@@ -28,14 +28,20 @@ namespace GameLogic
 
         private void OnClick_Btn_CloseBtn()
         {
+            GameEvent.Send(UIEvent.Sokoban_Menu);
+            Close();
         }
 
         private void OnClick_Btn_ReStartBtn()
         {
+            GameEvent.Send(UIEvent.Sokoban_Restart);
+            Close();
         }
 
         private void OnClick_Btn_NextBtn()
         {
+            GameEvent.Send(UIEvent.Sokoban_NextLevel);
+            Close();
         }
 
         #endregion

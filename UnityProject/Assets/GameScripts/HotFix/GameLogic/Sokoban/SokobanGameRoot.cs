@@ -19,5 +19,17 @@
             AddManager<CameraManager>();
 
         }
+
+        public void OnReset()
+        {
+            _Map.OnReset();
+            _Player.OnReset();
+            _Input.OnReset();
+            _Camera.OnReset();
+            _Level.OnReset();
+        }
+        
+        
+        
     }
 }

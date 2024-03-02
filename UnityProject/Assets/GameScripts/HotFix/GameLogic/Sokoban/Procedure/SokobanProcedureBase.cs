@@ -28,5 +28,30 @@ namespace GameLogic.Sokoban
         protected virtual void RemoveEvent()
         {
         }
+
+        protected void OnMenu()
+        {
+            mFSM.ChangeState(Enum_SokobanProcedure.GameMenu);
+        }
+
+        protected void OnRestart()
+        {
+            mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
+        }
+
+
+        protected void OnNextLevel()
+        {
+            _Root._Level.NextLevel();
+            mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
+        }
+        
+        protected void OnSelectLevelEvent(string levelName)
+        {
+            if (_Root._Level.SetCurLoadLevel(levelName))
+            {
+                mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
+            }
+        }
     }
 }

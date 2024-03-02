@@ -22,6 +22,11 @@ namespace GameLogic.Sokoban
 
         }
 
+        public void OnReset()
+        {
+            _camera.Follow = null;
+            _camera.LookAt = null;
+        }
 
     }
 }

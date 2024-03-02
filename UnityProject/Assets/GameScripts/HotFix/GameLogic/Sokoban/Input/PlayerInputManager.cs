@@ -22,6 +22,14 @@ namespace GameLogic.Sokoban
             PlayerInput();
         }
 
+        public void OnReset()
+        {
+            PlayerLeftEvent  = null;
+            PlayerRightEvent = null;
+            PlayerUpEvent    = null;
+            PlayerDownEvent  = null;
+        }
+
         private void PlayerInput()
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))

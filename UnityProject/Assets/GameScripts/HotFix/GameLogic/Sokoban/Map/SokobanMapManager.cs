@@ -20,13 +20,17 @@ namespace GameLogic.Sokoban
         public override void Awake()
         {
             LoadSprite();
-            // CreateMap(_Dict_Map);
             
         }
 
-        public void Init()
+        public void OnReset()
         {
-            UpdatePlayerPos(_PlayerPos);
+            foreach (var (key, value) in _Dict_Map)
+            {
+                GameObject.Destroy(value._Obj);
+            }
+            _Dict_Map.Clear();
+            _List_TargetPos.Clear();
         }
 
         public void AddListen()

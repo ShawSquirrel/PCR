@@ -27,10 +27,10 @@ namespace GameLogic.Sokoban
             Character = character;
         }
 
-        public void SetPos(Vector3 pos)
+        public void OnReset()
         {
-            Pos = pos;
-            Character.transform.position = pos;
+            GameObject.Destroy(Character);
+            Character = null;
         }
 
         public void SetPos(Vector2Int pos)

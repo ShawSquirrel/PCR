@@ -31,13 +31,7 @@ namespace GameLogic.Sokoban
             GameEvent.RemoveEventListener<string>(UIEvent.Sokoban_SelectLevel, OnSelectLevelEvent);
         }
 
-        private void OnSelectLevelEvent(string levelName)
-        {
-            if (_Root._Level.SetCurLoadLevel(levelName))
-            {
-                mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
-            }
-        }
+
 
     }
 }
