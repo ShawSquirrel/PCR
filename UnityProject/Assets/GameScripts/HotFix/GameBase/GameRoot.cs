@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameBase
 {
-    public class GameRoot : MonoSingleton<GameRoot>
+    public class GameRoot : MonoBehaviour
     {
         public Action OnUpdate;
         

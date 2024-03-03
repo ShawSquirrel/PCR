@@ -1,8 +1,10 @@
-﻿namespace GameLogic.Sokoban
+﻿using TEngine;
+
+namespace GameLogic.Sokoban
 {
     public class SokobanGameRoot : GameBase.GameRoot
     {
-        public static SokobanGameRoot _Instance => _instance as SokobanGameRoot;
+        public static SokobanGameRoot _Instance => Game._SokobanGameRoot;
         public SokobanMapManager _Map => GetManager<SokobanMapManager>();
         public PlayerInputManager _Input => GetManager<PlayerInputManager>();
         public PlayerManager _Player => GetManager<PlayerManager>();
@@ -10,9 +12,9 @@
         public SokobanLevelManager _Level => GetManager<SokobanLevelManager>();
         public MapMakeManager _Make => GetManager<MapMakeManager>();
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
+            Log.Info("SokobanGameRoot");
             AddManager<SokobanLevelManager>();
             AddManager<SokobanMapManager>();
             AddManager<PlayerInputManager>();

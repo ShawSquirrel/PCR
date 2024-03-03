@@ -20,6 +20,8 @@ namespace GameLogic
         public const int Sokoban_MakeMapClose = 10011;      //推箱子制作地图
         public const int Sokoban_MakeMapRevert = 10012;     //推箱子制作地图
         public const int Sokoban_Move = 10013;     //推箱子制作地图
+        public const int PlayVideo = 10014;
+        public const int PauseVideo= 10015;
     }
 
     public class MapItemEvent

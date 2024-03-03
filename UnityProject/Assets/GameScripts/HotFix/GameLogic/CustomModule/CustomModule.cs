@@ -54,8 +54,4 @@ public class CustomModule : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    private void Start()
-    {
-        CustomProcedureModule.Init();
-    }
 }

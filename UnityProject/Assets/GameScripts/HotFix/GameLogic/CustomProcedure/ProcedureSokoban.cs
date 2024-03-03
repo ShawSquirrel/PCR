@@ -8,11 +8,11 @@ namespace GameLogic
     public class ProcedureSokoban : CustomProcedureBase
     {
         public FSM<Enum_SokobanProcedure> _FSM = new FSM<Enum_SokobanProcedure>();
-        public SokobanGameRoot _GameRoot;
+        public SokobanGameRoot _GameRoot => Game._SokobanGameRoot;
 
         public ProcedureSokoban(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
-            _GameRoot = new GameObject("SokobanGameRoot").AddComponent<SokobanGameRoot>();
+            Game._SokobanGameRoot = new GameObject("SokobanGameRoot").AddComponent<SokobanGameRoot>();
 
             _FSM.AddState(Enum_SokobanProcedure.GameMenu, new MenuProcedure(_FSM, this));
             _FSM.AddState(Enum_SokobanProcedure.GameLoading, new GameLoadingProcedure(_FSM, this));

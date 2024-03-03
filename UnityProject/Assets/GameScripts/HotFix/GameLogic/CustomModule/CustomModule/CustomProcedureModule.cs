@@ -9,28 +9,11 @@ namespace GameLogic
         public FSM<Enum_Procedure> _FSM;
         protected void Start()
         {
-            // base.Awake();
-            // StartFlag();
-            _FSM = new FSM<Enum_Procedure>();
-            _FSM.AddState(Enum_Procedure.Menu, new ProcedureMenu(_FSM, this));
             
-            _FSM.StartState(Enum_Procedure.Menu);
-        }
-
-        private void StartFlag()
-        {
             _FSM = new FSM<Enum_Procedure>();
-            _FSM.AddState(Enum_Procedure.LoadConfigs, new ProcedureLoadConfigs(_FSM, this));
-            _FSM.AddState(Enum_Procedure.Menu, new ProcedureMenu(_FSM, this));
-            _FSM.AddState(Enum_Procedure.LoadLevel1, new ProcedureLoadLevel1(_FSM, this));
-            _FSM.AddState(Enum_Procedure.ProcedureLevel, new ProcedureLevel(_FSM, this));
+            _FSM.AddState(Enum_Procedure.GameRoot, new ProcedureGameRoot(_FSM, this));
             
-            _FSM.StartState(Enum_Procedure.LoadConfigs);
-        }
-
-        public void Init()
-        {
-            Log.Info("CustomProcedureModule".SetColor(Color.green));
+            _FSM.StartState(Enum_Procedure.GameRoot);
         }
 
         private void Update()

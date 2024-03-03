@@ -24,7 +24,7 @@ namespace GameLogic
     }
 
     [RequireComponent(typeof(SkeletonAnimation))]
-    public class AnimComponent : Entity
+    public class AnimComponent : MonoBehaviour
     {
         private static Dictionary<EAnimState, string> S_AnimNameDict;
 
@@ -37,9 +37,8 @@ namespace GameLogic
         private SkeletonAnimation _anim;
 
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             _anim = GetComponent<SkeletonAnimation>();
 
             if (S_AnimNameDict == null)
