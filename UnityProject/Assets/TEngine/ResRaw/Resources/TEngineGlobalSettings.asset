@@ -59,7 +59,7 @@ MonoBehaviour:
     - uiElementRegex: _ScrollR_
       componentName: ScrollRect
     - uiElementRegex: _Input_
-      componentName: InputField
+      componentName: TMP_InputField
     - uiElementRegex: _GLayout_
       componentName: GridLayoutGroup
     - uiElementRegex: _HLayout_

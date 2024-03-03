@@ -16,7 +16,10 @@ namespace GameLogic
         public const int Sokoban_NextLevel = 10007;         //推箱子下一关
         public const int Sokoban_MakeMap = 10008;           //推箱子制作地图
         public const int Sokoban_MakeMapSelectType = 10009; //推箱子制作地图
-        public const int Sokoban_MakeMapSave = 10010; //推箱子制作地图
+        public const int Sokoban_MakeMapSave = 10010;       //推箱子制作地图
+        public const int Sokoban_MakeMapClose = 10011;      //推箱子制作地图
+        public const int Sokoban_MakeMapRevert = 10012;     //推箱子制作地图
+        public const int Sokoban_Move = 10013;     //推箱子制作地图
     }
 
     public class MapItemEvent

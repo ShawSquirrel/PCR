@@ -1,4 +1,6 @@
 ﻿using System;
+using Lean.Common;
+using Lean.Touch;
 using TEngine;
 using UnityEngine;
 
@@ -21,29 +23,42 @@ namespace GameLogic.Sokoban
         public SpriteRenderer _Sprite;
         public SpriteRenderer _Mark;
         public SpriteRenderer _PlayerHead;
+        public LeanSelectableByFinger _Selectable;
+
         
 
         private void Awake()
         {
             Type   = Enum_MaptemType.Empty;
-            _Sprite = GetComponent<SpriteRenderer>();
-            BoxCollider collider = gameObject.AddComponent<BoxCollider>();
+            BoxCollider2D collider = gameObject.AddComponent<BoxCollider2D>();
+            _Selectable         = gameObject.AddComponent<LeanSelectableByFinger>();
+            _Sprite             = GetComponent<SpriteRenderer>();
             _Mark               = transform.GetChild(0).GetComponent<SpriteRenderer>();
             _PlayerHead         = transform.GetChild(1).GetComponent<SpriteRenderer>();
             _PlayerHead.enabled = false;
+            _Mark.enabled       = false;
+
+            AddListen();
         }
 
-        private void OnMouseDown()
+        public void AddListen()
+        {
+            _Selectable.OnSelected.AddListener(OnSelected);
+        }
+
+        private void OnSelected(LeanSelect arg0)
         {
             GameEvent.Send(SokobanEvent.Sokoban_MakeMapClickItem, this);
         }
+
+
         private void OnMouseEnter()
         {
-            _Mark.gameObject.SetActive(true);
+            _Mark.enabled = true;
         }
         private void OnMouseExit()
         {
-            _Mark.gameObject.SetActive(false);
+            _Mark.enabled = false;
         }
         
         public void UpdateState()
@@ -80,6 +95,10 @@ namespace GameLogic.Sokoban
                 case (Enum_MaptemType)20: // 玩家 | 目标位置
                     _Sprite.color       = Color.white;
                     _PlayerHead.enabled = true;
+                    break;
+                
+                case Enum_MaptemType.Null:
+                    _Sprite.color = Color.black;
                     break;
             }
         }

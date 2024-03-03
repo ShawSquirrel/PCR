@@ -11,14 +11,14 @@ namespace GameLogic.Sokoban
 
         protected override void OnEnter()
         {
-            base.OnEnter();
             RegisterEvent();
+            base.OnEnter();
         }
 
         protected override void OnExit()
         {
-            base.OnExit();
             RemoveEvent();
+            base.OnExit();
         }
 
         protected virtual void RegisterEvent()
@@ -29,12 +29,12 @@ namespace GameLogic.Sokoban
         {
         }
 
-        protected void OnMenu()
+        protected virtual void OnMenu()
         {
             mFSM.ChangeState(Enum_SokobanProcedure.GameMenu);
         }
 
-        protected void OnRestart()
+        protected async virtual void OnRestart()
         {
             mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
         }

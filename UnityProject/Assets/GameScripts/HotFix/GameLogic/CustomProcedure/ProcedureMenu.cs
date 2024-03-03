@@ -3,6 +3,7 @@ using TEngine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 namespace GameLogic
 {
@@ -27,7 +28,19 @@ namespace GameLogic
         protected override void OnEnter()
         {
             base.OnEnter();
-            GameModule.UI.ShowUI<UI_Menu>();
+            RenderTexture renderTexture = new RenderTexture(1920, 1080, 24);
+            GameModule.UI.ShowUI<UI_Menu>(new UI_MenuData
+                                          {
+                                              _RenderTexture =  renderTexture
+                                          });
+            CustomModule.VideoModule.PlayVideo(GameModule.Resource.LoadAsset<VideoClip>("优衣六星视频"), true);
+            CustomModule.VideoModule.SetRenderTexture(renderTexture);
+        }
+
+        protected override void OnExit()
+        {
+            base.OnExit();
+            CustomModule.VideoModule.Release();
         }
 
         private void StartSokoban()

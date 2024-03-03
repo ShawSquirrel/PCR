@@ -30,7 +30,7 @@ namespace GameLogic
         public override void OnCreate()
         {
             base.OnCreate();
-            for (int i = 0; i < _TF_Root.childCount; i++)
+            for (int i = 1; i < _TF_Root.childCount; i++)
             {
                 Toggle toggle = _TF_Root.GetChild(i).GetComponent<Toggle>();
                 toggle.onValueChanged.AddListener(isOn => OnToggle_Toggle_0Change(isOn, toggle.name));
@@ -55,18 +55,18 @@ namespace GameLogic
 
         private void OnClick_Btn_CloseBtn()
         {
+            GameEvent.Send(UIEvent.Sokoban_MakeMapClose);
             Close();
         }
 
         private void OnClick_Btn_SaveBtn()
         {
             GameEvent.Send(UIEvent.Sokoban_MakeMapSave);
-            Close();
         }
 
         private void OnClick_Btn_RevertBtn()
         {
-            
+            GameEvent.Send(UIEvent.Sokoban_MakeMapRevert); 
         }
     }
 }

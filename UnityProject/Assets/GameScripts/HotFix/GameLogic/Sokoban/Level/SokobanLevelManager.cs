@@ -33,11 +33,26 @@ namespace GameLogic.Sokoban
             // _CurLevel = null;
         }
 
-        private void LoadAllMap()
+        public void LoadAllMap()
         {
             _List_Level.Clear();
             TextAsset textAsset = GameModule.Resource.LoadAsset<TextAsset>("Map");
-            string[] levelArr = textAsset.text.Replace("\r", "").Trim(' ').Trim('\n').Split("##");
+
+            string text = textAsset.text;
+            string[] levelName = PlayerPrefs.GetString("LevelNameList", "").Trim('\n').Split('\n');
+
+            foreach (var name in levelName)
+            {
+                if (string.IsNullOrEmpty(PlayerPrefs.GetString(name, "")))
+                {
+                    continue;
+                }
+
+                text += $"\n{PlayerPrefs.GetString(name, "")}";
+            }
+            
+            
+            string[] levelArr = text.Replace("\r", "").Trim(' ').Trim('\n').Split("##");
 
             for (int i = 0; i < levelArr.Length; i++)
             {

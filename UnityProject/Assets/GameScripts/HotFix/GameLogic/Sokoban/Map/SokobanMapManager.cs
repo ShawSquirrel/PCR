@@ -61,6 +61,7 @@ namespace GameLogic.Sokoban
             _Dict_Sprite[(Enum_MaptemType)10] = GameModule.Resource.LoadAsset<Sprite>("Green");
             _Dict_Sprite[(Enum_MaptemType)12] = GameModule.Resource.LoadAsset<Sprite>("Gold");
             _Dict_Sprite[(Enum_MaptemType)20] = GameModule.Resource.LoadAsset<Sprite>("Blue");
+            _Dict_Sprite[(Enum_MaptemType)99] = GameModule.Resource.LoadAsset<Sprite>("panel_Light2");
         }
 
         public Sprite GetSprite(Enum_MaptemType type)
@@ -131,7 +132,7 @@ namespace GameLogic.Sokoban
             return t1 == t2;
         }
 
-        private void Move(Vector2Int dir)
+        public void Move(Vector2Int dir)
         {
             Vector2Int originPos = _PlayerPos;
             Vector2Int newPos = _PlayerPos + dir;

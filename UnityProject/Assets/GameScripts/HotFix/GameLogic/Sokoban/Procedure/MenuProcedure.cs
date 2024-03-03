@@ -13,6 +13,8 @@ namespace GameLogic.Sokoban
             base.OnEnter();
             UI_SelectLevel ui = GameModule.UI.ShowUI<UI_SelectLevel>().Window as UI_SelectLevel;
 
+            _Root._Level.LoadAllMap();
+            
             var list = _Root._Level._List_Level;
             foreach (SokobanLevelItem levelItem in list)
             {

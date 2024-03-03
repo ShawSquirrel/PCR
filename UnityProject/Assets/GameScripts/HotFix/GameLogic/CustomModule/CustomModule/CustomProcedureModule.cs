@@ -7,9 +7,9 @@ namespace GameLogic
     public class CustomProcedureModule : Module
     {
         public FSM<Enum_Procedure> _FSM;
-        protected override void Awake()
+        protected void Start()
         {
-            base.Awake();
+            // base.Awake();
             // StartFlag();
             _FSM = new FSM<Enum_Procedure>();
             _FSM.AddState(Enum_Procedure.Menu, new ProcedureMenu(_FSM, this));

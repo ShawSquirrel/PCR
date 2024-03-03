@@ -34,6 +34,21 @@ public class CustomModule : MonoBehaviour
         }
     }
 
+    private static VideoModule m_videoModule;
+
+    public static VideoModule VideoModule
+    {
+        get
+        {
+            if (m_videoModule == null)
+            {
+                m_videoModule = GameModule.Get<VideoModule>();
+            }
+
+            return m_videoModule;
+        }
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
