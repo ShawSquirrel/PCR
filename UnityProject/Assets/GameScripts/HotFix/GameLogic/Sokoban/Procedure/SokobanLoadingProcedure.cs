@@ -2,15 +2,18 @@
 
 namespace GameLogic.Sokoban
 {
-    public class GameLoadingProcedure : SokobanProcedureBase
+    public class SokobanLoadingProcedure : SokobanProcedureBase
     {
-        public GameLoadingProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
+        public SokobanLoadingProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
         {
         }
 
         protected override void OnEnter()
         {
             base.OnEnter();
+            
+            GameRoot._Instance.CloseVideoUI();
+            
             SokobanLevelItem levelItem = mTarget._GameRoot._Level._CurLevel;
             
             _Root._Map.CreateMap(levelItem._Dict_Map);

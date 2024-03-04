@@ -2,9 +2,9 @@
 
 namespace GameLogic.Sokoban
 {
-    public class MenuProcedure : SokobanProcedureBase
+    public class SokobanMenuProcedure : SokobanProcedureBase
     {
-        public MenuProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
+        public SokobanMenuProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
         {
         }
 
@@ -20,6 +20,8 @@ namespace GameLogic.Sokoban
             {
                 ui.AddBtn(levelItem._Str_Name);
             }
+            
+            GameRoot._Instance.OpenVideoUI();
         }
         protected override void RegisterEvent()
         {

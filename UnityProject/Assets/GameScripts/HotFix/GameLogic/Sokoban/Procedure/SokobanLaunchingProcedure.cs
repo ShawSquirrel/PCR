@@ -3,20 +3,22 @@ using UnityEngine;
 
 namespace GameLogic.Sokoban
 {
-    public class GameLaunchingProcedure : SokobanProcedureBase
+    public class SokobanLaunchingProcedure : SokobanProcedureBase
     {
         private UI_Launching _UILaunching;
-        public GameLaunchingProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
+        public SokobanLaunchingProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
         {
         }
 
         protected override void OnEnter()
         {
             base.OnEnter();
-
+            
             _Root._Map.AddListen();
 
-            _UILaunching = GameModule.UI.ShowUI<UI_Launching>().Window as UI_Launching;
+            GameModule.UI.ShowUI<UI_Launching>();   
+            GameRoot._Instance.CloseVideoUI();
+
         }
 
 
@@ -58,7 +60,7 @@ namespace GameLogic.Sokoban
         protected override void OnExit()
         {
             base.OnExit();
-            _UILaunching.OnClose();
+            GameModule.UI.CloseWindow<UI_Launching>();
         }
     }
 }

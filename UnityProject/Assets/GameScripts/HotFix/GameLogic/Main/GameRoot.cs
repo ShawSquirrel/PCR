@@ -7,6 +7,7 @@ namespace GameLogic
 {
     public class GameRoot : GameBase.GameRoot
     {
+        public static GameRoot _Instance => Game._GameRoot;
         protected void Awake()
         {
             GameEvent.AddEventListener(UIEvent.PauseVideo, PauseVideo);
@@ -24,5 +25,26 @@ namespace GameLogic
         {
             CustomModule.VideoModule.Release();
         }
+
+        #region VideoUI()
+
+        public void CloseVideoUI()
+        {
+            if (GameModule.UI.HasWindow<UI_Video>())
+            {
+                GameModule.UI.CloseWindow<UI_Video>();
+            }
+        }
+        public void OpenVideoUI()
+        {
+            if (!GameModule.UI.HasWindow<UI_Video>())
+            {
+                RenderTexture renderTexture = PlayVideo();
+                GameModule.UI.ShowUI<UI_Video>(new UI_VideoData() { _RenderTexture = renderTexture });
+            }
+        }
+
+
+        #endregion
     }
 }

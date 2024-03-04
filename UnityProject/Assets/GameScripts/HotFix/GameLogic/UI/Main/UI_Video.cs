@@ -30,6 +30,7 @@ namespace GameLogic
         {
             base.OnDestroy();
             GameEvent.Send(UIEvent.PauseVideo);
+            Log.Info("UI_Video 已销毁");
         }
 
         #region 事件

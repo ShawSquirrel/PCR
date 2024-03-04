@@ -6,7 +6,6 @@ namespace GameLogic
 {
     public class ProcedureGameRoot : CustomProcedureBase
     {
-        public GameRoot _GameRoot => Game._GameRoot;
 
         public ProcedureGameRoot(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
@@ -28,8 +27,7 @@ namespace GameLogic
         protected override void OnEnter()
         {
             base.OnEnter();
-            RenderTexture renderTexture = _GameRoot.PlayVideo();
-            GameModule.UI.ShowUI<UI_Video>(new UI_VideoData() { _RenderTexture = renderTexture });
+            GameRoot._Instance.OpenVideoUI();
             GameModule.UI.ShowUI<UI_Menu>();
         }
 

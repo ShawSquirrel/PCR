@@ -2,9 +2,9 @@
 
 namespace GameLogic.Sokoban
 {
-    public class GameSuccessProcedure : SokobanProcedureBase
+    public class SokobanSuccessProcedure : SokobanProcedureBase
     {
-        public GameSuccessProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
+        public SokobanSuccessProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
         {
         }
 

@@ -3,9 +3,9 @@ using TEngine;
 
 namespace GameLogic.Sokoban
 {
-    public class GameMakeMapProcedure : SokobanProcedureBase
+    public class SokobanMakeMapProcedure : SokobanProcedureBase
     {
-        public GameMakeMapProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
+        public SokobanMakeMapProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
         {
         }
 
