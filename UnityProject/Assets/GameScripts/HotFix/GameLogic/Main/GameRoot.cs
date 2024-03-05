@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TEngine;
@@ -76,31 +77,37 @@ namespace GameLogic
 
         #region Flash
 
-        public async void OpenFlash(Action action = null)
+        public void StartFlash(Action action = null)
         {
-            await FlashStart();
+            StartCoroutine(OpenFlash(action));
+        }
+        public IEnumerator OpenFlash(Action action = null)
+        {
+            yield return FlashStart();
             action?.Invoke();
-            await FlashEnd();
+            yield return FlashEnd();
         }
 
         private Material _mat;
 
-        public async UniTask FlashStart()
+        public IEnumerator FlashStart()
         {
+            Log.Info("FlashStart1");
             _mat = GameModule.Resource.LoadAsset<Material>("Mat_UIFlash");
             GameModule.UI.ShowUI<UI_Flash>(_mat);
-
+            Log.Info("FlashStart2");
             bool isComplete = false;
 
             DOTween.To(() => -1f, value => _mat.SetFloat("_Add", value), 1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
-
+            Log.Info("FlashStart3");
             while (!isComplete)
             {
-                await UniTask.DelayFrame(1);
+                yield return null;
             }
+            Log.Info("FlashStart4");
         }
 
-        public async UniTask FlashEnd()
+        public IEnumerator FlashEnd()
         {
             // _mat = GameModule.Resource.LoadAsset<Material>("Mat_UIFlash");
             bool isComplete = false;
@@ -109,7 +116,7 @@ namespace GameLogic
 
             while (!isComplete)
             {
-                await UniTask.DelayFrame(1);
+                yield return null;
             }
 
             GameModule.UI.CloseWindow<UI_Flash>();

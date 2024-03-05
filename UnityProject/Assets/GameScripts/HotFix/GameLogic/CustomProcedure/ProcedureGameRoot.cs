@@ -45,7 +45,7 @@ namespace GameLogic
         /// </summary>
         private void OnSurvivorStartGame()
         {
-            GameRoot._Instance.OpenFlash(() =>
+            GameRoot._Instance.StartFlash(() =>
             {
                 GameModule.UI.CloseWindow<UI_Menu>();
                 mFSM.AddState(Enum_Procedure.SurvivorGame, new ProcedureSurvivor(mFSM, mTarget));

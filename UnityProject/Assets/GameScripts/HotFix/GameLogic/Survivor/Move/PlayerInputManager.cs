@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class PlayerMoveManager : Manager
+    public class PlayerInputManager : Manager
     {
         public Vector2 _BeginDragPos;
 
@@ -23,30 +23,33 @@ namespace GameLogic.Survivor
 
         private void OnBeginDrag(Vector2 pos)
         {
-            Log.Info($"OnBeginDrag {pos}");
             _BeginDragPos = pos;
             GameEvent.Send<Vector2>(SurvivorEvent.Survivor_UIBeginDragStick, pos);
         }
 
         private void OnDrag(Vector2 pos)
         {
-            Log.Info($"OnDrag {pos}  MousePosition {Input.mousePosition}");
             Vector2 handlePos;
+            Vector2 direct = (pos - _BeginDragPos).normalized;
             if ((pos - _BeginDragPos).magnitude < 90)
             {
                 handlePos = pos;
             }
             else
             {
-                handlePos =_BeginDragPos +  (pos-_BeginDragPos).normalized * 90;
+                handlePos =_BeginDragPos +  direct * 90;
             }
             GameEvent.Send<Vector2>(SurvivorEvent.Survivor_UIDragStick, handlePos);
+
+            
+            GameEvent.Send<Vector2>(SurvivorEvent.Survivor_Move, direct);
         }
 
         private void OnEndDrag(Vector2 pos)
         {
-            Log.Info($"OnEndDrag {pos}");
+            // Log.Info($"OnEndDrag {pos}");
             GameEvent.Send(SurvivorEvent.Survivor_UIEndDragStick);
+            GameEvent.Send<Vector2>(SurvivorEvent.Survivor_MoveStop, new Vector2());
         }
     }
 }

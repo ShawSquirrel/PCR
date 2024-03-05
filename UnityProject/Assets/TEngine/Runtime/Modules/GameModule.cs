@@ -25,17 +25,17 @@ namespace TEngine
 
         private static RootModule _base;
 
-        /// <summary>
-        /// 获取调试模块。
-        /// </summary>
-        public static DebuggerModule Debugger
-        {
-            get => _debugger ??= Get<DebuggerModule>();
-            private set => _debugger = value;
-        }
-
-
-        private static DebuggerModule _debugger;
+        // /// <summary>
+        // /// 获取调试模块。
+        // /// </summary>
+        // public static DebuggerModule Debugger
+        // {
+        //     get => _debugger ??= Get<DebuggerModule>();
+        //     private set => _debugger = value;
+        // }
+        //
+        //
+        // private static DebuggerModule _debugger;
 
         /// <summary>
         /// 获取有限状态机模块。
@@ -150,7 +150,7 @@ namespace TEngine
             _moduleMaps.Clear();
             
             _base = null;
-            _debugger = null;
+            // _debugger = null;
             _fsm = null;
             _procedure = null;
             _objectPool = null;

@@ -7,7 +7,7 @@ namespace GameLogic.Survivor
         public SurvivorProcedureBase(FSM<Enum_SurvivorProcedure> fsm, ProcedureSurvivor target) : base(fsm, target)
         {
         }
-        
+
         protected override void OnEnter()
         {
             RegisterEvent();
@@ -30,13 +30,13 @@ namespace GameLogic.Survivor
         }
 
 
-        protected virtual void OnStartGame()
+        protected void OnStartGame()
         {
-            GameRoot._Instance.OpenFlash(() =>
-            {
-                GameModule.UI.CloseWindow<UI_SurvivorMenu>();
-                mFSM.ChangeState(Enum_SurvivorProcedure.GameLaunching);
-            });
+            GameRoot._Instance.StartFlash(() =>
+                                          {
+                                              GameModule.UI.CloseWindow<UI_SurvivorMenu>();
+                                              mFSM.ChangeState(Enum_SurvivorProcedure.GameLaunching);
+                                          });
         }
     }
 }

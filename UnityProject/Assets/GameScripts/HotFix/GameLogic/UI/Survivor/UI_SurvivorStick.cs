@@ -53,8 +53,8 @@ namespace GameLogic
 
         public void OnBeginDrag(Vector2 pos)
         {
-            SetStickActive(true);
-            SetHandleActive(true);
+            // SetStickActive(true);
+            // SetHandleActive(true);
             SetStickPos(pos);
             SetHandlePos(pos);
         }
@@ -66,8 +66,9 @@ namespace GameLogic
 
         public void OnEndDrag()
         {
-            SetStickActive(false);
-            SetHandleActive(false);
+            SetHandlePos(_Img_Stick.GetComponent<RectTransform>().anchoredPosition);
+            // SetStickActive(false);
+            // SetHandleActive(false);
         }
     }
 }
