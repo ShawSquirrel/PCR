@@ -1,4 +1,5 @@
-﻿using TEngine;
+﻿using System.Collections.Generic;
+using TEngine;
 
 namespace GameLogic.Sokoban
 {
@@ -11,25 +12,27 @@ namespace GameLogic.Sokoban
         protected override void OnEnter()
         {
             base.OnEnter();
-            UI_SelectLevel ui = GameModule.UI.ShowUI<UI_SelectLevel>().Window as UI_SelectLevel;
+
+            List<string> list = new List<string>();
+            foreach (SokobanLevelItem levelItem in _Root._Level._List_Level)
+            {
+                list.Add(levelItem._Str_Name);
+            }
+            GameModule.UI.ShowUI<UI_SelectLevel>(list);
 
             _Root._Level.LoadAllMap();
-            
-            var list = _Root._Level._List_Level;
-            foreach (SokobanLevelItem levelItem in list)
-            {
-                ui.AddBtn(levelItem._Str_Name);
-            }
-            
+
+
             GameRoot._Instance.OpenVideoUI();
         }
+
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
             GameEvent.AddEventListener<string>(UIEvent.Sokoban_SelectLevel, OnSelectLevelEvent);
             GameEvent.AddEventListener(UIEvent.Sokoban_MakeMap, OnMakeMap);
         }
-        
+
 
         protected override void RemoveEvent()
         {
@@ -37,8 +40,5 @@ namespace GameLogic.Sokoban
             GameEvent.RemoveEventListener<string>(UIEvent.Sokoban_SelectLevel, OnSelectLevelEvent);
             GameEvent.RemoveEventListener(UIEvent.Sokoban_MakeMap, OnMakeMap);
         }
-
-
-
     }
 }

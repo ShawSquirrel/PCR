@@ -1,4 +1,7 @@
-﻿using TEngine;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using TEngine;
 using UnityEngine;
 
 namespace GameLogic.Sokoban
@@ -35,7 +38,7 @@ namespace GameLogic.Sokoban
             mFSM.ChangeState(Enum_SokobanProcedure.GameMenu);
         }
 
-        protected async virtual void OnRestart()
+        protected virtual void OnRestart()
         {
             mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
         }
@@ -60,6 +63,37 @@ namespace GameLogic.Sokoban
             mFSM.ChangeState(Enum_SokobanProcedure.GameMakeMap);
         }
 
+
+        #region Flash
+
+        private Material _mat;
+        public async Task FlashStart()
+        {
+            _mat = GameModule.Resource.LoadAsset<Material>("Mat_UIFlash");
+            GameModule.UI.ShowUI<UI_Flash>(new UI_FlashData() { _Material = _mat });
+
+            bool isComplete = false;
+
+            DOTween.To(() => -1, value => _mat.SetFloat("_Add", value), 1, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+
+            while (!isComplete)
+            {
+                await UniTask.DelayFrame(1);
+            }
+        }
+        public async Task FlashEnd()
+        {
+            bool isComplete = false;
+
+            DOTween.To(() => 1, value => _mat.SetFloat("_Add", value), -1, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+
+            while (!isComplete)
+            {
+                await UniTask.DelayFrame(1);
+            }
+        }
+
+        #endregion
 
     }
 }

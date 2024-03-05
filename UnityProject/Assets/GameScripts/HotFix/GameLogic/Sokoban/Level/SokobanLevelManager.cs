@@ -30,7 +30,7 @@ namespace GameLogic.Sokoban
 
         public void OnReset()
         {
-            // _CurLevel = null;
+            
         }
 
         public void LoadAllMap()

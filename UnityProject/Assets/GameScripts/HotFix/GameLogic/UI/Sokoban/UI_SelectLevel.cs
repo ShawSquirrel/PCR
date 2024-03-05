@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
@@ -30,6 +31,16 @@ namespace GameLogic
             btn.gameObject.SetActive(true);
             btn.GetComponentInChildren<TextMeshProUGUI>().text = name;
             btn.onClick.AddListener(() => SelectLevelByName(name));
+        }
+
+        public override void OnCreate()
+        {
+            base.OnCreate();
+            List<string> name = UserData as List<string>;
+            foreach (string s in name)
+            {
+                AddBtn(s);
+            }
         }
 
         private void OnClick_Btn_MakeMapBtn()

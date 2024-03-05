@@ -14,7 +14,6 @@ namespace GameLogic.Sokoban
 
         protected void Awake()
         {
-            Log.Info("SokobanGameRoot");
             AddManager<SokobanLevelManager>();
             AddManager<SokobanMapManager>();
             AddManager<PlayerInputManager>();
