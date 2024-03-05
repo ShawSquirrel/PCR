@@ -19,10 +19,19 @@ namespace GameLogic
             _FSM.AddState(Enum_SokobanProcedure.GameLaunching, new SokobanLaunchingProcedure(_FSM, this));
             _FSM.AddState(Enum_SokobanProcedure.GameSuccess, new SokobanSuccessProcedure(_FSM, this));
             _FSM.AddState(Enum_SokobanProcedure.GameMakeMap, new SokobanMakeMapProcedure(_FSM, this));
+            _FSM.AddState(Enum_SokobanProcedure.GameEnterFlash, new SokobanEnterFlashProcedure(_FSM, this));
+            _FSM.AddState(Enum_SokobanProcedure.GameExitFlash, new SokobanExitFlashProcedure(_FSM, this));
+            _FSM.AddState(Enum_SokobanProcedure.GameCompleteFlash, new SokobanCompleteFlashProcedure(_FSM, this));
             
             _FSM.StartState(Enum_SokobanProcedure.GameMenu);
 
             
+        }
+
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+            _FSM.Update();
         }
     }
 }

@@ -23,9 +23,11 @@ namespace GameLogic.Sokoban
             _Root._Player.SetPos(_Root._Map._PlayerPos);
             
             _Root._Camera.SetFollowAndLookAt(_Root._Player.Character.transform);
-
             
-            mFSM.ChangeState(Enum_SokobanProcedure.GameLaunching);
+            
+            
+            GameModule.Setting.SetInt(Setting.NextSokobanProcedure, (int)Enum_SokobanProcedure.GameLaunching);
+            mFSM.ChangeState(Enum_SokobanProcedure.GameExitFlash);
         }
     }
 }

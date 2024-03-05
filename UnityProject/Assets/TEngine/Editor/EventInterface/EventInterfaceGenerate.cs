@@ -20,7 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using TEngine;
-using Unity.EditorCoroutines.Editor;
+// using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -96,7 +96,7 @@ public static class EventInterfaceGenerate
         Debug.Log("Generate EventInterface Complete");
         // EditorUtility.DisplayDialog("提示", "代码生成完毕", "OK");
 
-        EditorCoroutineUtility.StartCoroutine(EventInterfaceGenerateTag.Reset(), null);
+        // EditorCoroutineUtility.StartCoroutine(EventInterfaceGenerateTag.Reset(), null);
     }
 
     /// <summary>

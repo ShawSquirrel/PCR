@@ -1,4 +1,5 @@
-﻿using TEngine;
+﻿using DG.Tweening;
+using TEngine;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -9,6 +10,8 @@ namespace GameLogic.Sokoban
         public Transform PlayRoot { get; private set; }
         public Vector3 Pos { get; private set; }
         public GameObject Character { get; private set; }
+
+        public bool IsMoving;
 
         public override void Awake()
         {
@@ -37,6 +40,14 @@ namespace GameLogic.Sokoban
         {
             Pos = new Vector3(pos.x, pos.y);
             Character.transform.position = Pos;
+        }
+        public void SetPos(Vector2Int pos, float time)
+        {
+            IsMoving = true;
+            
+            Pos = new Vector3(pos.x, pos.y);
+            // Character.transform.position = Pos;
+            Character.transform.DOMove(Pos, time).OnComplete(() => IsMoving = false);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace GameLogic
         public RenderTexture _RenderTexture;
     }
 
-    [Window(UILayer.UI)]
+    [Window(UILayer.Bottom)]
     class UI_Video : UIWindow
     {
         #region 脚本工具生成的代码

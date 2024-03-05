@@ -54,7 +54,12 @@ namespace GameLogic.Sokoban
         protected override void OnMenu()
         {
             _Root.OnReset();
-            base.OnMenu();
+
+            GameRoot._Instance.OpenFlash(() => mFSM.ChangeState(Enum_SokobanProcedure.GameMenu));
+            // GameModule.Setting.SetInt(Setting.NextSokobanProcedure, (int)Enum_SokobanProcedure.GameMenu);
+            // mFSM.ChangeState(Enum_SokobanProcedure.GameCompleteFlash);
+
+            // mFSM.ChangeState(Enum_SokobanProcedure.GameMenu);
         }
 
         protected override void OnExit()

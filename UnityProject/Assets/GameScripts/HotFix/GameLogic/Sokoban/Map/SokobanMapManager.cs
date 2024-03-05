@@ -134,6 +134,7 @@ namespace GameLogic.Sokoban
 
         public void Move(Vector2Int dir)
         {
+            if (SokobanGameRoot._Instance._Player.IsMoving) return;
             Vector2Int originPos = _PlayerPos;
             Vector2Int newPos = _PlayerPos + dir;
             Vector2Int originPos_Add2 = _PlayerPos + dir * 2;
@@ -183,16 +184,16 @@ namespace GameLogic.Sokoban
             }
 
 
-            bool isCompelte = true;
+            bool isComplete = true;
             foreach (Vector2Int pos in _List_TargetPos)
             {
-                isCompelte = isCompelte && IsEqual(_Dict_Map[pos].Type, (Enum_MaptemType)12);
+                isComplete = isComplete && IsEqual(_Dict_Map[pos].Type, (Enum_MaptemType)12);
             }
 
 
             UpdatePlayerPos(newPos);
 
-            if (isCompelte)
+            if (isComplete)
             {
                 GameEvent.Send(UIEvent.Sokoban_Success);
             }
@@ -200,7 +201,7 @@ namespace GameLogic.Sokoban
 
         private static void UpdatePlayerPos(Vector2Int newPos)
         {
-            SokobanGameRoot._Instance._Player.SetPos(newPos);
+            SokobanGameRoot._Instance._Player.SetPos(newPos, 1f);
         }
     }
 }

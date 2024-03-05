@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TEngine;
 using UnityEngine;
@@ -9,6 +8,7 @@ namespace GameLogic.Sokoban
     public class SokobanProcedureBase : AbstractState<Enum_SokobanProcedure, ProcedureSokoban>
     {
         public SokobanGameRoot _Root => SokobanGameRoot._Instance;
+
         public SokobanProcedureBase(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
         {
         }
@@ -16,6 +16,7 @@ namespace GameLogic.Sokoban
         protected override void OnEnter()
         {
             RegisterEvent();
+            Log.Info($"当前的状态 {mFSM.CurrentStateId}");
             base.OnEnter();
         }
 
@@ -49,15 +50,17 @@ namespace GameLogic.Sokoban
             _Root._Level.NextLevel();
             mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
         }
-        
+
         protected void OnSelectLevelEvent(string levelName)
         {
             if (_Root._Level.SetCurLoadLevel(levelName))
             {
-                mFSM.ChangeState(Enum_SokobanProcedure.GameLoading);
+                // GameModule.Setting.SetInt(Setting.NextSokobanProcedure, (int)Enum_SokobanProcedure.GameLoading);
+                // mFSM.ChangeState(Enum_SokobanProcedure.GameEnterFlash);
+                GameRoot._Instance.OpenFlash(() => mFSM.ChangeState(Enum_SokobanProcedure.GameLoading));
             }
         }
-        
+
         protected void OnMakeMap()
         {
             mFSM.ChangeState(Enum_SokobanProcedure.GameMakeMap);
@@ -66,34 +69,44 @@ namespace GameLogic.Sokoban
 
         #region Flash
 
+        // protected override void OnUpdate()
+        // {
+        //     base.OnUpdate();
+        //     Log.Info(_mat == null);
+        // }
+
         private Material _mat;
-        public async Task FlashStart()
+
+        public async UniTask FlashStart()
         {
             _mat = GameModule.Resource.LoadAsset<Material>("Mat_UIFlash");
-            GameModule.UI.ShowUI<UI_Flash>(new UI_FlashData() { _Material = _mat });
+            GameModule.UI.ShowUI<UI_Flash>(_mat);
 
             bool isComplete = false;
 
-            DOTween.To(() => -1, value => _mat.SetFloat("_Add", value), 1, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+            DOTween.To(() => -1f, value => _mat.SetFloat("_Add", value), 1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
 
             while (!isComplete)
             {
                 await UniTask.DelayFrame(1);
             }
         }
-        public async Task FlashEnd()
+
+        public async UniTask FlashEnd()
         {
+            _mat = GameModule.Resource.LoadAsset<Material>("Mat_UIFlash");
             bool isComplete = false;
 
-            DOTween.To(() => 1, value => _mat.SetFloat("_Add", value), -1, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+            DOTween.To(() => 1f, value => _mat.SetFloat("_Add", value), -1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
 
             while (!isComplete)
             {
                 await UniTask.DelayFrame(1);
             }
+
+            GameModule.UI.CloseWindow<UI_Flash>();
         }
 
         #endregion
-
     }
 }

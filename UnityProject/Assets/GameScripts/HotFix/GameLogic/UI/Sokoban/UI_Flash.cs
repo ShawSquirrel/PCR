@@ -4,11 +4,7 @@ using TEngine;
 
 namespace GameLogic
 {
-    public class UI_FlashData
-    {
-        public Material _Material;
-    }
-    [Window(UILayer.UI)]
+    [Window(UILayer.Top)]
     class UI_Flash : UIWindow
     {
         #region 脚本工具生成的代码
@@ -22,7 +18,7 @@ namespace GameLogic
         public override void OnCreate()
         {
             base.OnCreate();
-            _Img_Bg.material = (UserData as UI_FlashData)._Material;
+            _Img_Bg.material = UserData as Material;
         }
 
         #region 事件

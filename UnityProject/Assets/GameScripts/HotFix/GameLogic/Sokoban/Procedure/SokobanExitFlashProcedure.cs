@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace GameLogic.Sokoban
 {
-    public class SokobanEnterFlashProcedure : SokobanProcedureBase
+    public class SokobanExitFlashProcedure : SokobanProcedureBase
     {
-        public SokobanEnterFlashProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
+        public SokobanExitFlashProcedure(FSM<Enum_SokobanProcedure> fsm, ProcedureSokoban target) : base(fsm, target)
         {
         }
 
@@ -13,7 +13,7 @@ namespace GameLogic.Sokoban
         {
             base.OnEnter();
             
-            await FlashStart();
+            await FlashEnd();
             Enum_SokobanProcedure nextProcedure = (Enum_SokobanProcedure)GameModule.Setting.GetInt(Setting.NextSokobanProcedure);
             mFSM.ChangeState(nextProcedure);
         }

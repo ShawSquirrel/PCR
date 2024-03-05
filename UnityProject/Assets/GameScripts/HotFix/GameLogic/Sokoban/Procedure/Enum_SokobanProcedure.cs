@@ -7,6 +7,10 @@
         GameLaunching,
         GameSuccess,
         GameMakeMap,
-        GameFlash
+        GameEnterFlash,
+        GameExitFlash,
+        GameCompleteFlash,
+        
+        
     }
 }
