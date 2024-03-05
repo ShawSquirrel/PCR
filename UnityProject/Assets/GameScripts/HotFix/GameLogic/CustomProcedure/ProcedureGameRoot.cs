@@ -6,7 +6,6 @@ namespace GameLogic
 {
     public class ProcedureGameRoot : CustomProcedureBase
     {
-
         public ProcedureGameRoot(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
             Game._GameRoot = new GameObject("GameRoot").AddComponent<GameRoot>();
@@ -16,12 +15,14 @@ namespace GameLogic
         {
             base.RegisterEvent();
             GameEvent.AddEventListener(UIEvent.Sokoban_StartGame, StartSokoban);
+            GameEvent.AddEventListener(SurvivorEvent.Survivor_StartGame, OnSurvivorStartGame);
         }
 
         protected override void RemoveEvent()
         {
             base.RegisterEvent();
             GameEvent.RemoveEventListener(UIEvent.Sokoban_StartGame, StartSokoban);
+            GameEvent.RemoveEventListener(SurvivorEvent.Survivor_StartGame, OnSurvivorStartGame);
         }
 
         protected override void OnEnter()
@@ -36,6 +37,20 @@ namespace GameLogic
         {
             mFSM.AddState(Enum_Procedure.SokobanGame, new ProcedureSokoban(mFSM, mTarget));
             mFSM.ChangeState(Enum_Procedure.SokobanGame);
+        }
+
+
+        /// <summary>
+        /// 开始幸存者游戏
+        /// </summary>
+        private void OnSurvivorStartGame()
+        {
+            GameRoot._Instance.OpenFlash(() =>
+            {
+                GameModule.UI.CloseWindow<UI_Menu>();
+                mFSM.AddState(Enum_Procedure.SurvivorGame, new ProcedureSurvivor(mFSM, mTarget));
+                mFSM.ChangeState(Enum_Procedure.SurvivorGame);
+            });
         }
     }
 }

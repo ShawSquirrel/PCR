@@ -13,7 +13,49 @@ namespace GameLogic
 
         protected void Awake()
         {
-            GameEvent.AddEventListener(UIEvent.PauseVideo, PauseVideo);
+            AddListen();
+        }
+
+        private void OnDestroy()
+        {
+            RemoveListen();
+        }
+
+        /// <summary>
+        /// 移除监听
+        /// </summary>
+        private void RemoveListen()
+        {
+            
+        }
+
+        /// <summary>
+        /// 添加监听
+        /// </summary>
+        private void AddListen()
+        {
+           
+        }
+
+
+        #region VideoUI()
+
+        public void CloseVideoUI()
+        {
+            if (GameModule.UI.HasWindow<UI_Video>())
+            {
+                GameModule.UI.CloseWindow<UI_Video>();
+                PauseVideo();
+            }
+        }
+
+        public void OpenVideoUI()
+        {
+            if (!GameModule.UI.HasWindow<UI_Video>())
+            {
+                RenderTexture renderTexture = PlayVideo();
+                GameModule.UI.ShowUI<UI_Video>(new UI_VideoData() { _RenderTexture = renderTexture });
+            }
         }
 
         public RenderTexture PlayVideo()
@@ -27,25 +69,6 @@ namespace GameLogic
         public void PauseVideo()
         {
             CustomModule.VideoModule.Release();
-        }
-
-        #region VideoUI()
-
-        public void CloseVideoUI()
-        {
-            if (GameModule.UI.HasWindow<UI_Video>())
-            {
-                GameModule.UI.CloseWindow<UI_Video>();
-            }
-        }
-
-        public void OpenVideoUI()
-        {
-            if (!GameModule.UI.HasWindow<UI_Video>())
-            {
-                RenderTexture renderTexture = PlayVideo();
-                GameModule.UI.ShowUI<UI_Video>(new UI_VideoData() { _RenderTexture = renderTexture });
-            }
         }
 
         #endregion

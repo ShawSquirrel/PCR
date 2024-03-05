@@ -1,4 +1,5 @@
 ﻿using GameLogic.Sokoban;
+using GameLogic.Survivor;
 
 namespace GameLogic
 {
@@ -6,5 +7,6 @@ namespace GameLogic
     {
         public static GameRoot _GameRoot;
         public static SokobanGameRoot _SokobanGameRoot;
+        public static SurvivorGameRoot _SurvivorGameRoot;
     }
 }

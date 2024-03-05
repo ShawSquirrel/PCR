@@ -13,5 +13,16 @@ namespace GameBase
         {
             
         }
+        public virtual void OnDestroy()
+        {
+            
+        }
+        public virtual void OnReset()
+        {
+            
+        }
+        
+        
+        
     }
 }

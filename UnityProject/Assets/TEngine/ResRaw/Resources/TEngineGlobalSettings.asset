@@ -74,6 +74,8 @@ MonoBehaviour:
       componentName: CanvasGroup
     - uiElementRegex: _Toggle_
       componentName: Toggle
+    - uiElementRegex: _Event_
+      componentName: EventTrigger
   m_BybridCLRCustomGlobalSettings:
     m_Enable: 1
     HotUpdateAssemblies:

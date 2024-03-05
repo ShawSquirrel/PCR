@@ -13,6 +13,8 @@ namespace GameLogic.Sokoban
         {
             base.OnEnter();
 
+            GameRoot._Instance.CloseVideoUI();
+            
             GameModule.UI.ShowUI<UI_MakeMap>();
 
             _Root._Make.LoadMakeMapScene();

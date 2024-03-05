@@ -48,6 +48,16 @@ namespace GameBase
 
             return (T)t;
         }
+        
+        public void RemoveManager<T>() where T : Manager, new()
+        {
+            if (_Dict_Manager.TryGetValue(typeof(T), out var t))
+            {
+                T target = t as T;
+                target.OnDestroy();
+                Destroy(target._Obj);
+            }
+        } 
 
         public T GetManager<T>() where T : Manager
         {
