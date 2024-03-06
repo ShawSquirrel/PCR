@@ -28,6 +28,11 @@ namespace GameBase
         {
         }
 
+        public virtual void Init()
+        {
+            
+        }
+
         public virtual void Addlisten()
         {
         }
