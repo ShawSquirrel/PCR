@@ -9,14 +9,23 @@ namespace GameLogic.Survivor
 
         public PlayerInputManager _Input;
         public CharacterManager _Character;
+        public CameraManager _Camera;
 
         private  void Awake()
         {
             _Input = AddManager<PlayerInputManager>();
             _Character = AddManager<CharacterManager>();
+            _Camera = AddManager<CameraManager>();
             
             
-            _Character.LoadCharacter("优衣");
+            
+        }
+
+        private void Start()
+        {
+            _Camera.Init();
+            _Character.Init();
+            _Camera.SetFollowAndLookAt(_Character.TFCharacter);
         }
     }
 }
