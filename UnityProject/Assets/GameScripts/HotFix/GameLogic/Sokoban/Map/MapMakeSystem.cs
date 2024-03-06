@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameLogic.Sokoban
 {
-    public class MapMakeManager : GameBase.Manager
+    public class MapMakeSystem : GameBase.System
     {
         public Dictionary<Vector2Int, MakeMapItem> _Dict_MakeItem = new Dictionary<Vector2Int, MakeMapItem>();
 

@@ -8,7 +8,8 @@ namespace GameLogic
     {
         public ProcedureGameRoot(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
-            Game._GameRoot = new GameObject("GameRoot").AddComponent<GameRoot>();
+            GameObject obj = new GameObject("GameRoot");
+            Game._GameRoot = new GameRoot(obj);
         }
 
         protected override void RegisterEvent()

@@ -1,9 +1,10 @@
 ﻿using System;
+using TEngine;
 using UnityEngine;
 
 namespace GameLogic.Sokoban
 {
-    public class PlayerInputManager : GameBase.Manager
+    public class PlayerInputSystem : GameBase.System
     {
         public static Action PlayerLeftEvent;
         public static Action PlayerRightEvent;
@@ -13,8 +14,7 @@ namespace GameLogic.Sokoban
         public override void Awake()
         {
             base.Awake();
-            _GameRoot.OnUpdate += OnUpdate;
-
+            Utility.Unity.AddUpdateListener(OnUpdate);
         }
 
         private void OnUpdate()

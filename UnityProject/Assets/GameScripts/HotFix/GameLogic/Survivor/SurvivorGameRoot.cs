@@ -1,22 +1,25 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace GameLogic.Survivor
 {
     public class SurvivorGameRoot : GameBase.GameRoot
     {
-        public static SurvivorGameRoot Instance => Game._SurvivorGameRoot;
+        public InputSystem _Input;
+        public CharacterSystem _Character;
 
-        public PlayerInputManager _Input;
-        public CharacterManager _Character;
-
-        private  void Awake()
+        protected override void Awake()
         {
-            _Input = AddManager<PlayerInputManager>();
-            _Character = AddManager<CharacterManager>();
+            _Input = AddManager<InputSystem>();
+            _Character = AddManager<CharacterSystem>();
             
             
             _Character.LoadCharacter("优衣");
+        }
+
+        public SurvivorGameRoot(GameObject obj) : base(obj)
+        {
         }
     }
 }

@@ -11,7 +11,7 @@ namespace GameLogic.Sokoban
         public Dictionary<Vector2Int, Enum_MaptemType> _Dict_Map = new Dictionary<Vector2Int, Enum_MaptemType>();
     }
 
-    public class SokobanLevelManager : GameBase.Manager
+    public class SokobanLevelSystem : GameBase.System
     {
         public List<SokobanLevelItem> _List_Level = new List<SokobanLevelItem>();
         public SokobanLevelItem _CurLevel;

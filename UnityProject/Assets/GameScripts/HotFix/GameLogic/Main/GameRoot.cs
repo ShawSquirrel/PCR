@@ -79,7 +79,7 @@ namespace GameLogic
 
         public void StartFlash(Action action = null)
         {
-            StartCoroutine(OpenFlash(action));
+            Utility.Unity.StartCoroutine(OpenFlash(action));
         }
         public IEnumerator OpenFlash(Action action = null)
         {
@@ -123,5 +123,9 @@ namespace GameLogic
         }
 
         #endregion
+
+        public GameRoot(GameObject obj) : base(obj)
+        {
+        }
     }
 }

@@ -1,25 +1,26 @@
 ﻿using TEngine;
+using UnityEngine;
 
 namespace GameLogic.Sokoban
 {
     public class SokobanGameRoot : GameBase.GameRoot
     {
         public static SokobanGameRoot _Instance => Game._SokobanGameRoot;
-        public SokobanMapManager _Map => GetManager<SokobanMapManager>();
-        public PlayerInputManager _Input => GetManager<PlayerInputManager>();
-        public PlayerManager _Player => GetManager<PlayerManager>();
-        public CameraManager _Camera => GetManager<CameraManager>();
-        public SokobanLevelManager _Level => GetManager<SokobanLevelManager>();
-        public MapMakeManager _Make => GetManager<MapMakeManager>();
+        public SokobanMapSystem _Map => GetManager<SokobanMapSystem>();
+        public PlayerInputSystem _Input => GetManager<PlayerInputSystem>();
+        public PlayerSystem _Player => GetManager<PlayerSystem>();
+        public CameraSystem _Camera => GetManager<CameraSystem>();
+        public SokobanLevelSystem _Level => GetManager<SokobanLevelSystem>();
+        public MapMakeSystem _Make => GetManager<MapMakeSystem>();
 
-        protected void Awake()
+        protected override void Awake()
         {
-            AddManager<SokobanLevelManager>();
-            AddManager<SokobanMapManager>();
-            AddManager<PlayerInputManager>();
-            AddManager<PlayerManager>();
-            AddManager<CameraManager>();
-            AddManager<MapMakeManager>();
+            AddManager<SokobanLevelSystem>();
+            AddManager<SokobanMapSystem>();
+            AddManager<PlayerInputSystem>();
+            AddManager<PlayerSystem>();
+            AddManager<CameraSystem>();
+            AddManager<MapMakeSystem>();
 
         }
 
@@ -32,8 +33,10 @@ namespace GameLogic.Sokoban
             _Level.OnReset();
             _Make.OnReset();
         }
-        
-        
-        
+
+
+        public SokobanGameRoot(GameObject obj) : base(obj)
+        {
+        }
     }
 }

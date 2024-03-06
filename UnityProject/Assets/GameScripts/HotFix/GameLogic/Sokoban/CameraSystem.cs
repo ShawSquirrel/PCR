@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameLogic.Sokoban
 {
-    public class CameraManager : GameBase.Manager
+    public class CameraSystem : GameBase.System
     {
         private CinemachineVirtualCamera _camera;
         private LeanDragCamera _leanDragCamera;

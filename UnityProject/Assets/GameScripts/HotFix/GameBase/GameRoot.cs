@@ -1,35 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using TEngine;
 using UnityEngine;
 
 namespace GameBase
 {
-    public class GameRoot : MonoBehaviour
+    public abstract class GameRoot
     {
-        public Action OnUpdate;
-        
-        
-        private Dictionary<Type, Manager> _Dict_Manager = new Dictionary<Type, Manager>();
+        private UnityArgs _unityArgs;
 
-        private Transform _managerRoot;
-        private Transform _controllerRoot;
+        private Dictionary<Type, System> _Dict_Manager = new Dictionary<Type, System>();
 
-        public Transform _ManagerRoot
+        public GameRoot(GameObject obj)
+        {
+            _unityArgs = new UnityArgs { _Obj = obj, _TF = obj.transform };
+            Awake();
+        }
+
+        private Transform _systemRoot;
+
+        private Transform SystemRoot
         {
             get
             {
-                if (_managerRoot == null)
+                if (_systemRoot == null)
                 {
-                    _managerRoot = new GameObject("ManagerRoot").transform;
-                    _managerRoot.transform.SetParent(transform);
+                    _systemRoot = new GameObject("SystemRoot").transform;
+                    _systemRoot.transform.SetParent(_unityArgs._TF);
                 }
 
-                return _managerRoot;
+                return _systemRoot;
             }
         }
 
 
-        public T AddManager<T>() where T : Manager, new()
+        protected T AddManager<T>() where T : System, new()
         {
             if (_Dict_Manager.TryGetValue(typeof(T), out var t))
             {
@@ -37,29 +42,29 @@ namespace GameBase
             }
 
             GameObject obj = new GameObject($"{typeof(T).Name}");
-            obj.transform.SetParent(_ManagerRoot);
-            t = new T();
-            t._Obj = obj;
-            t._TF = obj.transform;
+            obj.transform.SetParent(SystemRoot);
+            t           = new T();
+            t._Obj      = obj;
+            t._TF       = obj.transform;
             t._GameRoot = this;
             _Dict_Manager.Add(typeof(T), t);
-            
+
             t.Awake();
 
             return (T)t;
         }
-        
-        public void RemoveManager<T>() where T : Manager, new()
+
+        protected void RemoveManager<T>() where T : System, new()
         {
             if (_Dict_Manager.TryGetValue(typeof(T), out var t))
             {
                 T target = t as T;
                 target.OnDestroy();
-                Destroy(target._Obj);
+                GameObject.Destroy(target._Obj);
             }
-        } 
+        }
 
-        public T GetManager<T>() where T : Manager
+        protected T GetManager<T>() where T : System
         {
             if (_Dict_Manager.TryGetValue(typeof(T), out var t))
             {
@@ -69,10 +74,9 @@ namespace GameBase
             return null;
         }
 
-
-        private void Update()
+        protected virtual void Awake()
         {
-            OnUpdate?.Invoke();
+            
         }
     }
 }

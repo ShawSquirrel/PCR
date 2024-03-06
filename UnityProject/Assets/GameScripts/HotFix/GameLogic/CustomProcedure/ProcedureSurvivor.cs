@@ -13,7 +13,7 @@ namespace GameLogic
 
         public ProcedureSurvivor(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
-            Game._SurvivorGameRoot = new GameObject("SurvivorGameRoot").AddComponent<SurvivorGameRoot>();
+            Game._SurvivorGameRoot = new SurvivorGameRoot(new GameObject("SurvivorGameRoot"));
 
             _fsm.AddState(Enum_SurvivorProcedure.Menu, new SurvivorMenuProcedure(_fsm, this));
             _fsm.AddState(Enum_SurvivorProcedure.GameLaunching, new SurvivorLaunchingProcedure(_fsm, this));

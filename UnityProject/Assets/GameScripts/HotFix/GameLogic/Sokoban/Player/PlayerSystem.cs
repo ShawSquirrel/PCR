@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 namespace GameLogic.Sokoban
 {
-    public class PlayerManager : GameBase.Manager
+    public class PlayerSystem : GameBase.System
     {
         public Transform PlayRoot { get; private set; }
         public Vector3 Pos { get; private set; }

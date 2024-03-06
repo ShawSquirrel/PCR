@@ -16,7 +16,7 @@ namespace GameBase
 
         public void Refresh()
         {
-            _startTick = System.DateTime.Now.Ticks;
+            _startTick = global::System.DateTime.Now.Ticks;
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace GameBase
         /// <returns></returns>
         public float ElapseTime()
         {
-            long endTick = System.DateTime.Now.Ticks;
+            long endTick = global::System.DateTime.Now.Ticks;
             return (float)((endTick - _startTick) / 10000) / 1000.0f;
         }
 

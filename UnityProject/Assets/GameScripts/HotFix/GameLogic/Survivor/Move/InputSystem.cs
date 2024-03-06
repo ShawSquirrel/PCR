@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class PlayerInputManager : Manager
+    public class InputSystem : GameBase.System
     {
         public Vector2 _BeginDragPos;
 

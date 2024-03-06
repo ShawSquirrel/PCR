@@ -8,7 +8,7 @@ namespace GameLogic.Survivor
     {
         public const float _MoveSpeed = 3f;
     }
-    public class CharacterManager : Manager
+    public class CharacterSystem : GameBase.System
     {
         private GameObject _character;
         private Rigidbody2D _rigidbody2D;

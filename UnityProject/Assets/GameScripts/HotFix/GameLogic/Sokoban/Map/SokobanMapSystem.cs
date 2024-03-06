@@ -9,7 +9,7 @@ namespace GameLogic.Sokoban
 {
 
 
-    public class SokobanMapManager : GameBase.Manager
+    public class SokobanMapSystem : GameBase.System
     {
         public Dictionary<Vector2Int, SokobanMapItem> _Dict_Map = new Dictionary<Vector2Int, SokobanMapItem>();
         public Dictionary<Enum_MaptemType, Sprite> _Dict_Sprite = new Dictionary<Enum_MaptemType, Sprite>();
@@ -35,17 +35,17 @@ namespace GameLogic.Sokoban
 
         public void AddListen()
         {
-            PlayerInputManager.PlayerUpEvent += MoveUp;
-            PlayerInputManager.PlayerDownEvent += MoveDown;
-            PlayerInputManager.PlayerLeftEvent += MoveLeft;
-            PlayerInputManager.PlayerRightEvent += MoveRight;
+            PlayerInputSystem.PlayerUpEvent += MoveUp;
+            PlayerInputSystem.PlayerDownEvent += MoveDown;
+            PlayerInputSystem.PlayerLeftEvent += MoveLeft;
+            PlayerInputSystem.PlayerRightEvent += MoveRight;
         }
         public void RemoveListen()
         {
-            PlayerInputManager.PlayerUpEvent -= MoveUp;
-            PlayerInputManager.PlayerDownEvent -= MoveDown;
-            PlayerInputManager.PlayerLeftEvent -= MoveLeft;
-            PlayerInputManager.PlayerRightEvent -= MoveRight;
+            PlayerInputSystem.PlayerUpEvent -= MoveUp;
+            PlayerInputSystem.PlayerDownEvent -= MoveDown;
+            PlayerInputSystem.PlayerLeftEvent -= MoveLeft;
+            PlayerInputSystem.PlayerRightEvent -= MoveRight;
         }
 
         private void LoadMap()
