@@ -3,10 +3,9 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class CharacterProcedureBase : AbstractState<Enum_ChracterState, CharacterManager>
+    public class CharacterProcedureBase : AbstractState<Enum_ChracterState, CharacterCtl>
     {
-        public CharacterCtl Controller => mTarget.CharacterCtl;
-        public CharacterProcedureBase(FSM<Enum_ChracterState> fsm, CharacterManager target) : base(fsm, target)
+        public CharacterProcedureBase(FSM<Enum_ChracterState> fsm, CharacterCtl target) : base(fsm, target)
         {
         }
     }

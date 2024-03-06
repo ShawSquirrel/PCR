@@ -3,7 +3,7 @@ using GameBase;
 
 namespace GameLogic.Survivor
 {
-    public class EnemyManager : Manager
+    public class EnemyManager : GameBase.System
     {
         public List<EnemyController> _List_Enemy;
         public override void Init()

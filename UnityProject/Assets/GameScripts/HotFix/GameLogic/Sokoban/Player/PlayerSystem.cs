@@ -11,7 +11,7 @@ namespace GameLogic.Sokoban
         public Vector3 Pos { get; private set; }
         public GameObject Character { get; private set; }
 
-        public bool IsMoving;
+        // public bool IsMoving;
 
         public override void Awake()
         {
@@ -43,11 +43,11 @@ namespace GameLogic.Sokoban
         }
         public void SetPos(Vector2Int pos, float time)
         {
-            IsMoving = true;
+            // IsMoving = true;
             
             Pos = new Vector3(pos.x, pos.y);
-            // Character.transform.position = Pos;
-            Character.transform.DOMove(Pos, time).OnComplete(() => IsMoving = false);
+            Character.transform.position = Pos;
+            // Character.transform.DOMove(Pos, time).OnComplete(() => IsMoving = false);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace GameBase
 
         public virtual void Awake()
         {
-            Addlisten();
+            AddListen();
         }
 
         public virtual void OnDestroy()
@@ -33,7 +33,7 @@ namespace GameBase
             
         }
 
-        public virtual void Addlisten()
+        public virtual void AddListen()
         {
         }
 

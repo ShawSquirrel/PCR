@@ -55,7 +55,7 @@ namespace GameLogic.Sokoban
         {
             _Root.OnReset();
 
-            GameRoot._Instance.OpenFlash(() => mFSM.ChangeState(Enum_SokobanProcedure.GameMenu));
+            GameRoot._Instance.StartFlash(() => mFSM.ChangeState(Enum_SokobanProcedure.GameMenu));
             // GameModule.Setting.SetInt(Setting.NextSokobanProcedure, (int)Enum_SokobanProcedure.GameMenu);
             // mFSM.ChangeState(Enum_SokobanProcedure.GameCompleteFlash);
 

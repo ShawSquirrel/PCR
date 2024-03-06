@@ -1,30 +1,26 @@
-﻿using GameBase;
+﻿using System;
+using GameBase;
+using GameConfig;
 using TEngine;
 using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class CharacterData
-    {
-        public const float _MoveSpeed = 3f;
-    }
+
+
     public class CharacterSystem : GameBase.System
     {
         private GameObject _character;
-        private Rigidbody2D _rigidbody2D;
-        private AnimComponent _animComponent;
+        private CharacterCtl _characterCtl;
+        private FSM<Enum_ChracterState> _fsm;
 
-
-        public override void Addlisten()
+        public override void Awake()
         {
-            base.Addlisten();
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_Move, OnMove);
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_MoveStop, OnMove);
-        }
-
-        private void OnMove(Vector2 direct)
-        {
-            _rigidbody2D.velocity = direct * CharacterData._MoveSpeed;
+            base.Awake();
+            _fsm = new FSM<Enum_ChracterState>();
+            
+            Utility.Unity.AddUpdateListener(_fsm.Update);
+            
         }
 
         public void LoadCharacter(string name)
@@ -32,8 +28,13 @@ namespace GameLogic.Survivor
             _character      = GameModule.Resource.LoadAsset<GameObject>(name);
             _character.name = name;
             _character.transform.SetParent(_TF);
-            _rigidbody2D   = _character.GetComponent<Rigidbody2D>();
-            _animComponent = _character.GetComponentInChildren<AnimComponent>();
+
+            _characterCtl = new CharacterCtl(_character);
+            _fsm.AddState(Enum_ChracterState.Walk, new CharacterWalkProcedure(_fsm, _characterCtl));
+            _fsm.AddState(Enum_ChracterState.Idle, new CharacterIdleProcedure(_fsm, _characterCtl));
+            _fsm.AddState(Enum_ChracterState.Attack, new CharacterAttackProcedure(_fsm, _characterCtl));
+
+            _fsm.StartState(Enum_ChracterState.Walk);
         }
     }
 }

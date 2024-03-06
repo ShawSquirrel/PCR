@@ -165,13 +165,17 @@ namespace GameLogic
             _anim.AnimationState.SetAnimation(0, animName, loop);
         }
 
-
-        public EAnimState _TestState;
-
-        [Button("TestPlay")]
-        public void TestPlay()
+        public void SetFlip(bool isLeft)
         {
-            Play(_TestState);
+            _anim.initialFlipX = isLeft;
         }
+
+        // public EAnimState _TestState;
+        //
+        // [Button("TestPlay")]
+        // public void TestPlay()
+        // {
+        //     Play(_TestState);
+        // }
     }
 }

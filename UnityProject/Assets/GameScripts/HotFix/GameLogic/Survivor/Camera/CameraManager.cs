@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class CameraManager : GameBase.Manager
+    public class CameraManager : GameBase.System
     {
         private CinemachineVirtualCamera _camera;
         public override void Awake()

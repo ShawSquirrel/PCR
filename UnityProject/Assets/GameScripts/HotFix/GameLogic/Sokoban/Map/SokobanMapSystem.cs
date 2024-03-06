@@ -134,7 +134,7 @@ namespace GameLogic.Sokoban
 
         public void Move(Vector2Int dir)
         {
-            if (SokobanGameRoot._Instance._Player.IsMoving) return;
+            // if (SokobanGameRoot._Instance._Player.IsMoving) return;
             Vector2Int originPos = _PlayerPos;
             Vector2Int newPos = _PlayerPos + dir;
             Vector2Int originPos_Add2 = _PlayerPos + dir * 2;
