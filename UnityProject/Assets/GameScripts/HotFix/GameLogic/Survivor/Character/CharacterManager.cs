@@ -16,10 +16,11 @@ namespace GameLogic.Survivor
         private GameObject _character;
         private Rigidbody2D _rigidbody2D;
         private AnimComponent _animComponent;
-        private CharacterController _characterController;
+        private CharacterCtl _characterCtl;
         private FSM<Enum_ChracterState> _fsm;
 
         public Transform TFCharacter => _character.transform;
+        public CharacterCtl CharacterCtl => _characterCtl;
 
         public override void Init()
         {
@@ -61,7 +62,7 @@ namespace GameLogic.Survivor
             _character.transform.SetParent(_TF);
             _rigidbody2D = _character.GetComponent<Rigidbody2D>();
             _animComponent = _character.GetComponentInChildren<AnimComponent>();
-            _characterController = _character.AddComponent<CharacterController>();
+            _characterCtl = _character.AddComponent<CharacterCtl>();
         }
 
         public void PlayAnim(EAnimState animState, bool isLoop = false, Action onComplete = null)

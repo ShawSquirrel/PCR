@@ -1,5 +1,6 @@
 ﻿using GameConfig;
 using TEngine;
+using UnityEngine;
 
 namespace GameLogic.Survivor
 {
