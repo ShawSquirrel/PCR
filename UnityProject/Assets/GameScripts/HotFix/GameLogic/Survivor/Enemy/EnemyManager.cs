@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using GameBase;
+using TEngine;
+using UnityEngine;
 
 namespace GameLogic.Survivor
 {
@@ -12,9 +14,16 @@ namespace GameLogic.Survivor
             _List_Enemy = new List<EnemyController>();
         }
 
-        public void CreateEnemyManager(Enum_EnemyType type)
+        public void CreateEnemy()
         {
+            GameObject prefab = GameModule.Resource.LoadAsset<GameObject>("Quad1");
+
+            GameObject enemy = GameObject.Instantiate(prefab, _TF);
+            enemy.name = "Enemy";
+
+            enemy.AddComponent<EnemyController>();
             
+            GameObject.Destroy(prefab);
         }
     }
 }

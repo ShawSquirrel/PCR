@@ -14,6 +14,8 @@ namespace GameLogic.Survivor
         private CharacterCtl _characterCtl;
         private FSM<Enum_ChracterState> _fsm;
 
+        public Vector3 Pos => _character.transform.position;
+
         public override void Awake()
         {
             base.Awake();
