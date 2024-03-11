@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 97bd0f27afa898e4ca86e20ee950296b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - TsangerYuMo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 650083b2e96c745469a1fd334d13313b, type: 3}
+  - {fileID: 12800000, guid: d40617b69c2558945b0ac57a5768a534, type: 3}
+  - {fileID: 12800000, guid: c2925bdd6c4e7594785443f9beecbfed, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
