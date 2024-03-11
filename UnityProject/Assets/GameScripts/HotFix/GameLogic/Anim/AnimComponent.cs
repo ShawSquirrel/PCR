@@ -170,12 +170,12 @@ namespace GameLogic
             _anim.initialFlipX = isLeft;
         }
 
-        // public EAnimState _TestState;
-        //
-        // [Button("TestPlay")]
-        // public void TestPlay()
-        // {
-        //     Play(_TestState);
-        // }
+        public EAnimState _TestState;
+        
+        [Button("TestPlay")]
+        public void TestPlay()
+        {
+            Play(_TestState);
+        }
     }
 }

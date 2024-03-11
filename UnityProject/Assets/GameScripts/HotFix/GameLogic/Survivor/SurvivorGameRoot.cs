@@ -1,5 +1,4 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using TEngine;
 using UnityEngine;
 
 namespace GameLogic.Survivor
@@ -16,12 +15,24 @@ namespace GameLogic.Survivor
             _Character = AddManager<CharacterSystem>();
             _Enemy = AddManager<EnemyManager>();
             
-            _Character.LoadCharacter("优衣");
-            _Enemy.CreateEnemy();
+            _Character.LoadCharacter("佩可");
         }
 
         public SurvivorGameRoot(GameObject obj) : base(obj)
         {
+            Utility.Unity.AddUpdateListener(Update);
+        }
+
+        private float lastGenTime = 0;
+        private void Update()
+        {
+            if (lastGenTime > 5f)
+            {
+                _Enemy.CreateEnemy();
+                lastGenTime = 0;
+            }
+
+            lastGenTime += Time.deltaTime;
         }
     }
 }

@@ -20,13 +20,14 @@ namespace GameLogic.Sokoban
             PlayRoot.SetParent(_Obj.transform);
         }
 
-        public void LoadCharacter(string characterName)
+        public void LoadCharacter(string characterName, float offset = 0f)
         {
             GameObject character = GameModule.Resource.LoadAsset<GameObject>(characterName);
             character.name = characterName;
             character.transform.SetParent(PlayRoot);
             character.AddComponent<SortingGroup>().sortingLayerName = "Player";
-
+            character.transform.Find("Body").position               = Vector3.zero + new Vector3(0, offset);
+            
             Character = character;
         }
 

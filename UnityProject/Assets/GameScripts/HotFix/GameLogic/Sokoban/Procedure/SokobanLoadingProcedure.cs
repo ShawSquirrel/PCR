@@ -18,7 +18,7 @@ namespace GameLogic.Sokoban
             
             _Root._Map.CreateMap(levelItem._Dict_Map);
             
-            _Root._Player.LoadCharacter("优衣");
+            _Root._Player.LoadCharacter("优衣", -0.4f);
             
             _Root._Player.SetPos(_Root._Map._PlayerPos);
             

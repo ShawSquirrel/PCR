@@ -1,6 +1,7 @@
 ﻿using TEngine;
 using UnityEngine;
 using UnityEngine.Video;
+using AudioType = TEngine.AudioType;
 
 namespace GameLogic
 {
@@ -31,6 +32,8 @@ namespace GameLogic
             base.OnEnter();
             GameRoot._Instance.OpenVideoUI();
             GameModule.UI.ShowUI<UI_Menu>();
+
+            GameModule.Audio.Play(AudioType.Music, "公主连结-主题曲", true);
         }
 
 

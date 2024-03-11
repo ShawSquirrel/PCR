@@ -15,7 +15,8 @@ namespace GameLogic.Survivor
 
         private void Awake()
         {
-            _rigid = gameObject.AddComponent<Rigidbody2D>();
+            _rigid                = gameObject.AddComponent<Rigidbody2D>();
+            _rigid.freezeRotation = true;
         }
 
         private void Update()
