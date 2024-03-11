@@ -45,14 +45,14 @@ namespace GameLogic
 
         private void OnClick_Btn_MakeMapBtn()
         {
-            GameEvent.Send(UIEvent.Sokoban_MakeMap);
+            GameEvent.Send(UIEventID.Sokoban_MakeMap);
             Close();
         }
 
         private void SelectLevelByName(string name)
         {
             Log.Info(name);
-            GameEvent.Send(UIEvent.Sokoban_SelectLevel, name);
+            GameEvent.Send(UIEventID.Sokoban_SelectLevel, name);
             Close();
         }
     }

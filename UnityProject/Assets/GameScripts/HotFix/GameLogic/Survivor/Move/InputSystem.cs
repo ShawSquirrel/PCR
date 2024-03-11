@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class InputSystem : GameBase.System
+    public class InputSystem : GameBase.System, IRelease
     {
         public Vector2 _BeginDragPos;
 
@@ -16,15 +16,15 @@ namespace GameLogic.Survivor
 
         private void AddListen()
         {
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_BeginDragStick, OnBeginDrag);
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_DragStick, OnDrag);
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_EndDragStick, OnEndDrag);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_BeginDragStick, OnBeginDrag);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_DragStick, OnDrag);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_EndDragStick, OnEndDrag);
         }
 
         private void OnBeginDrag(Vector2 pos)
         {
             _BeginDragPos = pos;
-            GameEvent.Send<Vector2>(SurvivorEvent.Survivor_UIBeginDragStick, pos);
+            GameEvent.Send<Vector2>(EventID_Survivor.Survivor_UIBeginDragStick, pos);
         }
 
         private void OnDrag(Vector2 pos)
@@ -39,17 +39,22 @@ namespace GameLogic.Survivor
             {
                 handlePos =_BeginDragPos +  direct * 90;
             }
-            GameEvent.Send<Vector2>(SurvivorEvent.Survivor_UIDragStick, handlePos);
+            GameEvent.Send<Vector2>(EventID_Survivor.Survivor_UIDragStick, handlePos);
 
             
-            GameEvent.Send<Vector2>(SurvivorEvent.Survivor_Move, direct);
+            GameEvent.Send<Vector2>(EventID_Survivor.Survivor_Move, direct);
         }
 
         private void OnEndDrag(Vector2 pos)
         {
-            // Log.Info($"OnEndDrag {pos}");
-            GameEvent.Send(SurvivorEvent.Survivor_UIEndDragStick);
-            GameEvent.Send<Vector2>(SurvivorEvent.Survivor_MoveStop, new Vector2());
+            GameEvent.Send(EventID_Survivor.Survivor_UIEndDragStick);
+            GameEvent.Send<Vector2>(EventID_Survivor.Survivor_MoveStop, new Vector2());
+        }
+
+
+        public void Release()
+        {
+            
         }
     }
 }

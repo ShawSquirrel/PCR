@@ -19,15 +19,35 @@ namespace GameLogic.Survivor
         public CharacterData CharacterData => _characterData;
         public CharacterCtl(GameObject character)
         {
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_Move, OnMove);
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_MoveStop, OnMove);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_Move, OnMove);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_MoveStop, OnMove);
+            GameEvent.AddEventListener<IDamage>(EventID_Survivor.Survivor_Damage, OnDamage);
 
             _chracter      = character;
             _characterData = new CharacterData();
             _animComponent = character.GetComponentInChildren<AnimComponent>();
             _rigidbody2D   = character.GetComponent<Rigidbody2D>();
             
-            
+            Utility.Unity.AddUpdateListener(Update);
+        }
+
+        private void Update()
+        {
+            GameEvent.Send(UIEventID_Survivor.SetBlood, _characterData._HP / 100);
+        }
+
+        private void OnDamage(IDamage damage)
+        {
+            if (_characterData._HP <= 0)
+            {
+                return;
+            }
+            _characterData._HP -= damage.GetAtk();
+            if (_characterData._HP <= 0)
+            {
+                GameModule.UI.ShowUI<UI_Result>();
+                Time.timeScale = 0;
+            }
         }
 
         public void PlayAnim(EAnimState state, bool isloop = false, Action onComplete = null)
@@ -39,6 +59,9 @@ namespace GameLogic.Survivor
         {
             _characterData._Towards = direct;
         }
+        
+        
+        
 
         public void Move()
         {
@@ -76,6 +99,6 @@ namespace GameLogic.Survivor
 
             _chracter.transform.localScale = scale;
         }
-        
+
     }
 }

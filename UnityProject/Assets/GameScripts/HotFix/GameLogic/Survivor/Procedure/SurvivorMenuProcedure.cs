@@ -11,7 +11,7 @@ namespace GameLogic.Survivor
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener(SurvivorEvent.Survivor_StartGame, OnStartGame);
+            GameEvent.AddEventListener(EventID_Survivor.Survivor_StartGame, OnStartGame);
         }
 
         protected override void OnEnter()

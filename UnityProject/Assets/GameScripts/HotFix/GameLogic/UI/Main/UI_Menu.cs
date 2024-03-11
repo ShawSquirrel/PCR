@@ -1,4 +1,4 @@
-using UnityEngine;
+using GameLogic.Survivor;
 using UnityEngine.UI;
 using TEngine;
 
@@ -25,13 +25,13 @@ namespace GameLogic
 
         private void OnClick_Btn_SokobanBtn()
         {
-            GameEvent.Send(UIEvent.Sokoban_StartGame);
+            GameEvent.Send(UIEventID.Sokoban_StartGame);
             Close();
         }
 
         private void OnClick_Btn_SurvivorBtn()
         {
-            GameEvent.Send(SurvivorEvent.Survivor_StartGame);
+            GameEvent.Send(EventID_Survivor.Survivor_StartGame);
         }
     }
 }

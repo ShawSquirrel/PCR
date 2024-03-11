@@ -1,4 +1,5 @@
 ﻿using TEngine;
+using UnityEngine;
 
 namespace GameLogic.Survivor
 {
@@ -13,6 +14,8 @@ namespace GameLogic.Survivor
             base.OnEnter();
             Game._GameRoot.CloseVideoUI();
             GameModule.UI.ShowUI<UI_SurvivorStick>();
+            GameModule.UI.ShowUI<UI_Blood>();
+            Time.timeScale = 1;
         }
     }
 }

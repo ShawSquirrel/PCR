@@ -1,8 +1,7 @@
-using System.Collections.Generic;
+using GameLogic.Survivor;
 using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
-using UnityEngine.EventSystems;
 
 namespace GameLogic
 {
@@ -26,9 +25,9 @@ namespace GameLogic
             base.OnCreate();
             _Obj_Bg.AddComponent<GameLogic.Survivor.OnDragEvent>();
             
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_UIBeginDragStick, OnBeginDrag);
-            GameEvent.AddEventListener<Vector2>(SurvivorEvent.Survivor_UIDragStick, OnDrag);
-            GameEvent.AddEventListener(SurvivorEvent.Survivor_UIEndDragStick, OnEndDrag);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_UIBeginDragStick, OnBeginDrag);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_UIDragStick, OnDrag);
+            GameEvent.AddEventListener(EventID_Survivor.Survivor_UIEndDragStick, OnEndDrag);
 
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour, IDamage
     {
         public Enum_EnemyType _Type;
         public GameObject _Pos;
@@ -23,6 +23,12 @@ namespace GameLogic.Survivor
         {
             Vector2 direct = (PlayerPos - transform.position).normalized;
             _rigid.velocity = direct * 1;
+        }
+
+        public float GetAtk()
+        {
+            return 50;
+            return _Data._Atk;
         }
     }
 }

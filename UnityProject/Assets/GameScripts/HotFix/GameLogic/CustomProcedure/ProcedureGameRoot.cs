@@ -1,4 +1,5 @@
-﻿using TEngine;
+﻿using GameLogic.Survivor;
+using TEngine;
 using UnityEngine;
 using UnityEngine.Video;
 using AudioType = TEngine.AudioType;
@@ -16,15 +17,15 @@ namespace GameLogic
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener(UIEvent.Sokoban_StartGame, StartSokoban);
-            GameEvent.AddEventListener(SurvivorEvent.Survivor_StartGame, OnSurvivorStartGame);
+            GameEvent.AddEventListener(UIEventID.Sokoban_StartGame, StartSokoban);
+            GameEvent.AddEventListener(EventID_Survivor.Survivor_StartGame, OnSurvivorStartGame);
         }
 
         protected override void RemoveEvent()
         {
             base.RegisterEvent();
-            GameEvent.RemoveEventListener(UIEvent.Sokoban_StartGame, StartSokoban);
-            GameEvent.RemoveEventListener(SurvivorEvent.Survivor_StartGame, OnSurvivorStartGame);
+            GameEvent.RemoveEventListener(UIEventID.Sokoban_StartGame, StartSokoban);
+            GameEvent.RemoveEventListener(EventID_Survivor.Survivor_StartGame, OnSurvivorStartGame);
         }
 
         protected override void OnEnter()

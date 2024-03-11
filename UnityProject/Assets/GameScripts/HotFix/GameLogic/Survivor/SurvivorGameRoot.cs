@@ -1,4 +1,5 @@
-﻿using TEngine;
+﻿using System.Collections.Generic;
+using TEngine;
 using UnityEngine;
 
 namespace GameLogic.Survivor
@@ -7,20 +8,41 @@ namespace GameLogic.Survivor
     {
         public InputSystem _Input;
         public CharacterSystem _Character;
-        public EnemyManager _Enemy;
+        public EnemySystem _Enemy;
+        public UIEvent _UIEvent;
 
-        protected override void Awake()
+        protected override void Init()
         {
+            base.Init();
+            Utility.Unity.AddUpdateListener(Update);
+            GameEvent.AddEventListener(EventID_Survivor.Survivor_Release, Release);
             _Input = AddManager<InputSystem>();
             _Character = AddManager<CharacterSystem>();
-            _Enemy = AddManager<EnemyManager>();
+            _Enemy = AddManager<EnemySystem>();
+
+            _UIEvent = new UIEvent();
+            _UIEvent.AddListen();
             
             _Character.LoadCharacter("佩可");
         }
 
+        protected override void Release()
+        {
+            base.Release();
+            _Input.Release();
+            _Character.Release();
+            _Enemy.Release();
+        }
+
+        protected override void Destroy()
+        {
+            base.Destroy();
+            _UIEvent.RemoveListen();
+            _UIEvent = null;
+        }
+
         public SurvivorGameRoot(GameObject obj) : base(obj)
         {
-            Utility.Unity.AddUpdateListener(Update);
         }
 
         private float lastGenTime = 0;

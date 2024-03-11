@@ -1,3 +1,4 @@
+using GameLogic.Survivor;
 using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
@@ -33,7 +34,7 @@ namespace GameLogic
 
         private void OnClick_Btn_StartGameBtn()
         {
-            GameEvent.Send(SurvivorEvent.Survivor_StartGame);
+            GameEvent.Send(EventID_Survivor.Survivor_StartGame);
         }
 
         private void OnClick_Btn_UpgradeBtn()

@@ -17,17 +17,17 @@ namespace GameLogic.Sokoban
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener(UIEvent.Sokoban_Menu, OnMenu);
-            GameEvent.AddEventListener(UIEvent.Sokoban_Restart, OnRestart);
-            GameEvent.AddEventListener(UIEvent.Sokoban_NextLevel, OnNextLevel);
+            GameEvent.AddEventListener(UIEventID.Sokoban_Menu, OnMenu);
+            GameEvent.AddEventListener(UIEventID.Sokoban_Restart, OnRestart);
+            GameEvent.AddEventListener(UIEventID.Sokoban_NextLevel, OnNextLevel);
         }
 
         protected override void RemoveEvent()
         {
             base.RemoveEvent();
-            GameEvent.RemoveEventListener(UIEvent.Sokoban_Menu, OnMenu);
-            GameEvent.RemoveEventListener(UIEvent.Sokoban_Restart, OnRestart);
-            GameEvent.RemoveEventListener(UIEvent.Sokoban_NextLevel, OnNextLevel);
+            GameEvent.RemoveEventListener(UIEventID.Sokoban_Menu, OnMenu);
+            GameEvent.RemoveEventListener(UIEventID.Sokoban_Restart, OnRestart);
+            GameEvent.RemoveEventListener(UIEventID.Sokoban_NextLevel, OnNextLevel);
         }
 
 

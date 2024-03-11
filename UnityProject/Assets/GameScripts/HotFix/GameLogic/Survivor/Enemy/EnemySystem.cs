@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class EnemyManager : GameBase.System
+    public class EnemySystem : GameBase.System, IRelease
     {
         public List<EnemyController> _List_Enemy;
         public Vector3 PlayerPos => Game._SurvivorGameRoot._Character.Pos;
 
-        public override void Init()
+        public override void Awake()
         {
             base.Init();
             _List_Enemy = new List<EnemyController>();
@@ -27,9 +27,22 @@ namespace GameLogic.Survivor
             enemy.name               = "Enemy";
             enemy.transform.position = PlayerPos + new Vector3(x, y);
 
-            enemy.AddComponent<EnemyController>();
+            EnemyController enemyController = enemy.AddComponent<EnemyController>();
             
             GameObject.Destroy(prefab);
+            
+            _List_Enemy.Add(enemyController);
+
+            
+        }
+
+        public void Release()
+        {
+            foreach (EnemyController controller in _List_Enemy)
+            {
+                GameObject.Destroy(controller.gameObject);
+            }
+            _List_Enemy.Clear();
         }
     }
 }

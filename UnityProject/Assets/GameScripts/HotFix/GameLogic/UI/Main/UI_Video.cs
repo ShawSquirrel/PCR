@@ -29,7 +29,7 @@ namespace GameLogic
         public override void OnDestroy()
         {
             base.OnDestroy();
-            GameEvent.Send(UIEvent.PauseVideo);
+            GameEvent.Send(UIEventID.PauseVideo);
             Log.Info("UI_Video 已销毁");
         }
 

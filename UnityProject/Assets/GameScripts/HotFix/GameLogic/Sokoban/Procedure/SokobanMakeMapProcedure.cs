@@ -23,22 +23,22 @@ namespace GameLogic.Sokoban
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener<int>(UIEvent.Sokoban_MakeMapSelectType, OnMakeMapSelectType);
+            GameEvent.AddEventListener<int>(UIEventID.Sokoban_MakeMapSelectType, OnMakeMapSelectType);
             GameEvent.AddEventListener<MakeMapItem>(SokobanEvent.Sokoban_MakeMapClickItem, OnMakeMapClickItem);
-            GameEvent.AddEventListener(UIEvent.Sokoban_MakeMapSave, OnMakeMapSave);
-            GameEvent.AddEventListener(UIEvent.Sokoban_MakeMapClose, OnMakeMapClose);
-            GameEvent.AddEventListener(UIEvent.Sokoban_MakeMapRevert, OnMakeMapRevert);
+            GameEvent.AddEventListener(UIEventID.Sokoban_MakeMapSave, OnMakeMapSave);
+            GameEvent.AddEventListener(UIEventID.Sokoban_MakeMapClose, OnMakeMapClose);
+            GameEvent.AddEventListener(UIEventID.Sokoban_MakeMapRevert, OnMakeMapRevert);
         }
 
 
         protected override void RemoveEvent()
         {
             base.RemoveEvent();
-            GameEvent.RemoveEventListener<int>(UIEvent.Sokoban_MakeMapSelectType, OnMakeMapSelectType);
+            GameEvent.RemoveEventListener<int>(UIEventID.Sokoban_MakeMapSelectType, OnMakeMapSelectType);
             GameEvent.RemoveEventListener<MakeMapItem>(SokobanEvent.Sokoban_MakeMapClickItem, OnMakeMapClickItem);
-            GameEvent.RemoveEventListener(UIEvent.Sokoban_MakeMapSave, OnMakeMapSave);
-            GameEvent.RemoveEventListener(UIEvent.Sokoban_MakeMapClose, OnMakeMapClose);
-            GameEvent.RemoveEventListener(UIEvent.Sokoban_MakeMapRevert, OnMakeMapRevert);
+            GameEvent.RemoveEventListener(UIEventID.Sokoban_MakeMapSave, OnMakeMapSave);
+            GameEvent.RemoveEventListener(UIEventID.Sokoban_MakeMapClose, OnMakeMapClose);
+            GameEvent.RemoveEventListener(UIEventID.Sokoban_MakeMapRevert, OnMakeMapRevert);
         }
 
         protected override void OnExit()

@@ -11,17 +11,17 @@ namespace GameLogic.Survivor
         public void OnBeginDrag(PointerEventData eventData)
         {
             
-            GameEvent.Send(SurvivorEvent.Survivor_BeginDragStick, eventData.position);
+            GameEvent.Send(EventID_Survivor.Survivor_BeginDragStick, eventData.position);
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            GameEvent.Send(SurvivorEvent.Survivor_DragStick, eventData.position);
+            GameEvent.Send(EventID_Survivor.Survivor_DragStick, eventData.position);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            GameEvent.Send(SurvivorEvent.Survivor_EndDragStick, eventData.position);
+            GameEvent.Send(EventID_Survivor.Survivor_EndDragStick, eventData.position);
         }
     }
 }
