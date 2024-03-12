@@ -6,24 +6,60 @@ namespace GameLogic.Survivor
 {
     public class SurvivorGameRoot : GameBase.GameRoot
     {
+        public FSM<Enum_SurvivorProcedure> _FSM;
         public InputSystem _Input;
         public CharacterSystem _Character;
         public EnemySystem _Enemy;
+        public TimeSystem _Time;
         public UIEvent _UIEvent;
 
-        protected override void Init()
+        protected override void OnInit()
         {
-            base.Init();
-            Utility.Unity.AddUpdateListener(Update);
-            GameEvent.AddEventListener(EventID_Survivor.Survivor_Release, Release);
+            base.OnInit();
+            FSMInit();
+            AddUIListen();
+        }
+
+        private void AddUIListen()
+        {
+            _UIEvent = new UIEvent();
+            _UIEvent.AddListen();
+        }
+
+        private void RemoveUIListen()
+        {
+            _UIEvent.RemoveListen();
+            _UIEvent = null;
+        }
+
+        private void AddSystem()
+        {
             _Input = AddManager<InputSystem>();
             _Character = AddManager<CharacterSystem>();
             _Enemy = AddManager<EnemySystem>();
-
-            _UIEvent = new UIEvent();
-            _UIEvent.AddListen();
+            _Time = AddManager<TimeSystem>();
             
-            _Character.LoadCharacter("佩可");
+        }
+
+        private void AddListen()
+        {
+            GameEvent.AddEventListener(EventID_Survivor.Survivor_Release, Release);
+        }
+
+        private void RemoveListen()
+        {
+            GameEvent.RemoveEventListener(EventID_Survivor.Survivor_Release, Release);
+        }
+
+        private void FSMInit()
+        {
+            _FSM = new FSM<Enum_SurvivorProcedure>();
+            _FSM.AddState(Enum_SurvivorProcedure.Menu, new SurvivorMenuProcedure(_FSM, this));
+            _FSM.AddState(Enum_SurvivorProcedure.GameLaunching, new SurvivorLaunchingProcedure(_FSM, this));
+            _FSM.StartState(Enum_SurvivorProcedure.Menu);
+            
+            
+            Utility.Unity.AddUpdateListener(_FSM.Update);
         }
 
         protected override void Release()
@@ -45,16 +81,11 @@ namespace GameLogic.Survivor
         {
         }
 
-        private float lastGenTime = 0;
-        private void Update()
+        public void Init()
         {
-            if (lastGenTime > 5f)
-            {
-                _Enemy.CreateEnemy();
-                lastGenTime = 0;
-            }
-
-            lastGenTime += Time.deltaTime;
+            AddListen();
+            AddSystem();
+            _Character.LoadCharacter("佩可");
         }
     }
 }

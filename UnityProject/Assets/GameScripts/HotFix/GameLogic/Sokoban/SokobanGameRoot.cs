@@ -13,7 +13,7 @@ namespace GameLogic.Sokoban
         public SokobanLevelSystem _Level => GetManager<SokobanLevelSystem>();
         public MapMakeSystem _Make => GetManager<MapMakeSystem>();
 
-        protected override void Init()
+        protected override void OnInit()
         {
             AddManager<SokobanLevelSystem>();
             AddManager<SokobanMapSystem>();

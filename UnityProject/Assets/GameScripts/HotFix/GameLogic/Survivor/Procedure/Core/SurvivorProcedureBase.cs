@@ -2,15 +2,15 @@
 
 namespace GameLogic.Survivor
 {
-    public class SurvivorProcedureBase : AbstractState<Enum_SurvivorProcedure, ProcedureSurvivor>
+    public class SurvivorProcedureBase : AbstractState<Enum_SurvivorProcedure, SurvivorGameRoot>
     {
-        public SurvivorProcedureBase(FSM<Enum_SurvivorProcedure> fsm, ProcedureSurvivor target) : base(fsm, target)
+        public SurvivorProcedureBase(FSM<Enum_SurvivorProcedure> fsm, SurvivorGameRoot target) : base(fsm, target)
         {
         }
 
         protected override void OnEnter()
         {
-            RegisterEvent();
+            AddListen();
             Log.Info($"当前的状态 {mFSM.CurrentStateId}");
             base.OnEnter();
         }
@@ -21,7 +21,7 @@ namespace GameLogic.Survivor
             base.OnExit();
         }
 
-        protected virtual void RegisterEvent()
+        protected virtual void AddListen()
         {
         }
 
@@ -30,13 +30,6 @@ namespace GameLogic.Survivor
         }
 
 
-        protected void OnStartGame()
-        {
-            GameRoot._Instance.StartFlash(() =>
-                                          {
-                                              GameModule.UI.CloseWindow<UI_SurvivorMenu>();
-                                              mFSM.ChangeState(Enum_SurvivorProcedure.GameLaunching);
-                                          });
-        }
+
     }
 }
