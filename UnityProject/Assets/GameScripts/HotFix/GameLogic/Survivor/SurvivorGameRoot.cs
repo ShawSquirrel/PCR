@@ -11,6 +11,7 @@ namespace GameLogic.Survivor
         public CharacterSystem _Character;
         public EnemySystem _Enemy;
         public TimeSystem _Time;
+        public SkillSystem _Skill;
         public UIEvent _UIEvent;
 
         protected override void OnInit()
