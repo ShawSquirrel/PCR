@@ -45,7 +45,7 @@ namespace GameLogic.Survivor
             _characterData._HP -= damage.GetAtk();
             if (_characterData._HP <= 0)
             {
-                GameModule.UI.ShowUI<UI_Result>();
+                GameEvent.Send(EventID_Survivor.Survivor_Die);
                 Time.timeScale = 0;
             }
         }

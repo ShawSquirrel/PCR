@@ -31,6 +31,14 @@ namespace GameLogic
 
         }
 
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            GameEvent.RemoveEventListener<Vector2>(EventID_Survivor.Survivor_UIBeginDragStick, OnBeginDrag);
+            GameEvent.RemoveEventListener<Vector2>(EventID_Survivor.Survivor_UIDragStick, OnDrag);
+            GameEvent.RemoveEventListener(EventID_Survivor.Survivor_UIEndDragStick, OnEndDrag);
+        }
+
         public void SetStickActive(bool isActive)
         {
             _Img_Stick.gameObject.SetActive(isActive);

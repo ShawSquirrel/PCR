@@ -15,13 +15,19 @@ namespace GameLogic
         }
         #endregion
 
-        public override void RegisterEvent()
+        public override void OnCreate()
         {
-            base.RegisterEvent();
+            base.OnCreate();
             GameEvent.AddEventListener<float>(UIEventID_Survivor.SetBlood, SetBlood);
         }
 
-        public void SetBlood(float percent)
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            GameEvent.RemoveEventListener<float>(UIEventID_Survivor.SetBlood, SetBlood);
+        }
+
+        private void SetBlood(float percent)
         {
             _Img_Blood.fillAmount = percent;
         }

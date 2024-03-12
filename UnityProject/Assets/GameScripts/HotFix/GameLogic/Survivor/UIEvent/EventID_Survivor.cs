@@ -16,5 +16,6 @@
 
         public const int Survivor_Damage = 40007;  // 角色受击
         public const int Survivor_Release = 40008; // 释放资源
+        public const int Survivor_Die = 40009; // 角色死亡
     }
 }

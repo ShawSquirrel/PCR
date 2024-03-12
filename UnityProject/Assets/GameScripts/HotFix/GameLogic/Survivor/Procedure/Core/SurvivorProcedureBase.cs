@@ -17,7 +17,7 @@ namespace GameLogic.Survivor
 
         protected override void OnExit()
         {
-            RemoveEvent();
+            RemoveListen();
             base.OnExit();
         }
 
@@ -25,7 +25,7 @@ namespace GameLogic.Survivor
         {
         }
 
-        protected virtual void RemoveEvent()
+        protected virtual void RemoveListen()
         {
         }
 

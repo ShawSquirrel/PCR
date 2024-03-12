@@ -17,7 +17,9 @@ namespace GameLogic.Survivor
         {
             base.OnInit();
             FSMInit();
+            AddListen();
             AddUIListen();
+            AddSystem();
         }
 
         private void AddUIListen()
@@ -77,15 +79,25 @@ namespace GameLogic.Survivor
             _UIEvent = null;
         }
 
+        private float lastGenTime = 0;
+        public void CreateEnemy()
+        {
+            if (lastGenTime > 5f)
+            {
+                Game._SurvivorGameRoot._Enemy.CreateEnemy();
+                lastGenTime = 0;
+            }
+
+            lastGenTime += Time.deltaTime;
+        }
+        
         public SurvivorGameRoot(GameObject obj) : base(obj)
         {
         }
 
-        public void Init()
+        public void StartGame(string name)
         {
-            AddListen();
-            AddSystem();
-            _Character.LoadCharacter("佩可");
+            _Character.LoadCharacter(name);
         }
     }
 }
