@@ -1,0 +1,1966 @@
+{
+    "Summary": {
+        "YooVersion": "1.5.7",
+        "UnityVersion": "2021.3.6f1c1",
+        "BuildDate": "2024/3/12 20:59:36",
+        "BuildSeconds": 2,
+        "BuildTarget": 19,
+        "BuildPipeline": 1,
+        "BuildMode": 1,
+        "BuildPackageName": "DefaultPackage",
+        "BuildPackageVersion": "v0.2",
+        "EnableAddressable": true,
+        "LocationToLower": false,
+        "IncludeAssetGUID": false,
+        "UniqueBundleName": false,
+        "SharedPackRuleClassName": "YooAsset.Editor.ZeroRedundancySharedPackRule",
+        "EncryptionServicesClassName": "TEngine.Editor.Resource.FileStreamEncryption",
+        "OutputNameStyle": 1,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": true,
+        "AssetFileTotalCount": 129,
+        "MainAssetTotalCount": 67,
+        "AllBundleTotalCount": 40,
+        "AllBundleTotalSize": 30564888,
+        "EncryptedBundleTotalCount": 40,
+        "EncryptedBundleTotalSize": 30564888,
+        "RawBundleTotalCount": 0,
+        "RawBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "Quad1",
+            "AssetPath": "Assets/AssetRaw/Actor/Quad1.prefab",
+            "AssetGUID": "24cfd4e3f49ff1b43b9a5a273b0c0377",
+            "AssetTags": [
+                "Actor"
+            ],
+            "MainBundleName": "assets_assetraw_actor.bundle",
+            "MainBundleSize": 926553,
+            "DependBundles": [
+                "unityshaders.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Sprite/Sprite/Component/Slider/Slider15_Icon.png"
+            ]
+        },
+        {
+            "Address": "优衣",
+            "AssetPath": "Assets/AssetRaw/Actor/优衣.prefab",
+            "AssetGUID": "d1b7b85132c3dab4190e0c5c7b5bf78f",
+            "AssetTags": [
+                "Actor"
+            ],
+            "MainBundleName": "assets_assetraw_actor.bundle",
+            "MainBundleSize": 926553,
+            "DependBundles": [
+                "unityshaders.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Spine/优衣6/100261_Material.mat",
+                "Assets/AssetRaw/Spine/优衣6/100261_SkeletonData.asset",
+                "Assets/AssetRaw/Spine/优衣6/100261.skel.bytes",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/SkeletonDataAsset Icon.png",
+                "Assets/AssetRaw/Spine/优衣6/100261_Atlas.asset",
+                "Assets/AssetRaw/Spine/优衣6/100261.png",
+                "Assets/Plugins/Spine/Runtime/spine-unity/Shaders/Spine-Skeleton.shader",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/AtlasAsset Icon.png",
+                "Assets/AssetRaw/Spine/优衣6/100261.atlas.txt"
+            ]
+        },
+        {
+            "Address": "佩可",
+            "AssetPath": "Assets/AssetRaw/Actor/佩可.prefab",
+            "AssetGUID": "62756ec8941aba9459d61982550c3179",
+            "AssetTags": [
+                "Actor"
+            ],
+            "MainBundleName": "assets_assetraw_actor.bundle",
+            "MainBundleSize": 926553,
+            "DependBundles": [
+                "unityshaders.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Spine/佩可/105861_Atlas.asset",
+                "Assets/AssetRaw/Spine/佩可/105861_Material.mat",
+                "Assets/AssetRaw/Spine/佩可/105861.atlas.txt",
+                "Assets/AssetRaw/Spine/佩可/105861_SkeletonData.asset",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/SkeletonDataAsset Icon.png",
+                "Assets/Plugins/Spine/Runtime/spine-unity/Shaders/Spine-Skeleton.shader",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/AtlasAsset Icon.png",
+                "Assets/AssetRaw/Spine/佩可/105861.png",
+                "Assets/AssetRaw/Spine/佩可/105861.skel.bytes"
+            ]
+        },
+        {
+            "Address": "镜华",
+            "AssetPath": "Assets/AssetRaw/Actor/镜华.prefab",
+            "AssetGUID": "4cc9217139ff2af43a24cc4feccfae63",
+            "AssetTags": [
+                "Actor"
+            ],
+            "MainBundleName": "assets_assetraw_actor.bundle",
+            "MainBundleSize": 926553,
+            "DependBundles": [
+                "unityshaders.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Spine/小仓唯/103661.atlas.txt",
+                "Assets/AssetRaw/Spine/小仓唯/103661.png",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/SkeletonDataAsset Icon.png",
+                "Assets/AssetRaw/Spine/小仓唯/103661_Material.mat",
+                "Assets/Plugins/Spine/Runtime/spine-unity/Shaders/Spine-Skeleton.shader",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/AtlasAsset Icon.png",
+                "Assets/AssetRaw/Spine/小仓唯/103661_SkeletonData.asset",
+                "Assets/AssetRaw/Spine/小仓唯/103661_Atlas.asset",
+                "Assets/AssetRaw/Spine/小仓唯/103661.skel.bytes"
+            ]
+        },
+        {
+            "Address": "blue_button",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Atlas/Common/blue_button.png",
+            "AssetGUID": "f9a06e163014f4f46b14f4499d3e7240",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_atlas_common.bundle",
+            "MainBundleSize": 16999,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "red_button",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Atlas/Common/red_button.png",
+            "AssetGUID": "2761fc23b4aa7e34187ac5ffbc3fad9b",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_atlas_common.bundle",
+            "MainBundleSize": 16999,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "white_background",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Atlas/Common/white_background.png",
+            "AssetGUID": "d623a2b7e069a4c4592d3da48f476189",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_atlas_common.bundle",
+            "MainBundleSize": 16999,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "white_button",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Atlas/Common/white_button.png",
+            "AssetGUID": "57e4117f4cd6ae54284898652e70d553",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_atlas_common.bundle",
+            "MainBundleSize": 16999,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "AtlasCommon",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/AtlasCommon.png",
+            "AssetGUID": "c4cdde46a87bb044d8882265d9497e9b",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "MainBundleSize": 1457361,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "Blue",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Blue.png",
+            "AssetGUID": "0b588adc7071e664ea19fff5778f10f1",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "MainBundleSize": 1457361,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "Gold",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Gold.png",
+            "AssetGUID": "5b1c4d78c81ff6a49b5a3203a2a46434",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "MainBundleSize": 1457361,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "Green",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Green.png",
+            "AssetGUID": "4efa86e77350221419ff89af632a934c",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "MainBundleSize": 1457361,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "head_yuyi",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/head_yuyi.png",
+            "AssetGUID": "14eaba9e7f144334294a45e79ad76f71",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "MainBundleSize": 1457361,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "panel_Light2",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/panel_Light2.png",
+            "AssetGUID": "b73bfb647b3432646bcb89cfc9d77ece",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "MainBundleSize": 1457361,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "White",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/White.png",
+            "AssetGUID": "55d296a0e21747143bf8b9de74dba1c3",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "MainBundleSize": 1457361,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "优衣六星视频",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Video/优衣六星视频.mp4",
+            "AssetGUID": "08d7aa930ca5a884eb49dba4043e85e3",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_video.bundle",
+            "MainBundleSize": 9960548,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "公主佩可视频",
+            "AssetPath": "Assets/AssetRaw/UIRaw/Raw/Sokoban/Video/公主佩可视频.mp4",
+            "AssetGUID": "2433d50d1859daa45b13873ae09924e9",
+            "AssetTags": [
+                "UIRaw"
+            ],
+            "MainBundleName": "assets_assetraw_uiraw_raw_sokoban_video.bundle",
+            "MainBundleSize": 9960548,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "公主连结-主题曲",
+            "AssetPath": "Assets/AssetRaw/Audios/BGM/公主连结-主题曲.mp3",
+            "AssetGUID": "4bc8bca2abf02114396fbede5a67155f",
+            "AssetTags": [
+                "Audios"
+            ],
+            "MainBundleName": "assets_assetraw_audios_bgm.bundle",
+            "MainBundleSize": 2145049,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "about",
+            "AssetPath": "Assets/AssetRaw/Configs/about.txt",
+            "AssetGUID": "ba11f0707eb5f814392cbf12498aba94",
+            "AssetTags": [
+                "Configs",
+                "WEBGL_PRELOAD"
+            ],
+            "MainBundleName": "assets_assetraw_configs.bundle",
+            "MainBundleSize": 1563,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "Map",
+            "AssetPath": "Assets/AssetRaw/Configs/Map.txt",
+            "AssetGUID": "39249c02690e6b44183996d7788a57d8",
+            "AssetTags": [
+                "Configs",
+                "WEBGL_PRELOAD"
+            ],
+            "MainBundleName": "assets_assetraw_configs.bundle",
+            "MainBundleSize": 1563,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "need_cache_list",
+            "AssetPath": "Assets/AssetRaw/Configs/need_cache_list.json",
+            "AssetGUID": "c9f7d9280641e9a4b87697ace96a4315",
+            "AssetTags": [
+                "Configs",
+                "WEBGL_PRELOAD"
+            ],
+            "MainBundleName": "assets_assetraw_configs.bundle",
+            "MainBundleSize": 1563,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "sitem",
+            "AssetPath": "Assets/AssetRaw/Configs/bytes/sitem.bytes",
+            "AssetGUID": "8f1e51ce84d251342b43786a9fc8768e",
+            "AssetTags": [
+                "Configs",
+                "WEBGL_PRELOAD"
+            ],
+            "MainBundleName": "assets_assetraw_configs_bytes.bundle",
+            "MainBundleSize": 1813,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "GameBase.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/GameBase.dll.bytes",
+            "AssetGUID": "9fd40f71bab163a4a98a5a7d46e36244",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "GameLogic.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/GameLogic.dll.bytes",
+            "AssetGUID": "308446f5df5f1d04782b89e0489944b3",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "GameProto.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/GameProto.dll.bytes",
+            "AssetGUID": "53fe6f581333a044a9bddd62d1c11a6c",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "mscorlib.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/mscorlib.dll.bytes",
+            "AssetGUID": "8944014a3bc22454b88fd8135360796a",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "System.Core.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/System.Core.dll.bytes",
+            "AssetGUID": "ec83e38d1c078154c9b97a3ab5cd27f9",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "System.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/System.dll.bytes",
+            "AssetGUID": "a1bd2476e47ed4642b4103656acc71e7",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "TEngine.Runtime.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/TEngine.Runtime.dll.bytes",
+            "AssetGUID": "09e94dcf363d4a044a0588ee5d51fc0a",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "UniTask.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/UniTask.dll.bytes",
+            "AssetGUID": "5d19c75fad69b1b4f9f63d7887430a16",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "UnityEngine.CoreModule.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/UnityEngine.CoreModule.dll.bytes",
+            "AssetGUID": "7fa0b809ae4500e459d1faf07b575104",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "YooAsset.dll",
+            "AssetPath": "Assets/AssetRaw/DLL/YooAsset.dll.bytes",
+            "AssetGUID": "1a25b4edc89e10e4fbc3a40c1635d5c0",
+            "AssetTags": [
+                "DLL"
+            ],
+            "MainBundleName": "assets_assetraw_dll.bundle",
+            "MainBundleSize": 2569587,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "Mat_UIFlash",
+            "AssetPath": "Assets/AssetRaw/Materials/Mat_UIFlash.mat",
+            "AssetGUID": "90dfb4e029e018b4ba84d4ff8d023e5d",
+            "AssetTags": [
+                "Materials"
+            ],
+            "MainBundleName": "assets_assetraw_materials.bundle",
+            "MainBundleSize": 2433,
+            "DependBundles": [
+                "unityshaders.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Shaders/UI_Flash.shader"
+            ]
+        },
+        {
+            "Address": "Button_Back",
+            "AssetPath": "Assets/AssetRaw/UI/Sokoban/Button_Back.prefab",
+            "AssetGUID": "9eab6704e30e97f4eae64c3a2ed72cc7",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_sokoban_button_back.bundle",
+            "MainBundleSize": 5194,
+            "DependBundles": [
+                "share_assets_assetraw_sprite_sprite_component_button.bundle",
+                "share_assets_assetraw_sprite_sprite_demo_demo_icon.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_OtherButton_SideButton01_Left.png",
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_Icon/Icon_PictoIcon_Back.png"
+            ]
+        },
+        {
+            "Address": "UI_GeneralWindow",
+            "AssetPath": "Assets/AssetRaw/UI/Sokoban/UI_GeneralWindow.prefab",
+            "AssetGUID": "0e549761735f0da40a0c25eab76fccf8",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_sokoban_ui_generalwindow.bundle",
+            "MainBundleSize": 37287,
+            "DependBundles": [
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+                "share_assets_assetraw_sprite_sprite_component_button.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "share_assets_plugins_textmesh pro_resources_fonts & materials.bundle",
+                "share_assets_plugins_textmesh pro_fonts.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW03-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW05-2 SDF.asset",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Green.Png",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Input Field Icon.psd",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Frame/Frame_ListFrame13_n_Blue.png",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW03-2 SDF.asset",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Red.Png",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf",
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_UI/InputField_Frame01_n.png",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW04-2 SDF.asset",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Frame/Frame_TableFrame01_Line.png",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+                "Assets/Plugins/TextMesh Pro/Fonts/LiberationSans.ttf"
+            ]
+        },
+        {
+            "Address": "UI_Launching",
+            "AssetPath": "Assets/AssetRaw/UI/Sokoban/UI_Launching.prefab",
+            "AssetGUID": "167d9caf83b18dd48a35f2117dba2182",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_sokoban_ui_launching.bundle",
+            "MainBundleSize": 30342,
+            "DependBundles": [
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+                "assets_assetraw_fonts_fusion_pixel_sdf.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "share_assets_assetraw_sprite_sprite_component_button.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/Assets/SokobanJoyStick/Right.png",
+                "Assets/Assets/SokobanJoyStick/Left.png",
+                "Assets/Assets/SokobanJoyStick/Down.png",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ko.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/SDF/fusion-pixel-10px-monospaced-ko SDF.asset",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/Assets/SokobanJoyStick/Up.png",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/Assets/SokobanJoyStick/Bg.png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Red.Png"
+            ]
+        },
+        {
+            "Address": "UI_MakeMap",
+            "AssetPath": "Assets/AssetRaw/UI/Sokoban/UI_MakeMap.prefab",
+            "AssetGUID": "47e30bb9e1d2cbc4697fc3b196dc3ad9",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_sokoban_ui_makemap.bundle",
+            "MainBundleSize": 20602,
+            "DependBundles": [
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+                "assets_assetraw_fonts_fusion_pixel_sdf.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+                "share_assets_assetraw_sprite_sprite_component_button.bundle",
+                "share_assets_plugins_textmesh pro_resources_fonts & materials.bundle",
+                "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+                "share_assets_assets_ui elements_extras_rects.bundle",
+                "share_assets_plugins_textmesh pro_fonts.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Purple.Png",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW03-2.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ko.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/SDF/fusion-pixel-10px-monospaced-ko SDF.asset",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+                "Assets/Assets/UI Elements/White/2x/cross.png",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW03-2 SDF.asset",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Orange.Png",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/head_yuyi.png",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf",
+                "Assets/Assets/UI Elements/Extras/Rects/rect8pxRy8.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Blue.png",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Gold.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Green.png",
+                "Assets/Plugins/TextMesh Pro/Fonts/LiberationSans.ttf"
+            ]
+        },
+        {
+            "Address": "UI_SelectLevel",
+            "AssetPath": "Assets/AssetRaw/UI/Sokoban/UI_SelectLevel.prefab",
+            "AssetGUID": "bf7f091a714255d478914ca34bd3fdf4",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_sokoban_ui_selectlevel.bundle",
+            "MainBundleSize": 14382,
+            "DependBundles": [
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "share_assets_assetraw_sprite_sprite_component_button.bundle",
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "share_assets_assetraw_sprite_sprite_demo_demo_icon.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW05-2 SDF.asset",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Sky.Png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Orange.Png",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_OtherButton_SideButton01_Left.png",
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_Icon/Icon_PictoIcon_Back.png",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW04-2 SDF.asset"
+            ]
+        },
+        {
+            "Address": "UI_SokobanSuccess",
+            "AssetPath": "Assets/AssetRaw/UI/Sokoban/UI_SokobanSuccess.prefab",
+            "AssetGUID": "b17117e8c312b6241877981bdd842dbb",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_sokoban_ui_sokobansuccess.bundle",
+            "MainBundleSize": 14822,
+            "DependBundles": [
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+                "assets_assetraw_fonts_fusion_pixel_sdf.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Shaw/UI Kit Pro - Casual Glossy/Images/Icons/iconRounded_ToEnd.png",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/Shaw/UI Kit Pro - Casual Glossy/Images/Icons/iconRounded_Restart.png",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ko.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/SDF/fusion-pixel-10px-monospaced-ko SDF.asset",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/Shaw/UI Kit Pro - Casual Glossy/Images/Icons/iconRounded_Cancel.png"
+            ]
+        },
+        {
+            "Address": "UI_Blood",
+            "AssetPath": "Assets/AssetRaw/UI/Survivor/UI_Blood.prefab",
+            "AssetGUID": "843c1f5623160ca45a7011819a33c37d",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_survivor_ui_blood.bundle",
+            "MainBundleSize": 4442,
+            "DependBundles": [
+                "assets_assetraw_uiraw_raw_sokoban_sprite.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/White.png"
+            ]
+        },
+        {
+            "Address": "UI_Result",
+            "AssetPath": "Assets/AssetRaw/UI/Survivor/UI_Result.prefab",
+            "AssetGUID": "3d0615b63b787fa4ca8dbc50cb037222",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_survivor_ui_result.bundle",
+            "MainBundleSize": 7997,
+            "DependBundles": [
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "share_assets_assetraw_sprite_sprite_component_button.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW03-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW05-2 SDF.asset",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW03-2 SDF.asset",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Red.Png",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "UI_SurvivorMenu",
+            "AssetPath": "Assets/AssetRaw/UI/Survivor/UI_SurvivorMenu.prefab",
+            "AssetGUID": "6b6077d1e366bb143aab501d55623818",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_survivor_ui_survivormenu.bundle",
+            "MainBundleSize": 109321,
+            "DependBundles": [
+                "share_assets_assetraw_sprite_sprite_component_button.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "unityshaders.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Assets/GUI Pro-CasualGame/ResourcesData/Fonts/LilitaOne-Regular Outline 54 SDF Atlas.png",
+                "Assets/Assets/GUI Pro-CasualGame/ResourcesData/Fonts/LilitaOne-Regular Outline 54 SDF.asset",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Gray.Png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Green.Png",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Blue.Png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Orange.Png",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Dark.Png"
+            ]
+        },
+        {
+            "Address": "UI_SurvivorStick",
+            "AssetPath": "Assets/AssetRaw/UI/Survivor/UI_SurvivorStick.prefab",
+            "AssetGUID": "519473828a0d4654ab30cdafb6794050",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_survivor_ui_survivorstick.bundle",
+            "MainBundleSize": 28510,
+            "DependBundles": [],
+            "DependAssets": [
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_Play/Play_Joystick_bg.png",
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_Play/Play_Joystick_handle.png"
+            ]
+        },
+        {
+            "Address": "UI_Flash",
+            "AssetPath": "Assets/AssetRaw/UI/UI_Flash.prefab",
+            "AssetGUID": "7eebb5c7090892d4e9451cddee82d72a",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_ui_flash.bundle",
+            "MainBundleSize": 4195,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "UI_Menu",
+            "AssetPath": "Assets/AssetRaw/UI/UI_Menu.prefab",
+            "AssetGUID": "26a5f3ea8143bbe40bcc139b5da8b46e",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_ui_menu.bundle",
+            "MainBundleSize": 14397,
+            "DependBundles": [
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "share_assets_assetraw_sprite_sprite_component_button.bundle",
+                "share_assets_plugins_textmesh pro_resources_fonts & materials.bundle",
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "share_assets_plugins_textmesh pro_fonts.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW05-2 SDF.asset",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Yellow.Png",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Blue.Png",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+                "Assets/Plugins/TextMesh Pro/Fonts/LiberationSans.ttf"
+            ]
+        },
+        {
+            "Address": "UI_Video",
+            "AssetPath": "Assets/AssetRaw/UI/UI_Video.prefab",
+            "AssetGUID": "2f2a213d57ad34e4ba31960ca404f97a",
+            "AssetTags": [
+                "UI"
+            ],
+            "MainBundleName": "assets_assetraw_ui_ui_video.bundle",
+            "MainBundleSize": 4105,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "CangErYuMoW01-2",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+            "AssetGUID": "650083b2e96c745469a1fd334d13313b",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+            "MainBundleSize": 6544419,
+            "DependBundles": [],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW02-2",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+            "AssetGUID": "97bd0f27afa898e4ca86e20ee950296b",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+            "MainBundleSize": 6544419,
+            "DependBundles": [],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW03-2",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW03-2.ttf",
+            "AssetGUID": "bf1892b962d697543869c0b55bb53d17",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+            "MainBundleSize": 6544419,
+            "DependBundles": [],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW04-2",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf",
+            "AssetGUID": "c2925bdd6c4e7594785443f9beecbfed",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+            "MainBundleSize": 6544419,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "CangErYuMoW05-2",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+            "AssetGUID": "d40617b69c2558945b0ac57a5768a534",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+            "MainBundleSize": 6544419,
+            "DependBundles": [],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW01-2 SDF",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW01-2 SDF.asset",
+            "AssetGUID": "c536a8dd693777a4f9d8b734c05089f9",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+            "MainBundleSize": 247348,
+            "DependBundles": [
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "unityshaders.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW02-2 SDF",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW02-2 SDF.asset",
+            "AssetGUID": "53c34edcb22b4774789b83b86aa3dc21",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+            "MainBundleSize": 247348,
+            "DependBundles": [
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "unityshaders.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW03-2 SDF",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW03-2 SDF.asset",
+            "AssetGUID": "edf3e9112c65ce843b7b65c2811a1c4a",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+            "MainBundleSize": 247348,
+            "DependBundles": [
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+                "unityshaders.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW03-2.ttf",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW04-2 SDF",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW04-2 SDF.asset",
+            "AssetGUID": "863b4a3025aac1c468f43b9626ab53cb",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+            "MainBundleSize": 247348,
+            "DependBundles": [
+                "unityshaders.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "CangErYuMoW05-2 SDF",
+            "AssetPath": "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW05-2 SDF.asset",
+            "AssetGUID": "3c4addefd5ea5524880be36515b47fd9",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+            "MainBundleSize": 247348,
+            "DependBundles": [
+                "unityshaders.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "assets_assetraw_fonts_cangeryumo_sdf.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf"
+            ]
+        },
+        {
+            "Address": "fusion-pixel-10px-monospaced-ko SDF",
+            "AssetPath": "Assets/AssetRaw/Fonts/Fusion_Pixel/SDF/fusion-pixel-10px-monospaced-ko SDF.asset",
+            "AssetGUID": "0f38b7d8c1d6b774a8f76a631b02e181",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_fusion_pixel_sdf.bundle",
+            "MainBundleSize": 69338,
+            "DependBundles": [
+                "unityshaders.bundle",
+                "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle"
+            ],
+            "DependAssets": [
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ko.ttf",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd"
+            ]
+        },
+        {
+            "Address": "fusion-pixel-10px-monospaced-ja",
+            "AssetPath": "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ja.ttf",
+            "AssetGUID": "ac1a3d5b6d88eb848bda5e313b72c6d2",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+            "MainBundleSize": 5605251,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "fusion-pixel-10px-monospaced-ko",
+            "AssetPath": "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ko.ttf",
+            "AssetGUID": "5eb80ac983846fb4cb622ada5a85ec08",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+            "MainBundleSize": 5605251,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "fusion-pixel-10px-monospaced-latin",
+            "AssetPath": "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-latin.ttf",
+            "AssetGUID": "2d146d74745824346985ba16db779b20",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+            "MainBundleSize": 5605251,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "fusion-pixel-10px-monospaced-zh_hans",
+            "AssetPath": "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-zh_hans.ttf",
+            "AssetGUID": "33eac12f906bc5b49a77d28d6d1eeef0",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+            "MainBundleSize": 5605251,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "fusion-pixel-10px-monospaced-zh_hant",
+            "AssetPath": "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-zh_hant.ttf",
+            "AssetGUID": "83f4e6e3a16fed5468822b0547b2a4d3",
+            "AssetTags": [
+                "Fonts"
+            ],
+            "MainBundleName": "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+            "MainBundleSize": 5605251,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "CustomModule",
+            "AssetPath": "Assets/AssetRaw/Prefabs/CustomModule.prefab",
+            "AssetGUID": "b00cbd6b5fe6cfd4aaf4b273a7b5745c",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetraw_prefabs_custommodule.bundle",
+            "MainBundleSize": 6714,
+            "DependBundles": [
+                "share_packages_com_unity_cinemachine_editor_editorresources.bundle"
+            ],
+            "DependAssets": [
+                "Packages/com.unity.cinemachine/Editor/EditorResources/cm_logo_sm.png"
+            ]
+        },
+        {
+            "Address": "SokobanCamera",
+            "AssetPath": "Assets/AssetRaw/Prefabs/Sokoban/SokobanCamera.prefab",
+            "AssetGUID": "43cfc49118420e545bfa56539833ba24",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetraw_prefabs_sokoban_sokobancamera.bundle",
+            "MainBundleSize": 4423,
+            "DependBundles": [
+                "share_packages_com_unity_cinemachine_editor_editorresources.bundle"
+            ],
+            "DependAssets": [
+                "Packages/com.unity.cinemachine/Editor/EditorResources/cm_logo_sm.png"
+            ]
+        },
+        {
+            "Address": "SokobanMakeMapItem",
+            "AssetPath": "Assets/AssetRaw/Prefabs/Sokoban/SokobanMakeMapItem.prefab",
+            "AssetGUID": "0dd3ae7bd1710ef458e32671c651aa4e",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetraw_prefabs_sokoban_sokobanmakemapitem.bundle",
+            "MainBundleSize": 4522,
+            "DependBundles": [
+                "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+                "share_packages_com_unity_2d_sprite_editor_objectmenucreation_defaultassets_textures_v2.bundle",
+                "share_assets_assets_ui elements_extras_rects.bundle",
+                "unityshaders.bundle"
+            ],
+            "DependAssets": [
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/head_yuyi.png",
+                "Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/v2/Square.png",
+                "Assets/Assets/UI Elements/Extras/Rects/rect8pxRy8.png"
+            ]
+        },
+        {
+            "Address": "SokobanMapItem",
+            "AssetPath": "Assets/AssetRaw/Prefabs/Sokoban/SokobanMapItem.prefab",
+            "AssetGUID": "bd581fa195ed1fd4792e4fc3f256505a",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetraw_prefabs_sokoban_sokobanmapitem.bundle",
+            "MainBundleSize": 8104,
+            "DependBundles": [
+                "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+                "unityshaders.bundle",
+                "share_assets_plugins_textmesh pro_resources_fonts & materials.bundle",
+                "share_packages_com_unity_2d_sprite_editor_objectmenucreation_defaultassets_textures_v2.bundle",
+                "share_assets_plugins_textmesh pro_fonts.bundle"
+            ],
+            "DependAssets": [
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+                "Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/v2/Square.png",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+                "Assets/Plugins/TextMesh Pro/Fonts/LiberationSans.ttf"
+            ]
+        },
+        {
+            "Address": "SurvivorCamera",
+            "AssetPath": "Assets/AssetRaw/Prefabs/Survivor/SurvivorCamera.prefab",
+            "AssetGUID": "0b1a46124232eff49a18e40c4ac70974",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetraw_prefabs_survivor_survivorcamera.bundle",
+            "MainBundleSize": 4418,
+            "DependBundles": [
+                "share_packages_com_unity_cinemachine_editor_editorresources.bundle"
+            ],
+            "DependAssets": [
+                "Packages/com.unity.cinemachine/Editor/EditorResources/cm_logo_sm.png"
+            ]
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "assets_assetraw_actor.bundle",
+            "FileName": "565fd3a1c6b7a8c687fedd5149fee905.bundle",
+            "FileHash": "565fd3a1c6b7a8c687fedd5149fee905",
+            "FileCRC": "4abb125d",
+            "FileSize": 926553,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Actor"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Actor/Quad1.prefab",
+                "Assets/AssetRaw/Actor/优衣.prefab",
+                "Assets/AssetRaw/Actor/佩可.prefab",
+                "Assets/AssetRaw/Actor/镜华.prefab",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Slider/Slider15_Icon.png",
+                "Assets/AssetRaw/Spine/优衣6/100261_Material.mat",
+                "Assets/AssetRaw/Spine/优衣6/100261_SkeletonData.asset",
+                "Assets/AssetRaw/Spine/优衣6/100261.skel.bytes",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/SkeletonDataAsset Icon.png",
+                "Assets/AssetRaw/Spine/优衣6/100261_Atlas.asset",
+                "Assets/AssetRaw/Spine/优衣6/100261.png",
+                "Assets/Plugins/Spine/Editor/Editor/GUI/AtlasAsset Icon.png",
+                "Assets/AssetRaw/Spine/优衣6/100261.atlas.txt",
+                "Assets/AssetRaw/Spine/佩可/105861_Atlas.asset",
+                "Assets/AssetRaw/Spine/佩可/105861_Material.mat",
+                "Assets/AssetRaw/Spine/佩可/105861.atlas.txt",
+                "Assets/AssetRaw/Spine/佩可/105861_SkeletonData.asset",
+                "Assets/AssetRaw/Spine/佩可/105861.png",
+                "Assets/AssetRaw/Spine/佩可/105861.skel.bytes",
+                "Assets/AssetRaw/Spine/小仓唯/103661.atlas.txt",
+                "Assets/AssetRaw/Spine/小仓唯/103661.png",
+                "Assets/AssetRaw/Spine/小仓唯/103661_Material.mat",
+                "Assets/AssetRaw/Spine/小仓唯/103661_SkeletonData.asset",
+                "Assets/AssetRaw/Spine/小仓唯/103661_Atlas.asset",
+                "Assets/AssetRaw/Spine/小仓唯/103661.skel.bytes"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_uiraw_atlas_common.bundle",
+            "FileName": "06f2d644ce946e37b0ed6811dcb26a29.bundle",
+            "FileHash": "06f2d644ce946e37b0ed6811dcb26a29",
+            "FileCRC": "c1c9b7d0",
+            "FileSize": 16999,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UIRaw"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UIRaw/Atlas/Common/blue_button.png",
+                "Assets/AssetRaw/UIRaw/Atlas/Common/red_button.png",
+                "Assets/AssetRaw/UIRaw/Atlas/Common/white_background.png",
+                "Assets/AssetRaw/UIRaw/Atlas/Common/white_button.png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_uiraw_raw_sokoban_sprite.bundle",
+            "FileName": "4b305794464399780b8c86e3c861ace2.bundle",
+            "FileHash": "4b305794464399780b8c86e3c861ace2",
+            "FileCRC": "2cb5a3a4",
+            "FileSize": 1457361,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UIRaw",
+                "UI"
+            ],
+            "ReferenceIDs": [
+                12,
+                15,
+                28
+            ],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/AtlasCommon.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Blue.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Gold.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/Green.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/head_yuyi.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/panel_Light2.png",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Sprite/White.png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_uiraw_raw_sokoban_video.bundle",
+            "FileName": "196ff7ba2f4bbcbe1b054ca55a705be8.bundle",
+            "FileHash": "196ff7ba2f4bbcbe1b054ca55a705be8",
+            "FileCRC": "35f8421f",
+            "FileSize": 9960548,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UIRaw"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Video/优衣六星视频.mp4",
+                "Assets/AssetRaw/UIRaw/Raw/Sokoban/Video/公主佩可视频.mp4"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_audios_bgm.bundle",
+            "FileName": "bb50791ea521fe8260be6acdde4ad4e5.bundle",
+            "FileHash": "bb50791ea521fe8260be6acdde4ad4e5",
+            "FileCRC": "bb7dce65",
+            "FileSize": 2145049,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Audios"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Audios/BGM/公主连结-主题曲.mp3"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_configs.bundle",
+            "FileName": "7ef323b52887595acc2a46a761e10c41.bundle",
+            "FileHash": "7ef323b52887595acc2a46a761e10c41",
+            "FileCRC": "2cf4ed67",
+            "FileSize": 1563,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Configs",
+                "WEBGL_PRELOAD"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Configs/about.txt",
+                "Assets/AssetRaw/Configs/Map.txt",
+                "Assets/AssetRaw/Configs/need_cache_list.json"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_configs_bytes.bundle",
+            "FileName": "bae739451d068c6a8dd94c8a3e3d4377.bundle",
+            "FileHash": "bae739451d068c6a8dd94c8a3e3d4377",
+            "FileCRC": "a54b2671",
+            "FileSize": 1813,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Configs",
+                "WEBGL_PRELOAD"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Configs/bytes/sitem.bytes"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_dll.bundle",
+            "FileName": "344ca3e3d390ee13573ffb83b2cf351d.bundle",
+            "FileHash": "344ca3e3d390ee13573ffb83b2cf351d",
+            "FileCRC": "bc6fad30",
+            "FileSize": 2569587,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "DLL"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/DLL/GameBase.dll.bytes",
+                "Assets/AssetRaw/DLL/GameLogic.dll.bytes",
+                "Assets/AssetRaw/DLL/GameProto.dll.bytes",
+                "Assets/AssetRaw/DLL/mscorlib.dll.bytes",
+                "Assets/AssetRaw/DLL/System.Core.dll.bytes",
+                "Assets/AssetRaw/DLL/System.dll.bytes",
+                "Assets/AssetRaw/DLL/TEngine.Runtime.dll.bytes",
+                "Assets/AssetRaw/DLL/UniTask.dll.bytes",
+                "Assets/AssetRaw/DLL/UnityEngine.CoreModule.dll.bytes",
+                "Assets/AssetRaw/DLL/YooAsset.dll.bytes"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_materials.bundle",
+            "FileName": "a32ed571cc5f55628ef6145d743c25d8.bundle",
+            "FileHash": "a32ed571cc5f55628ef6145d743c25d8",
+            "FileCRC": "053e5b06",
+            "FileSize": 2433,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Materials"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Materials/Mat_UIFlash.mat"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_sokoban_button_back.bundle",
+            "FileName": "d6522c3c47abc11c56b2f45155d59b91.bundle",
+            "FileHash": "d6522c3c47abc11c56b2f45155d59b91",
+            "FileCRC": "b846d24f",
+            "FileSize": 5194,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Sokoban/Button_Back.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_sokoban_ui_generalwindow.bundle",
+            "FileName": "2b40985df90ba5745dc7b844c6f0372b.bundle",
+            "FileHash": "2b40985df90ba5745dc7b844c6f0372b",
+            "FileCRC": "31d07d17",
+            "FileSize": 37287,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Sokoban/UI_GeneralWindow.prefab",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Input Field Icon.psd",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Frame/Frame_ListFrame13_n_Blue.png",
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_UI/InputField_Frame01_n.png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Frame/Frame_TableFrame01_Line.png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_sokoban_ui_launching.bundle",
+            "FileName": "536376606dc1f3d85024371bab9837bd.bundle",
+            "FileHash": "536376606dc1f3d85024371bab9837bd",
+            "FileCRC": "1c671e19",
+            "FileSize": 30342,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Sokoban/UI_Launching.prefab",
+                "Assets/Assets/SokobanJoyStick/Right.png",
+                "Assets/Assets/SokobanJoyStick/Left.png",
+                "Assets/Assets/SokobanJoyStick/Down.png",
+                "Assets/Assets/SokobanJoyStick/Up.png",
+                "Assets/Assets/SokobanJoyStick/Bg.png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_sokoban_ui_makemap.bundle",
+            "FileName": "f89f74673ad5541282032ebfb389bb9e.bundle",
+            "FileHash": "f89f74673ad5541282032ebfb389bb9e",
+            "FileCRC": "05d85a59",
+            "FileSize": 20602,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Sokoban/UI_MakeMap.prefab",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Purple.Png",
+                "Assets/Assets/UI Elements/White/2x/cross.png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_sokoban_ui_selectlevel.bundle",
+            "FileName": "2ea143210412b369e725ac120f519628.bundle",
+            "FileHash": "2ea143210412b369e725ac120f519628",
+            "FileCRC": "38c6e9e1",
+            "FileSize": 14382,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Sokoban/UI_SelectLevel.prefab",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Sky.Png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_sokoban_ui_sokobansuccess.bundle",
+            "FileName": "f5b7b1f5984cabc9a978a5bcdc02753a.bundle",
+            "FileHash": "f5b7b1f5984cabc9a978a5bcdc02753a",
+            "FileCRC": "ff99dc89",
+            "FileSize": 14822,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Sokoban/UI_SokobanSuccess.prefab",
+                "Assets/Shaw/UI Kit Pro - Casual Glossy/Images/Icons/iconRounded_ToEnd.png",
+                "Assets/Shaw/UI Kit Pro - Casual Glossy/Images/Icons/iconRounded_Restart.png",
+                "Assets/Shaw/UI Kit Pro - Casual Glossy/Images/Icons/iconRounded_Cancel.png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_survivor_ui_blood.bundle",
+            "FileName": "9d3866a4c8ef785c3dbf4f50286672ef.bundle",
+            "FileHash": "9d3866a4c8ef785c3dbf4f50286672ef",
+            "FileCRC": "efbc5155",
+            "FileSize": 4442,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Survivor/UI_Blood.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_survivor_ui_result.bundle",
+            "FileName": "d6c27067a07547124ed49a8fbcb4fc5c.bundle",
+            "FileHash": "d6c27067a07547124ed49a8fbcb4fc5c",
+            "FileCRC": "d443e970",
+            "FileSize": 7997,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Survivor/UI_Result.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_survivor_ui_survivormenu.bundle",
+            "FileName": "9ccac01f436e1d51ccc58a47fb45469c.bundle",
+            "FileHash": "9ccac01f436e1d51ccc58a47fb45469c",
+            "FileCRC": "43026ff4",
+            "FileSize": 109321,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Survivor/UI_SurvivorMenu.prefab",
+                "Assets/Assets/GUI Pro-CasualGame/ResourcesData/Fonts/LilitaOne-Regular Outline 54 SDF Atlas.png",
+                "Assets/Assets/GUI Pro-CasualGame/ResourcesData/Fonts/LilitaOne-Regular Outline 54 SDF.asset",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Gray.Png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Dark.Png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_survivor_ui_survivorstick.bundle",
+            "FileName": "27538c43eda556f61d7781722da6536b.bundle",
+            "FileHash": "27538c43eda556f61d7781722da6536b",
+            "FileCRC": "31233b9e",
+            "FileSize": 28510,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/Survivor/UI_SurvivorStick.prefab",
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_Play/Play_Joystick_bg.png",
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_Play/Play_Joystick_handle.png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_ui_flash.bundle",
+            "FileName": "abd607227b34866fec1a89b5542de4bb.bundle",
+            "FileHash": "abd607227b34866fec1a89b5542de4bb",
+            "FileCRC": "73d5107e",
+            "FileSize": 4195,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/UI_Flash.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_ui_menu.bundle",
+            "FileName": "74c9d31ddf0ccaae0b6bc47d25e045ac.bundle",
+            "FileHash": "74c9d31ddf0ccaae0b6bc47d25e045ac",
+            "FileCRC": "e85a25e1",
+            "FileSize": 14397,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/UI_Menu.prefab",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Yellow.Png"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_ui_ui_video.bundle",
+            "FileName": "61496094c193232afc6c132ec63f7fd7.bundle",
+            "FileHash": "61496094c193232afc6c132ec63f7fd7",
+            "FileCRC": "0a2363db",
+            "FileSize": 4105,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/UI/UI_Video.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_fonts_cangeryumo_sdf.bundle",
+            "FileName": "51539bd81b42128ca410d57d790fd5f2.bundle",
+            "FileHash": "51539bd81b42128ca410d57d790fd5f2",
+            "FileCRC": "d0f6ea88",
+            "FileSize": 6544419,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Fonts",
+                "UI"
+            ],
+            "ReferenceIDs": [
+                10,
+                12,
+                13,
+                16,
+                20,
+                23
+            ],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW01-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW02-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW03-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW04-2.ttf",
+                "Assets/AssetRaw/Fonts/CangErYuMo/SDF/CangErYuMoW05-2.ttf"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_fonts_cangeryumo_ttf.bundle",
+            "FileName": "82ca8b81d467bd40ba1ecc2b80c71bc0.bundle",
+            "FileHash": "82ca8b81d467bd40ba1ecc2b80c71bc0",
+            "FileCRC": "8be5a0a3",
+            "FileSize": 247348,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Fonts",
+                "UI"
+            ],
+            "ReferenceIDs": [
+                10,
+                12,
+                13,
+                16,
+                20
+            ],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW01-2 SDF.asset",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW02-2 SDF.asset",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW03-2 SDF.asset",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW04-2 SDF.asset",
+                "Assets/AssetRaw/Fonts/CangErYuMo/TTF/CangErYuMoW05-2 SDF.asset"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_fonts_fusion_pixel_sdf.bundle",
+            "FileName": "b5c1c1d8b45ba5a95ad5991a5a21e173.bundle",
+            "FileHash": "b5c1c1d8b45ba5a95ad5991a5a21e173",
+            "FileCRC": "4c36db55",
+            "FileSize": 69338,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Fonts",
+                "UI"
+            ],
+            "ReferenceIDs": [
+                11,
+                12,
+                14
+            ],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/SDF/fusion-pixel-10px-monospaced-ko SDF.asset"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_fonts_fusion_pixel_ttf.bundle",
+            "FileName": "a0980ad9ebe5b54c05c2801977ccd55e.bundle",
+            "FileHash": "a0980ad9ebe5b54c05c2801977ccd55e",
+            "FileCRC": "96a6a676",
+            "FileSize": 5605251,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Fonts",
+                "UI"
+            ],
+            "ReferenceIDs": [
+                11,
+                12,
+                14,
+                24
+            ],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ja.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-ko.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-latin.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-zh_hans.ttf",
+                "Assets/AssetRaw/Fonts/Fusion_Pixel/TTF/fusion-pixel-10px-monospaced-zh_hant.ttf"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_prefabs_custommodule.bundle",
+            "FileName": "b3c812463dd75e6716dc49c7f2b40dab.bundle",
+            "FileHash": "b3c812463dd75e6716dc49c7f2b40dab",
+            "FileCRC": "ddf70cc5",
+            "FileSize": 6714,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Prefabs/CustomModule.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_prefabs_sokoban_sokobancamera.bundle",
+            "FileName": "b89c788ae85ffa1b2c9d61708f2487cd.bundle",
+            "FileHash": "b89c788ae85ffa1b2c9d61708f2487cd",
+            "FileCRC": "45d874e7",
+            "FileSize": 4423,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Prefabs/Sokoban/SokobanCamera.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_prefabs_sokoban_sokobanmakemapitem.bundle",
+            "FileName": "b84fca0a5cbf787a14b3c639d73304c7.bundle",
+            "FileHash": "b84fca0a5cbf787a14b3c639d73304c7",
+            "FileCRC": "78ec9f37",
+            "FileSize": 4522,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Prefabs/Sokoban/SokobanMakeMapItem.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_prefabs_sokoban_sokobanmapitem.bundle",
+            "FileName": "ac1f20596aed64e660fe0908b5b764fb.bundle",
+            "FileHash": "ac1f20596aed64e660fe0908b5b764fb",
+            "FileCRC": "cb57015d",
+            "FileSize": 8104,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Prefabs/Sokoban/SokobanMapItem.prefab"
+            ]
+        },
+        {
+            "BundleName": "assets_assetraw_prefabs_survivor_survivorcamera.bundle",
+            "FileName": "f86317ec0a92b936705d81be4d21d26a.bundle",
+            "FileHash": "f86317ec0a92b936705d81be4d21d26a",
+            "FileCRC": "88018d03",
+            "FileSize": 4418,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Prefabs/Survivor/SurvivorCamera.prefab"
+            ]
+        },
+        {
+            "BundleName": "unityshaders.bundle",
+            "FileName": "a26ba56fdd13ed68b073c0f7a923c926.bundle",
+            "FileHash": "a26ba56fdd13ed68b073c0f7a923c926",
+            "FileCRC": "156e465b",
+            "FileSize": 28978,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "Actor",
+                "Materials",
+                "UI",
+                "Fonts"
+            ],
+            "ReferenceIDs": [
+                0,
+                8,
+                10,
+                11,
+                12,
+                13,
+                14,
+                16,
+                17,
+                20,
+                23,
+                24,
+                28,
+                29,
+                35
+            ],
+            "AllBuiltinAssets": [
+                "Assets/Plugins/Spine/Runtime/spine-unity/Shaders/Spine-Skeleton.shader",
+                "Assets/AssetRaw/Shaders/UI_Flash.shader",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+                "Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader"
+            ]
+        },
+        {
+            "BundleName": "share_assets_assetraw_sprite_sprite_component_button.bundle",
+            "FileName": "47788effb8312b77149074a3e8d79f28.bundle",
+            "FileHash": "47788effb8312b77149074a3e8d79f28",
+            "FileCRC": "b5b797b5",
+            "FileSize": 17658,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                16,
+                17,
+                20
+            ],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_OtherButton_SideButton01_Left.png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Green.Png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Red.Png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Orange.Png",
+                "Assets/AssetRaw/Sprite/Sprite/Component/Button/Btn_MainButton_Blue.Png"
+            ]
+        },
+        {
+            "BundleName": "share_assets_assetraw_sprite_sprite_demo_demo_icon.bundle",
+            "FileName": "22af54246fb29020b74a83db08a9f056.bundle",
+            "FileHash": "22af54246fb29020b74a83db08a9f056",
+            "FileCRC": "ad8444f8",
+            "FileSize": 6213,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [
+                9,
+                13
+            ],
+            "AllBuiltinAssets": [
+                "Assets/AssetRaw/Sprite/Sprite/Demo/Demo_Icon/Icon_PictoIcon_Back.png"
+            ]
+        },
+        {
+            "BundleName": "share_packages_com_unity_textmeshpro_editor resources_gizmos.bundle",
+            "FileName": "7edce413ffed649af89fa6081ee17bac.bundle",
+            "FileHash": "7edce413ffed649af89fa6081ee17bac",
+            "FileCRC": "818697e9",
+            "FileSize": 5663,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI",
+                "Fonts"
+            ],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd"
+            ]
+        },
+        {
+            "BundleName": "share_assets_plugins_textmesh pro_resources_fonts & materials.bundle",
+            "FileName": "3a6b5dba1f25f1812ff203cf0cfa6837.bundle",
+            "FileHash": "3a6b5dba1f25f1812ff203cf0cfa6837",
+            "FileCRC": "82569384",
+            "FileSize": 373489,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [
+                10,
+                12,
+                20,
+                29
+            ],
+            "AllBuiltinAssets": [
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+                "Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset"
+            ]
+        },
+        {
+            "BundleName": "share_assets_plugins_textmesh pro_fonts.bundle",
+            "FileName": "4705d6496047379544bcf2d2188796db.bundle",
+            "FileHash": "4705d6496047379544bcf2d2188796db",
+            "FileCRC": "6f5571ce",
+            "FileSize": 227379,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [
+                10,
+                12,
+                20,
+                29,
+                35
+            ],
+            "AllBuiltinAssets": [
+                "Assets/Plugins/TextMesh Pro/Fonts/LiberationSans.ttf"
+            ]
+        },
+        {
+            "BundleName": "share_assets_assets_ui elements_extras_rects.bundle",
+            "FileName": "7f0f93c3050470eb5ae6eef9945ce4ad.bundle",
+            "FileHash": "7f0f93c3050470eb5ae6eef9945ce4ad",
+            "FileCRC": "586f0720",
+            "FileSize": 4984,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [
+                "UI"
+            ],
+            "ReferenceIDs": [
+                12,
+                28
+            ],
+            "AllBuiltinAssets": [
+                "Assets/Assets/UI Elements/Extras/Rects/rect8pxRy8.png"
+            ]
+        },
+        {
+            "BundleName": "share_packages_com_unity_cinemachine_editor_editorresources.bundle",
+            "FileName": "5fcd9b6dc4ed7f4eb68fb940647433f8.bundle",
+            "FileHash": "5fcd9b6dc4ed7f4eb68fb940647433f8",
+            "FileCRC": "e9bf07e5",
+            "FileSize": 24033,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Packages/com.unity.cinemachine/Editor/EditorResources/cm_logo_sm.png"
+            ]
+        },
+        {
+            "BundleName": "share_packages_com_unity_2d_sprite_editor_objectmenucreation_defaultassets_textures_v2.bundle",
+            "FileName": "b6bc3b25d89ac8df1ceb5dfe570ee685.bundle",
+            "FileHash": "b6bc3b25d89ac8df1ceb5dfe570ee685",
+            "FileCRC": "cd08e0dc",
+            "FileSize": 4452,
+            "IsRawFile": false,
+            "LoadMethod": 3,
+            "Tags": [],
+            "ReferenceIDs": [
+                28,
+                29
+            ],
+            "AllBuiltinAssets": [
+                "Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/v2/Square.png"
+            ]
+        }
+    ],
+    "RedundancyInfos": []
+}

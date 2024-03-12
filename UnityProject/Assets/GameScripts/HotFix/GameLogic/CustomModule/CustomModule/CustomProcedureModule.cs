@@ -7,6 +7,12 @@ namespace GameLogic
     public class CustomProcedureModule : Module
     {
         public FSM<Enum_Procedure> _FSM;
+        protected override void Awake()
+        {
+            base.Awake();
+            Destroy(GameObject.Find("Camera"));
+        }
+
         protected void Start()
         {
             

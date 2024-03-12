@@ -26,10 +26,10 @@ MonoBehaviour:
       m_ExtraResourceSourceUrl: http://127.0.0.1:8088
       m_FormalResourceSourceUrl: http://127.0.0.1:8088
     m_AtlasFolder: Assets/AssetRaw/Atlas
-    HostServerURL: http://10.1.0.18:8081/AssetRoot
-    FallbackHostServerURL: http://10.1.0.18:8081/AssetRoot
+    HostServerURL: http://192.168.1.171:80/AssetRoot
+    FallbackHostServerURL: http://192.168.1.171:80/AssetRoot
     EnableUpdateData: 0
-    WindowsUpdateDataUrl: http://10.1.0.18
+    WindowsUpdateDataUrl: http://192.168.1.171
     MacOSUpdateDataUrl: http://10.1.0.18
     IOSUpdateDataUrl: http://10.1.0.18
     AndroidUpdateDataUrl: http://10.1.0.18
@@ -76,6 +76,8 @@ MonoBehaviour:
       componentName: Toggle
     - uiElementRegex: _Event_
       componentName: EventTrigger
+    - uiElementRegex: _TMP_
+      componentName: TextMeshProUGUI
   m_BybridCLRCustomGlobalSettings:
     m_Enable: 1
     HotUpdateAssemblies:

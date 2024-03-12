@@ -62,7 +62,7 @@ namespace GameLogic
         public RenderTexture PlayVideo()
         {
             RenderTexture renderTexture = new RenderTexture(1920, 1080, 24);
-            CustomModule.VideoModule.PlayVideo(GameModule.Resource.LoadAsset<VideoClip>("优衣六星视频"), true);
+            CustomModule.VideoModule.PlayVideo(GameModule.Resource.LoadAsset<VideoClip>("公主佩可视频"), true);
             CustomModule.VideoModule.SetRenderTexture(renderTexture);
             return renderTexture;
         }
@@ -92,19 +92,15 @@ namespace GameLogic
 
         public IEnumerator FlashStart()
         {
-            Log.Info("FlashStart1");
             _mat = GameModule.Resource.LoadAsset<Material>("Mat_UIFlash");
             GameModule.UI.ShowUI<UI_Flash>(_mat);
-            Log.Info("FlashStart2");
             bool isComplete = false;
 
             DOTween.To(() => -1f, value => _mat.SetFloat("_Add", value), 1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
-            Log.Info("FlashStart3");
             while (!isComplete)
             {
                 yield return null;
             }
-            Log.Info("FlashStart4");
         }
 
         public IEnumerator FlashEnd()

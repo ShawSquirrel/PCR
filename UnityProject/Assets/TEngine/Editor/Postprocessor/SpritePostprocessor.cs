@@ -50,6 +50,8 @@ public static class EditorSpriteSaveInfo
 
     public static void Init()
     {
+        // 临时注释图集的打包 TODO:ML
+        return;
         if (m_inited)
         {
             return;
