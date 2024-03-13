@@ -26,10 +26,10 @@ MonoBehaviour:
       m_ExtraResourceSourceUrl: http://127.0.0.1:8088
       m_FormalResourceSourceUrl: http://127.0.0.1:8088
     m_AtlasFolder: Assets/AssetRaw/Atlas
-    HostServerURL: http://192.168.1.171:80/AssetRoot
-    FallbackHostServerURL: http://192.168.1.171:80/AssetRoot
+    HostServerURL: https://a.unity.cn/client_api/v1/buckets/f7d773f8-cc3f-45a0-8015-881ba7d75f3c/release_by_badge/latest/entry_by_path/content/?path=
+    FallbackHostServerURL: https://a.unity.cn/client_api/v1/buckets/f7d773f8-cc3f-45a0-8015-881ba7d75f3c/release_by_badge/latest/entry_by_path/content/?path=
     EnableUpdateData: 0
-    WindowsUpdateDataUrl: http://192.168.1.171
+    WindowsUpdateDataUrl: https://a.unity.cn/client_api/v1/buckets/f7d773f8-cc3f-45a0-8015-881ba7d75f3c/release_by_badge/latest/entry_by_path/content/?path=
     MacOSUpdateDataUrl: http://10.1.0.18
     IOSUpdateDataUrl: http://10.1.0.18
     AndroidUpdateDataUrl: http://10.1.0.18
