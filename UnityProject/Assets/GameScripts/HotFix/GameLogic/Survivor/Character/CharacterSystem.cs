@@ -13,6 +13,7 @@ namespace GameLogic.Survivor
         private FSM<Enum_ChracterState> _fsm;
 
         public Vector3 Pos => _character.transform.position;
+        public Transform TFCharacter => _character.transform;
 
         public override void Awake()
         {

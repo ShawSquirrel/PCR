@@ -41,6 +41,7 @@ namespace GameLogic.Survivor
             _Character = AddManager<CharacterSystem>();
             _Enemy = AddManager<EnemySystem>();
             _Time = AddManager<TimeSystem>();
+            _Skill = AddManager<SkillSystem>();
             
         }
 
@@ -99,6 +100,7 @@ namespace GameLogic.Survivor
         public void StartGame(string name)
         {
             _Character.LoadCharacter(name);
+            _Skill.CreateSkill("Sword");
         }
     }
 }

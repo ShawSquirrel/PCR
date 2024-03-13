@@ -43,7 +43,7 @@ namespace GameLogic.Survivor
         {
             base.OnUpdate();
             if (_IsDie) return;
-            mTarget.CreateEnemy();
+            // mTarget.CreateEnemy();
         }
     }
 }

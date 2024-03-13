@@ -1,7 +1,10 @@
 ﻿namespace GameLogic.Survivor
 {
-    public class Skill : ISkill
+    public class Skill
     {
-        
+        public virtual void Run()
+        {
+            
+        }
     }
 }
