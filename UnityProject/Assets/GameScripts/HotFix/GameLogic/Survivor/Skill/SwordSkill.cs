@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TEngine;
 using UnityEngine;
@@ -16,10 +17,16 @@ namespace GameLogic.Survivor
             _TF = _Obj.transform;
             _TF.SetParent(Game._SurvivorGameRoot._Character.TFCharacter);
 
-            Utility.Unity.StartCoroutine(Run());
+
+            Start();
         }
 
-        public IEnumerator Run()
+        public void Start()
+        {
+            Run();
+        }
+
+        private async void Run()
         {
             while (true)
             {
@@ -29,10 +36,17 @@ namespace GameLogic.Survivor
                     angle => _TF.localRotation = Quaternion.Euler(angle),
                     Vector3.forward * 180,
                     0.5f).OnComplete(() => { isComplete = true; });
-                yield return new WaitUntil(() => isComplete);
-                _Obj.SetActive(false);
-                yield return new WaitForSeconds(3);
+                await UniTask.WaitUntil(() => isComplete);
+                Log.Info("Run");
+                Wait3();
+                Log.Info("Wait3");
             }
+        }
+
+        public async UniTaskVoid Wait3()
+        {
+            _Obj.SetActive(false);
+            await UniTask.Delay(3000);
         }
     }
 }
