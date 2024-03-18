@@ -14,21 +14,28 @@ namespace GameLogic.Survivor
         private Rigidbody2D _rigidbody2D;
         private CharacterData _characterData;
         private GameObject _chracter;
+        private GameObject _body;
         
         
         public CharacterData CharacterData => _characterData;
         public CharacterCtl(GameObject character)
         {
-            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_Move, OnMove);
-            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_MoveStop, OnMove);
-            GameEvent.AddEventListener<IDamage>(EventID_Survivor.Survivor_Damage, OnDamage);
+            AddListen();
 
             _chracter      = character;
             _characterData = new CharacterData();
             _animComponent = character.GetComponentInChildren<AnimComponent>();
             _rigidbody2D   = character.GetComponent<Rigidbody2D>();
+            _body          = character.transform.Find("Body").gameObject;
             
             Utility.Unity.AddUpdateListener(Update);
+        }
+
+        private void AddListen()
+        {
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_Move, OnMove);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_MoveStop, OnMove);
+            GameEvent.AddEventListener<IDamage>(EventID_Survivor.Survivor_Damage, OnDamage);
         }
 
         private void Update()
@@ -83,7 +90,7 @@ namespace GameLogic.Survivor
 
         private void SetFlipX(bool isLeft)
         {
-            Vector3 scale = _chracter.transform.localScale;
+            Vector3 scale = _body.transform.localScale;
             if (scale.x > 0 && isLeft) 
             {
                 scale.Set(-scale.x, scale.y, scale.z);
@@ -97,7 +104,7 @@ namespace GameLogic.Survivor
                 return;
             }
 
-            _chracter.transform.localScale = scale;
+            _body.transform.localScale = scale;
         }
 
     }

@@ -6,6 +6,9 @@ namespace GameLogic.Survivor
 {
     public class InputSystem : GameBase.System, IRelease
     {
+        /// <summary>
+        /// 开始移动的距离
+        /// </summary>
         public Vector2 _BeginDragPos;
 
         public override void Awake()
@@ -16,9 +19,41 @@ namespace GameLogic.Survivor
 
         private void AddListen()
         {
-            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_BeginDragStick, OnBeginDrag);
-            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_DragStick, OnDrag);
-            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_EndDragStick, OnEndDrag);
+            // GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_BeginDragStick, OnBeginDrag);
+            // GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_DragStick, OnDrag);
+            // GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_EndDragStick, OnEndDrag);
+            
+            Utility.Unity.AddUpdateListener(Update);
+        }
+
+        private void Update()
+        {
+            Vector2 vector2 = Vector2.zero;
+            if (Input.GetKey(KeyCode.A))
+            {
+                vector2.x = -1;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                vector2.x = 1;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                vector2.y = 1;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                vector2.y = -1;
+            }
+
+            if (vector2 == Vector2.zero)
+            {
+                GameEvent.Send<Vector2>(EventID_Survivor.Survivor_MoveStop, new Vector2());
+            }
+            else
+            {
+                GameEvent.Send<Vector2>(EventID_Survivor.Survivor_Move, vector2.normalized);
+            }
         }
 
         private void OnBeginDrag(Vector2 pos)
@@ -37,11 +72,10 @@ namespace GameLogic.Survivor
             }
             else
             {
-                handlePos =_BeginDragPos +  direct * 90;
+                handlePos = _BeginDragPos + direct * 90;
             }
-            GameEvent.Send<Vector2>(EventID_Survivor.Survivor_UIDragStick, handlePos);
 
-            
+            GameEvent.Send<Vector2>(EventID_Survivor.Survivor_UIDragStick, handlePos);
             GameEvent.Send<Vector2>(EventID_Survivor.Survivor_Move, direct);
         }
 
@@ -54,7 +88,6 @@ namespace GameLogic.Survivor
 
         public void Release()
         {
-            
         }
     }
 }
