@@ -2,6 +2,7 @@
 using System.Collections;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using GameBase;
 using TEngine;
 using UnityEngine;
 using UnityEngine.Video;
@@ -27,7 +28,6 @@ namespace GameLogic
         /// </summary>
         private void RemoveListen()
         {
-            
         }
 
         /// <summary>
@@ -35,7 +35,6 @@ namespace GameLogic
         /// </summary>
         private void AddListen()
         {
-           
         }
 
 
@@ -77,10 +76,26 @@ namespace GameLogic
 
         #region Flash
 
-        public void StartFlash(Action action = null)
+        public async void StartFlash(Action action = null)
         {
-            Utility.Unity.StartCoroutine(OpenFlash(action));
+            _mat = GameModule.Resource.LoadAsset<Material>("Mat_UIFlash").Instantiate();
+            GameModule.UI.ShowUI<UI_Flash>(_mat);
+            bool isComplete = false;
+            DOTween.To(() => -1f, value => _mat.SetFloat("_Add", value), 1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+            
+            await UniTask.WaitUntil(() => isComplete);
+            
+            action?.Invoke();
+
+            isComplete = false;
+
+            DOTween.To(() => 1f, value => _mat.SetFloat("_Add", value), -1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+
+            await UniTask.WaitUntil(() => isComplete);
+
+            GameModule.UI.CloseWindow<UI_Flash>();
         }
+
         public IEnumerator OpenFlash(Action action = null)
         {
             yield return FlashStart();

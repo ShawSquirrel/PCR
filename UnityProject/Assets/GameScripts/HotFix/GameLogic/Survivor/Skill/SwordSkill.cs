@@ -37,16 +37,11 @@ namespace GameLogic.Survivor
                     Vector3.forward * 180,
                     0.5f).OnComplete(() => { isComplete = true; });
                 await UniTask.WaitUntil(() => isComplete);
-                Log.Info("Run");
-                Wait3();
-                Log.Info("Wait3");
+                // Log.Info("Run");
+                _Obj.SetActive(false);
+                await UniTask.Delay(3000);
+                // Log.Info("Wait3");
             }
-        }
-
-        public async UniTaskVoid Wait3()
-        {
-            _Obj.SetActive(false);
-            await UniTask.Delay(3000);
         }
     }
 }
