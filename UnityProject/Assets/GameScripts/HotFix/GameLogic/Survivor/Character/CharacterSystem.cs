@@ -15,18 +15,13 @@ namespace GameLogic.Survivor
         public Vector3 Pos => _character.transform.position;
         public Transform TFCharacter => _character.transform;
 
-        public override void Awake()
-        {
-            base.Awake();
-        }
-
         public void LoadCharacter(string name)
         {
-            _character = GameModule.Resource.LoadAsset<GameObject>(name);
+            _characterCtl   = new CharacterCtl(name);
+            _character      = _characterCtl.Chracter;
             _character.name = name;
             _character.transform.SetParent(_TF);
             _character.AddComponent<PlayerColliderEvent>();
-            _characterCtl = new CharacterCtl(_character);
             FSMInit();
         }
 

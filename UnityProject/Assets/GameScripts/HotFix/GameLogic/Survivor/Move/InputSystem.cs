@@ -19,11 +19,18 @@ namespace GameLogic.Survivor
 
         private void AddListen()
         {
-            // GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_BeginDragStick, OnBeginDrag);
-            // GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_DragStick, OnDrag);
-            // GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_EndDragStick, OnEndDrag);
             
+
+            #if UNITY_EDITOR 
             Utility.Unity.AddUpdateListener(Update);
+            #elif UNITY_STANDALONE
+            Utility.Unity.AddUpdateListener(Update);
+            #elif UNITY_ANDROID
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_BeginDragStick, OnBeginDrag);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_DragStick, OnDrag);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_EndDragStick, OnEndDrag);
+            #endif
+            
         }
 
         private void Update()

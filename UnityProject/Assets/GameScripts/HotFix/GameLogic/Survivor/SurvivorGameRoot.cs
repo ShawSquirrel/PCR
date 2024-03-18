@@ -86,7 +86,7 @@ namespace GameLogic.Survivor
         {
             if (lastGenTime > 5f)
             {
-                Game._SurvivorGameRoot._Enemy.CreateEnemy();
+                Game._SurvivorGameRoot._Enemy.CreateEnemy("镜华");
                 lastGenTime = 0;
             }
 

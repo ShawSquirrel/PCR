@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class CharacterWalkProcedure : CharacterProcedureBase
+    public class EnemyWalkProcedure : EnemyProcedureBase
     {
-        public CharacterWalkProcedure(FSM<Enum_ChracterState> fsm, CharacterCtl target) : base(fsm, target)
+        public EnemyWalkProcedure(FSM<Enum_EnemyState> fsm, EnemyCtl target) : base(fsm, target)
         {
         }
 
@@ -22,12 +22,6 @@ namespace GameLogic.Survivor
             
             mTarget.Move();
             mTarget.UpdateTowards();
-            
-            if (mTarget.EntityData._Towards == Vector2.zero)
-            {
-                mFSM.ChangeState(Enum_ChracterState.Idle);
-                return;
-            }
         }
     }
 }

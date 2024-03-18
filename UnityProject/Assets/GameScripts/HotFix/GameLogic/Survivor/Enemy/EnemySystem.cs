@@ -7,41 +7,34 @@ namespace GameLogic.Survivor
 {
     public class EnemySystem : GameBase.System, IRelease
     {
-        public List<EnemyController> _List_Enemy;
+        public List<EnemyCtl> _List_Enemy;
         public Vector3 PlayerPos => Game._SurvivorGameRoot._Character.Pos;
 
         public override void Awake()
         {
             base.Init();
-            _List_Enemy = new List<EnemyController>();
+            _List_Enemy = new List<EnemyCtl>();
         }
 
-        public void CreateEnemy()
+        public void CreateEnemy(string name)
         {
             float x = Random.Range(50, 100) * Random.Range(-1, 1) > 0 ? 1 : -1;
             float y = Random.Range(50, 100) * Random.Range(-1, 1) > 0 ? 1 : -1;
-            
-            GameObject prefab = GameModule.Resource.LoadAsset<GameObject>("Quad1");
+            EnemyCtl enemyCtl = new EnemyCtl(name);
 
-            GameObject enemy = GameObject.Instantiate(prefab, _TF);
-            enemy.name               = "Enemy";
-            enemy.transform.position = PlayerPos + new Vector3(x, y);
-
-            EnemyController enemyController = enemy.AddComponent<EnemyController>();
+            enemyCtl.SetName("Enemy");
+            enemyCtl.SetPos(PlayerPos + new Vector3(x, y));
             
-            GameObject.Destroy(prefab);
-            
-            _List_Enemy.Add(enemyController);
-
-            
+            _List_Enemy.Add(enemyCtl);
         }
 
         public void Release()
         {
-            foreach (EnemyController controller in _List_Enemy)
+            foreach (EnemyCtl controller in _List_Enemy)
             {
-                GameObject.Destroy(controller.gameObject);
+                GameObject.Destroy(controller.Chracter);
             }
+
             _List_Enemy.Clear();
         }
     }
