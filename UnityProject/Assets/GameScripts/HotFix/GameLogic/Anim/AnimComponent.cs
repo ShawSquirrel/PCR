@@ -44,7 +44,7 @@ namespace GameLogic
             if (S_AnimNameDict == null)
             {
                 S_AnimNameDict = new Dictionary<EAnimState, string>();
-                foreach (SAnim2Name anim2Name in ConfigSystem.Instance.Tables.SItem.DataList)
+                foreach (SAnim2Name anim2Name in ConfigSystem.Instance.Tables.SAnimName.DataList)
                 {
                     S_AnimNameDict[anim2Name.State] = anim2Name.Name;
                 }

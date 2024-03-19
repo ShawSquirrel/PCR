@@ -13,17 +13,20 @@ namespace GameConfig
 {
 public partial class Tables
 {
-    public SItem SItem {get; }
+    public SAnimName SAnimName {get; }
+    public SActorAttribute SActorAttribute {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
-        SItem = new SItem(loader("sitem"));
+        SAnimName = new SAnimName(loader("sanimname"));
+        SActorAttribute = new SActorAttribute(loader("sactorattribute"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
-        SItem.ResolveRef(this);
+        SAnimName.ResolveRef(this);
+        SActorAttribute.ResolveRef(this);
     }
 }
 

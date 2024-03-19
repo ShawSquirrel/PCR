@@ -12,12 +12,12 @@ using Luban;
 
 namespace GameConfig
 {
-public partial class SItem
+public partial class SAnimName
 {
     private readonly System.Collections.Generic.Dictionary<int, SAnim2Name> _dataMap;
     private readonly System.Collections.Generic.List<SAnim2Name> _dataList;
     
-    public SItem(ByteBuf _buf)
+    public SAnimName(ByteBuf _buf)
     {
         _dataMap = new System.Collections.Generic.Dictionary<int, SAnim2Name>();
         _dataList = new System.Collections.Generic.List<SAnim2Name>();
