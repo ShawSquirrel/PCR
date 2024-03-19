@@ -14,16 +14,29 @@ namespace GameLogic.Survivor
         {
             base.Init();
             _List_Enemy = new List<EnemyCtl>();
+            
         }
 
         public void CreateEnemy(string name)
         {
-            float x = Random.Range(50, 100) * Random.Range(-1, 1) > 0 ? 1 : -1;
-            float y = Random.Range(50, 100) * Random.Range(-1, 1) > 0 ? 1 : -1;
+            // 生成随机角度
+            float randomAngle = Random.Range(0f, 360f);
+        
+            // 将极坐标转换为笛卡尔坐标
+            float x = Mathf.Cos(randomAngle * Mathf.Deg2Rad);
+            float y = Mathf.Sin(randomAngle * Mathf.Deg2Rad);
+
+            // 生成随机位置在内半径和外半径之间
+            float randomRadius = Random.Range(5, 10);
+
+            // 计算最终的位置
+            Vector3 randomPosition = new Vector3(x, y, 0) * randomRadius;
+
+            
             EnemyCtl enemyCtl = new EnemyCtl(name);
 
             enemyCtl.SetName("Enemy");
-            enemyCtl.SetPos(PlayerPos + new Vector3(x, y));
+            enemyCtl.SetPos(PlayerPos + randomPosition);
             
             _List_Enemy.Add(enemyCtl);
         }

@@ -9,6 +9,8 @@ namespace GameLogic.Survivor
         protected FSM<Enum_EnemyState> _fsm;
         public EnemyCtl(string characterName) : base(characterName)
         {
+            FSMInit();
+            
         }
 
         protected override void FSMInit()
@@ -24,7 +26,12 @@ namespace GameLogic.Survivor
 
         protected override void Update()
         {
-            
+            Vector3 vector3 = (Game._SurvivorGameRoot._Character.Pos - _chracter.transform.position).normalized;
+            SetTowards(vector3);
+            _fsm.Update();
         }
+        
+        
+        
     }
 }

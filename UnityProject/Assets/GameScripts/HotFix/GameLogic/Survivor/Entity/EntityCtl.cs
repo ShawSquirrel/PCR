@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class EntityCtl : IMove, IUpdateTowards
+    public class EntityCtl : IMove, IUpdateTowards, IDamage, IAtk, ISpeed, IHP
     {
         protected AnimComponent _animComponent;
         protected Rigidbody2D _rigidbody2D;
@@ -13,45 +13,37 @@ namespace GameLogic.Survivor
         protected GameObject _chracter;
         protected GameObject _body;
 
+        protected Vector2 _towards;
+
 
         public EntityData EntityData => _entityData;
         public GameObject Chracter => _chracter;
 
         public virtual void SetName(string name) => _chracter.name = name;
         public virtual void SetPos(Vector3 pos) => _chracter.transform.localPosition = pos;
+        protected virtual void SetTowards(Vector2 direct) => _towards = direct;
 
         public EntityCtl(string characterName)
         {
             AddListen();
 
             GameObject character = GameModule.Resource.LoadAsset<GameObject>(characterName);
-            
+
             _entityData = new EntityData();
-            _chracter      = character;
+            _chracter = character;
             _animComponent = character.GetComponentInChildren<AnimComponent>();
-            _rigidbody2D   = character.GetComponent<Rigidbody2D>();
-            _body          = character.transform.Find("Body").gameObject;
+            _rigidbody2D = character.GetComponent<Rigidbody2D>();
+            _body = character.transform.Find("Body").gameObject;
 
             Utility.Unity.AddUpdateListener(Update);
         }
 
         protected virtual void AddListen()
         {
-            
         }
 
         protected virtual void Update()
         {
-            
-        }
-
-        /// <summary>
-        /// 受伤
-        /// </summary>
-        /// <param name="damage"></param>
-        protected virtual void OnDamage(IDamage damage)
-        {
-            
         }
 
         /// <summary>
@@ -63,12 +55,6 @@ namespace GameLogic.Survivor
         public virtual void PlayAnim(EAnimState state, bool isloop = false, Action onComplete = null)
         {
             _animComponent.Play(state, isloop, onComplete);
-        }
-
-
-        protected virtual void OnMove(Vector2 direct)
-        {
-            _entityData._Towards = direct;
         }
 
 
@@ -85,13 +71,15 @@ namespace GameLogic.Survivor
         /// </summary>
         public virtual void UpdateTowards()
         {
-            if (_entityData._Towards.x > 0)
+            _entityData._Towards = _towards;
+            switch (_entityData._Towards.x)
             {
-                SetFlipX(false);
-            }
-            else if (_entityData._Towards.x < 0)
-            {
-                SetFlipX(true);
+                case > 0:
+                    SetFlipX(false);
+                    break;
+                case < 0:
+                    SetFlipX(true);
+                    break;
             }
         }
 
@@ -120,7 +108,26 @@ namespace GameLogic.Survivor
 
         protected virtual void FSMInit()
         {
-            
+        }
+
+        public virtual void Damage(float value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual float GetAtk()
+        {
+            return 0;
+        }
+
+        public virtual float GetSpeed()
+        {
+            return 0;
+        }
+
+        public virtual float GetHP()
+        {
+            return 0;
         }
     }
 }

@@ -20,8 +20,8 @@ namespace GameLogic.Survivor
         {
             base.OnUpdate();
             
-            mTarget.Move();
             mTarget.UpdateTowards();
+            mTarget.Move();
         }
     }
 }

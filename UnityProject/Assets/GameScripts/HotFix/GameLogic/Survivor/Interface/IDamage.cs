@@ -2,6 +2,6 @@
 {
     public interface IDamage
     {
-        float GetAtk();
+        void Damage(float value);
     }
 }

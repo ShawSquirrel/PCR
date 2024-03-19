@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
+    /// <summary>
+    /// 角色控制
+    /// </summary>
     public class CharacterCtl : EntityCtl
     {
         public CharacterCtl(string characterName) : base(characterName)
@@ -12,30 +15,15 @@ namespace GameLogic.Survivor
 
         protected override void AddListen()
         {
-            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_Move, OnMove);
-            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_MoveStop, OnMove);
-            GameEvent.AddEventListener<IDamage>(EventID_Survivor.Survivor_Damage, OnDamage);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_Move, SetTowards);
+            GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_MoveStop, SetTowards);
         }
-        
+
         protected override void Update()
         {
+            // 更新UI血条
             GameEvent.Send(UIEventID_Survivor.SetBlood, _entityData._HP / 100);
         }
-
-        protected override void OnDamage(IDamage damage)
-        {
-            base.OnDamage(damage);
-            if (_entityData._HP <= 0)
-            {
-                return;
-            }
-
-            _entityData._HP -= damage.GetAtk();
-            if (_entityData._HP <= 0)
-            {
-                GameEvent.Send(EventID_Survivor.Survivor_Die);
-                Time.timeScale = 0;
-            }
-        }
+        
     }
 }
