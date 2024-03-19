@@ -21,6 +21,7 @@ namespace GameLogic.Survivor
             _fsm.AddState(Enum_EnemyState.Walk, new EnemyWalkProcedure(_fsm, this));
             _fsm.AddState(Enum_EnemyState.Idle, new EnemyIdleProcedure(_fsm, this));
             _fsm.AddState(Enum_EnemyState.Damage, new EnemyDamageProcedure(_fsm, this));
+            _fsm.AddState(Enum_EnemyState.Die, new EnemyDieProcedure(_fsm, this));
             
             _fsm.StartState(Enum_EnemyState.Walk);
         }
@@ -31,8 +32,30 @@ namespace GameLogic.Survivor
             SetTowards(vector3);
             _fsm.Update();
         }
-        
-        
+
+        public override void Damage(float value)
+        {
+            base.Damage(value);
+            _EntityBaseData._HP -= value;
+        }
+
+        public bool HpDetect()
+        {
+            if (_EntityBaseData._HP < 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override void Die()
+        {
+            base.Die();
+            Game._SurvivorGameRoot._Enemy.DieEnemy(this);
+            _EntityBaseData = null;
+            GameObject.Destroy(_chracter);
+        }
         
     }
 }

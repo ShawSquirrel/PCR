@@ -10,7 +10,7 @@ namespace GameLogic.Survivor
         private void OnTriggerEnter2D(Collider2D other)
         {
             Log.Debug(other.name);
-            IDamage damage = Game._SurvivorGameRoot._Enemy.GetEnemyCtlByGameObject(other.gameObject);
+            IDamage damage = Game._SurvivorGameRoot._Enemy.GetEnemyCtlByGameObject(other.transform.parent.gameObject);
             damage.Damage(_Atk);
         }
     }

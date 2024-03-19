@@ -104,5 +104,7 @@ namespace GameLogic.Survivor
             _Character.LoadCharacter(name);
             _Skill.CreateSkill("Sword");
         }
+        
+        
     }
 }

@@ -19,9 +19,16 @@ namespace GameLogic.Survivor
         protected override void OnUpdate()
         {
             base.OnUpdate();
+
+            if (mTarget.HpDetect() == false)
+            {
+                mFSM.ChangeState(Enum_EnemyState.Die);
+                return;
+            }
             
             mTarget.UpdateTowards();
             mTarget.Move();
+            
         }
     }
 }

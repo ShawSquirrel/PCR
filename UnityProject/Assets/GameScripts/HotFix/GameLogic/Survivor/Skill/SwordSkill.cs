@@ -17,7 +17,7 @@ namespace GameLogic.Survivor
             _Obj = GameModule.Resource.LoadAsset<GameObject>("Sword");
             _TF = _Obj.transform;
             _TF.SetParent(Game._SurvivorGameRoot._Skill._TF);
-            _Obj.AddComponent<SkillColliderEvent>();
+            _Obj.AddComponent<SkillColliderEvent>()._Atk = 50;
 
             Start();
         }

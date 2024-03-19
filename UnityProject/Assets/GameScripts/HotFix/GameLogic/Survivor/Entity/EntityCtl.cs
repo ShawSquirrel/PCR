@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class EntityCtl : IMove, IUpdateTowards, IDamage, IAtk, ISpeed, IHP
+    public class EntityCtl : IMove, IUpdateTowards, IDamage, IAtk, ISpeed, IHP, IDie
     {
         protected AnimComponent _animComponent;
         protected Rigidbody2D _rigidbody2D;
@@ -114,7 +114,7 @@ namespace GameLogic.Survivor
 
         public virtual void Damage(float value)
         {
-            throw new NotImplementedException();
+            
         }
 
         public virtual float GetAtk()
@@ -130,6 +130,16 @@ namespace GameLogic.Survivor
         public virtual float GetHP()
         {
             return 0;
+        }
+
+        public virtual void Die()
+        {
+            Utility.Unity.RemoveUpdateListener(Update);
+        }
+
+        public virtual void ResetSpeed()
+        {
+            _rigidbody2D.velocity = Vector2.zero;
         }
     }
 }
