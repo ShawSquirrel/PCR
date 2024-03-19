@@ -10,7 +10,8 @@ namespace GameLogic.Survivor
         public EnemyCtl(string characterName) : base(characterName)
         {
             FSMInit();
-            
+            _chracter.layer = LayerMask.NameToLayer("Enemy");
+            _body.layer = LayerMask.NameToLayer("Enemy");
         }
 
         protected override void FSMInit()

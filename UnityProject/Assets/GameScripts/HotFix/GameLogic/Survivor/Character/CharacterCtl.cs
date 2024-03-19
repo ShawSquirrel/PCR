@@ -22,7 +22,7 @@ namespace GameLogic.Survivor
         protected override void Update()
         {
             // 更新UI血条
-            GameEvent.Send(UIEventID_Survivor.SetBlood, _entityData._HP / 100);
+            GameEvent.Send(UIEventID_Survivor.SetBlood, _EntityBaseData._HP / 100);
         }
         
     }

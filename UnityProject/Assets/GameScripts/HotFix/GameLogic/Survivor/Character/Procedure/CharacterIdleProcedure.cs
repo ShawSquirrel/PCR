@@ -20,7 +20,7 @@ namespace GameLogic.Survivor
         {
             base.OnUpdate();
             mTarget.UpdateTowards();
-            if (mTarget.EntityData._Towards != Vector2.zero)
+            if (mTarget.CurTowards != Vector2.zero)
             {
                 mFSM.ChangeState(Enum_ChracterState.Walk);
                 return;

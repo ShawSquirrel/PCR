@@ -19,7 +19,7 @@ namespace GameLogic.Survivor
         protected override void OnUpdate()
         {
             base.OnUpdate();
-            if (mTarget.EntityData._Towards != Vector2.zero)
+            if (mTarget.CurTowards != Vector2.zero)
             {
                 mFSM.ChangeState(Enum_EnemyState.Walk);
                 return;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4343227846704733431}
   - component: {fileID: 3903757830429003326}
   - component: {fileID: 6836729717402714747}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.054525405, y: 0.39601183}

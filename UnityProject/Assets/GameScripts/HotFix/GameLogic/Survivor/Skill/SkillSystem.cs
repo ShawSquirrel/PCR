@@ -5,6 +5,7 @@
         public void CreateSkill(string skillName)
         {
             SwordSkill swordSkill = new SwordSkill();
+            swordSkill._Atk = 100;
         }
     }
 }

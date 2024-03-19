@@ -8,6 +8,7 @@ namespace GameLogic.Survivor
     public class EnemySystem : GameBase.System, IRelease
     {
         public List<EnemyCtl> _List_Enemy;
+        private Dictionary<GameObject, EnemyCtl> _dict_EnemyCtl;
         public Vector3 PlayerPos => Game._SurvivorGameRoot._Character.Pos;
 
         public override void Awake()
@@ -49,6 +50,17 @@ namespace GameLogic.Survivor
             }
 
             _List_Enemy.Clear();
+        }
+
+        public EnemyCtl GetEnemyCtlByGameObject(GameObject obj)
+        {
+            EnemyCtl enemyCtl;
+            if (_dict_EnemyCtl.TryGetValue(obj, out enemyCtl))
+            {
+                return enemyCtl;
+            }
+            Log.Error($"没有这个敌人 {obj.name}");
+            return null;
         }
     }
 }

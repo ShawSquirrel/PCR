@@ -9,19 +9,21 @@ namespace GameLogic.Survivor
     {
         protected AnimComponent _animComponent;
         protected Rigidbody2D _rigidbody2D;
-        protected EntityData _entityData;
+        protected EntityBaseData _EntityBaseData;
         protected GameObject _chracter;
         protected GameObject _body;
 
-        protected Vector2 _towards;
+        protected Vector2 _willApplyTowards;
+        protected Vector2 _curTowards;
 
 
-        public EntityData EntityData => _entityData;
+        public EntityBaseData EntityBaseData => _EntityBaseData;
         public GameObject Chracter => _chracter;
+        public Vector2 CurTowards => _curTowards;
 
         public virtual void SetName(string name) => _chracter.name = name;
         public virtual void SetPos(Vector3 pos) => _chracter.transform.localPosition = pos;
-        protected virtual void SetTowards(Vector2 direct) => _towards = direct;
+        protected virtual void SetTowards(Vector2 direct) => _willApplyTowards = direct;
 
         public EntityCtl(string characterName)
         {
@@ -29,7 +31,7 @@ namespace GameLogic.Survivor
 
             GameObject character = GameModule.Resource.LoadAsset<GameObject>(characterName);
 
-            _entityData = new EntityData();
+            _EntityBaseData = new EntityBaseData(characterName);
             _chracter = character;
             _animComponent = character.GetComponentInChildren<AnimComponent>();
             _rigidbody2D = character.GetComponent<Rigidbody2D>();
@@ -63,7 +65,7 @@ namespace GameLogic.Survivor
         /// </summary>
         public virtual void Move()
         {
-            _rigidbody2D.velocity = _entityData._Towards * _entityData._MoveSpeed;
+            _rigidbody2D.velocity = _curTowards * _EntityBaseData._Speed;
         }
 
         /// <summary>
@@ -71,8 +73,8 @@ namespace GameLogic.Survivor
         /// </summary>
         public virtual void UpdateTowards()
         {
-            _entityData._Towards = _towards;
-            switch (_entityData._Towards.x)
+            _curTowards = _willApplyTowards;
+            switch (_curTowards.x)
             {
                 case > 0:
                     SetFlipX(false);

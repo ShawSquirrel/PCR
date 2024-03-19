@@ -12,6 +12,7 @@ namespace GameLogic.Survivor
         public EnemySystem _Enemy;
         public TimeSystem _Time;
         public SkillSystem _Skill;
+        public Config.ConfigSystem _Config;
         public UIEvent _UIEvent;
 
         protected override void OnInit()
@@ -37,11 +38,12 @@ namespace GameLogic.Survivor
 
         private void AddSystem()
         {
-            _Input = AddManager<InputSystem>();
+            _Input     = AddManager<InputSystem>();
             _Character = AddManager<CharacterSystem>();
-            _Enemy = AddManager<EnemySystem>();
-            _Time = AddManager<TimeSystem>();
-            _Skill = AddManager<SkillSystem>();
+            _Enemy     = AddManager<EnemySystem>();
+            _Time      = AddManager<TimeSystem>();
+            _Skill     = AddManager<SkillSystem>();
+            _Config    = AddManager<Config.ConfigSystem>();
             
         }
 
