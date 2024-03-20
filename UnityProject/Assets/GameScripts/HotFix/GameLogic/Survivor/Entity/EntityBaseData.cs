@@ -4,6 +4,7 @@ namespace GameLogic.Survivor
 {
     public class EntityBaseData
     {
+        public float _MaxHp;
         public float _HP;
         public float _Atk;
         public float _Def;
@@ -16,6 +17,7 @@ namespace GameLogic.Survivor
             _Atk   = data._Atk;
             _Def   = data._Def;
             _Speed = data._Speed;
+            _MaxHp = _HP;
         }
     }
 }

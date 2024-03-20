@@ -12,6 +12,7 @@ namespace GameLogic.Survivor
         protected EntityBaseData _EntityBaseData;
         protected GameObject _chracter;
         protected GameObject _body;
+        protected BoxCollider2D _boxCollider;
 
         protected Vector2 _willApplyTowards;
         protected Vector2 _curTowards;
@@ -32,10 +33,11 @@ namespace GameLogic.Survivor
             GameObject character = GameModule.Resource.LoadAsset<GameObject>(characterName);
 
             _EntityBaseData = new EntityBaseData(characterName);
-            _chracter = character;
-            _animComponent = character.GetComponentInChildren<AnimComponent>();
-            _rigidbody2D = character.GetComponent<Rigidbody2D>();
-            _body = character.transform.Find("Body").gameObject;
+            _chracter       = character;
+            _animComponent  = character.GetComponentInChildren<AnimComponent>();
+            _rigidbody2D    = character.GetComponent<Rigidbody2D>();
+            _body           = character.transform.Find("Body").gameObject;
+            _boxCollider    = _body.GetComponent<BoxCollider2D>();
 
             Utility.Unity.AddUpdateListener(Update);
         }

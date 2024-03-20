@@ -13,6 +13,7 @@ namespace GameLogic.Survivor
         {
             base.OnEnter();
             mTarget.ResetSpeed();
+            mTarget.SetColliderBoxEnable(false);
             mTarget.PlayAnim(EAnimState.Die, false, mTarget.Die);
         }
     }

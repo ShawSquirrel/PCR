@@ -1,4 +1,5 @@
-﻿using TEngine;
+﻿using Cinemachine;
+using TEngine;
 using UnityEngine;
 
 namespace GameLogic.Survivor
@@ -10,6 +11,13 @@ namespace GameLogic.Survivor
     {
         public CharacterCtl(string characterName) : base(characterName)
         {
+            _chracter.layer = LayerMask.NameToLayer("Player");
+            _body.layer = LayerMask.NameToLayer("Player");
+
+            GameObject camera = GameModule.Resource.LoadAsset<GameObject>("SurvivorCamera");
+            CinemachineVirtualCamera virtualCamera = camera.GetComponent<CinemachineVirtualCamera>();
+            virtualCamera.Follow = _chracter.transform;
+            virtualCamera.LookAt = _chracter.transform;
         }
 
 
@@ -22,8 +30,14 @@ namespace GameLogic.Survivor
         protected override void Update()
         {
             // 更新UI血条
-            GameEvent.Send(UIEventID_Survivor.SetBlood, _EntityBaseData._HP / 100);
+            GameEvent.Send(UIEventID_Survivor.SetBlood, _EntityBaseData._HP / _EntityBaseData._MaxHp);
         }
-        
+
+
+        public override void Damage(float value)
+        {
+            base.Damage(value);
+            _EntityBaseData._HP -= value;
+        }
     }
 }

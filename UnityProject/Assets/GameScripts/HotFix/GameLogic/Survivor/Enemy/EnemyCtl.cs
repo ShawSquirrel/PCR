@@ -1,5 +1,7 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using TEngine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
@@ -24,7 +26,6 @@ namespace GameLogic.Survivor
             base.FSMInit();
             _fsm = new FSM<Enum_EnemyState>();
             _fsm.AddState(Enum_EnemyState.Walk, new EnemyWalkProcedure(_fsm, this));
-            _fsm.AddState(Enum_EnemyState.Idle, new EnemyIdleProcedure(_fsm, this));
             _fsm.AddState(Enum_EnemyState.Damage, new EnemyDamageProcedure(_fsm, this));
             _fsm.AddState(Enum_EnemyState.Die, new EnemyDieProcedure(_fsm, this));
             
@@ -43,6 +44,8 @@ namespace GameLogic.Survivor
             base.Damage(value);
             _EntityBaseData._HP -= value;
             _bool_IsDamaged = true;
+
+            DamageText(value.ToString());
         }
 
         public bool HpDetect()
@@ -66,6 +69,26 @@ namespace GameLogic.Survivor
         {
             _bool_IsDamaged = false;
         }
-        
+
+        public void SetColliderBoxEnable(bool isEnable)
+        {
+            _boxCollider.enabled   = isEnable;
+            _rigidbody2D.simulated = isEnable;
+        }
+
+        public async void DamageText(string text)
+        {
+            GameObject damageText = GameModule.Resource.LoadAsset<GameObject>("DamageText");
+            damageText.transform.position = _body.transform.position + new Vector3(0, 0);
+            TMP_Text tmPro = damageText.GetComponent<TMP_Text>();
+            tmPro.text = text;
+            await UniTask.WaitForSeconds(2);
+            GameObject.Destroy(damageText);
+        }
+
+        public override float GetAtk()
+        {
+            return 50;
+        }
     }
 }

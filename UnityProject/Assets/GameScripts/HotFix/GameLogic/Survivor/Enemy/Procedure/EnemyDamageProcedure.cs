@@ -16,6 +16,11 @@ namespace GameLogic.Survivor
             mTarget.PlayAnim(EAnimState.Damage, false, OnComplete);
         }
 
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+        }
+
         public void OnComplete()
         {
             mFSM.ChangeState(Enum_EnemyState.Walk);

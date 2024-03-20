@@ -37,6 +37,7 @@ namespace GameLogic.Survivor
 
             enemyCtl.SetName("Enemy");
             enemyCtl.SetPos(PlayerPos + randomPosition);
+            enemyCtl.Chracter.transform.SetParent(_TF);
             
             _list_Enemy.Add(enemyCtl);
             _dict_EnemyCtl.Add(enemyCtl.Chracter, enemyCtl);

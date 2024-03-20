@@ -14,6 +14,7 @@ namespace GameLogic.Survivor
 
         public Vector3 Pos => _character.transform.position;
         public Transform TFCharacter => _character.transform;
+        public CharacterCtl CharacterCtl => _characterCtl;
 
         public void LoadCharacter(string name)
         {
