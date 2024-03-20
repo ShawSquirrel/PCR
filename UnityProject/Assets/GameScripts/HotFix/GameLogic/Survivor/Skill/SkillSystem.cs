@@ -25,7 +25,7 @@ namespace GameLogic.Survivor
             // 将弧度转换为角度
             _angle = angleRadians * Mathf.Rad2Deg;
 
-            Log.Debug($"方向向量：{vectorToConvert}, 角度 ：{_angle}");
+            // Log.Debug($"方向向量：{vectorToConvert}, 角度 ：{_angle}");
         }
 
         public void CreateSkill(string skillName)

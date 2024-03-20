@@ -10,6 +10,7 @@ namespace GameLogic.Survivor
     {
         public GameObject _Obj;
         public Transform _TF;
+        private Vector3 _offset = new Vector3(0, 0.6f, 0);
        
 
         public SwordSkill() : base()
@@ -27,7 +28,7 @@ namespace GameLogic.Survivor
             base.Update();
             if (_IsRunning)
             {
-                Vector3 pos = Game._SurvivorGameRoot._Character.Pos;
+                Vector3 pos = Game._SurvivorGameRoot._Character.Pos + _offset;
                 _TF.transform.position = pos;
             }
         }

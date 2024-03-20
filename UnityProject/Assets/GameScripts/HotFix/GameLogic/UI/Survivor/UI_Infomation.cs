@@ -5,16 +5,15 @@ using TEngine;
 namespace GameLogic
 {
     [Window(UILayer.UI)]
-    class UI_Blood : UIWindow
+    class UI_Infomation : UIWindow
     {
         #region 脚本工具生成的代码
-        private Image _Img_Blood;
+        private Slider _Slider_Blood;
         public override void ScriptGenerator()
         {
-            _Img_Blood = FindChildComponent<Image>("Image/_Img_Blood");
+            _Slider_Blood = FindChildComponent<Slider>("Group_Player_Info/Player_Bg/_Slider_Blood");
         }
         #endregion
-
         public override void OnCreate()
         {
             base.OnCreate();
@@ -29,7 +28,7 @@ namespace GameLogic
 
         private void SetBlood(float percent)
         {
-            _Img_Blood.fillAmount = percent;
+            _Slider_Blood.value = percent;
         }
 
     }

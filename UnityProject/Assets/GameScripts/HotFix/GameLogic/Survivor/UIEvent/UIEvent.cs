@@ -33,7 +33,7 @@ namespace GameLogic.Survivor
             Time.timeScale = 1;
             GameRoot._Instance.StartFlash(() =>
             {
-                GameModule.UI.CloseWindow<UI_Blood>();
+                GameModule.UI.CloseWindow<UI_Infomation>();
                 GameModule.UI.CloseWindow<UI_SurvivorStick>();
                 GameModule.UI.CloseWindow<UI_Result>();
                 Game._SurvivorGameRoot._FSM.ChangeState(Enum_SurvivorProcedure.Menu);
