@@ -1,12 +1,17 @@
 ﻿using System;
 using TEngine;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Object = UnityEngine.Object;
 
 namespace GameLogic.Survivor
 {
     public class EnemyCtl : EntityCtl
     {
         protected FSM<Enum_EnemyState> _fsm;
+        private bool _bool_IsDamaged;
+        public bool Bool_IsDamaged => _bool_IsDamaged;
+
         public EnemyCtl(string characterName) : base(characterName)
         {
             FSMInit();
@@ -37,6 +42,7 @@ namespace GameLogic.Survivor
         {
             base.Damage(value);
             _EntityBaseData._HP -= value;
+            _bool_IsDamaged = true;
         }
 
         public bool HpDetect()
@@ -45,7 +51,6 @@ namespace GameLogic.Survivor
             {
                 return false;
             }
-
             return true;
         }
 
@@ -54,7 +59,12 @@ namespace GameLogic.Survivor
             base.Die();
             Game._SurvivorGameRoot._Enemy.DieEnemy(this);
             _EntityBaseData = null;
-            GameObject.Destroy(_chracter);
+            Object.Destroy(_chracter);
+        }
+
+        public void ResetDamageState()
+        {
+            _bool_IsDamaged = false;
         }
         
     }

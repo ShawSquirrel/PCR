@@ -12,7 +12,14 @@ namespace GameLogic.Survivor
         protected override void OnEnter()
         {
             base.OnEnter();
-            mTarget.PlayAnim(EAnimState.Damage, false);
+            mTarget.ResetSpeed();
+            mTarget.PlayAnim(EAnimState.Damage, false, OnComplete);
         }
+
+        public void OnComplete()
+        {
+            mFSM.ChangeState(Enum_EnemyState.Walk);
+        }
+        
     }
 }

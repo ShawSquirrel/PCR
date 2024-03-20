@@ -25,10 +25,16 @@ namespace GameLogic.Survivor
                 mFSM.ChangeState(Enum_EnemyState.Die);
                 return;
             }
-            
+
+            if (mTarget.Bool_IsDamaged == true)
+            {
+                mFSM.ChangeState(Enum_EnemyState.Damage);
+                mTarget.ResetDamageState();
+                return;
+            }
+
             mTarget.UpdateTowards();
             mTarget.Move();
-            
         }
     }
 }

@@ -44,9 +44,11 @@ namespace GameLogic.Survivor
                 _Obj.SetActive(true);
                 _IsRunning = true;
                 bool isComplete = false;
-                DOTween.To(() => Vector3.zero,
+                Vector3 startAngle = Vector3.forward * (-180 + Game._SurvivorGameRoot._Skill.Angle);
+                Vector3 endAngle = Vector3.forward * (Game._SurvivorGameRoot._Skill.Angle);
+                DOTween.To(() => startAngle,
                     angle => _TF.localRotation = Quaternion.Euler(angle),
-                    Vector3.forward * 180,
+                    endAngle,
                     0.5f).OnComplete(() => { isComplete = true; });
                 await UniTask.WaitUntil(() => isComplete);
                 _Obj.SetActive(false);
