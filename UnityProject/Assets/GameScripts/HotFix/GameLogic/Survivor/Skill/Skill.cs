@@ -6,6 +6,8 @@ namespace GameLogic.Survivor
     {
         public bool _IsRunning;
         public float _Atk;
+        public float _CD;
+        public float _Scale;
 
         public Skill()
         {

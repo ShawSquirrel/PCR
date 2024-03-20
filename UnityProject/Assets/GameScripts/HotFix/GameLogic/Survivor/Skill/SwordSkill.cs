@@ -8,10 +8,10 @@ namespace GameLogic.Survivor
 {
     public class SwordSkill : Skill
     {
+        private Vector3 _offset = new Vector3(0, 0.6f, 0);
         public GameObject _Obj;
         public Transform _TF;
-        private Vector3 _offset = new Vector3(0, 0.6f, 0);
-       
+        
 
         public SwordSkill() : base()
         {
@@ -47,11 +47,15 @@ namespace GameLogic.Survivor
                 bool isComplete = false;
                 Vector3 startAngle = Vector3.forward * (-180 + Game._SurvivorGameRoot._Skill.Angle);
                 Vector3 endAngle = Vector3.forward * (Game._SurvivorGameRoot._Skill.Angle);
-                DOTween.To(() => startAngle,
-                    angle => _TF.localRotation = Quaternion.Euler(angle),
-                    endAngle,
-                    0.5f).OnComplete(() => { isComplete = true; });
-                await UniTask.WaitUntil(() => isComplete);
+                float elapsedTime = 0;
+                while (elapsedTime < 0.5f)
+                {
+                    _TF.localRotation =  Quaternion.Euler(Vector3.Lerp(startAngle, endAngle, (elapsedTime / 0.5f)));
+                    elapsedTime       += Time.deltaTime;
+                    await UniTask.DelayFrame(1); // 等待一帧
+                }
+
+                _TF.localRotation = Quaternion.Euler(endAngle); // 确保旋转到目标角度
                 _Obj.SetActive(false);
                 _IsRunning = false;
                 await UniTask.Delay(3000);
