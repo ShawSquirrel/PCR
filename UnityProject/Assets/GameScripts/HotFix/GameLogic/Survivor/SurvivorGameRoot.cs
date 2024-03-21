@@ -13,6 +13,7 @@ namespace GameLogic.Survivor
         public TimeSystem _Time;
         public SkillSystem _Skill;
         public Config.ConfigSystem _Config;
+        public MapSystem _Map;
         public UIEvent _UIEvent;
 
         protected override void OnInit()
@@ -38,13 +39,13 @@ namespace GameLogic.Survivor
 
         private void AddSystem()
         {
-            _Input     = AddManager<InputSystem>();
+            _Input = AddManager<InputSystem>();
             _Character = AddManager<CharacterSystem>();
-            _Enemy     = AddManager<EnemySystem>();
-            _Time      = AddManager<TimeSystem>();
-            _Skill     = AddManager<SkillSystem>();
-            _Config    = AddManager<Config.ConfigSystem>();
-            
+            _Enemy = AddManager<EnemySystem>();
+            _Time = AddManager<TimeSystem>();
+            _Skill = AddManager<SkillSystem>();
+            _Config = AddManager<Config.ConfigSystem>();
+            _Map = AddManager<MapSystem>();
         }
 
         private void AddListen()
@@ -63,8 +64,8 @@ namespace GameLogic.Survivor
             _FSM.AddState(Enum_SurvivorProcedure.Menu, new SurvivorMenuProcedure(_FSM, this));
             _FSM.AddState(Enum_SurvivorProcedure.GameLaunching, new SurvivorLaunchingProcedure(_FSM, this));
             _FSM.StartState(Enum_SurvivorProcedure.Menu);
-            
-            
+
+
             Utility.Unity.AddUpdateListener(_FSM.Update);
         }
 
@@ -84,6 +85,7 @@ namespace GameLogic.Survivor
         }
 
         private float lastGenTime = 0;
+
         public void CreateEnemy()
         {
             if (lastGenTime > 5f)
@@ -94,7 +96,7 @@ namespace GameLogic.Survivor
 
             lastGenTime += Time.deltaTime;
         }
-        
+
         public SurvivorGameRoot(GameObject obj) : base(obj)
         {
         }
@@ -102,9 +104,8 @@ namespace GameLogic.Survivor
         public void StartGame(string name)
         {
             _Character.LoadCharacter(name);
+            _Map.LoadMap(_Character.TFCharacter);
             _Skill.CreateSkill("Sword");
         }
-        
-        
     }
 }
