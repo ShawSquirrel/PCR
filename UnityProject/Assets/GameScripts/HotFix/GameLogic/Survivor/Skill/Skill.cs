@@ -2,7 +2,7 @@
 
 namespace GameLogic.Survivor
 {
-    public class Skill
+    public class Skill : ISkill
     {
         public bool _IsDestroy = false;
         public bool _IsRunning;
@@ -19,6 +19,7 @@ namespace GameLogic.Survivor
         protected virtual void Destroy()
         {
             _IsDestroy = true;
+            Utility.Unity.RemoveUpdateListener(Update);
         }
 
         protected virtual void Update()

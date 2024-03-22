@@ -2,6 +2,6 @@
 {
     public interface ISkill
     {
-        // void Run();
+        void Run();
     }
 }

@@ -33,12 +33,12 @@ namespace GameLogic.Survivor
             }
         }
 
-        public void Start()
+        private void Start()
         {
             Run();
         }
 
-        private async void Run()
+        public override async void Run()
         {
             while (_IsDestroy == false)
             {
