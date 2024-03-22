@@ -6,5 +6,6 @@ namespace GameLogic.Survivor
     {
         Menu,          //主菜单
         GameLaunching, //游戏进行
+        GameTest,      //游戏进行
     }
 }

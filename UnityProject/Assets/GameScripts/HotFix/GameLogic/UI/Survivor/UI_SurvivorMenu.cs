@@ -43,6 +43,8 @@ namespace GameLogic
 
         private void OnClick_Btn_UnlockBtn()
         {
+            GameEvent.Send(UIEventID_Survivor.Test);
+            Log.Debug("进入测试地图");
         }
 
         private void OnClick_Btn_OptionBtn()

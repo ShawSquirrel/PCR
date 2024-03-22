@@ -63,6 +63,7 @@ namespace GameLogic.Survivor
             _FSM = new FSM<Enum_SurvivorProcedure>();
             _FSM.AddState(Enum_SurvivorProcedure.Menu, new SurvivorMenuProcedure(_FSM, this));
             _FSM.AddState(Enum_SurvivorProcedure.GameLaunching, new SurvivorLaunchingProcedure(_FSM, this));
+            _FSM.AddState(Enum_SurvivorProcedure.GameTest, new SurvivorLaunchingProcedure(_FSM, this));
             _FSM.StartState(Enum_SurvivorProcedure.Menu);
 
 
