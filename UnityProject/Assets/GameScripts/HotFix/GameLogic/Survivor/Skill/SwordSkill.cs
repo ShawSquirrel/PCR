@@ -40,7 +40,7 @@ namespace GameLogic.Survivor
 
         private async void Run()
         {
-            while (true)
+            while (_IsDestroy == false)
             {
                 _Obj.SetActive(true);
                 _IsRunning = true;
@@ -61,5 +61,6 @@ namespace GameLogic.Survivor
                 await UniTask.Delay(3000);
             }
         }
+        
     }
 }
