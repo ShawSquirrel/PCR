@@ -56,10 +56,11 @@ namespace GameLogic
         private Material _mat;
         public async void StartFlash(Action action = null)
         {
+            
             _mat ??= GameModule.Resource.LoadAsset<Material>("Mat_UIFlash").Instantiate();
             GameModule.UI.ShowUI<UI_Flash>(_mat);
             bool isComplete = false;
-            DOTween.To(() => -1f, value => _mat.SetFloat("_Add", value), 1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+            DOTween.To(() => -1f, value => _mat.SetFloat("_Add", value), 1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear).SetUpdate(true);
 
             await UniTask.WaitUntil(() => isComplete);
 
@@ -67,7 +68,7 @@ namespace GameLogic
 
             isComplete = false;
 
-            DOTween.To(() => 1f, value => _mat.SetFloat("_Add", value), -1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear);
+            DOTween.To(() => 1f, value => _mat.SetFloat("_Add", value), -1f, 1f).OnComplete(() => isComplete = true).SetEase(Ease.Linear).SetUpdate(true);
 
             await UniTask.WaitUntil(() => isComplete);
 

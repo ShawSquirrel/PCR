@@ -63,10 +63,11 @@ namespace GameLogic.Survivor
         /// </summary>
         private void Result2Menu()
         {
-            Time.timeScale = 1;
+            
             GameRoot._Instance.StartFlash(() =>
             {
                 Debug.Log("Return Menu");
+                Time.timeScale = 1;
                 GameModule.UI.CloseWindow<UI_Infomation>();
                 GameModule.UI.CloseWindow<UI_SurvivorStick>();
                 GameModule.UI.CloseWindow<UI_Result>();
