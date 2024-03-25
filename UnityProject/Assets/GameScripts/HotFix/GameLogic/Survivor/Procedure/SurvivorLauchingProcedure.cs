@@ -34,6 +34,7 @@ namespace GameLogic.Survivor
             Game._GameRoot.CloseVideoUI();
             GameModule.UI.ShowUI<UI_SurvivorStick>();
             GameModule.UI.ShowUI<UI_Infomation>();
+            Game._SurvivorGameRoot._Skill.OpenUpdateSkillTowards();
             mTarget.StartGame("佩可");
             Time.timeScale = 1;
             _IsDie = false;

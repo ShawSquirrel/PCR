@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using GameConfig;
 using TEngine;
 using UnityEngine;
 
@@ -8,17 +9,24 @@ namespace GameLogic.Survivor
 {
     public class SwordSkill : Skill
     {
+        private CharacterCtl _owner;
         private Vector3 _offset = new Vector3(0, 0.6f, 0);
+        private SkillColliderEvent _skillColliderEvent;
+        private SkillAttribute _skillAttribute;
         public GameObject _Obj;
         public Transform _TF;
-        
+
 
         public SwordSkill() : base()
         {
+            _skillType = SkillType.Sword;
+            _skillAttribute = Game._SurvivorGameRoot._Skill.GetSkillBySkillType(_skillType);
+            _owner = Game._SurvivorGameRoot._Character.CharacterCtl;
             _Obj = GameModule.Resource.LoadAsset<GameObject>("Sword");
             _TF = _Obj.transform;
             _TF.SetParent(Game._SurvivorGameRoot._Skill._TF);
-            _Obj.AddComponent<SkillColliderEvent>()._Atk = 50;
+            _skillColliderEvent = _Obj.AddComponent<SkillColliderEvent>();
+            _skillColliderEvent._Atk = _skillAttribute._SkillData._Atk + _owner.GetAtk();
 
             Start();
         }
@@ -45,13 +53,14 @@ namespace GameLogic.Survivor
                 _Obj.SetActive(true);
                 _IsRunning = true;
                 bool isComplete = false;
-                Vector3 startAngle = Vector3.forward * (-180 + Game._SurvivorGameRoot._Skill.Angle);
-                Vector3 endAngle = Vector3.forward * (Game._SurvivorGameRoot._Skill.Angle);
+                float angle = Game._SurvivorGameRoot._Skill.Angle - 90;
+                Vector3 startAngle = Vector3.forward * (-_skillAttribute._SkillData._Angle / 2 + angle);
+                Vector3 endAngle = Vector3.forward * (_skillAttribute._SkillData._Angle / 2 + angle);
                 float elapsedTime = 0;
                 while (elapsedTime < 0.5f)
                 {
-                    _TF.localRotation =  Quaternion.Euler(Vector3.Lerp(startAngle, endAngle, (elapsedTime / 0.5f)));
-                    elapsedTime       += Time.deltaTime;
+                    _TF.localRotation = Quaternion.Euler(Vector3.Lerp(startAngle, endAngle, (elapsedTime / 0.5f)));
+                    elapsedTime += Time.deltaTime;
                     await UniTask.DelayFrame(1); // 等待一帧
                 }
 
@@ -61,6 +70,5 @@ namespace GameLogic.Survivor
                 await UniTask.Delay(3000);
             }
         }
-        
     }
 }

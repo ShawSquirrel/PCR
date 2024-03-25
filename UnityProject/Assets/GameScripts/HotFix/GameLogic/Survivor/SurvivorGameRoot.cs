@@ -19,10 +19,10 @@ namespace GameLogic.Survivor
         protected override void OnInit()
         {
             base.OnInit();
-            FSMInit();
+            AddSystem();
             AddListen();
             AddUIListen();
-            AddSystem();
+            // FSMInit();
         }
 
         private void AddUIListen()
@@ -58,7 +58,7 @@ namespace GameLogic.Survivor
             GameEvent.RemoveEventListener(EventID_Survivor.Survivor_Release, Release);
         }
 
-        private void FSMInit()
+        public void FSMInit()
         {
             _FSM = new FSM<Enum_SurvivorProcedure>();
             _FSM.AddState(Enum_SurvivorProcedure.Menu, new SurvivorMenuProcedure(_FSM, this));
@@ -70,7 +70,7 @@ namespace GameLogic.Survivor
             Utility.Unity.AddUpdateListener(_FSM.Update);
         }
 
-        protected override void Release()
+        public override void Release()
         {
             base.Release();
             _Input.Release();
@@ -78,24 +78,24 @@ namespace GameLogic.Survivor
             _Enemy.Release();
         }
 
-        protected override void Destroy()
+        public override void Destroy()
         {
             base.Destroy();
             _UIEvent.RemoveListen();
             _UIEvent = null;
         }
 
-        private float lastGenTime = 0;
+        private float _lastGenTime = 0;
 
         public void CreateEnemy()
         {
-            if (lastGenTime > 5f)
+            if (_lastGenTime > 5f)
             {
                 Game._SurvivorGameRoot._Enemy.CreateEnemy("镜华");
-                lastGenTime = 0;
+                _lastGenTime = 0;
             }
 
-            lastGenTime += Time.deltaTime;
+            _lastGenTime += Time.deltaTime;
         }
 
         public SurvivorGameRoot(GameObject obj) : base(obj)

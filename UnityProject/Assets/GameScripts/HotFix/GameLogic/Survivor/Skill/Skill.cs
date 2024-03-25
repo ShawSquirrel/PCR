@@ -1,4 +1,5 @@
-﻿using TEngine;
+﻿using GameConfig;
+using TEngine;
 
 namespace GameLogic.Survivor
 {
@@ -6,10 +7,9 @@ namespace GameLogic.Survivor
     {
         public bool _IsDestroy = false;
         public bool _IsRunning;
-        public float _Atk;
-        public float _CD;
-        public float _Scale;
 
+
+        protected SkillType _skillType;
         public Skill()
         {
             Utility.Unity.AddUpdateListener(Update);

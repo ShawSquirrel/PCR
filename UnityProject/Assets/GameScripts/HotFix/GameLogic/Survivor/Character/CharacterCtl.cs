@@ -39,5 +39,10 @@ namespace GameLogic.Survivor
             base.Damage(value);
             _EntityBaseData._HP -= value;
         }
+
+        public override float GetAtk()
+        {
+            return _EntityBaseData._Atk;
+        }
     }
 }

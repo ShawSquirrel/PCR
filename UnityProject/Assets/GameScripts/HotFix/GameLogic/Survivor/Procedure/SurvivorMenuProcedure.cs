@@ -19,6 +19,8 @@ namespace GameLogic.Survivor
             base.OnEnter();
             GameModule.UI.ShowUI<UI_SurvivorMenu>();
             Game._GameRoot.OpenVideoUI();
+            
+            Game._SurvivorGameRoot._Skill.CloseUpdateSkillTowards();
         }
     }
 }

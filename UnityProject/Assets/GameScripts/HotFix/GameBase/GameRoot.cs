@@ -78,11 +78,11 @@ namespace GameBase
         {
             
         }
-        protected virtual void Destroy()
+        public virtual void Destroy()
         {
             
         }
-        protected virtual void Release()
+        public virtual void Release()
         {
             
         }

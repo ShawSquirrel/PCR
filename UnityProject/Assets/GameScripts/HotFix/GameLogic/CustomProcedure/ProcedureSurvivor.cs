@@ -10,9 +10,20 @@ namespace GameLogic
     {
         public ProcedureSurvivor(FSM<Enum_Procedure> fsm, CustomProcedureModule target) : base(fsm, target)
         {
-            Game._SurvivorGameRoot = new SurvivorGameRoot(new GameObject("SurvivorGameRoot"));
+        }
 
-          
+        protected override void OnEnter()
+        {
+            base.OnEnter();
+            Game._SurvivorGameRoot = new SurvivorGameRoot(new GameObject("SurvivorGameRoot"));
+            Game._SurvivorGameRoot.FSMInit();
+        }
+
+        protected override void OnExit()
+        {
+            base.OnExit();
+            Game._SurvivorGameRoot.Destroy();
+            Game._SurvivorGameRoot = null;
         }
     }
 }
