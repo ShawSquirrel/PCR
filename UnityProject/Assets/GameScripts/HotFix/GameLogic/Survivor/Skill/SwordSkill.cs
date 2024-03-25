@@ -31,7 +31,7 @@ namespace GameLogic.Survivor
 
         public void Refresh()
         {
-            _skillColliderEvent._Atk = _SkillAttribute._SkillData._Atk + _owner.GetAtk();
+            _SkillAttribute._SkillData
         }
 
         protected override void Update()

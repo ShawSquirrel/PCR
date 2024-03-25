@@ -21,13 +21,14 @@ namespace GameLogic.Survivor
         {
             LoadConfigs();
             Utility.Unity.AddUpdateListener(Update);
-
+            AddListen();
             CreateSkill();
         }
 
         public void Release()
         {
             ReleaseConfigs();
+            RemoveListen();
             Utility.Unity.RemoveUpdateListener(Update);
         }
 
@@ -88,6 +89,30 @@ namespace GameLogic.Survivor
 
         #endregion
 
+        #region Listen
+
+        private void AddListen()
+        {
+            GameEvent.AddEventListener<UI_UpgradeData>(UIEventID_Survivor.UpgradeSkill, UpgradeSkill);
+        }
+
+
+        private void RemoveListen()
+        {
+            GameEvent.RemoveEventListener<UI_UpgradeData>(UIEventID_Survivor.UpgradeSkill, UpgradeSkill);
+        }
+
+        private void UpgradeSkill(UI_UpgradeData data)
+        {
+            GameModule.UI.CloseWindow<UI_Upgrade>();
+            SkillAttribute attribute = _dict_SkillAttribute[data._Type];
+            SkillUpgrade skillUpgrade = attribute._List_SkillUpgradeNoObtained.Find(a => a._ID == data._ID);
+            attribute._List_SkillUpgradeNoObtained.Remove(skillUpgrade);
+            attribute._List_SkillUpgradeObtained.Add(skillUpgrade);
+        }
+
+        #endregion
+
 
         private void Update()
         {
@@ -105,7 +130,8 @@ namespace GameLogic.Survivor
                                   _Title    = upgrade._Title,
                                   _Describe = upgrade._SkillUpgradeDescribe,
                                   _Level    = level,
-                                  _ID       = upgrade._ID
+                                  _ID       = upgrade._ID,
+                                  _Type = SkillType.Sword
                               });
                 }
 
@@ -129,7 +155,7 @@ namespace GameLogic.Survivor
         public void CreateSkill()
         {
             SwordSkill swordSkill = new SwordSkill();
-            
+
             _dict_Skill[SkillType.Sword] = swordSkill;
         }
 

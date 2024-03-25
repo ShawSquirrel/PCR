@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameConfig;
 using GameLogic.Survivor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ namespace GameLogic
         public string _Describe;
         public int _Level;
         public int _ID;
+        public SkillType _Type;
     }
 
     [Window(UILayer.UI)]
@@ -44,7 +46,7 @@ namespace GameLogic
                 SetStarLevel(item, data._Level);
                 // TODO:设置ICON
 
-                item.GetComponent<Button>().onClick.AddListener(() => OnClickEvent(data._ID));
+                item.GetComponent<Button>().onClick.AddListener(() => OnClickEvent(data));
             }
         }
 
@@ -58,9 +60,9 @@ namespace GameLogic
         }
 
 
-        private void OnClickEvent(int id)
+        private void OnClickEvent(UI_UpgradeData data)
         {
-            GameEvent.Send(UIEventID_Survivor.UpgradeSkill, id);
+            GameEvent.Send(UIEventID_Survivor.UpgradeSkill, data);
         }
     }
 }
