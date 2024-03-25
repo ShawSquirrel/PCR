@@ -15,6 +15,7 @@ namespace GameLogic.Survivor
         public Config.ConfigSystem _Config;
         public MapSystem _Map;
         public UISystem _UI;
+        public CameraSystem _Camera;
 
         public SurvivorGameRoot(GameObject obj) : base(obj)
         {
@@ -41,6 +42,7 @@ namespace GameLogic.Survivor
             _Config = AddManager<Config.ConfigSystem>();
             _Map = AddManager<MapSystem>();
             _UI = AddManager<UISystem>();
+            _Camera = AddManager<CameraSystem>();
         }
 
         private void AddListen()
@@ -73,6 +75,7 @@ namespace GameLogic.Survivor
             _Skill.Start();
             _Input.Start();
             _Enemy.Start();
+            _Camera.Start();
         }
         public override void Release()
         {
@@ -82,6 +85,7 @@ namespace GameLogic.Survivor
             _Input.Release();
             _Map.Release();
             _Enemy.Release();
+            _Camera.Release();
         }
 
         public override void Destroy()

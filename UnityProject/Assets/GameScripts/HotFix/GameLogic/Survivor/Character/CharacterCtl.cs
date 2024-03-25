@@ -13,11 +13,6 @@ namespace GameLogic.Survivor
         {
             _chracter.layer = LayerMask.NameToLayer("Player");
             _body.layer = LayerMask.NameToLayer("Player");
-
-            GameObject camera = GameModule.Resource.LoadAsset<GameObject>("SurvivorCamera");
-            CinemachineVirtualCamera virtualCamera = camera.GetComponent<CinemachineVirtualCamera>();
-            virtualCamera.Follow = _chracter.transform;
-            virtualCamera.LookAt = _chracter.transform;
         }
 
 
