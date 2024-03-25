@@ -3,5 +3,6 @@
     public interface ISkill
     {
         void Run();
+        void Release();
     }
 }

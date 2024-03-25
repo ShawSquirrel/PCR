@@ -5,17 +5,32 @@ namespace GameLogic.Survivor
 {
     public class MapSystem : GameBase.System
     {
-        public override void Awake()
+        private GameObject _map;
+
+        #region Start Release
+
+        public void Start()
         {
-            base.Awake();
-            
+            Transform mapParent = Game._SurvivorGameRoot._Character.TFCharacter;
+            LoadMap(mapParent);
         }
 
-        public void LoadMap(Transform parent)
+        public void Release()
         {
-            GameObject map = GameModule.Resource.LoadAsset<GameObject>("Plane");
-            map.transform.SetParent(parent);
-            map.transform.localPosition = new Vector3(0, 0, 10);
+            RemoveMap();
+        }
+
+        #endregion
+
+        private void LoadMap(Transform parent)
+        {
+            _map = GameModule.Resource.LoadAsset<GameObject>("Plane");
+            _map.transform.SetParent(parent);
+            _map.transform.localPosition = new Vector3(0, 0, 10);
+        }
+        private void RemoveMap()
+        {
+            Object.Destroy(_map);
         }
     }
 }

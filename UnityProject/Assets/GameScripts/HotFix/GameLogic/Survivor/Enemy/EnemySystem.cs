@@ -13,8 +13,7 @@ namespace GameLogic.Survivor
 
         public override void Awake()
         {
-            base.Init();
-            _list_Enemy    = new List<EnemyCtl>();
+            _list_Enemy = new List<EnemyCtl>();
             _dict_EnemyCtl = new Dictionary<GameObject, EnemyCtl>();
         }
 
@@ -22,7 +21,7 @@ namespace GameLogic.Survivor
         {
             // 生成随机角度
             float randomAngle = Random.Range(0f, 360f);
-        
+
             // 将极坐标转换为笛卡尔坐标
             float x = Mathf.Cos(randomAngle * Mathf.Deg2Rad);
             float y = Mathf.Sin(randomAngle * Mathf.Deg2Rad);
@@ -32,26 +31,36 @@ namespace GameLogic.Survivor
 
             // 计算最终的位置
             Vector3 randomPosition = new Vector3(x, y, 0) * randomRadius;
-            
+
             EnemyCtl enemyCtl = new EnemyCtl(name);
 
             enemyCtl.SetName("Enemy");
             enemyCtl.SetPos(PlayerPos + randomPosition);
             enemyCtl.Chracter.transform.SetParent(_TF);
-            
+
             _list_Enemy.Add(enemyCtl);
             _dict_EnemyCtl.Add(enemyCtl.Chracter, enemyCtl);
+        }
+
+        #region Start Release
+
+        public void Start()
+        {
         }
 
         public void Release()
         {
             foreach (EnemyCtl controller in _list_Enemy)
             {
-                GameObject.Destroy(controller.Chracter);
+                controller.Release();
+                Object.Destroy(controller.Chracter);
             }
 
             _list_Enemy.Clear();
         }
+
+        #endregion
+
 
         public EnemyCtl GetEnemyCtlByGameObject(GameObject obj)
         {
@@ -60,6 +69,7 @@ namespace GameLogic.Survivor
             {
                 return enemyCtl;
             }
+
             Log.Error($"没有这个敌人 {obj.name}");
             return null;
         }

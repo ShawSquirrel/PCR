@@ -14,23 +14,46 @@ namespace GameLogic.Survivor
         public override void Awake()
         {
             base.Awake();
+        }
+
+        #region Start Release
+
+        public void Start()
+        {
             AddListen();
         }
 
+        public void Release()
+        {
+            RemoveListen();
+        }
+
+        #endregion
+
         private void AddListen()
         {
-            
-
-            #if UNITY_EDITOR 
+#if UNITY_EDITOR
             Utility.Unity.AddUpdateListener(Update);
-            #elif UNITY_STANDALONE
+#elif UNITY_STANDALONE
             Utility.Unity.AddUpdateListener(Update);
-            #elif UNITY_ANDROID
+#elif UNITY_ANDROID
             GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_BeginDragStick, OnBeginDrag);
             GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_DragStick, OnDrag);
             GameEvent.AddEventListener<Vector2>(EventID_Survivor.Survivor_EndDragStick, OnEndDrag);
-            #endif
-            
+#endif
+        }
+
+        private void RemoveListen()
+        {
+#if UNITY_EDITOR
+            Utility.Unity.RemoveUpdateListener(Update);
+#elif UNITY_STANDALONE
+            Utility.Unity.RemoveUpdateListener(Update);
+#elif UNITY_ANDROID
+            GameEvent.RemoveEventListener<Vector2>(EventID_Survivor.Survivor_BeginDragStick, OnBeginDrag);
+            GameEvent.RemoveEventListener<Vector2>(EventID_Survivor.Survivor_DragStick, OnDrag);
+            GameEvent.RemoveEventListener<Vector2>(EventID_Survivor.Survivor_EndDragStick, OnEndDrag);
+#endif
         }
 
         private void Update()
@@ -40,14 +63,17 @@ namespace GameLogic.Survivor
             {
                 vector2.x = -1;
             }
+
             if (Input.GetKey(KeyCode.D))
             {
                 vector2.x = 1;
             }
+
             if (Input.GetKey(KeyCode.W))
             {
                 vector2.y = 1;
             }
+
             if (Input.GetKey(KeyCode.S))
             {
                 vector2.y = -1;
@@ -90,11 +116,6 @@ namespace GameLogic.Survivor
         {
             GameEvent.Send(EventID_Survivor.Survivor_UIEndDragStick);
             GameEvent.Send<Vector2>(EventID_Survivor.Survivor_MoveStop, new Vector2());
-        }
-
-
-        public void Release()
-        {
         }
     }
 }

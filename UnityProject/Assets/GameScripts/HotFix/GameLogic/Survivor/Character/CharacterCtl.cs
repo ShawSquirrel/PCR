@@ -30,7 +30,7 @@ namespace GameLogic.Survivor
         protected override void Update()
         {
             // 更新UI血条
-            GameEvent.Send(UIEventID_Survivor.SetBlood, _EntityBaseData._HP / _EntityBaseData._MaxHp);
+            GameEvent.Send(UIEventID_Survivor.SetBlood, Mathf.Clamp01(_EntityBaseData._HP / _EntityBaseData._MaxHp));
         }
 
 
@@ -38,6 +38,11 @@ namespace GameLogic.Survivor
         {
             base.Damage(value);
             _EntityBaseData._HP -= value;
+            if (_EntityBaseData._HP < 0)
+            {
+                Time.timeScale = 0;
+                GameModule.UI.ShowUI<UI_Result>();
+            }
         }
 
         public override float GetAtk()

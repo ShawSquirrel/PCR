@@ -14,7 +14,6 @@ namespace GameBase
         public GameRoot(GameObject obj)
         {
             _unityArgs = new UnityArgs { _Obj = obj, _TF = obj.transform };
-            OnInit();
         }
 
         private Transform _systemRoot;
@@ -74,7 +73,7 @@ namespace GameBase
             return null;
         }
 
-        protected virtual void OnInit()
+        public virtual void Init()
         {
             
         }
@@ -83,6 +82,11 @@ namespace GameBase
             
         }
         public virtual void Release()
+        {
+            
+        }
+
+        public virtual void Start()
         {
             
         }

@@ -16,7 +16,7 @@ namespace GameLogic
         {
             base.OnEnter();
             Game._SurvivorGameRoot = new SurvivorGameRoot(new GameObject("SurvivorGameRoot"));
-            Game._SurvivorGameRoot.FSMInit();
+            Game._SurvivorGameRoot.Init();
         }
 
         protected override void OnExit()

@@ -14,29 +14,23 @@ namespace GameLogic.Survivor
         public SkillSystem _Skill;
         public Config.ConfigSystem _Config;
         public MapSystem _Map;
-        public UIEvent _UIEvent;
+        public UISystem _UI;
 
-        protected override void OnInit()
+        public SurvivorGameRoot(GameObject obj) : base(obj)
         {
-            base.OnInit();
+            Utility.Unity.AddDestroyListener(Destroy);
+        }
+
+        public override void Init()
+        {
+            base.Init();
             AddSystem();
             AddListen();
-            AddUIListen();
-            // FSMInit();
+            FSMInit();
+            
+            _UI.Start();
         }
-
-        private void AddUIListen()
-        {
-            _UIEvent = new UIEvent();
-            _UIEvent.AddListen();
-        }
-
-        private void RemoveUIListen()
-        {
-            _UIEvent.RemoveListen();
-            _UIEvent = null;
-        }
-
+        
         private void AddSystem()
         {
             _Input = AddManager<InputSystem>();
@@ -46,6 +40,7 @@ namespace GameLogic.Survivor
             _Skill = AddManager<SkillSystem>();
             _Config = AddManager<Config.ConfigSystem>();
             _Map = AddManager<MapSystem>();
+            _UI = AddManager<UISystem>();
         }
 
         private void AddListen()
@@ -70,19 +65,29 @@ namespace GameLogic.Survivor
             Utility.Unity.AddUpdateListener(_FSM.Update);
         }
 
+
+        public void Start(string name)
+        {
+            _Character.LoadCharacter(name);
+            _Map.Start();
+            _Skill.Start();
+            _Input.Start();
+            _Enemy.Start();
+        }
         public override void Release()
         {
             base.Release();
-            _Input.Release();
             _Character.Release();
+            _Skill.Release();
+            _Input.Release();
+            _Map.Release();
             _Enemy.Release();
         }
 
         public override void Destroy()
         {
             base.Destroy();
-            _UIEvent.RemoveListen();
-            _UIEvent = null;
+            _UI.Release();
         }
 
         private float _lastGenTime = 0;
@@ -91,22 +96,12 @@ namespace GameLogic.Survivor
         {
             if (_lastGenTime > 5f)
             {
-                Game._SurvivorGameRoot._Enemy.CreateEnemy("镜华");
+                _Enemy.CreateEnemy("镜华");
                 _lastGenTime = 0;
             }
 
             _lastGenTime += Time.deltaTime;
         }
 
-        public SurvivorGameRoot(GameObject obj) : base(obj)
-        {
-        }
-
-        public void StartGame(string name)
-        {
-            _Character.LoadCharacter(name);
-            _Map.LoadMap(_Character.TFCharacter);
-            _Skill.CreateSkill("Sword");
-        }
     }
 }

@@ -70,5 +70,10 @@ namespace GameLogic.Survivor
                 await UniTask.Delay(3000);
             }
         }
+
+        public override void Release()
+        {
+            
+        }
     }
 }

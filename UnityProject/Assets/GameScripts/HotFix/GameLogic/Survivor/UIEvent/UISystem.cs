@@ -3,11 +3,22 @@ using UnityEngine;
 
 namespace GameLogic.Survivor
 {
-    public class UIEvent
+    public class UISystem : GameBase.System
     {
         public FSM<Enum_SurvivorProcedure> FSM => Game._SurvivorGameRoot._FSM;
 
-        public void AddListen()
+
+        public void Start()
+        {
+            AddListen();
+        }
+        public void Release()
+        {
+            RemoveListen();
+        }
+        
+        
+        private void AddListen()
         {
             GameEvent.AddEventListener(UIEventID_Survivor.ReturnMenu, Result2Menu);
             GameEvent.AddEventListener(UIEventID_Survivor.Test, OnTest);
@@ -15,7 +26,7 @@ namespace GameLogic.Survivor
         }
 
 
-        public void RemoveListen()
+        private void RemoveListen()
         {
             GameEvent.RemoveEventListener(UIEventID_Survivor.ReturnMenu, Result2Menu);
             GameEvent.RemoveEventListener(UIEventID_Survivor.Test, OnTest);

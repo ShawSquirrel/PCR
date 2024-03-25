@@ -12,12 +12,31 @@ namespace GameLogic.Survivor
         private bool _isUpdateCharacterSkillTowards;
         public float Angle => _angle;
         private Dictionary<SkillType, SkillAttribute> _dict_SkillAttribute = new Dictionary<SkillType, SkillAttribute>();
+        private List<ISkill> _list_Skill = new List<ISkill>();
 
-        public override void Awake()
+
+        #region Start Release
+
+        public void Start()
         {
-            base.Awake();
-            Utility.Unity.AddUpdateListener(Update);
             LoadConfigs();
+            Utility.Unity.AddUpdateListener(Update);
+        }
+
+        public void Release()
+        {
+            ReleaseConfigs();
+            Utility.Unity.RemoveUpdateListener(Update);
+        }
+
+        #endregion
+
+
+        #region Configs
+
+        private void ReleaseConfigs()
+        {
+            _dict_SkillAttribute.Clear();
         }
 
         private void LoadConfigs()
@@ -61,6 +80,9 @@ namespace GameLogic.Survivor
             }
         }
 
+        #endregion
+
+
         private void Update()
         {
             UpdateSkillTowards();
@@ -95,13 +117,18 @@ namespace GameLogic.Survivor
             return attribute;
         }
 
+        #region UpdateSkillTowards
+
         public void CloseUpdateSkillTowards()
         {
             _isUpdateCharacterSkillTowards = false;
         }
+
         public void OpenUpdateSkillTowards()
         {
             _isUpdateCharacterSkillTowards = true;
         }
+
+        #endregion
     }
 }

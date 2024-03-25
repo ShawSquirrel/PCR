@@ -143,5 +143,10 @@ namespace GameLogic.Survivor
         {
             _rigidbody2D.velocity = Vector2.zero;
         }
+
+        public virtual void Release()
+        {
+            Utility.Unity.RemoveUpdateListener(Update);
+        }
     }
 }

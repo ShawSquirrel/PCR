@@ -29,5 +29,11 @@ namespace GameLogic.Survivor
         public virtual void Run()
         {
         }
+
+        public virtual void Release()
+        {
+            Utility.Unity.RemoveUpdateListener(Update);
+            Log.Info("Parent Release");
+        }
     }
 }
