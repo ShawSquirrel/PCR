@@ -31,11 +31,13 @@ namespace GameLogic.Survivor
         protected override void OnEnter()
         {
             base.OnEnter();
+            mTarget.Start("佩可");
             Game._GameRoot.CloseVideoUI();
             GameModule.UI.ShowUI<UI_SurvivorStick>();
             GameModule.UI.ShowUI<UI_Infomation>();
+            
+            
             Game._SurvivorGameRoot._Skill.OpenUpdateSkillTowards();
-            mTarget.Start("佩可");
             Time.timeScale = 1;
             _IsDie = false;
         }

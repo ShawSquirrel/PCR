@@ -7,6 +7,7 @@ namespace GameLogic.Survivor
     {
         public bool _IsDestroy = false;
         public bool _IsRunning;
+        public SkillAttribute _SkillAttribute;
 
 
         protected SkillType _skillType;

@@ -22,6 +22,7 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
         Atk = _buf.ReadFloat();
         Cd = _buf.ReadFloat();
         Area = _buf.ReadFloat();
+        Title = _buf.ReadString();
         Describe = _buf.ReadString();
     }
 
@@ -55,6 +56,10 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
     /// </summary>
     public readonly float Area;
     /// <summary>
+    /// 标题
+    /// </summary>
+    public readonly string Title;
+    /// <summary>
     /// 描述
     /// </summary>
     public readonly string Describe;
@@ -64,6 +69,7 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -82,6 +88,7 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
         + "atk:" + Atk + ","
         + "cd:" + Cd + ","
         + "area:" + Area + ","
+        + "title:" + Title + ","
         + "describe:" + Describe + ","
         + "}";
     }

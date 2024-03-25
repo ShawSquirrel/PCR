@@ -12,7 +12,7 @@ namespace GameLogic.Survivor
         private bool _isUpdateCharacterSkillTowards;
         public float Angle => _angle;
         private Dictionary<SkillType, SkillAttribute> _dict_SkillAttribute = new Dictionary<SkillType, SkillAttribute>();
-        private List<ISkill> _list_Skill = new List<ISkill>();
+        private Dictionary<SkillType, Skill> _dict_Skill = new Dictionary<SkillType, Skill>();
 
 
         #region Start Release
@@ -21,6 +21,8 @@ namespace GameLogic.Survivor
         {
             LoadConfigs();
             Utility.Unity.AddUpdateListener(Update);
+
+            CreateSkill();
         }
 
         public void Release()
@@ -47,7 +49,7 @@ namespace GameLogic.Survivor
                 SkillAttribute attribute;
                 if (_dict_SkillAttribute.TryGetValue(skill2Attribute.Type, out attribute) == false)
                 {
-                    attribute = new SkillAttribute();
+                    attribute                                  = new SkillAttribute();
                     _dict_SkillAttribute[skill2Attribute.Type] = attribute;
                 }
 
@@ -56,24 +58,28 @@ namespace GameLogic.Survivor
                     case SkillKind.Base:
                     {
                         attribute._SkillData = new SkillData
-                        {
-                            _Atk = skill2Attribute.Atk,
-                            _Angle = skill2Attribute.Area,
-                            _CD = skill2Attribute.Cd,
-                            _SkillDescribe = skill2Attribute.Describe
-                        };
+                                               {
+                                                   _Atk           = skill2Attribute.Atk,
+                                                   _Angle         = skill2Attribute.Area,
+                                                   _CD            = skill2Attribute.Cd,
+                                                   _SkillDescribe = skill2Attribute.Describe,
+                                                   _Title         = skill2Attribute.Title,
+                                               };
                     }
                         break;
                     case SkillKind.Upgrade:
                     {
-                        attribute._List_SkillUpgrade ??= new List<SkillUpgrade>();
-                        attribute._List_SkillUpgrade.Add(new SkillUpgrade
-                        {
-                            _Atk = skill2Attribute.Atk,
-                            _Angle = skill2Attribute.Area,
-                            _CD = skill2Attribute.Cd,
-                            _SkillUpgradeDescribe = skill2Attribute.Describe
-                        });
+                        attribute._List_SkillUpgradeObtained   ??= new List<SkillUpgrade>();
+                        attribute._List_SkillUpgradeNoObtained ??= new List<SkillUpgrade>();
+                        attribute._List_SkillUpgradeNoObtained.Add(new SkillUpgrade
+                                                                   {
+                                                                       _Atk                  = skill2Attribute.Atk,
+                                                                       _Angle                = skill2Attribute.Area,
+                                                                       _CD                   = skill2Attribute.Cd,
+                                                                       _SkillUpgradeDescribe = skill2Attribute.Describe,
+                                                                       _Title                = skill2Attribute.Title,
+                                                                       _ID                   = skill2Attribute.Id
+                                                                   });
                     }
                         break;
                 }
@@ -86,6 +92,25 @@ namespace GameLogic.Survivor
         private void Update()
         {
             UpdateSkillTowards();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                List<UI_UpgradeData> datas = new List<UI_UpgradeData>();
+                SkillAttribute attribute = _dict_Skill[SkillType.Sword]._SkillAttribute;
+                int level = attribute._List_SkillUpgradeObtained.Count + 1;
+                foreach (SkillUpgrade upgrade in attribute._List_SkillUpgradeNoObtained)
+                {
+                    datas.Add(new UI_UpgradeData
+                              {
+                                  _Title    = upgrade._Title,
+                                  _Describe = upgrade._SkillUpgradeDescribe,
+                                  _Level    = level,
+                                  _ID       = upgrade._ID
+                              });
+                }
+
+                GameModule.UI.ShowUI<UI_Upgrade>(datas);
+            }
         }
 
         private void UpdateSkillTowards()
@@ -101,9 +126,11 @@ namespace GameLogic.Survivor
             _angle = angleRadians * Mathf.Rad2Deg;
         }
 
-        public void CreateSkill(string skillName)
+        public void CreateSkill()
         {
             SwordSkill swordSkill = new SwordSkill();
+            
+            _dict_Skill[SkillType.Sword] = swordSkill;
         }
 
         public SkillAttribute GetSkillBySkillType(SkillType skillType)
