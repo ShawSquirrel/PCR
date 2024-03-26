@@ -16,6 +16,7 @@ namespace GameLogic.Survivor
         public MapSystem _Map;
         public UISystem _UI;
         public CameraSystem _Camera;
+        public LevelSystem _Level;
 
         public SurvivorGameRoot(GameObject obj) : base(obj)
         {
@@ -28,10 +29,10 @@ namespace GameLogic.Survivor
             AddSystem();
             AddListen();
             FSMInit();
-            
+
             _UI.Start();
         }
-        
+
         private void AddSystem()
         {
             _Input = AddManager<InputSystem>();
@@ -43,6 +44,7 @@ namespace GameLogic.Survivor
             _Map = AddManager<MapSystem>();
             _UI = AddManager<UISystem>();
             _Camera = AddManager<CameraSystem>();
+            _Level = AddManager<LevelSystem>();
         }
 
         private void AddListen()
@@ -76,7 +78,9 @@ namespace GameLogic.Survivor
             _Input.Start();
             _Enemy.Start();
             _Camera.Start();
+            _Level.Start();
         }
+
         public override void Release()
         {
             base.Release();
@@ -86,6 +90,7 @@ namespace GameLogic.Survivor
             _Map.Release();
             _Enemy.Release();
             _Camera.Release();
+            _Level.Release();
         }
 
         public override void Destroy()
@@ -93,19 +98,5 @@ namespace GameLogic.Survivor
             base.Destroy();
             _UI.Release();
         }
-
-        private float _lastGenTime = 0;
-
-        public void CreateEnemy()
-        {
-            if (_lastGenTime > 5f)
-            {
-                _Enemy.CreateEnemy("镜华");
-                _lastGenTime = 0;
-            }
-
-            _lastGenTime += Time.deltaTime;
-        }
-
     }
 }

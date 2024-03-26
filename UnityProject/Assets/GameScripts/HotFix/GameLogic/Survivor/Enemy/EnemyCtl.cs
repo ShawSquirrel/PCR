@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using TEngine;
 using TMPro;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace GameLogic.Survivor
             _fsm.AddState(Enum_EnemyState.Walk, new EnemyWalkProcedure(_fsm, this));
             _fsm.AddState(Enum_EnemyState.Damage, new EnemyDamageProcedure(_fsm, this));
             _fsm.AddState(Enum_EnemyState.Die, new EnemyDieProcedure(_fsm, this));
-            
+
             _fsm.StartState(Enum_EnemyState.Walk);
         }
 
@@ -54,6 +55,7 @@ namespace GameLogic.Survivor
             {
                 return false;
             }
+
             return true;
         }
 
@@ -72,18 +74,21 @@ namespace GameLogic.Survivor
 
         public void SetColliderBoxEnable(bool isEnable)
         {
-            _boxCollider.enabled   = isEnable;
+            _boxCollider.enabled = isEnable;
             _rigidbody2D.simulated = isEnable;
         }
 
-        public async void DamageText(string text)
+        private async void DamageText(string text)
         {
             GameObject damageText = GameModule.Resource.LoadAsset<GameObject>("DamageText");
             damageText.transform.position = _body.transform.position + new Vector3(0, 0);
             TMP_Text tmPro = damageText.GetComponent<TMP_Text>();
             tmPro.text = text;
-            await UniTask.WaitForSeconds(2);
-            GameObject.Destroy(damageText);
+            await UniTask.WaitForSeconds(0.5f);
+            DOTween.To(() => 1f, value => tmPro.alpha = value, 0f, 0.5f)
+               .SetEase(Ease.Linear)
+               .SetUpdate(true)
+               .OnComplete(() => Object.Destroy(damageText));
         }
 
         public override float GetAtk()
