@@ -12,24 +12,25 @@ namespace GameLogic.Survivor
         private bool _isUpdateCharacterSkillTowards;
         public float Angle => _angle;
         private Dictionary<SkillType, SkillAttribute> _dict_SkillAttribute = new Dictionary<SkillType, SkillAttribute>();
-        private Dictionary<SkillType, Skill> _dict_Skill = new Dictionary<SkillType, Skill>();
+        private Dictionary<SkillType, ISkill> _dict_Skill = new Dictionary<SkillType, ISkill>();
 
 
         #region Start Release
 
         public void Start()
         {
-            LoadConfigs();
             Utility.Unity.AddUpdateListener(Update);
+            LoadConfigs();
             AddListen();
             CreateSkill();
         }
 
         public void Release()
         {
+            Utility.Unity.RemoveUpdateListener(Update);
             ReleaseConfigs();
             RemoveListen();
-            Utility.Unity.RemoveUpdateListener(Update);
+            RemoveSkill();
         }
 
         #endregion
@@ -124,7 +125,7 @@ namespace GameLogic.Survivor
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 List<UI_UpgradeData> datas = new List<UI_UpgradeData>();
-                SkillAttribute attribute = _dict_Skill[SkillType.Sword]._SkillAttribute;
+                SkillAttribute attribute = _dict_SkillAttribute[SkillType.Sword];
                 int level = attribute._List_SkillUpgradeObtained.Count + 1;
                 foreach (SkillUpgrade upgrade in attribute._List_SkillUpgradeNoObtained)
                 {
@@ -160,6 +161,14 @@ namespace GameLogic.Survivor
             SwordSkill swordSkill = new SwordSkill();
 
             _dict_Skill[SkillType.Sword] = swordSkill;
+        }
+        public void RemoveSkill()
+        {
+            foreach (var (key, value) in _dict_Skill)
+            {
+                value.Release();
+            }
+            _dict_Skill.Clear();
         }
 
         public SkillAttribute GetSkillBySkillType(SkillType skillType)

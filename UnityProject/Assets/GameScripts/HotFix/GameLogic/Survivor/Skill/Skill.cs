@@ -11,6 +11,7 @@ namespace GameLogic.Survivor
         public SkillData _BaseData;
 
         protected SkillType _skillType;
+
         public Skill()
         {
             Utility.Unity.AddUpdateListener(Update);
@@ -21,7 +22,6 @@ namespace GameLogic.Survivor
 
         protected virtual void Refresh()
         {
-            
         }
 
         protected virtual void Destroy()
@@ -41,6 +41,7 @@ namespace GameLogic.Survivor
 
         public virtual void Release()
         {
+            _IsDestroy = true;
             Utility.Unity.RemoveUpdateListener(Update);
             Log.Info("Parent Release");
         }

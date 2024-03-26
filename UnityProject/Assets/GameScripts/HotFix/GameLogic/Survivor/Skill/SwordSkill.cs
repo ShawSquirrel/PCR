@@ -18,11 +18,11 @@ namespace GameLogic.Survivor
 
         public SwordSkill() : base()
         {
-            _skillType      = SkillType.Sword;
-            _owner          = Game._SurvivorGameRoot._Character.CharacterCtl;
+            _skillType = SkillType.Sword;
+            _owner = Game._SurvivorGameRoot._Character.CharacterCtl;
             _SkillAttribute = Game._SurvivorGameRoot._Skill.GetSkillBySkillType(SkillType.Sword);
-            _Obj            = GameModule.Resource.LoadAsset<GameObject>("Sword");
-            _TF             = _Obj.transform;
+            _Obj = GameModule.Resource.LoadAsset<GameObject>("Sword");
+            _TF = _Obj.transform;
             _TF.SetParent(Game._SurvivorGameRoot._Skill._TF);
             _skillColliderEvent = _Obj.AddComponent<SkillColliderEvent>();
             Refresh();
@@ -76,8 +76,8 @@ namespace GameLogic.Survivor
                 float elapsedTime = 0;
                 while (elapsedTime < 0.5f)
                 {
-                    _TF.localRotation =  Quaternion.Euler(Vector3.Lerp(startAngle, endAngle, (elapsedTime / 0.5f)));
-                    elapsedTime       += Time.deltaTime;
+                    _TF.localRotation = Quaternion.Euler(Vector3.Lerp(startAngle, endAngle, (elapsedTime / 0.5f)));
+                    elapsedTime += Time.deltaTime;
                     await UniTask.Yield();
                 }
 
@@ -90,6 +90,8 @@ namespace GameLogic.Survivor
 
         public override void Release()
         {
+            base.Release();
+            Object.Destroy(_Obj);
         }
     }
 }
