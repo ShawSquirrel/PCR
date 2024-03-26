@@ -29,9 +29,24 @@ namespace GameLogic.Survivor
             Start();
         }
 
-        public void Refresh()
+        protected override void Refresh()
         {
-            _SkillAttribute._SkillData
+            _BaseData = new SkillData
+            {
+                _Atk = _SkillAttribute._SkillData._Atk,
+                _Angle = _SkillAttribute._SkillData._Angle,
+                _CD = _SkillAttribute._SkillData._CD,
+                _SkillDescribe = _SkillAttribute._SkillData._SkillDescribe,
+                _Title = _SkillAttribute._SkillData._Title,
+            };
+            foreach (SkillUpgrade upgrade in _SkillAttribute._List_SkillUpgradeObtained)
+            {
+                _BaseData._Atk += upgrade._Atk;
+                _BaseData._Angle += upgrade._Angle;
+                _BaseData._CD += upgrade._CD;
+            }
+
+            _skillColliderEvent._Atk = _BaseData._Atk;
         }
 
         protected override void Update()
@@ -55,22 +70,21 @@ namespace GameLogic.Survivor
             {
                 _Obj.SetActive(true);
                 _IsRunning = true;
-                bool isComplete = false;
                 float angle = Game._SurvivorGameRoot._Skill.Angle - 90;
-                Vector3 startAngle = Vector3.forward * (-_SkillAttribute._SkillData._Angle / 2 + angle);
-                Vector3 endAngle = Vector3.forward * (_SkillAttribute._SkillData._Angle / 2 + angle);
+                Vector3 startAngle = Vector3.forward * (-_BaseData._Angle / 2 + angle);
+                Vector3 endAngle = Vector3.forward * (_BaseData._Angle / 2 + angle);
                 float elapsedTime = 0;
                 while (elapsedTime < 0.5f)
                 {
                     _TF.localRotation =  Quaternion.Euler(Vector3.Lerp(startAngle, endAngle, (elapsedTime / 0.5f)));
                     elapsedTime       += Time.deltaTime;
-                    await UniTask.DelayFrame(1); // 等待一帧
+                    await UniTask.Yield();
                 }
 
                 _TF.localRotation = Quaternion.Euler(endAngle); // 确保旋转到目标角度
                 _Obj.SetActive(false);
                 _IsRunning = false;
-                await UniTask.Delay(3000);
+                await UniTask.WaitForSeconds(_BaseData._CD);
             }
         }
 

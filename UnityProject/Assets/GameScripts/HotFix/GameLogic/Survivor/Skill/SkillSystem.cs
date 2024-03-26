@@ -109,6 +109,9 @@ namespace GameLogic.Survivor
             SkillUpgrade skillUpgrade = attribute._List_SkillUpgradeNoObtained.Find(a => a._ID == data._ID);
             attribute._List_SkillUpgradeNoObtained.Remove(skillUpgrade);
             attribute._List_SkillUpgradeObtained.Add(skillUpgrade);
+            
+            
+            GameEvent.Send(EventID_Survivor.Survivor_RefreshSkill);
         }
 
         #endregion
