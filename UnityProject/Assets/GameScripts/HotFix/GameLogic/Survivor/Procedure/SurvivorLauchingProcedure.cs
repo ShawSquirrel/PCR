@@ -35,6 +35,15 @@ namespace GameLogic.Survivor
             Game._GameRoot.CloseVideoUI();
             GameModule.UI.ShowUI<UI_SurvivorStick>();
             GameModule.UI.ShowUI<UI_Infomation>();
+
+            LevelSystem level = Game._SurvivorGameRoot._Level;
+            UI_LevelData uiLevelData = new UI_LevelData
+            {
+                _ExpMax = level.LevelExpMax,
+                _CurExp = level.CurLevelExp,
+                _Level = level.Level
+            };
+            GameModule.UI.ShowUI<UI_Level>(uiLevelData);
             
             
             Game._SurvivorGameRoot._Skill.OpenUpdateSkillTowards();

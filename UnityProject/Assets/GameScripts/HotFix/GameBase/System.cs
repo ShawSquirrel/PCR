@@ -16,12 +16,12 @@ namespace GameBase
 
         public virtual void Awake()
         {
-            AddListen();
+            // AddListen();
         }
 
         public virtual void OnDestroy()
         {
-            Removelisten();
+            // Removelisten();
         }
 
         public virtual void OnReset()
@@ -32,13 +32,13 @@ namespace GameBase
         {
             
         }
-
-        public virtual void AddListen()
-        {
-        }
-
-        public virtual void Removelisten()
-        {
-        }
+        //
+        // public virtual void AddListen()
+        // {
+        // }
+        //
+        // public virtual void Removelisten()
+        // {
+        // }
     }
 }
