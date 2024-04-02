@@ -8,11 +8,11 @@ namespace GameLogic.Survivor
         public FSM<Enum_SurvivorProcedure> FSM => Game._SurvivorGameRoot._FSM;
 
 
-        public void Start()
+        public override void Start()
         {
             AddListen();
         }
-        public void Release()
+        public override void Release()
         {
             RemoveListen();
         }

@@ -3,6 +3,7 @@ using GameBase;
 using GameConfig;
 using TEngine;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace GameLogic.Survivor
 {
@@ -37,10 +38,10 @@ namespace GameLogic.Survivor
             Utility.Unity.AddUpdateListener(_fsm.Update);
         }
 
-        public void Release()
+        public override void Release()
         {
             _characterCtl = null;
-            GameObject.Destroy(_character);
+            Object.Destroy(_character);
             _character = null;
             Utility.Unity.RemoveUpdateListener(_fsm.Update);
             _fsm = null;

@@ -32,13 +32,13 @@ namespace GameBase
         {
             
         }
-        //
-        // public virtual void AddListen()
-        // {
-        // }
-        //
-        // public virtual void Removelisten()
-        // {
-        // }
+        
+        public virtual void Start()
+        {
+        }
+        
+        public virtual void Release()
+        {
+        }
     }
 }
