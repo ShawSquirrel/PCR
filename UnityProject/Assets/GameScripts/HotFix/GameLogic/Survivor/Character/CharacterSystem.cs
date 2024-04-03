@@ -7,13 +7,12 @@ using Object = UnityEngine.Object;
 
 namespace GameLogic.Survivor
 {
-    public class CharacterSystem : GameBase.System, IRelease
+    public class CharacterSystem : GameBase.System
     {
         private GameObject _character;
         private CharacterCtl _characterCtl;
         private FSM<Enum_ChracterState> _fsm;
 
-        public Vector3 Pos => _character.transform.position;
         public Transform TFCharacter => _character.transform;
         public CharacterCtl CharacterCtl => _characterCtl;
 
@@ -45,6 +44,15 @@ namespace GameLogic.Survivor
             _character = null;
             Utility.Unity.RemoveUpdateListener(_fsm.Update);
             _fsm = null;
+        }
+
+        public Transform GetCharacterTransform()
+        {
+            if (_isRelease)
+            {
+                return _character.transform;
+            }
+            return null;
         }
     }
 }

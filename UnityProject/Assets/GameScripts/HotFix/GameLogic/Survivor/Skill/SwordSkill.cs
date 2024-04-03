@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Cysharp.Threading.Tasks;
-using DG.Tweening;
+﻿using Cysharp.Threading.Tasks;
 using GameConfig;
 using TEngine;
 using UnityEngine;
@@ -9,9 +7,9 @@ namespace GameLogic.Survivor
 {
     public class SwordSkill : Skill
     {
-        private CharacterCtl _owner;
+        private SurvivorGameRoot Root => Game._SurvivorGameRoot;
         private Vector3 _offset = new Vector3(0, 0.6f, 0);
-        private SkillColliderEvent _skillColliderEvent;
+        private ColliderEvent _colliderEvent;
         public GameObject _Obj;
         public Transform _TF;
 
@@ -19,12 +17,11 @@ namespace GameLogic.Survivor
         public SwordSkill() : base()
         {
             _skillType = SkillType.Sword;
-            _owner = Game._SurvivorGameRoot._Character.CharacterCtl;
             _SkillAttribute = Game._SurvivorGameRoot._Skill.GetSkillBySkillType(SkillType.Sword);
             _Obj = GameModule.Resource.LoadAsset<GameObject>("Sword");
             _TF = _Obj.transform;
             _TF.SetParent(Game._SurvivorGameRoot._Skill._TF);
-            _skillColliderEvent = _Obj.AddComponent<SkillColliderEvent>();
+            _colliderEvent = _Obj.AddComponent<ColliderEvent>();
             Refresh();
             Start();
         }
@@ -46,7 +43,7 @@ namespace GameLogic.Survivor
                 _BaseData._CD += upgrade._CD;
             }
 
-            _skillColliderEvent._Atk = _BaseData._Atk;
+            _colliderEvent._Atk = _BaseData._Atk;
         }
 
         protected override void Update()
@@ -54,7 +51,8 @@ namespace GameLogic.Survivor
             base.Update();
             if (_IsRunning)
             {
-                Vector3 pos = Game._SurvivorGameRoot._Character.Pos + _offset;
+                Transform characterTransform = Root.GetCharacterTransform();
+                Vector3 pos = characterTransform == null ? Vector3.zero : characterTransform.position + _offset;
                 _TF.transform.position = pos;
             }
         }
@@ -70,7 +68,7 @@ namespace GameLogic.Survivor
             {
                 _Obj.SetActive(true);
                 _IsRunning = true;
-                float angle = Game._SurvivorGameRoot._Skill.Angle - 90;
+                float angle = Root.GetSKillTowards();
                 Vector3 startAngle = Vector3.forward * (-_BaseData._Angle / 2 + angle);
                 Vector3 endAngle = Vector3.forward * (_BaseData._Angle / 2 + angle);
                 float elapsedTime = 0;

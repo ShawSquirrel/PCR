@@ -58,27 +58,40 @@ namespace GameLogic.Survivor
 
         private void Update()
         {
+            MoveInput();
+            SkillInput();
+        }
+
+        private void SkillInput()
+        {
+            Vector2 mouse = Input.mousePosition;
+            Vector2 center = new Vector2(Screen.width / 2, Screen.height / 2);
+            Vector2 vectorToConvert = mouse - center;
+            float angleRadians = Mathf.Atan2(vectorToConvert.y, vectorToConvert.x);
+            float angle = angleRadians * Mathf.Rad2Deg;
+            
+            GameEvent.Send(EventID_Survivor.Survivor_SkillAngle, angle);
+        }
+
+        private void MoveInput()
+        {
             Vector2 vector2 = Vector2.zero;
             if (Input.GetKey(KeyCode.A))
             {
                 vector2.x = -1;
             }
-
             if (Input.GetKey(KeyCode.D))
             {
                 vector2.x = 1;
             }
-
             if (Input.GetKey(KeyCode.W))
             {
                 vector2.y = 1;
             }
-
             if (Input.GetKey(KeyCode.S))
             {
                 vector2.y = -1;
             }
-
             if (vector2 == Vector2.zero)
             {
                 GameEvent.Send<Vector2>(EventID_Survivor.Survivor_MoveStop, new Vector2());

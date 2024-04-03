@@ -2,7 +2,8 @@
 {
     public interface IItem
     {
-        void PickUp();
+        void Using();
         void Moving();
+        void Release();
     }
 }

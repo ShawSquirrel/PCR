@@ -36,7 +36,7 @@ namespace GameLogic.Survivor
             GameModule.UI.ShowUI<UI_SurvivorStick>();
             GameModule.UI.ShowUI<UI_Infomation>();
 
-            LevelSystem level = Game._SurvivorGameRoot._Level;
+            LevelSystem level = mTarget.GetLevel();
             UI_LevelData uiLevelData = new UI_LevelData
             {
                 _ExpMax = level.LevelExpMax,
@@ -46,7 +46,6 @@ namespace GameLogic.Survivor
             GameModule.UI.ShowUI<UI_Level>(uiLevelData);
             
             
-            Game._SurvivorGameRoot._Skill.OpenUpdateSkillTowards();
             Time.timeScale = 1;
             _IsDie = false;
         }
@@ -55,7 +54,7 @@ namespace GameLogic.Survivor
         {
             base.OnUpdate();
             if (_IsDie) return;
-            mTarget._Enemy.CreateEnemy();
+            mTarget.CreateEnemy();
         }
     }
 }

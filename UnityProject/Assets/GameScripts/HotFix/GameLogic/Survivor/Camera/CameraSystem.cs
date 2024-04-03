@@ -8,6 +8,7 @@ namespace GameLogic.Survivor
 {
     public class CameraSystem : GameBase.System
     {
+        private SurvivorGameRoot Root => Game._SurvivorGameRoot;
         private CinemachineVirtualCamera _camera;
 
 
@@ -18,7 +19,7 @@ namespace GameLogic.Survivor
             _camera.transform.position = Vector3.back * 10;
 
 
-            Transform player = Game._SurvivorGameRoot._Character.TFCharacter;
+            Transform player = Root.GetCharacterTransform();
             SetFollowAndLookAt(player);
         }
 
@@ -32,7 +33,6 @@ namespace GameLogic.Survivor
         {
             _camera.Follow = follow;
             _camera.LookAt = lookAt ? lookAt : follow;
-
         }
     }
 }

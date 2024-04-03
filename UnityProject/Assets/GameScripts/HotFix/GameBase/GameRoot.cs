@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TEngine;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace GameBase
 {
@@ -59,7 +60,7 @@ namespace GameBase
             {
                 T target = t as T;
                 target.OnDestroy();
-                GameObject.Destroy(target._Obj);
+                Object.Destroy(target._Obj);
             }
         }
 

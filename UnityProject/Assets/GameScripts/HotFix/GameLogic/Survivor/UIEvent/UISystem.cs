@@ -5,9 +5,7 @@ namespace GameLogic.Survivor
 {
     public class UISystem : GameBase.System
     {
-        public FSM<Enum_SurvivorProcedure> FSM => Game._SurvivorGameRoot._FSM;
-
-
+        public SurvivorGameRoot Root => Game._SurvivorGameRoot;
         public override void Start()
         {
             AddListen();
@@ -41,7 +39,7 @@ namespace GameLogic.Survivor
             GameRoot._Instance.StartFlash(() =>
             {
                 GameModule.UI.CloseWindow<UI_SurvivorMenu>();
-                FSM.ChangeState(Enum_SurvivorProcedure.GameTest);
+                Root.ChangeState(Enum_SurvivorProcedure.GameTest);
                 Game._GameRoot.CloseVideoUI();
             });
         }
@@ -54,7 +52,7 @@ namespace GameLogic.Survivor
             GameRoot._Instance.StartFlash(() =>
             {
                 GameModule.UI.CloseWindow<UI_SurvivorMenu>();
-                FSM.ChangeState(Enum_SurvivorProcedure.GameLaunching);
+                Root.ChangeState(Enum_SurvivorProcedure.GameLaunching);
             });
         }
 
@@ -71,8 +69,8 @@ namespace GameLogic.Survivor
                 GameModule.UI.CloseWindow<UI_Infomation>();
                 GameModule.UI.CloseWindow<UI_SurvivorStick>();
                 GameModule.UI.CloseWindow<UI_Result>();
-                Game._SurvivorGameRoot._FSM.ChangeState(Enum_SurvivorProcedure.Menu);
-                GameEvent.Send(EventID_Survivor.Survivor_Release);
+                Root.ChangeState(Enum_SurvivorProcedure.Menu);
+                Root.Release();
             });
         }
     }

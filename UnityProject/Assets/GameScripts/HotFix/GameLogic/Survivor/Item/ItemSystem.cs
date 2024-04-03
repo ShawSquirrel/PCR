@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using GameConfig;
+using TEngine;
+using UnityEngine;
 
 namespace GameLogic.Survivor
 {
@@ -12,13 +16,57 @@ namespace GameLogic.Survivor
             _list_Item = new List<IItem>();
         }
 
+        public override void AddListen()
+        {
+            base.AddListen();
+            GameEvent.AddEventListener<IItem>(EventID_Survivor.Survivor_UsingItem, UsingItem);
+        }
+
+        public override void RemoveListen()
+        {
+            base.RemoveListen();
+            GameEvent.RemoveEventListener<IItem>(EventID_Survivor.Survivor_UsingItem, UsingItem);
+        }
+
         public override void Start()
         {
+            AddListen();
         }
 
 
         public override void Release()
         {
+            RemoveListen();
+            foreach (IItem item in _list_Item)
+            {
+                item.Release();
+            }
+
+            _list_Item.Clear();
+        }
+
+
+        public void CreateItem(ItemType itemType, Vector3 pos)
+        {
+            IItem item = GetItem(itemType, pos);
+            _list_Item.Add(item);
+        }
+
+        public void UsingItem(IItem item)
+        {
+        }
+
+        private IItem GetItem(ItemType itemType, Vector3 pos)
+        {
+            IItem item = null;
+            switch (itemType)
+            {
+                case ItemType.ExpBall1:
+                    item = new ExpBall(pos);
+                    break;
+            }
+
+            return item;
         }
     }
 }

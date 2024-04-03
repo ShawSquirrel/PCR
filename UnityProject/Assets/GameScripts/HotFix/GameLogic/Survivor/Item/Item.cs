@@ -15,13 +15,18 @@ namespace GameLogic.Survivor
         }
         
         
-        public virtual void PickUp()
+        public virtual void Using()
         {
-            Log.Info($"捡起了 {$"{_Obj.name}".SetColor(Color.green)}");
+            
         }
 
         public virtual void Moving()
         {
+        }
+
+        public void Release()
+        {
+            Object.Destroy(_Obj);
         }
     }
 }

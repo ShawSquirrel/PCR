@@ -5,6 +5,8 @@ namespace GameBase
 {
     public class System
     {
+        protected GameRoot _root;
+        protected bool _isRelease;
         public GameRoot _GameRoot;
         public GameObject _Obj;
         public Transform _TF;
@@ -16,13 +18,19 @@ namespace GameBase
 
         public virtual void Awake()
         {
-            // AddListen();
         }
 
         public virtual void OnDestroy()
         {
-            // Removelisten();
         }
+        public virtual void AddListen()
+        {
+        }
+
+        public virtual void RemoveListen()
+        {
+        }
+        
 
         public virtual void OnReset()
         {

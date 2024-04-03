@@ -11,7 +11,8 @@ namespace GameLogic.Survivor
 {
     public class EnemyCtl : EntityCtl
     {
-        protected FSM<Enum_EnemyState> _fsm;
+        private SurvivorGameRoot Root => Game._SurvivorGameRoot;
+        private FSM<Enum_EnemyState> _fsm;
         private bool _bool_IsDamaged;
         public bool Bool_IsDamaged => _bool_IsDamaged;
 
@@ -35,7 +36,7 @@ namespace GameLogic.Survivor
 
         protected override void Update()
         {
-            Vector3 vector3 = (Game._SurvivorGameRoot._Character.Pos - _chracter.transform.position).normalized;
+            Vector3 vector3 = (Root.GetCharacterTransform().position - _chracter.transform.position).normalized;
             SetTowards(vector3);
             _fsm.Update();
         }

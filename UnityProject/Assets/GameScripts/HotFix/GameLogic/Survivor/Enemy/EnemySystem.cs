@@ -7,9 +7,9 @@ namespace GameLogic.Survivor
 {
     public class EnemySystem : GameBase.System, IRelease
     {
+        private SurvivorGameRoot Root => Game._SurvivorGameRoot;
         private List<EnemyCtl> _list_Enemy;
         private Dictionary<GameObject, EnemyCtl> _dict_EnemyCtl;
-        public Vector3 PlayerPos => Game._SurvivorGameRoot._Character.Pos;
 
         public override void Awake()
         {
@@ -89,8 +89,9 @@ namespace GameLogic.Survivor
 
             EnemyCtl enemyCtl = new EnemyCtl(name);
 
+            Vector3 playerPos = Root.GetCharacterTransform().position;
             enemyCtl.SetName("Enemy");
-            enemyCtl.SetPos(PlayerPos + randomPosition);
+            enemyCtl.SetPos(playerPos + randomPosition);
             enemyCtl.Chracter.transform.SetParent(_TF);
 
             _list_Enemy.Add(enemyCtl);

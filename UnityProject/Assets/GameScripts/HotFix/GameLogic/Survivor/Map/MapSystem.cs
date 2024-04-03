@@ -5,13 +5,14 @@ namespace GameLogic.Survivor
 {
     public class MapSystem : GameBase.System
     {
+        private SurvivorGameRoot Root => Game._SurvivorGameRoot;
         private GameObject _map;
 
         #region Start Release
 
         public void Start()
         {
-            Transform mapParent = Game._SurvivorGameRoot._Character.TFCharacter;
+            Transform mapParent = Root.GetCharacterTransform();
             LoadMap(mapParent);
         }
 

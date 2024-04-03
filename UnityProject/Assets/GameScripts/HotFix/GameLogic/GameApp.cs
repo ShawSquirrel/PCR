@@ -7,10 +7,10 @@ using UnityEngine;
 /// <summary>
 /// 游戏App。
 /// </summary>
-public partial class GameApp:Singleton<GameApp>
+public partial class GameApp : Singleton<GameApp>
 {
     private static List<Assembly> _hotfixAssembly;
-    
+
     /// <summary>
     /// 热更域App主入口。
     /// </summary>
@@ -28,7 +28,7 @@ public partial class GameApp:Singleton<GameApp>
         Utility.Unity.AddDestroyListener(Instance.OnDestroy);
         Utility.Unity.AddOnDrawGizmosListener(Instance.OnDrawGizmos);
         Utility.Unity.AddOnApplicationPauseListener(Instance.OnApplicationPause);
-        
+
         Instance.StartGameLogic();
     }
 
@@ -38,7 +38,8 @@ public partial class GameApp:Singleton<GameApp>
     /// </summary>
     private void StartGameLogic()
     {
-        GameModule.Resource.LoadAsset<GameObject>("CustomModule");
+        // GameModule.Resource.LoadAsset<GameObject>("CustomModule");
+        GameLogic.NewArchitecture.Game.Survivor.SurvivorRoot.Instance.Init();
     }
 
     /// <summary>
@@ -87,6 +88,7 @@ public partial class GameApp:Singleton<GameApp>
             logic.OnUpdate();
             TProfiler.EndSample();
         }
+
         TProfiler.EndFirstSample();
     }
 
@@ -102,6 +104,7 @@ public partial class GameApp:Singleton<GameApp>
             logic.OnFixedUpdate();
             TProfiler.EndSample();
         }
+
         TProfiler.EndFirstSample();
     }
 
@@ -117,6 +120,7 @@ public partial class GameApp:Singleton<GameApp>
             logic.OnLateUpdate();
             TProfiler.EndSample();
         }
+
         TProfiler.EndFirstSample();
     }
 

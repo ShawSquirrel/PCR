@@ -1,22 +1,21 @@
-﻿using System.Collections.Generic;
-using TEngine;
+﻿using TEngine;
 using UnityEngine;
 
 namespace GameLogic.Survivor
 {
     public class SurvivorGameRoot : GameBase.GameRoot
     {
-        public FSM<Enum_SurvivorProcedure> _FSM;
-        public InputSystem _Input;
+        private FSM<Enum_SurvivorProcedure> _FSM;
+        private InputSystem _Input;
         public CharacterSystem _Character;
         public EnemySystem _Enemy;
-        public TimeSystem _Time;
+        private TimeSystem _Time;
         public SkillSystem _Skill;
         public Config.ConfigSystem _Config;
-        public MapSystem _Map;
-        public UISystem _UI;
-        public CameraSystem _Camera;
-        public LevelSystem _Level;
+        private MapSystem _Map;
+        private UISystem _UI;
+        private CameraSystem _Camera;
+        private LevelSystem _Level;
 
         public SurvivorGameRoot(GameObject obj) : base(obj)
         {
@@ -27,7 +26,6 @@ namespace GameLogic.Survivor
         {
             base.Init();
             AddSystem();
-            AddListen();
             FSMInit();
 
             _UI.Start();
@@ -47,17 +45,7 @@ namespace GameLogic.Survivor
             _Level = AddManager<LevelSystem>();
         }
 
-        private void AddListen()
-        {
-            GameEvent.AddEventListener(EventID_Survivor.Survivor_Release, Release);
-        }
-
-        private void RemoveListen()
-        {
-            GameEvent.RemoveEventListener(EventID_Survivor.Survivor_Release, Release);
-        }
-
-        public void FSMInit()
+        private void FSMInit()
         {
             _FSM = new FSM<Enum_SurvivorProcedure>();
             _FSM.AddState(Enum_SurvivorProcedure.Menu, new SurvivorMenuProcedure(_FSM, this));
@@ -72,6 +60,7 @@ namespace GameLogic.Survivor
 
         public void Start(string name)
         {
+            // TODO:后续做成无参变量
             _Character.LoadCharacter(name);
             _Map.Start();
             _Skill.Start();
@@ -81,6 +70,9 @@ namespace GameLogic.Survivor
             _Level.Start();
         }
 
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public override void Release()
         {
             base.Release();
@@ -96,7 +88,36 @@ namespace GameLogic.Survivor
         public override void Destroy()
         {
             base.Destroy();
+            Release();
             _UI.Release();
+        }
+
+        /// <summary>
+        /// 改变状态机状态
+        /// </summary>
+        /// <param name="procedure"></param>
+        public void ChangeState(Enum_SurvivorProcedure procedure)
+        {
+            _FSM.ChangeState(procedure);
+        }
+
+        public Transform GetCharacterTransform()
+        {
+            return _Character.GetCharacterTransform();
+        }
+
+        public float GetSKillTowards()
+        {
+            return _Skill.Angle;
+        }
+        public LevelSystem GetLevel()
+        {
+            return _Level;
+        }
+
+        public void CreateEnemy()
+        {
+            _Enemy.CreateEnemy();
         }
     }
 }
