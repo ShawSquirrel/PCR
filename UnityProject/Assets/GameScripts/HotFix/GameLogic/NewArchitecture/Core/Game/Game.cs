@@ -9,12 +9,21 @@ namespace GameLogic.NewArchitecture.Core
         protected Dictionary<Type, System> _systemDict;
         public Unit Unit;
 
-        public virtual void Init()
+        public virtual void Awake()
+        {
+        }
+
+        public virtual void Destroy()
+        {
+        }
+
+        public virtual void ExecuteEmpty()
         {
         }
 
         public virtual void InitUnit(Transform parent, string name)
         {
+            if (Unit != null) return;
             Unit = new Unit(parent, name);
         }
 
@@ -46,7 +55,7 @@ namespace GameLogic.NewArchitecture.Core
             }
 
             t = new T();
-            t.Init();
+            t.Awake();
 
             if (hasUnit)
             {

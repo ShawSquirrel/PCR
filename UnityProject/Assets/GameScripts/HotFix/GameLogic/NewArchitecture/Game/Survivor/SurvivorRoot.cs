@@ -10,11 +10,13 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public static SurvivorRoot Instance => SingletonGroup.GetSingleton<SurvivorRoot>();
         public void OnSingletonInit()
         {
-            InitUnit(null, "SurvivorRoot");
+            Awake();
         }
 
-        public override void Init()
+        public override void Awake()
         {
+            InitUnit(null, "SurvivorRoot");
         }
+        
     }
 }
