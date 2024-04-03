@@ -1,6 +1,7 @@
-﻿namespace GameLogic.NewArchitecture.Core
+﻿
+namespace GameLogic.NewArchitecture.Core
 {
-    public interface ISystem
+    public interface ISystem : IInit
     {
         void Awake();
     }

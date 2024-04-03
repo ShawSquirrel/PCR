@@ -2,10 +2,11 @@
 
 namespace GameLogic.NewArchitecture.Core
 {
-    public abstract class Model : IModel
+    public class Command : ICommand
     {
-        public virtual void Awake()
+        public virtual void Run()
         {
+            
         }
     }
 }

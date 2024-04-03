@@ -1,7 +1,7 @@
 ﻿namespace GameLogic.NewArchitecture.Core
 {
-    public interface IModel
+    public interface ICommand
     {
-        void Awake();
+        void Run();
     }
 }

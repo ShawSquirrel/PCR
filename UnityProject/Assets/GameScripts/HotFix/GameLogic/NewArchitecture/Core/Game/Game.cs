@@ -7,13 +7,24 @@ namespace GameLogic.NewArchitecture.Core
     public abstract class Game : IGame
     {
         protected Dictionary<Type, System> _systemDict;
+        protected Dictionary<Type, Model> _modelDict;
         public Unit Unit;
 
         public virtual void Awake()
         {
+            _systemDict = new Dictionary<Type, System>();
+            _modelDict  = new Dictionary<Type, Model>();
         }
 
         public virtual void Destroy()
+        {
+        }
+
+        public virtual void Init()
+        {
+        }
+
+        public virtual void Release()
         {
         }
 
@@ -38,12 +49,6 @@ namespace GameLogic.NewArchitecture.Core
             return system as T;
         }
 
-        /// <summary>
-        /// 测试
-        /// </summary>
-        /// <param name="hasUnit"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         public virtual T AddSystem<T>(bool hasUnit = false) where T : System, new()
         {
             Type type = typeof(T);
@@ -62,6 +67,32 @@ namespace GameLogic.NewArchitecture.Core
                 t.InitUnit(Unit._TF, type.Name);
             }
 
+            return t;
+        }
+
+        public virtual T GetModel<T>() where T : Model, new()
+        {
+            Type type = typeof(T);
+            if (_modelDict.TryGetValue(type, out Model model) == false)
+            {
+                return null;
+            }
+
+            return model as T;
+        }
+
+        public virtual T AddModel<T>() where T : Model, new()
+        {
+            Type type = typeof(T);
+            T t;
+            if (_modelDict.TryGetValue(type, out Model model) == true)
+            {
+                t = model as T;
+                return t;
+            }
+
+            t = new T();
+            t.Awake();
             return t;
         }
     }

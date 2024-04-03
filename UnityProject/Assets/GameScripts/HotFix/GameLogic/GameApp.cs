@@ -39,7 +39,7 @@ public partial class GameApp : Singleton<GameApp>
     private void StartGameLogic()
     {
         // GameModule.Resource.LoadAsset<GameObject>("CustomModule");
-        GameLogic.NewArchitecture.Game.Survivor.SurvivorRoot.Instance.ExecuteEmpty();
+        GameLogic.NewArchitecture.Game.Main.MainRoot.Instance.Awake();
     }
 
     /// <summary>
