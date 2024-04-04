@@ -29,16 +29,16 @@ namespace GameLogic.Sokoban
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener<string>(UIEventID.Sokoban_SelectLevel, OnSelectLevelEvent);
-            GameEvent.AddEventListener(UIEventID.Sokoban_MakeMap, OnMakeMap);
+            // GameEvent.AddEventListener<string>(UIEventID.Sokoban_SelectLevel, OnSelectLevelEvent);
+            // GameEvent.AddEventListener(UIEventID.Sokoban_MakeMap, OnMakeMap);
         }
 
 
         protected override void RemoveEvent()
         {
             base.RemoveEvent();
-            GameEvent.RemoveEventListener<string>(UIEventID.Sokoban_SelectLevel, OnSelectLevelEvent);
-            GameEvent.RemoveEventListener(UIEventID.Sokoban_MakeMap, OnMakeMap);
+            // GameEvent.RemoveEventListener<string>(UIEventID.Sokoban_SelectLevel, OnSelectLevelEvent);
+            // GameEvent.RemoveEventListener(UIEventID.Sokoban_MakeMap, OnMakeMap);
         }
     }
 }

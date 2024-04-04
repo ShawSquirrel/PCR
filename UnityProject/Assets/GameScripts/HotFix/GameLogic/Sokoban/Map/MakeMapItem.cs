@@ -48,7 +48,7 @@ namespace GameLogic.Sokoban
 
         private void OnSelected(LeanSelect arg0)
         {
-            GameEvent.Send(SokobanEvent.Sokoban_MakeMapClickItem, this);
+            // GameEvent.Send(SokobanEvent.Sokoban_MakeMapClickItem, this);
         }
 
 

@@ -34,12 +34,12 @@ namespace GameLogic
 
         private void OnClick_Btn_RestartBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Restart);
+            // GameEvent.Send(UIEventID.Sokoban_Restart);
         }
 
         private void OnClick_Btn_MenuBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Menu);
+            // GameEvent.Send(UIEventID.Sokoban_Menu);
         }
 
         #endregion
@@ -51,22 +51,22 @@ namespace GameLogic
 
         private void OnClick_Btn_LeftBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.left);
+            // GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.left);
         }
 
         private void OnClick_Btn_DownBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.down);
+            // GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.down);
         }
 
         private void OnClick_Btn_UpBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.up);
+            // GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.up);
         }
 
         private void OnClick_Btn_RightBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.right);
+            // GameEvent.Send(UIEventID.Sokoban_Move, Vector2Int.right);
         }
     }
 }

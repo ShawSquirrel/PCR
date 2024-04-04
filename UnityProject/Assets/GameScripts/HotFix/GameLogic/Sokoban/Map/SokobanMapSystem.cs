@@ -195,7 +195,7 @@ namespace GameLogic.Sokoban
 
             if (isComplete)
             {
-                GameEvent.Send(UIEventID.Sokoban_Success);
+                // GameEvent.Send(UIEventID.Sokoban_Success);
             }
         }
 

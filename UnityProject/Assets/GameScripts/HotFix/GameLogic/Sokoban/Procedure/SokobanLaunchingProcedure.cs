@@ -25,18 +25,18 @@ namespace GameLogic.Sokoban
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener(UIEventID.Sokoban_Success, OnSuccess);
-            GameEvent.AddEventListener(UIEventID.Sokoban_Menu, OnMenu);
-            GameEvent.AddEventListener<Vector2Int>(UIEventID.Sokoban_Move, OnMove);
+            // GameEvent.AddEventListener(UIEventID.Sokoban_Success, OnSuccess);
+            // GameEvent.AddEventListener(UIEventID.Sokoban_Menu, OnMenu);
+            // GameEvent.AddEventListener<Vector2Int>(UIEventID.Sokoban_Move, OnMove);
             // GameEvent.AddEventListener(UIEventID.Sokoban_Restart, OnRestart);
         }
 
         protected override void RemoveEvent()
         {
             base.RemoveEvent();
-            GameEvent.RemoveEventListener(UIEventID.Sokoban_Success, OnSuccess);
-            GameEvent.RemoveEventListener(UIEventID.Sokoban_Menu, OnMenu);
-            GameEvent.RemoveEventListener<Vector2Int>(UIEventID.Sokoban_Move, OnMove);
+            // GameEvent.RemoveEventListener(UIEventID.Sokoban_Success, OnSuccess);
+            // GameEvent.RemoveEventListener(UIEventID.Sokoban_Menu, OnMenu);
+            // GameEvent.RemoveEventListener<Vector2Int>(UIEventID.Sokoban_Move, OnMove);
             // GameEvent.RemoveEventListener(UIEventID.Sokoban_Restart, OnRestart);
 
         }

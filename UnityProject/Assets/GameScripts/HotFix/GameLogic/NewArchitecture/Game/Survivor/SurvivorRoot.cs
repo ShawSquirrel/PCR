@@ -6,7 +6,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     public class SurvivorRoot : Core.Game, ISingleton
     {
         public static SurvivorRoot Instance => SingletonGroup.GetSingleton<SurvivorRoot>();
-        private FSM<SurvivorProcedureType> _fsm;
 
         public void OnSingletonInit()
         {
@@ -17,19 +16,18 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.Awake();
             InitUnit(null, "SurvivorRoot");
-            InitFSM();
-        }
+            AddSystem<SurvivorProcedureSystem>();
+            
+            
+            
+            Init();
 
-        private void InitFSM()
-        {
-            _fsm = new FSM<SurvivorProcedureType>();
-            _fsm.AddState(SurvivorProcedureType.Menu, new SurvivorProcedure_Menu(_fsm, this));
         }
 
         public override void Init()
         {
             base.Init();
-            _fsm.StartState(SurvivorProcedureType.Menu);
+            GetSystem<SurvivorProcedureSystem>().Init();
         }
     }
 }

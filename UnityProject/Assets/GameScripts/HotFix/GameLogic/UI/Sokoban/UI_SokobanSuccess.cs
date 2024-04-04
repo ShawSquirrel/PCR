@@ -28,19 +28,19 @@ namespace GameLogic
 
         private void OnClick_Btn_CloseBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Menu);
+            // GameEvent.Send(UIEventID.Sokoban_Menu);
             Close();
         }
 
         private void OnClick_Btn_ReStartBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_Restart);
+            // GameEvent.Send(UIEventID.Sokoban_Restart);
             Close();
         }
 
         private void OnClick_Btn_NextBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_NextLevel);
+            // GameEvent.Send(UIEventID.Sokoban_NextLevel);
             Close();
         }
 

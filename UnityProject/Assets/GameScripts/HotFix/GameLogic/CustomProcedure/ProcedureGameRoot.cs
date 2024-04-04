@@ -17,14 +17,14 @@ namespace GameLogic
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
-            GameEvent.AddEventListener(UIEventID.Sokoban_StartGame, StartSokoban);
+            // GameEvent.AddEventListener(UIEventID.Sokoban_StartGame, StartSokoban);
             GameEvent.AddEventListener(EventID_Survivor.Survivor_StartGame, OnSurvivorStartGame);
         }
 
         protected override void RemoveEvent()
         {
             base.RegisterEvent();
-            GameEvent.RemoveEventListener(UIEventID.Sokoban_StartGame, StartSokoban);
+            // GameEvent.RemoveEventListener(UIEventID.Sokoban_StartGame, StartSokoban);
             GameEvent.RemoveEventListener(EventID_Survivor.Survivor_StartGame, OnSurvivorStartGame);
         }
 

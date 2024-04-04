@@ -61,7 +61,7 @@ namespace GameLogic.NewArchitecture.Core
 
             t = new T();
             t.Awake();
-
+            _systemDict.Add(type, t);
             if (hasUnit)
             {
                 t.InitUnit(Unit._TF, type.Name);
@@ -93,6 +93,7 @@ namespace GameLogic.NewArchitecture.Core
 
             t = new T();
             t.Awake();
+            _modelDict.Add(type, t);
             return t;
         }
     }

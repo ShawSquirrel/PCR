@@ -41,7 +41,7 @@ namespace GameLogic
         {
             if (!_TF_Root.GetComponent<ToggleGroup>().AnyTogglesOn())
             {
-                GameEvent.Send(UIEventID.Sokoban_MakeMapSelectType, 99);
+                // GameEvent.Send(UIEventID.Sokoban_MakeMapSelectType, 99);
                 return;
             }
 
@@ -49,24 +49,24 @@ namespace GameLogic
             {
                 int type = int.Parse(name);
 
-                GameEvent.Send(UIEventID.Sokoban_MakeMapSelectType, type);
+                // GameEvent.Send(UIEventID.Sokoban_MakeMapSelectType, type);
             }
         }
 
         private void OnClick_Btn_CloseBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_MakeMapClose);
+            // GameEvent.Send(UIEventID.Sokoban_MakeMapClose);
             Close();
         }
 
         private void OnClick_Btn_SaveBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_MakeMapSave);
+            // GameEvent.Send(UIEventID.Sokoban_MakeMapSave);
         }
 
         private void OnClick_Btn_RevertBtn()
         {
-            GameEvent.Send(UIEventID.Sokoban_MakeMapRevert); 
+            // GameEvent.Send(UIEventID.Sokoban_MakeMapRevert); 
         }
     }
 }
