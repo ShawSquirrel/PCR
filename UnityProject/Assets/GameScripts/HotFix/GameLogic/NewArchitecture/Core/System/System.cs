@@ -11,6 +11,11 @@ namespace GameLogic.NewArchitecture.Core
         {
         }
 
+        public virtual void Destroy()
+        {
+            
+        }
+
         public virtual void InitUnit(Transform parent = null, string name = "")
         {
             Unit = new Unit(parent, name);

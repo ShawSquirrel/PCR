@@ -1,5 +1,6 @@
+using GameLogic.NewArchitecture.Core;
+using GameLogic.NewArchitecture.Game.Survivor;
 using GameLogic.Survivor;
-using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
 
@@ -9,27 +10,24 @@ namespace GameLogic
     class UI_SurvivorMenu : UIWindow
     {
         #region 脚本工具生成的代码
-
         private Button _Btn_StartGame;
         private Button _Btn_Upgrade;
-        private Button _Btn_Unlock;
+        private Button _Btn_Character;
         private Button _Btn_Option;
         private Button _Btn_Exit;
-
         public override void ScriptGenerator()
         {
             _Btn_StartGame = FindChildComponent<Button>("Bg/_Btn_StartGame");
-            _Btn_Upgrade = FindChildComponent<Button>("Bg/_Btn_Upgrade");
-            _Btn_Unlock = FindChildComponent<Button>("Bg/_Btn_Unlock");
-            _Btn_Option = FindChildComponent<Button>("Bg/_Btn_Option");
-            _Btn_Exit = FindChildComponent<Button>("Bg/_Btn_Exit");
+            _Btn_Upgrade   = FindChildComponent<Button>("Bg/_Btn_Upgrade");
+            _Btn_Character = FindChildComponent<Button>("Bg/_Btn_Character");
+            _Btn_Option    = FindChildComponent<Button>("Bg/_Btn_Option");
+            _Btn_Exit      = FindChildComponent<Button>("Bg/_Btn_Exit");
             _Btn_StartGame.onClick.AddListener(OnClick_Btn_StartGameBtn);
             _Btn_Upgrade.onClick.AddListener(OnClick_Btn_UpgradeBtn);
-            _Btn_Unlock.onClick.AddListener(OnClick_Btn_UnlockBtn);
+            _Btn_Character.onClick.AddListener(OnClick_Btn_CharacterBtn);
             _Btn_Option.onClick.AddListener(OnClick_Btn_OptionBtn);
             _Btn_Exit.onClick.AddListener(OnClick_Btn_ExitBtn);
         }
-
         #endregion
 
         private void OnClick_Btn_StartGameBtn()
@@ -39,12 +37,12 @@ namespace GameLogic
 
         private void OnClick_Btn_UpgradeBtn()
         {
+            
         }
 
-        private void OnClick_Btn_UnlockBtn()
+        private void OnClick_Btn_CharacterBtn()
         {
-            GameEvent.Send(UIEventID_Survivor.Test);
-            Log.Debug("进入测试地图");
+            
         }
 
         private void OnClick_Btn_OptionBtn()
@@ -53,6 +51,7 @@ namespace GameLogic
 
         private void OnClick_Btn_ExitBtn()
         {
+            CommandExecute.Execute<ReturnSelectCommand>();
         }
     }
 }

@@ -27,5 +27,12 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             _fsm.ChangeState(type);
         }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            Release();
+            _fsm.Clear();
+        }
     }
 }

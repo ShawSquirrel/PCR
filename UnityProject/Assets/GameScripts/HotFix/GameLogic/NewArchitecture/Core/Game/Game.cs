@@ -37,6 +37,11 @@ namespace GameLogic.NewArchitecture.Core
             if (Unit != null) return;
             Unit = new Unit(parent, name);
         }
+        public virtual void DestroyUnit()
+        {
+            if (Unit == null) return;
+            Unit.Destroy();
+        }
 
         public virtual T GetSystem<T>() where T : System, new()
         {
@@ -70,6 +75,28 @@ namespace GameLogic.NewArchitecture.Core
             return t;
         }
 
+        public virtual void RemoveSystem<T>() where T : System, new()
+        {
+            Type type = typeof(T);
+            if (_systemDict.TryGetValue(type, out var system) == false)
+            {
+                return;
+            }
+            system.Destroy();
+            _systemDict.Remove(type);
+        }
+        
+
+        public virtual void RemoveAllSystem()
+        {
+            foreach (var (type, system) in _systemDict)
+            {
+                system.Destroy();
+            }
+
+            _systemDict.Clear();
+        }
+
         public virtual T GetModel<T>() where T : Model, new()
         {
             Type type = typeof(T);
@@ -96,5 +123,6 @@ namespace GameLogic.NewArchitecture.Core
             _modelDict.Add(type, t);
             return t;
         }
+
     }
 }

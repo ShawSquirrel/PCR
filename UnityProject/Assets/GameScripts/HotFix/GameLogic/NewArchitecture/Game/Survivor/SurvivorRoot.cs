@@ -18,8 +18,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             InitUnit(null, "SurvivorRoot");
             AddSystem<SurvivorProcedureSystem>();
             
-            
-            
             Init();
 
         }
@@ -28,6 +26,21 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.Init();
             GetSystem<SurvivorProcedureSystem>().Init();
+        }
+
+        public override void Release()
+        {
+            base.Release();
+            
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            Release();
+            DestroyUnit();
+            RemoveAllSystem();
+            SingletonGroup.RemoveSingleton<SurvivorRoot>();
         }
     }
 }

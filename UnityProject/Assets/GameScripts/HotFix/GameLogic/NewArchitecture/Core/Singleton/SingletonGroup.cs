@@ -26,5 +26,15 @@ namespace GameLogic.NewArchitecture.Core
             t.OnSingletonInit();
             return t;
         }
+
+        public static void RemoveSingleton<T>() where T : class, ISingleton, new()
+        {
+            Type type = typeof(T);
+            if (_singletonDict.TryGetValue(type, out ISingleton singleton) == true)
+            {
+                _singletonDict.Remove(type);
+            }
+
+        }
     }
 }

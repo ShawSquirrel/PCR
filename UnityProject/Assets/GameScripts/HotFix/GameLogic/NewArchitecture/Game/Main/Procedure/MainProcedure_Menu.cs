@@ -10,12 +10,12 @@ namespace GameLogic.NewArchitecture.Game.Main
 
         public override void AddListen()
         {
-            GameEvent.AddEventListener(EventID.StartSurvivorGameID, OnStartSurvivorGame);
+            GameEvent.AddEventListener(EventID.SelectSurvivorGameID, OnSelectSurvivorGame);
         }
 
         public override void RemoveListen()
         {
-            GameEvent.RemoveEventListener(EventID.StartSurvivorGameID, OnStartSurvivorGame);
+            GameEvent.RemoveEventListener(EventID.SelectSurvivorGameID, OnSelectSurvivorGame);
         }
 
 
@@ -25,10 +25,9 @@ namespace GameLogic.NewArchitecture.Game.Main
             GameModule.UI.ShowUI<UI_Menu>();
         }
         
-        private void OnStartSurvivorGame()
+        private void OnSelectSurvivorGame()
         {
-            Log.Info("开始割草游戏");
-            
+            Log.Info("进入割草游戏");
             GameModule.UI.CloseWindow<UI_Menu>();
             
             MainRoot.Instance.GetSystem<ProcedureSystem>().ChangeState(MainProcedureType.Survivor);

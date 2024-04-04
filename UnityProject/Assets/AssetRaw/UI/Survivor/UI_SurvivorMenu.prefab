@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 4808314717973056727}
   - component: {fileID: 4808314717973056724}
   m_Layer: 5
-  m_Name: _Btn_Unlock
+  m_Name: _Btn_Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6D4B\u8BD5"
+  m_text: "\u4EBA\u7269"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 863b4a3025aac1c468f43b9626ab53cb, type: 2}
   m_sharedMaterial: {fileID: 3522691287213726522, guid: 863b4a3025aac1c468f43b9626ab53cb, type: 2}

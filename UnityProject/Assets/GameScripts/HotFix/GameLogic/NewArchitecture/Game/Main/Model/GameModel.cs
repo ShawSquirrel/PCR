@@ -1,25 +1,34 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using GameLogic.NewArchitecture.Core;
 using GameLogic.NewArchitecture.Core.BindableValue;
 using TEngine;
 
 namespace GameLogic.NewArchitecture.Game.Main
 {
+    public enum GameType
+    {
+        Select,
+        Survivor
+    }
 
     public class GameModel : Model
     {
-        public BindableValue<bool> Bool_GameLaunching;
+        public BindableValue<GameType> _GameType;
 
         public override void Awake()
         {
             base.Awake();
-            Bool_GameLaunching = new BindableValue<bool>();
-            Bool_GameLaunching.AddListen((b) =>
+            _GameType = new BindableValue<GameType>();
+            _GameType.AddListen((type) =>
             {
-                switch (b)
+                switch (type)
                 {
-                    case true:
-                        GameEvent.Send(EventID.StartSurvivorGameID);
+                    case GameType.Select:
+                        GameEvent.Send(EventID.ReturnSelectGameID);
+                        break;
+                    case GameType.Survivor:
+                        GameEvent.Send(EventID.SelectSurvivorGameID);
                         break;
                 }
             });

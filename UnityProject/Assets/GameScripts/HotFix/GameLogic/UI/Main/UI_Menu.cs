@@ -37,7 +37,7 @@ namespace GameLogic
 
         private void OnClick_Btn_SurvivorBtn()
         {
-            CommandExecute.Execute<StartGameCommand>();
+            CommandExecute.Execute<SelectSurvivorCommand>();
         }
     }
 }
