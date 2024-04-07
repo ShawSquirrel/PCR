@@ -42,7 +42,7 @@ namespace GameLogic
 
         private void OnClick_Btn_CharacterBtn()
         {
-            
+            GameEvent.Send(EventID.OpenSelectCharacterPanel);
         }
 
         private void OnClick_Btn_OptionBtn()
@@ -51,7 +51,7 @@ namespace GameLogic
 
         private void OnClick_Btn_ExitBtn()
         {
-            CommandExecute.Execute<ReturnSelectCommand>();
+            GameEvent.Send(EventID.ReturnSelectGameID);
         }
     }
 }

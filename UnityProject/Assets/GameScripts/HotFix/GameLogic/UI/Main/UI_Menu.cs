@@ -32,12 +32,11 @@ namespace GameLogic
 
         private void OnClick_Btn_SokobanBtn()
         {
-            // GameEvent.Send(UIEventID.Sokoban_StartGame);
         }
 
         private void OnClick_Btn_SurvivorBtn()
         {
-            CommandExecute.Execute<SelectSurvivorCommand>();
+            GameEvent.Send(EventID.SelectSurvivorGameID);
         }
     }
 }

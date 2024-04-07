@@ -16,12 +16,14 @@ public partial class Tables
     public SAnimName SAnimName {get; }
     public SActorAttribute SActorAttribute {get; }
     public SSkillAttribute SSkillAttribute {get; }
+    public SCharacter SCharacter {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
         SAnimName = new SAnimName(loader("sanimname"));
         SActorAttribute = new SActorAttribute(loader("sactorattribute"));
         SSkillAttribute = new SSkillAttribute(loader("sskillattribute"));
+        SCharacter = new SCharacter(loader("scharacter"));
         ResolveRef();
     }
     
@@ -30,6 +32,7 @@ public partial class Tables
         SAnimName.ResolveRef(this);
         SActorAttribute.ResolveRef(this);
         SSkillAttribute.ResolveRef(this);
+        SCharacter.ResolveRef(this);
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameLogic.NewArchitecture.Core.BindableValue
+namespace GameLogic.NewArchitecture.Core
 {
     /// <summary>
     /// 回调值

@@ -17,6 +17,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             base.Awake();
             InitUnit(null, "SurvivorRoot");
             AddSystem<SurvivorProcedureSystem>();
+
+            AddModel<GameModel>();
             
             Init();
 
