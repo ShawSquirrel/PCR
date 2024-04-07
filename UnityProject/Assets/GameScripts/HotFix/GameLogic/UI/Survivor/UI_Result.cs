@@ -1,5 +1,4 @@
-using GameLogic.Survivor;
-using UnityEngine;
+using GameLogic.NewArchitecture.Game.Survivor;
 using UnityEngine.UI;
 using TEngine;
 
@@ -19,7 +18,7 @@ namespace GameLogic
 
         private void OnClick_Btn_MenuBtn()
         {
-            GameEvent.Send(UIEventID_Survivor.ReturnMenu);
+            GameEvent.Send(EventID.ReturnMenu);
         }
 
     }

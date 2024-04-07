@@ -19,15 +19,17 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GameEvent.AddEventListener(EventID.OpenSelectCharacterPanel, OnOpenSelectCharacterPanel);
             GameEvent.AddEventListener(EventID.CloseSelectCharacterPanel, OnCloseSelectCharacterPanel);
             GameEvent.AddEventListener<TCharacterID>(EventID.SelectCharacter, OnSelectCharacter);
+            GameEvent.AddEventListener(EventID.StartGame, OnStartGame);
         }
 
         public override void RemoveListen()
         {
-            base.OnExit();
+            base.RemoveListen();
             GameEvent.RemoveEventListener(EventID.ReturnSelectGameID, OnReturnSelectGame);
-            GameEvent.RemoveEventListener(EventID.ReturnSelectGameID, OnOpenSelectCharacterPanel);
-            GameEvent.RemoveEventListener(EventID.ReturnSelectGameID, OnCloseSelectCharacterPanel);
+            GameEvent.RemoveEventListener(EventID.OpenSelectCharacterPanel, OnOpenSelectCharacterPanel);
+            GameEvent.RemoveEventListener(EventID.CloseSelectCharacterPanel, OnCloseSelectCharacterPanel);
             GameEvent.RemoveEventListener<TCharacterID>(EventID.SelectCharacter, OnSelectCharacter);
+            GameEvent.RemoveEventListener(EventID.StartGame, OnStartGame);
         }
 
 
@@ -71,6 +73,12 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             PlayerPrefsUtils.SetInt("SelectCharacter", (int)characterID);
             SurvivorRoot.Instance.GetModel<GameModel>().SelectCharacter.Value = characterID;
+        }
+        private void OnStartGame()
+        {
+            mFSM.ChangeState(SurvivorProcedureType.Launching);
+            GameModule.UI.CloseWindow<UI_SurvivorMenu>();
+            mTarget.StartGame();
         }
     }
 }

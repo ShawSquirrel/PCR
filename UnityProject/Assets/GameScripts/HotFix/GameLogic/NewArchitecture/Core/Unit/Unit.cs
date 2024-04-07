@@ -25,6 +25,18 @@ namespace GameLogic.NewArchitecture.Core
             S_GameObjectToUnitDict.Add(_Obj, this);
         }
 
+        public Unit(GameObject obj, Transform parent, string name = "")
+        {
+            _Obj = obj;
+            _TF = _Obj.transform;
+            if (!string.IsNullOrEmpty(name)) _TF.name = name;
+
+            _TF.position = Vector3.zero;
+
+            _TF.SetParent(parent);
+            S_GameObjectToUnitDict.Add(_Obj, this);
+        }
+
         public T AddComponent<T>() where T : Component
         {
             return _Obj.AddComponent<T>();
@@ -55,6 +67,7 @@ namespace GameLogic.NewArchitecture.Core
 
         public virtual void Destroy()
         {
+            if (_Obj == null) return;
             S_GameObjectToUnitDict.Remove(_Obj);
             Object.Destroy(_Obj);
             _TF = null;

@@ -12,6 +12,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.Awake();
             SelectCharacter = new BindableValue<TCharacterID>();
+            SelectCharacter.Value = (TCharacterID)PlayerPrefsUtils.GetInt("SelectCharacter", 0);
         }
     }
 }
