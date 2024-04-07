@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using GameLogic.NewArchitecture.Core;
-using GameLogic.NewArchitecture.Core.BindableValue;
+﻿using GameLogic.NewArchitecture.Core;
 using TEngine;
 
 namespace GameLogic.NewArchitecture.Game.Main
