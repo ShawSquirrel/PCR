@@ -21,6 +21,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         protected override void OnEnter()
         {
             base.OnEnter();
+            GameModule.UI.ShowUI<UI_SurvivorStick>();
         }
 
         private void OnReturnMenu()
