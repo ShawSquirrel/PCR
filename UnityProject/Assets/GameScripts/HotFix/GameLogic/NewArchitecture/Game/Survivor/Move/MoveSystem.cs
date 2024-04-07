@@ -1,10 +1,12 @@
 ﻿using TEngine;
 using UnityEngine;
 
-namespace GameLogic.NewArchitecture.Game.Survivor.Move
+namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class MoveSystem : Core.System
     {
+        private Rigidbody2D _rigidbody2D;
+
         public override void Awake()
         {
             base.Awake();
@@ -19,6 +21,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor.Move
         public override void Release()
         {
             base.Release();
+            Utility.Unity.RemoveFixedUpdateListener(FixedUpdate);
         }
 
         public override void Destroy()
@@ -29,7 +32,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor.Move
         private void FixedUpdate()
         {
             Vector2 speed = SurvivorRoot.Instance.GetModel<GameModel>().CharacterSpeed.Value;
+            _rigidbody2D.velocity = speed;
         }
-        
     }
 }
