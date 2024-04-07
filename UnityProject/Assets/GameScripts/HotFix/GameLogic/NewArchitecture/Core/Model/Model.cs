@@ -7,5 +7,9 @@ namespace GameLogic.NewArchitecture.Core
         public virtual void Awake()
         {
         }
+        public virtual void Destroy()
+        {
+        }
+         
     }
 }

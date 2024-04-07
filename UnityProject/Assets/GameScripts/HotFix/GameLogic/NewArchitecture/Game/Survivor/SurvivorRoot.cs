@@ -58,7 +58,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             Release();
             DestroyUnit();
             RemoveAllSystem();
-            SingletonGroup.RemoveSingleton<SurvivorRoot>();
+            RemoveAllModel();
         }
         
         private void OnUpdate()

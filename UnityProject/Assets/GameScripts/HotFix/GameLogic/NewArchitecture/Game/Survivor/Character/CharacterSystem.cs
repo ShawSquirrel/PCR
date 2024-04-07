@@ -28,6 +28,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             if (_characterUnit == null) return;
             _characterUnit.Destroy();
             _characterUnit = null;
+            
+            Unit.Destroy();
         }
     }
 }

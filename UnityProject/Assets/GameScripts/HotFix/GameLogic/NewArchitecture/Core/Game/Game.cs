@@ -96,6 +96,15 @@ namespace GameLogic.NewArchitecture.Core
 
             _systemDict.Clear();
         }
+        public virtual void RemoveAllModel()
+        {
+            foreach (var (type, model) in _modelDict)
+            {
+                model.Destroy();
+            }
+
+            _modelDict.Clear();
+        }
 
         public virtual T GetModel<T>() where T : Model, new()
         {

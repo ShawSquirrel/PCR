@@ -3,5 +3,6 @@
     public interface IModel
     {
         void Awake();
+        void Destroy();
     }
 }
