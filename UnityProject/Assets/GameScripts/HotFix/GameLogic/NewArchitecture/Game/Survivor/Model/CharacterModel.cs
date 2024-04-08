@@ -5,13 +5,17 @@ using UnityEngine;
 
 namespace GameLogic.NewArchitecture.Game.Survivor
 {
-    public class CharacterMode : Model
+    public class CharacterModel : Model
     {
         public BindableValue<Unit> _Unit = new BindableValue<Unit>();
         public BindableValue<CharacterComponent> _CharacterComponent = new BindableValue<CharacterComponent>();
+        public readonly BindableValue<Vector2> _CharacterSpeed = new BindableValue<Vector2>();
+        public readonly BindableValue<bool> _CanMove = new BindableValue<bool>();
+
         public override void Awake()
         {
             base.Awake();
+            _CharacterSpeed.SetValueWithoutCallback(Vector2.zero);
         }
 
         public override void Init()

@@ -18,9 +18,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             _fsm.AddState(SurvivorProcedureType.Launching, new SurvivorProcedure_Launching(_fsm, SurvivorRoot.Instance));
         }
 
-        public override void Init()
+        public void StartFSM()
         {
-            base.Init();
             _fsm.StartState(SurvivorProcedureType.Menu);
         }
 

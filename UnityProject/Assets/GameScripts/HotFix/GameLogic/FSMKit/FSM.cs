@@ -62,6 +62,7 @@ namespace TEngine
 
         public void StartState(T t)
         {
+            if (mCurrentState != null) mCurrentState.Exit();
             if (mStates.TryGetValue(t, out var state))
             {
                 PreviousStateId          = t;
@@ -70,6 +71,13 @@ namespace TEngine
                 FrameCountOfCurrentState = 0;
                 state.Enter();
             }
+        }
+        public void ExitState()
+        {
+            if (mCurrentState != null) mCurrentState.Exit();
+            PreviousStateId = mCurrentStateId;
+            mCurrentState = null;
+            mCurrentStateId = default;
         }
 
         public void FixedUpdate()
@@ -90,10 +98,11 @@ namespace TEngine
 
         public void Clear()
         {
-            mCurrentState.Exit();
+            if (mCurrentState != null) mCurrentState.Exit();
             mCurrentState   = null;
             mCurrentStateId = default;
             mStates.Clear();
         }
+        
     }
 }

@@ -6,6 +6,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class InputSystem : Core.System
     {
+        private static string Tag = "InputSystem\t";
         public override void Awake()
         {
             base.Awake();
@@ -18,6 +19,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             {
                 case RuntimePlatform.WindowsEditor:
                 case RuntimePlatform.WindowsPlayer:
+                    MLog.Debug($"{Tag}添加Update事件");
                     Utility.Unity.AddUpdateListener(Update);
                     break;
                 case RuntimePlatform.Android:
@@ -35,6 +37,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             {
                 case RuntimePlatform.WindowsEditor:
                 case RuntimePlatform.WindowsPlayer:
+                    MLog.Debug($"{Tag}移除Update事件");
                     Utility.Unity.RemoveUpdateListener(Update);
                     break;
                 case RuntimePlatform.Android:
@@ -69,7 +72,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         private void MoveInput()
         {
-            GameModel gameModel = SurvivorRoot.Instance.GetModel<GameModel>();
+            CharacterModel characterModel = SurvivorRoot.Instance.GetModel<CharacterModel>();
             Vector2 vector2 = Vector2.zero;
             if (Input.GetKey(KeyCode.A))
             {
@@ -92,9 +95,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             }
 
             if (vector2 == Vector2.zero)
-                gameModel.CharacterSpeed.Value = Vector2.zero;
+                characterModel._CharacterSpeed.Value = Vector2.zero;
             else
-                gameModel.CharacterSpeed.Value = vector2.normalized;
+                characterModel._CharacterSpeed.Value = vector2.normalized;
         }
 
         private void OnBeginDrag(Vector2 pos)

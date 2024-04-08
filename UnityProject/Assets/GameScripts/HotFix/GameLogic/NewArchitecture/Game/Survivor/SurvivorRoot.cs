@@ -19,13 +19,20 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.Awake();
             Utility.Unity.AddUpdateListener(OnUpdate);
+            AddModel<GameModel>();
+            AddModel<CharacterModel>();
+            
+            
             InitUnit(null, "SurvivorRoot");
             AddSystem<SurvivorProcedureSystem>();
+            AddSystem<InputSystem>();
+            AddSystem<MoveSystem>();
+            AddSystem<CharacterSystem>();
+            AddSystem<CameraSystem>();
+            AddSystem<MapSystem>();
 
-            AddModel<GameModel>();
-            AddModel<CharacterMode>();
             
-            GetSystem<SurvivorProcedureSystem>().Init();
+            GetSystem<SurvivorProcedureSystem>().StartFSM();
 
         }
 
@@ -41,24 +48,35 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public override void Init()
         {
             base.Init();
-            GetModel<CharacterMode>().Init();
+            GetModel<CharacterModel>().Init();
+            
+            GetSystem<InputSystem>().Init();
+            GetSystem<MoveSystem>().Init();
+            GetSystem<CharacterSystem>().Init();
+            GetSystem<CameraSystem>().Init();
+            GetSystem<MapSystem>().Init();
 
         }
 
         public override void Release()
         {
             base.Release();
-            GetModel<CharacterMode>().Release();
+            GetModel<CharacterModel>().Release();
+            
+            GetSystem<InputSystem>().Release();
+            GetSystem<MoveSystem>().Release();
+            GetSystem<CharacterSystem>().Release();
+            GetSystem<CameraSystem>().Release();
+            GetSystem<MapSystem>().Release();
         }
 
         public override void Destroy()
         {
             base.Destroy();
             Utility.Unity.RemoveUpdateListener(OnUpdate);
-            Release();
-            DestroyUnit();
-            RemoveAllSystem();
             RemoveAllModel();
+            RemoveAllSystem();
+            DestroyUnit();
         }
         
         private void OnUpdate()
