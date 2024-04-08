@@ -46,6 +46,10 @@ namespace GameLogic.NewArchitecture.Core
         {
             return _Obj.GetComponent<T>();
         }
+        public T GetComponentInChildren<T>() where T : Component
+        {
+            return _Obj.GetComponentInChildren<T>();
+        }
 
         public Transform SetName(string name)
         {

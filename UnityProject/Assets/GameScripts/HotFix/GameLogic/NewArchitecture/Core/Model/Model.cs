@@ -1,5 +1,4 @@
-﻿using NotImplementedException = System.NotImplementedException;
-
+﻿
 namespace GameLogic.NewArchitecture.Core
 {
     public abstract class Model : IModel
@@ -10,6 +9,13 @@ namespace GameLogic.NewArchitecture.Core
         public virtual void Destroy()
         {
         }
-         
+
+        public virtual void Init()
+        {
+        }
+
+        public virtual void Release()
+        {
+        }
     }
 }

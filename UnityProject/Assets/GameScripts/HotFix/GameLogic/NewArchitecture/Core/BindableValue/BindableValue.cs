@@ -46,5 +46,10 @@ namespace GameLogic.NewArchitecture.Core
         {
             _value = t;
         }
+
+        public void SetNull()
+        {
+            _value = default(T);
+        }
     }
 }

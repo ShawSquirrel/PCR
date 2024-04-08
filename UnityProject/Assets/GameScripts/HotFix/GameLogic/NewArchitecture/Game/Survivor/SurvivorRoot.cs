@@ -21,9 +21,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             Utility.Unity.AddUpdateListener(OnUpdate);
             InitUnit(null, "SurvivorRoot");
             AddSystem<SurvivorProcedureSystem>();
-            AddSystem<CharacterSystem>(true);
 
             AddModel<GameModel>();
+            AddModel<CharacterMode>();
             
             GetSystem<SurvivorProcedureSystem>().Init();
 
@@ -41,15 +41,14 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public override void Init()
         {
             base.Init();
-            MLog.Critical("初始化 CharacterSystem ");
+            GetModel<CharacterMode>().Init();
 
-            GetSystem<CharacterSystem>().Init();
         }
 
         public override void Release()
         {
             base.Release();
-            GetSystem<CharacterSystem>().Release();
+            GetModel<CharacterMode>().Release();
         }
 
         public override void Destroy()

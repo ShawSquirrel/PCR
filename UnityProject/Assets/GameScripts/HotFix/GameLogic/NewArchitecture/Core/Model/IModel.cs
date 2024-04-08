@@ -1,6 +1,6 @@
 ﻿namespace GameLogic.NewArchitecture.Core
 {
-    public interface IModel
+    public interface IModel : IInit
     {
         void Awake();
         void Destroy();

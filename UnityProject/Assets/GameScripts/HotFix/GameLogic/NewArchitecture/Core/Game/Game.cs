@@ -101,6 +101,7 @@ namespace GameLogic.NewArchitecture.Core
         {
             foreach (var (type, model) in _modelDict)
             {
+                model.Release();
                 model.Destroy();
             }
 
