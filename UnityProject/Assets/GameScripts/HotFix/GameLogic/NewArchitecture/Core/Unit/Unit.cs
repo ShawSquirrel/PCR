@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using NotImplementedException = System.NotImplementedException;
 
 namespace GameLogic.NewArchitecture.Core
 {
@@ -21,19 +22,39 @@ namespace GameLogic.NewArchitecture.Core
             _TF = _Obj.transform;
             _TF.position = Vector3.zero;
 
-            _TF.SetParent(parent);
+            SetParent(parent);
             S_GameObjectToUnitDict.Add(_Obj, this);
         }
 
-        public Unit(GameObject obj, Transform parent, string name = "")
+        public Unit(GameObject obj, Transform parent)
         {
             _Obj = obj;
             _TF = _Obj.transform;
-            if (!string.IsNullOrEmpty(name)) _TF.name = name;
 
             _TF.position = Vector3.zero;
 
-            _TF.SetParent(parent);
+            SetParent(parent);
+            S_GameObjectToUnitDict.Add(_Obj, this);
+        }
+        public Unit(GameObject obj, Transform parent, string name)
+        {
+            _Obj = obj;
+            _TF = _Obj.transform;
+
+            _TF.position = Vector3.zero;
+
+            SetParent(parent);
+            SetName(name);
+            S_GameObjectToUnitDict.Add(_Obj, this);
+        }
+
+        public Unit(GameObject obj)
+        {
+            _Obj = obj;
+            _TF = _Obj.transform;
+
+            _TF.position = Vector3.zero;
+
             S_GameObjectToUnitDict.Add(_Obj, this);
         }
 
@@ -46,27 +67,28 @@ namespace GameLogic.NewArchitecture.Core
         {
             return _Obj.GetComponent<T>();
         }
+
         public T GetComponentInChildren<T>() where T : Component
         {
             return _Obj.GetComponentInChildren<T>();
         }
 
-        public Transform SetName(string name)
+        public virtual IUnit SetName(string name)
         {
             _Obj.name = name;
-            return _TF;
+            return this;
         }
 
-        public Transform SetPos(Vector3 pos)
+        public virtual IUnit SetPos(Vector3 pos)
         {
             _TF.position = pos;
-            return _TF;
+            return this;
         }
 
-        public Transform SetLocalPos(Vector3 pos)
+        public virtual IUnit SetLocalPos(Vector3 pos)
         {
             _TF.localPosition = pos;
-            return _TF;
+            return this;
         }
 
         public virtual void Destroy()
@@ -78,14 +100,41 @@ namespace GameLogic.NewArchitecture.Core
             _Obj = null;
         }
 
-        public virtual void Enable()
+        public virtual IUnit Enable()
         {
+            if (_Obj.activeSelf != true) ;
             _Obj.SetActive(true);
+            return this;
         }
 
-        public virtual void Disable()
+        public virtual IUnit Disable()
         {
+            if (_Obj.activeSelf != false) ;
             _Obj.SetActive(false);
+            return this;
+        }
+
+        public virtual IUnit SetLocalRotation(Quaternion quaternion)
+        {
+            _TF.localRotation = quaternion;
+            return this;
+        }
+
+        public virtual IUnit SetRotation(Quaternion quaternion)
+        {
+            _TF.rotation = quaternion;
+            return this;
+        }
+
+        public virtual IUnit SetParent(Unit parent)
+        {
+            return SetParent(parent._TF);
+        }
+
+        public virtual IUnit SetParent(Transform parent)
+        {
+            _TF.SetParent(parent);
+            return this;
         }
     }
 }

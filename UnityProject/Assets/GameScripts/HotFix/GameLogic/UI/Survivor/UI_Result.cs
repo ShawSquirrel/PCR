@@ -19,6 +19,7 @@ namespace GameLogic
         private void OnClick_Btn_MenuBtn()
         {
             GameEvent.Send(EventID.ReturnMenu);
+            Close();
         }
 
     }

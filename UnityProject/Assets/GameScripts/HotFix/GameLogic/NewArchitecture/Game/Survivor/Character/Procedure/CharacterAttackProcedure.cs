@@ -19,6 +19,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.OnUpdate();
             mTarget.Move();
+            mTarget.UpdateTowards();
         }
     }
 }

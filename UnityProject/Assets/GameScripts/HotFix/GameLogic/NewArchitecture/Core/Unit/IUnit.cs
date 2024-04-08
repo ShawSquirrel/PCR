@@ -7,12 +7,16 @@ namespace GameLogic.NewArchitecture.Core
          T AddComponent<T>() where T : Component;
          T GetComponent<T>() where T : Component;
 
-         Transform SetName(string name);
-         Transform SetPos(Vector3 pos);
-         Transform SetLocalPos(Vector3 pos);
+         IUnit SetName(string name);
+         IUnit SetPos(Vector3 pos);
+         IUnit SetLocalPos(Vector3 pos);
 
          void Destroy();
-         void Enable();
-         void Disable();
+         IUnit Enable();
+         IUnit Disable();
+         IUnit SetLocalRotation(Quaternion quaternion);
+         IUnit SetRotation(Quaternion quaternion);
+         IUnit SetParent(Transform parent);
+         IUnit SetParent(Unit parent);
     }
 }

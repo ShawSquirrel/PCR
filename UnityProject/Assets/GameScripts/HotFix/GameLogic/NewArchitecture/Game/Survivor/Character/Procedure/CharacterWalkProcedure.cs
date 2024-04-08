@@ -19,7 +19,15 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         protected override void OnUpdate()
         {
             base.OnUpdate();
+
+            if (mTarget.IsMoving == false)
+            {
+                mFSM.ChangeState(Enum_ChracterState.Idle);
+                return;
+            }
+            
             mTarget.Move();
+            mTarget.UpdateTowards();
         }
     }
 }

@@ -26,11 +26,10 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GameObject obj = GameModule.Resource.LoadAsset<GameObject>(sCharacter.Name);
             _Unit.Value = new Unit(obj, null, sCharacter.Name);
 
-            _CharacterComponent.Value = new CharacterComponent
-            {
-                _Rigidbody2D = _Unit.Value.GetComponentInChildren<Rigidbody2D>(),
-                _Anim = _Unit.Value.GetComponentInChildren<AnimComponent>(),
-            };
+            _CharacterComponent.Value = new CharacterComponent();
+            _CharacterComponent.Value._Rigidbody2D = _Unit.Value.GetComponentInChildren<Rigidbody2D>();
+            _CharacterComponent.Value._Anim = _Unit.Value.GetComponentInChildren<AnimComponent>();
+            _CharacterComponent.Value._Body = new Unit(_Unit.Value._TF.Find("Body").gameObject);
         }
 
         public override void Release()
@@ -47,5 +46,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     {
         public Rigidbody2D _Rigidbody2D;
         public AnimComponent _Anim;
+        public Unit _Body;
     }
 }
