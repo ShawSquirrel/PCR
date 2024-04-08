@@ -7,13 +7,14 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public SurvivorProcedure_Launching(FSM<SurvivorProcedureType> fsm, SurvivorRoot target) : base(fsm, target)
         {
         }
-        public override void AddListen()
+
+        protected override void AddListen()
         {
             base.AddListen();
             GameEvent.AddEventListener(EventID.ReturnMenu, OnReturnMenu);
         }
 
-        public override void RemoveListen()
+        protected override void RemoveListen()
         {
             base.RemoveListen();
             GameEvent.RemoveEventListener(EventID.ReturnMenu, OnReturnMenu);

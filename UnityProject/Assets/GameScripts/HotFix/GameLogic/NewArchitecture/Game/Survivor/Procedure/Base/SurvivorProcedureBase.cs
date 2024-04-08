@@ -10,21 +10,21 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         protected override void OnEnter()
         {
-            base.OnEnter();
             AddListen();
+            base.OnEnter();
         }
 
         protected override void OnExit()
         {
-            base.OnExit();
             RemoveListen();
+            base.OnExit();
         }
 
-        public virtual void AddListen()
+        protected virtual void AddListen()
         {
         }
 
-        public virtual void RemoveListen()
+        protected virtual void RemoveListen()
         {
         }
     }

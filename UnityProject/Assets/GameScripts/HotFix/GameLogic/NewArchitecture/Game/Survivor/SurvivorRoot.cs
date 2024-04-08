@@ -41,7 +41,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public override void Init()
         {
             base.Init();
-            
+            MLog.Critical("初始化 CharacterSystem ");
+
             GetSystem<CharacterSystem>().Init();
         }
 

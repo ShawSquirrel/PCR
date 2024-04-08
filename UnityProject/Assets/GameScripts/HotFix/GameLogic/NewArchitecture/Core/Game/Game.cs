@@ -41,6 +41,7 @@ namespace GameLogic.NewArchitecture.Core
         {
             if (Unit == null) return;
             Unit.Destroy();
+            Unit = null;
         }
 
         public virtual T GetSystem<T>() where T : System, new()

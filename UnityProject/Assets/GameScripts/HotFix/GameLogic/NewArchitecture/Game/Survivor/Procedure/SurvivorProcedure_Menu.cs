@@ -12,7 +12,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
         }
 
-        public override void AddListen()
+        protected override void AddListen()
         {
             base.AddListen();
             GameEvent.AddEventListener(EventID.ReturnSelectGameID, OnReturnSelectGame);
@@ -22,7 +22,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GameEvent.AddEventListener(EventID.StartGame, OnStartGame);
         }
 
-        public override void RemoveListen()
+        protected override void RemoveListen()
         {
             base.RemoveListen();
             GameEvent.RemoveEventListener(EventID.ReturnSelectGameID, OnReturnSelectGame);

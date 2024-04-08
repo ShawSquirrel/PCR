@@ -90,6 +90,7 @@ namespace TEngine
 
         public void Clear()
         {
+            mCurrentState.Exit();
             mCurrentState   = null;
             mCurrentStateId = default;
             mStates.Clear();

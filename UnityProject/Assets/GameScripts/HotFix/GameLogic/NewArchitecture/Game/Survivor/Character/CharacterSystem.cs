@@ -19,7 +19,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             var id = SurvivorRoot.Instance.GetModel<GameModel>().SelectCharacter.Value;
             var sCharacter = ConfigSystem.Instance.Tables.SCharacter.DataList.Find(a => a.CharacterType == id);
             GameObject obj = GameModule.Resource.LoadAsset<GameObject>(sCharacter.Name);
-            _characterUnit = new Unit(obj, Unit._TF);
+            MLog.Info("初始化角色");
+            _characterUnit = new Unit(obj, Unit._TF); // TODO:后续可重构
         }
 
         public override void Release()
@@ -28,8 +29,14 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             if (_characterUnit == null) return;
             _characterUnit.Destroy();
             _characterUnit = null;
+
             
-            Unit.Destroy();
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            DestroyUnit();
         }
     }
 }

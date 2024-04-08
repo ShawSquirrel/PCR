@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using NotImplementedException = System.NotImplementedException;
 
 namespace GameLogic.NewArchitecture.Core
 {
@@ -13,13 +12,8 @@ namespace GameLogic.NewArchitecture.Core
 
         public virtual void Destroy()
         {
-            
         }
 
-        public virtual void InitUnit(Transform parent = null, string name = "")
-        {
-            Unit = new Unit(parent, name);
-        }
 
         public virtual void Init()
         {
@@ -27,6 +21,17 @@ namespace GameLogic.NewArchitecture.Core
 
         public virtual void Release()
         {
+        }
+
+        public virtual void InitUnit(Transform parent = null, string name = "")
+        {
+            Unit = new Unit(parent, name);
+        }
+
+        public virtual void DestroyUnit()
+        {
+            Unit.Destroy();
+            Unit = null;
         }
     }
 }
