@@ -15,6 +15,8 @@ namespace GameLogic.NewArchitecture.Core
 
         public GameObject _Obj;
         public Transform _TF;
+        public Vector3 Position => _TF.position;
+        public Vector3 LocalPosition => _TF.localPosition;
 
         public Unit(Transform parent, string name)
         {

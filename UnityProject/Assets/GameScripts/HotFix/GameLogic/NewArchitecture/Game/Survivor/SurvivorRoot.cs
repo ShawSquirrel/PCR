@@ -1,5 +1,6 @@
 ﻿using GameConfig;
 using GameLogic.NewArchitecture.Core;
+using GameLogic.Survivor;
 using TEngine;
 using UnityEngine;
 using Utility = TEngine.Utility;
@@ -32,6 +33,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             AddSystem<CameraSystem>();
             AddSystem<MapSystem>();
             AddSystem<SkillSystem>();
+            AddSystem<EnemySystem>();
 
             
             GetSystem<SurvivorProcedureSystem>().StartFSM();
@@ -58,9 +60,11 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GetSystem<CameraSystem>().Init();
             GetSystem<MapSystem>().Init();
             GetSystem<SkillSystem>().Init();
+            GetSystem<EnemySystem>().Init();
             
             
             GetSystem<SkillSystem>().CreateSkill(SkillType.Sword);
+            GetSystem<EnemySystem>().CreateEnemy(Enum_EnemyType.Normal);
 
         }
 
@@ -75,6 +79,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GetSystem<CameraSystem>().Release();
             GetSystem<MapSystem>().Release();
             GetSystem<SkillSystem>().Release();
+            GetSystem<EnemySystem>().Release();
         }
 
         public override void Destroy()

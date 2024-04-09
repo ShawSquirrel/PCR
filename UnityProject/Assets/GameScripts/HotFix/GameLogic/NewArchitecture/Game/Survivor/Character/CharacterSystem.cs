@@ -53,7 +53,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             Rigidbody2D rigidbody2D = CharacterModel._CharacterComponent.Value._Rigidbody2D;
             
-            rigidbody2D.velocity = Speed;
+            rigidbody2D.velocity = Speed * 2;
         }
 
         public void Still()

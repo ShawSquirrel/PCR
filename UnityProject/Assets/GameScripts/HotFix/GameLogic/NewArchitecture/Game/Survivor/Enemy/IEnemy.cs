@@ -1,7 +1,11 @@
-﻿namespace GameLogic.NewArchitecture.Game.Survivor
+﻿using GameLogic.NewArchitecture.Core;
+
+namespace GameLogic.NewArchitecture.Game.Survivor
 {
-    public interface IEnemy
+    public interface IEnemy : IInit, IAwake
     {
-        
+        void Move();
+        void Atk();
+        void Damage();
     }
 }
