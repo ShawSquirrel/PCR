@@ -7,6 +7,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     public class InputSystem : Core.System
     {
         private static string Tag = "InputSystem\t";
+
         public override void Awake()
         {
             base.Awake();
@@ -56,7 +57,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         private void Update()
         {
             MoveInput();
-            // SkillInput();
+            SkillInput();
         }
 
         private void SkillInput()
@@ -67,7 +68,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             float angleRadians = Mathf.Atan2(vectorToConvert.y, vectorToConvert.x);
             float angle = angleRadians * Mathf.Rad2Deg;
 
-            // GameEvent.Send(EventID_Survivor.Survivor_SkillAngle, angle);
+            CharacterModel characterModel = SurvivorRoot.Instance.GetModel<CharacterModel>();
+            characterModel._SkillAngle.SetValue(angle - 90);
         }
 
         private void MoveInput()

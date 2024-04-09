@@ -38,7 +38,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public override async void Run()
         {
             _unit.Enable();
-            float angle = 0;
+            float angle = SurvivorRoot.Instance.GetModel<CharacterModel>()._SkillAngle.Value;
             Vector3 startAngle = Vector3.forward * (-60 + angle);
             Vector3 endAngle = Vector3.forward * (60 + angle);
             float elapsedTime = 0;
