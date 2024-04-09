@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using NotImplementedException = System.NotImplementedException;
 
 namespace GameLogic.NewArchitecture.Core
 {
@@ -137,6 +136,11 @@ namespace GameLogic.NewArchitecture.Core
         {
             _TF.SetParent(parent);
             return this;
+        }
+
+        public Transform Find(string name)
+        {
+           return _TF.Find(name);
         }
     }
 }

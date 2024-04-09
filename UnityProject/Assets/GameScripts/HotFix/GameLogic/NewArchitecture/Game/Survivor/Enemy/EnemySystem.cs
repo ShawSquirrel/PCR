@@ -22,20 +22,20 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         private void FixedUpdate()
         {
-            foreach (IEnemy enemy in _List_Enemy)
-            {
-                enemy.Move();
-            }
+            
         }
 
         public void CreateEnemy(Enum_EnemyType enemyType)
         {
+            IEnemy enemy = null;
             switch (enemyType)
             {
                 case Enum_EnemyType.Normal:
-                    _List_Enemy.Add(new NormalEnemy());
+                    enemy = new NormalEnemy();
                     break;
             }
+            enemy.Init();
+            _List_Enemy.Add(enemy);
         }
 
         public override void Release()
