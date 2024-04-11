@@ -9,8 +9,8 @@ namespace GameLogic.Survivor
     public class SkillSystem : GameBase.System
     {
         public float Angle { get; private set; }
-        private Dictionary<SkillType, SkillAttribute> _dict_SkillAttribute = new Dictionary<SkillType, SkillAttribute>();
-        private Dictionary<SkillType, ISkill> _dict_Skill = new Dictionary<SkillType, ISkill>();
+        private Dictionary<TSkillType, SkillAttribute> _dict_SkillAttribute = new Dictionary<TSkillType, SkillAttribute>();
+        private Dictionary<TSkillType, ISkill> _dict_Skill = new Dictionary<TSkillType, ISkill>();
 
 
         #region Start Release
@@ -44,46 +44,46 @@ namespace GameLogic.Survivor
         private void LoadConfigs()
         {
             _dict_SkillAttribute.Clear();
-            foreach (SSkill2Attribute skill2Attribute in ConfigSystem.Instance.Tables.SSkillAttribute.DataList)
-            {
-                SkillAttribute attribute;
-                if (_dict_SkillAttribute.TryGetValue(skill2Attribute.Type, out attribute) == false)
-                {
-                    attribute = new SkillAttribute();
-                    _dict_SkillAttribute[skill2Attribute.Type] = attribute;
-                }
-
-                switch (skill2Attribute.Kind)
-                {
-                    case SkillKind.Base:
-                    {
-                        attribute._SkillData = new SkillData
-                        {
-                            _Atk = skill2Attribute.Atk,
-                            _Angle = skill2Attribute.Area,
-                            _CD = skill2Attribute.Cd,
-                            _SkillDescribe = skill2Attribute.Describe,
-                            _Title = skill2Attribute.Title,
-                        };
-                    }
-                        break;
-                    case SkillKind.Upgrade:
-                    {
-                        attribute._List_SkillUpgradeObtained ??= new List<SkillUpgrade>();
-                        attribute._List_SkillUpgradeNoObtained ??= new List<SkillUpgrade>();
-                        attribute._List_SkillUpgradeNoObtained.Add(new SkillUpgrade
-                        {
-                            _Atk = skill2Attribute.Atk,
-                            _Angle = skill2Attribute.Area,
-                            _CD = skill2Attribute.Cd,
-                            _SkillUpgradeDescribe = skill2Attribute.Describe,
-                            _Title = skill2Attribute.Title,
-                            _ID = skill2Attribute.Id
-                        });
-                    }
-                        break;
-                }
-            }
+            // foreach (SSkill2Attribute skill2Attribute in ConfigSystem.Instance.Tables.SSkillAttribute.DataList)
+            // {
+            //     SkillAttribute attribute;
+            //     if (_dict_SkillAttribute.TryGetValue(skill2Attribute.Type, out attribute) == false)
+            //     {
+            //         attribute = new SkillAttribute();
+            //         _dict_SkillAttribute[skill2Attribute.Type] = attribute;
+            //     }
+            //
+            //     switch (skill2Attribute.Kind)
+            //     {
+            //         case SkillKind.Base:
+            //         {
+            //             attribute._SkillData = new SkillData
+            //             {
+            //                 _Atk = skill2Attribute.Atk,
+            //                 _Angle = skill2Attribute.Area,
+            //                 _CD = skill2Attribute.Cd,
+            //                 _SkillDescribe = skill2Attribute.Describe,
+            //                 _Title = skill2Attribute.Title,
+            //             };
+            //         }
+            //             break;
+            //         case SkillKind.Upgrade:
+            //         {
+            //             attribute._List_SkillUpgradeObtained ??= new List<SkillUpgrade>();
+            //             attribute._List_SkillUpgradeNoObtained ??= new List<SkillUpgrade>();
+            //             attribute._List_SkillUpgradeNoObtained.Add(new SkillUpgrade
+            //             {
+            //                 _Atk = skill2Attribute.Atk,
+            //                 _Angle = skill2Attribute.Area,
+            //                 _CD = skill2Attribute.Cd,
+            //                 _SkillUpgradeDescribe = skill2Attribute.Describe,
+            //                 _Title = skill2Attribute.Title,
+            //                 _ID = skill2Attribute.Id
+            //             });
+            //         }
+            //             break;
+            //     }
+            // }
         }
 
         #endregion
@@ -128,19 +128,19 @@ namespace GameLogic.Survivor
             {
                 // TODO:临时操作
                 List<UI_UpgradeData> datas = new List<UI_UpgradeData>();
-                SkillAttribute attribute = _dict_SkillAttribute[SkillType.Sword];
-                int level = attribute._List_SkillUpgradeObtained.Count + 1;
-                foreach (SkillUpgrade upgrade in attribute._List_SkillUpgradeNoObtained)
-                {
-                    datas.Add(new UI_UpgradeData
-                    {
-                        _Title = upgrade._Title,
-                        _Describe = upgrade._SkillUpgradeDescribe,
-                        _Level = level,
-                        _ID = upgrade._ID,
-                        _Type = SkillType.Sword
-                    });
-                }
+                // SkillAttribute attribute = _dict_SkillAttribute[SkillType.Sword];
+                // int level = attribute._List_SkillUpgradeObtained.Count + 1;
+                // foreach (SkillUpgrade upgrade in attribute._List_SkillUpgradeNoObtained)
+                // {
+                //     datas.Add(new UI_UpgradeData
+                //     {
+                //         _Title = upgrade._Title,
+                //         _Describe = upgrade._SkillUpgradeDescribe,
+                //         _Level = level,
+                //         _ID = upgrade._ID,
+                //         _Type = SkillType.Sword
+                //     });
+                // }
 
                 GameModule.UI.ShowUI<UI_Upgrade>(datas);
             }
@@ -151,7 +151,7 @@ namespace GameLogic.Survivor
         {
             SwordSkill swordSkill = new SwordSkill();
 
-            _dict_Skill[SkillType.Sword] = swordSkill;
+            _dict_Skill[TSkillType.Sword] = swordSkill;
         }
 
         public void RemoveSkill()
@@ -164,7 +164,7 @@ namespace GameLogic.Survivor
             _dict_Skill.Clear();
         }
 
-        public SkillAttribute GetSkillBySkillType(SkillType skillType)
+        public SkillAttribute GetSkillBySkillType(TSkillType skillType)
         {
             if (_dict_SkillAttribute.TryGetValue(skillType, out SkillAttribute attribute) == false)
             {

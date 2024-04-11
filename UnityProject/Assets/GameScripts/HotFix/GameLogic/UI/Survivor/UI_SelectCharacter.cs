@@ -12,7 +12,7 @@ namespace GameLogic
     public struct UI_SelectCharacterData
     {
         public Sprite _Sprite;
-        public TCharacterID _CharacterID;
+        public TCharacterType _CharacterID;
     }
     [Window(UILayer.UI)]
     class UI_SelectCharacter : UIWindow
@@ -38,7 +38,7 @@ namespace GameLogic
                 Object.Destroy(root.GetChild(i).gameObject);
             }
             List<UI_SelectCharacterData> userData = UserDatas[0] as List<UI_SelectCharacterData>;
-            TCharacterID id = (TCharacterID)UserDatas[1];
+            TCharacterType id = (TCharacterType)UserDatas[1];
 
             foreach (UI_SelectCharacterData characterData in userData)
             {
@@ -53,7 +53,7 @@ namespace GameLogic
         }
 
         #region 事件
-        private void OnToggle_Toggle_ItemChange(bool isOn, TCharacterID id)
+        private void OnToggle_Toggle_ItemChange(bool isOn, TCharacterType id)
         {
             if (isOn)
             {

@@ -16,21 +16,21 @@ namespace GameLogic.Survivor.Config
 
         public void LoadConfig()
         {
-            var config = global::ConfigSystem.Instance.Tables.SActorAttribute.DataList;
-
-            _dict_ActorAttribute = new Dictionary<string, ActorAttribute>();
-            foreach (SActor2Attribute attribute in config)
-            {
-                ActorAttribute actorAttribute = new ActorAttribute
-                                                {
-                                                    _HP    = attribute.Hp,
-                                                    _Atk   = attribute.Atk,
-                                                    _Def   = attribute.Def,
-                                                    _Speed = attribute.Speed
-                                                };
-
-                _dict_ActorAttribute.TryAdd(attribute.Name, actorAttribute);
-            }
+            // var config = global::ConfigSystem.Instance.Tables.SActorAttribute.DataList;
+            //
+            // _dict_ActorAttribute = new Dictionary<string, ActorAttribute>();
+            // foreach (SActor2Attribute attribute in config)
+            // {
+            //     ActorAttribute actorAttribute = new ActorAttribute
+            //                                     {
+            //                                         _HP    = attribute.Hp,
+            //                                         _Atk   = attribute.Atk,
+            //                                         _Def   = attribute.Def,
+            //                                         _Speed = attribute.Speed
+            //                                     };
+            //
+            //     _dict_ActorAttribute.TryAdd(attribute.Name, actorAttribute);
+            // }
         }
 
         public ActorAttribute GetAttributeByName(string name)

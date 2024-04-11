@@ -11,20 +11,16 @@
 
 namespace GameConfig
 { 
-    public enum SkillType
+    public enum TCharacterType
     {
         /// <summary>
-        /// 大剑
+        /// 佩可莉姆
         /// </summary>
-        Sword = 0,
+        PeiKeLiMu = 0,
         /// <summary>
-        /// 法杖
+        /// 草野优衣
         /// </summary>
-        Staff = 1,
-        /// <summary>
-        /// 弓
-        /// </summary>
-        Bow = 2,
+        CaoYeYouYi = 1,
     }
 
 } 

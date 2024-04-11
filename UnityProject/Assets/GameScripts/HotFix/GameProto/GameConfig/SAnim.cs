@@ -12,21 +12,18 @@ using Luban;
 
 namespace GameConfig
 {
-public sealed partial class SActor2Attribute : Luban.BeanBase
+public sealed partial class SAnim : Luban.BeanBase
 {
-    public SActor2Attribute(ByteBuf _buf) 
+    public SAnim(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
+        State = (TAnimState)_buf.ReadInt();
         Name = _buf.ReadString();
-        Hp = _buf.ReadFloat();
-        Atk = _buf.ReadFloat();
-        Def = _buf.ReadFloat();
-        Speed = _buf.ReadFloat();
     }
 
-    public static SActor2Attribute DeserializeSActor2Attribute(ByteBuf _buf)
+    public static SAnim DeserializeSAnim(ByteBuf _buf)
     {
-        return new SActor2Attribute(_buf);
+        return new SAnim(_buf);
     }
 
     /// <summary>
@@ -34,34 +31,19 @@ public sealed partial class SActor2Attribute : Luban.BeanBase
     /// </summary>
     public readonly int Id;
     /// <summary>
-    /// 人物名字
+    /// 状态类型
+    /// </summary>
+    public readonly TAnimState State;
+    /// <summary>
+    /// 状态名字
     /// </summary>
     public readonly string Name;
-    /// <summary>
-    /// 血量
-    /// </summary>
-    public readonly float Hp;
-    /// <summary>
-    /// 攻击
-    /// </summary>
-    public readonly float Atk;
-    /// <summary>
-    /// 防御
-    /// </summary>
-    public readonly float Def;
-    /// <summary>
-    /// 速度
-    /// </summary>
-    public readonly float Speed;
    
-    public const int __ID__ = 831849836;
+    public const int __ID__ = 78697732;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
-        
-        
-        
         
         
         
@@ -71,11 +53,8 @@ public sealed partial class SActor2Attribute : Luban.BeanBase
     {
         return "{ "
         + "id:" + Id + ","
+        + "state:" + State + ","
         + "name:" + Name + ","
-        + "hp:" + Hp + ","
-        + "atk:" + Atk + ","
-        + "def:" + Def + ","
-        + "speed:" + Speed + ","
         + "}";
     }
 }

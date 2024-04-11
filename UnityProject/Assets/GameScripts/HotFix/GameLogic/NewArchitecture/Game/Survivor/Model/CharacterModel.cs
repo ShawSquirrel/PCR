@@ -11,6 +11,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public readonly BindableValue<CharacterComponent> _CharacterComponent = new BindableValue<CharacterComponent>();
         public readonly BindableValue<Vector2> _CharacterSpeed = new BindableValue<Vector2>();
         public readonly BindableValue<float> _SkillAngle = new BindableValue<float>();
+        public readonly BindableValue<float> _Blood = new BindableValue<float>();
 
         public override void Awake()
         {
@@ -22,7 +23,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             base.Init();
 
             var id = SurvivorRoot.Instance.GetModel<GameModel>().SelectCharacter.Value;
-            var sCharacter = ConfigSystem.Instance.Tables.SCharacter.DataList.Find(a => a.CharacterType == id);
+            var sCharacter = SurvivorConfig.GetCharacterById(id);
             GameObject obj = GameModule.Resource.LoadAsset<GameObject>(sCharacter.Name);
             _Unit.Value = new Unit(obj, null, sCharacter.Name);
 

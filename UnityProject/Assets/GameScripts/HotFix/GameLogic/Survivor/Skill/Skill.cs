@@ -10,7 +10,7 @@ namespace GameLogic.Survivor
         public SkillAttribute _SkillAttribute;
         public SkillData _BaseData;
 
-        protected SkillType _skillType;
+        protected TSkillType _skillType;
 
         public Skill()
         {

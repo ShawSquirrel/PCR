@@ -13,7 +13,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.OnEnter();
             mTarget.ResetSpeed();
-            mTarget.PlayAnim(EAnimState.Damage, false, OnComplete);
+            mTarget.PlayAnim(TAnimState.Damage, false, OnComplete);
         }
 
         public void OnComplete()

@@ -14,7 +14,7 @@ namespace GameLogic
         public string _Describe;
         public int _Level;
         public int _ID;
-        public SkillType _Type;
+        public TSkillType _Type;
     }
 
     [Window(UILayer.UI)]

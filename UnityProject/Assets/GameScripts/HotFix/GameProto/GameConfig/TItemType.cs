@@ -11,7 +11,7 @@
 
 namespace GameConfig
 { 
-    public enum ItemType
+    public enum TItemType
     {
         /// <summary>
         /// 一级经验球

@@ -13,26 +13,23 @@ namespace GameConfig
 {
 public partial class Tables
 {
-    public SAnimName SAnimName {get; }
-    public SActorAttribute SActorAttribute {get; }
-    public SSkillAttribute SSkillAttribute {get; }
-    public SCharacter SCharacter {get; }
+    public TAnim TAnim {get; }
+    public TSkill TSkill {get; }
+    public TCharacter TCharacter {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
-        SAnimName = new SAnimName(loader("sanimname"));
-        SActorAttribute = new SActorAttribute(loader("sactorattribute"));
-        SSkillAttribute = new SSkillAttribute(loader("sskillattribute"));
-        SCharacter = new SCharacter(loader("scharacter"));
+        TAnim = new TAnim(loader("tanim"));
+        TSkill = new TSkill(loader("tskill"));
+        TCharacter = new TCharacter(loader("tcharacter"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
-        SAnimName.ResolveRef(this);
-        SActorAttribute.ResolveRef(this);
-        SSkillAttribute.ResolveRef(this);
-        SCharacter.ResolveRef(this);
+        TAnim.ResolveRef(this);
+        TSkill.ResolveRef(this);
+        TCharacter.ResolveRef(this);
     }
 }
 

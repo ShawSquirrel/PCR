@@ -26,14 +26,14 @@ namespace GameLogic
     [RequireComponent(typeof(SkeletonAnimation))]
     public class AnimComponent : MonoBehaviour
     {
-        private static Dictionary<EAnimState, string> S_AnimNameDict;
+        private static Dictionary<TAnimState, string> S_AnimNameDict;
 
         public AnimEvent _Event;
 
         public string _NormalPrefix;
         public string _SkillPrefix;
-        public EAnimState _AnimState;
-        private Dictionary<EAnimState, string> _animNameDict = new Dictionary<EAnimState, string>();
+        public TAnimState _AnimState;
+        private Dictionary<TAnimState, string> _animNameDict = new Dictionary<TAnimState, string>();
         private SkeletonAnimation _anim;
 
 
@@ -43,10 +43,10 @@ namespace GameLogic
 
             if (S_AnimNameDict == null)
             {
-                S_AnimNameDict = new Dictionary<EAnimState, string>();
-                foreach (SAnim2Name anim2Name in ConfigSystem.Instance.Tables.SAnimName.DataList)
+                S_AnimNameDict = new Dictionary<TAnimState, string>();
+                foreach (SAnim anim in ConfigSystem.Instance.Tables.TAnim.DataList)
                 {
-                    S_AnimNameDict[anim2Name.State] = anim2Name.Name;
+                    S_AnimNameDict[anim.State] = anim.Name;
                 }
             }
         }
@@ -62,65 +62,65 @@ namespace GameLogic
             _Event.Reset();
         }
 
-        public void Play(EAnimState animState, bool loop = true, Action OnComplete = null)
+        public void Play(TAnimState animState, bool loop = true, Action OnComplete = null)
         {
             _Event.Reset();
             switch (animState)
             {
-                case EAnimState.BalloonFlyingDown:
-                case EAnimState.BalloonFlyingLoop:
-                case EAnimState.BalloonFlyingUp:
-                case EAnimState.BalloonIn:
-                case EAnimState.BalloonOut:
-                case EAnimState.DearIdol:
-                case EAnimState.DearJump:
-                case EAnimState.DearSmile:
-                case EAnimState.EatJun:
-                case EAnimState.EatNormal:
-                case EAnimState.FriendHightouch:
-                case EAnimState.ManaIdle:
-                case EAnimState.ManaJump:
-                case EAnimState.NoWeaponIdle:
-                case EAnimState.NoWeaponJoyShort:
-                case EAnimState.NoWeaponRun:
-                case EAnimState.NoWeaponRunSuper:
-                case EAnimState.RunHighJump:
-                case EAnimState.RunJump:
-                case EAnimState.RunSpringJump:
-                case EAnimState.Smile:
-                case EAnimState.StaminaKarinOjigi:
-                case EAnimState.UnitRaceEatShaveice:
-                case EAnimState.UnitRaceRunCarpet:
-                case EAnimState.UnitRaceSurfing:
-                case EAnimState.UnitRaceSurfingIn:
-                case EAnimState.UnitRaceSurfingOut:
-                case EAnimState.UnitRaceSurfingUp:
+                case TAnimState.BalloonFlyingDown:
+                case TAnimState.BalloonFlyingLoop:
+                case TAnimState.BalloonFlyingUp:
+                case TAnimState.BalloonIn:
+                case TAnimState.BalloonOut:
+                case TAnimState.DearIdol:
+                case TAnimState.DearJump:
+                case TAnimState.DearSmile:
+                case TAnimState.EatJun:
+                case TAnimState.EatNormal:
+                case TAnimState.FriendHightouch:
+                case TAnimState.ManaIdle:
+                case TAnimState.ManaJump:
+                case TAnimState.NoWeaponIdle:
+                case TAnimState.NoWeaponJoyShort:
+                case TAnimState.NoWeaponRun:
+                case TAnimState.NoWeaponRunSuper:
+                case TAnimState.RunHighJump:
+                case TAnimState.RunJump:
+                case TAnimState.RunSpringJump:
+                case TAnimState.Smile:
+                case TAnimState.StaminaKarinOjigi:
+                case TAnimState.UnitRaceEatShaveice:
+                case TAnimState.UnitRaceRunCarpet:
+                case TAnimState.UnitRaceSurfing:
+                case TAnimState.UnitRaceSurfingIn:
+                case TAnimState.UnitRaceSurfingOut:
+                case TAnimState.UnitRaceSurfingUp:
                     PlayUniversalAnim(animState, loop);
                     break;
-                case EAnimState.Attack:
-                case EAnimState.AttackSkipQuest:
-                case EAnimState.Damage:
-                case EAnimState.Die:
-                case EAnimState.Idle:
-                case EAnimState.JoyLong:
-                case EAnimState.JoyLongReturn:
-                case EAnimState.JoyShort:
-                case EAnimState.JoyShortReturn:
-                case EAnimState.Landing:
-                case EAnimState.MultiIdleNoWeapon:
-                case EAnimState.MultiIdleStandBy:
-                case EAnimState.MultiStandBy:
-                case EAnimState.Run:
-                case EAnimState.RunGamestart:
-                case EAnimState.StandBy:
-                case EAnimState.Walk:
+                case TAnimState.Attack:
+                case TAnimState.AttackSkipQuest:
+                case TAnimState.Damage:
+                case TAnimState.Die:
+                case TAnimState.Idle:
+                case TAnimState.JoyLong:
+                case TAnimState.JoyLongReturn:
+                case TAnimState.JoyShort:
+                case TAnimState.JoyShortReturn:
+                case TAnimState.Landing:
+                case TAnimState.MultiIdleNoWeapon:
+                case TAnimState.MultiIdleStandBy:
+                case TAnimState.MultiStandBy:
+                case TAnimState.Run:
+                case TAnimState.RunGamestart:
+                case TAnimState.StandBy:
+                case TAnimState.Walk:
                     PlayNormalAnim(animState, loop);
                     break;
-                case EAnimState.JoyResult:
-                case EAnimState.Skill0:
-                case EAnimState.Skill1:
-                case EAnimState.Skill2:
-                case EAnimState.SkillEvolution0:
+                case TAnimState.JoyResult:
+                case TAnimState.Skill0:
+                case TAnimState.Skill1:
+                case TAnimState.Skill2:
+                case TAnimState.SkillEvolution0:
                     PlaySkillAnim(animState, loop);
                     break;
             }
@@ -129,7 +129,7 @@ namespace GameLogic
             _Event.OnComplete = OnComplete;
         }
 
-        private void PlayNormalAnim(EAnimState animState, bool loop = true)
+        private void PlayNormalAnim(TAnimState animState, bool loop = true)
         {
             if (_AnimState == animState) return;
             if (!_animNameDict.TryGetValue(animState, out string animName))
@@ -141,7 +141,7 @@ namespace GameLogic
             _anim.AnimationState.SetAnimation(0, animName, loop);
         }
 
-        private void PlaySkillAnim(EAnimState animState, bool loop = true)
+        private void PlaySkillAnim(TAnimState animState, bool loop = true)
         {
             if (_AnimState == animState) return;
             if (!_animNameDict.TryGetValue(animState, out string animName))
@@ -153,7 +153,7 @@ namespace GameLogic
             _anim.AnimationState.SetAnimation(0, animName, loop);
         }
 
-        private void PlayUniversalAnim(EAnimState animState, bool loop = true)
+        private void PlayUniversalAnim(TAnimState animState, bool loop = true)
         {
             if (_AnimState == animState) return;
             if (!_animNameDict.TryGetValue(animState, out string animName))
@@ -170,7 +170,7 @@ namespace GameLogic
             _anim.initialFlipX = isLeft;
         }
 
-        public EAnimState _TestState;
+        public TAnimState _TestState;
         
         [Button("TestPlay")]
         public void TestPlay()

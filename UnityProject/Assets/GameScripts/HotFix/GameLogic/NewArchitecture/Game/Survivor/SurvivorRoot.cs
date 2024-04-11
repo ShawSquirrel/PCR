@@ -21,6 +21,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.Awake();
             Utility.Unity.AddUpdateListener(OnUpdate);
+            Utility.Unity.AddDestroyListener(Destroy);
             AddModel<GameModel>();
             AddModel<CharacterModel>();
             
@@ -63,7 +64,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GetSystem<EnemySystem>().Init();
             
             
-            GetSystem<SkillSystem>().CreateSkill(SkillType.Sword);
+            GetSystem<SkillSystem>().CreateSkill(TSkillType.Sword);
             GetSystem<EnemySystem>().CreateEnemy(Enum_EnemyType.Normal);
 
         }
@@ -86,6 +87,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.Destroy();
             Utility.Unity.RemoveUpdateListener(OnUpdate);
+            Utility.Unity.RemoveDestroyListener(Destroy);
             RemoveAllModel();
             RemoveAllSystem();
             DestroyUnit();

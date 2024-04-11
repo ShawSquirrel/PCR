@@ -12,13 +12,12 @@ using Luban;
 
 namespace GameConfig
 {
-public sealed partial class SSkill2Attribute : Luban.BeanBase
+public sealed partial class SSkill : Luban.BeanBase
 {
-    public SSkill2Attribute(ByteBuf _buf) 
+    public SSkill(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        Type = (SkillType)_buf.ReadInt();
-        Kind = (SkillKind)_buf.ReadInt();
+        Type = (TSkillType)_buf.ReadInt();
         Atk = _buf.ReadFloat();
         Cd = _buf.ReadFloat();
         Area = _buf.ReadFloat();
@@ -26,9 +25,9 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
         Describe = _buf.ReadString();
     }
 
-    public static SSkill2Attribute DeserializeSSkill2Attribute(ByteBuf _buf)
+    public static SSkill DeserializeSSkill(ByteBuf _buf)
     {
-        return new SSkill2Attribute(_buf);
+        return new SSkill(_buf);
     }
 
     /// <summary>
@@ -38,11 +37,7 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
     /// <summary>
     /// 技能类型
     /// </summary>
-    public readonly SkillType Type;
-    /// <summary>
-    /// 技能分类（基础数值还是升级属性）
-    /// </summary>
-    public readonly SkillKind Kind;
+    public readonly TSkillType Type;
     /// <summary>
     /// 攻击
     /// </summary>
@@ -64,12 +59,11 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
     /// </summary>
     public readonly string Describe;
    
-    public const int __ID__ = -1109499192;
+    public const int __ID__ = -1838803522;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
-        
         
         
         
@@ -84,7 +78,6 @@ public sealed partial class SSkill2Attribute : Luban.BeanBase
         return "{ "
         + "id:" + Id + ","
         + "type:" + Type + ","
-        + "kind:" + Kind + ","
         + "atk:" + Atk + ","
         + "cd:" + Cd + ","
         + "area:" + Area + ","

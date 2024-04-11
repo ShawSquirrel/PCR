@@ -43,7 +43,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             _FSM = null;
         }
 
-        public void PlayAnim(EAnimState state, bool b)
+        public void PlayAnim(TAnimState state, bool b)
         {
             if (CharacterModel == null) return;
             CharacterModel._CharacterComponent.Value._Anim.Play(state, b);

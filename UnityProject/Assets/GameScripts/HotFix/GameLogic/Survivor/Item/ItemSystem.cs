@@ -46,7 +46,7 @@ namespace GameLogic.Survivor
         }
 
 
-        public void CreateItem(ItemType itemType, Vector3 pos)
+        public void CreateItem(TItemType itemType, Vector3 pos)
         {
             IItem item = GetItem(itemType, pos);
             _list_Item.Add(item);
@@ -56,12 +56,12 @@ namespace GameLogic.Survivor
         {
         }
 
-        private IItem GetItem(ItemType itemType, Vector3 pos)
+        private IItem GetItem(TItemType itemType, Vector3 pos)
         {
             IItem item = null;
             switch (itemType)
             {
-                case ItemType.ExpBall1:
+                case TItemType.ExpBall1:
                     item = new ExpBall(pos);
                     break;
             }

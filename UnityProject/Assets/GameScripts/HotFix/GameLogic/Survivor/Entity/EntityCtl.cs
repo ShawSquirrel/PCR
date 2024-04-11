@@ -56,7 +56,7 @@ namespace GameLogic.Survivor
         /// <param name="state"></param>
         /// <param name="isloop"></param>
         /// <param name="onComplete"></param>
-        public virtual void PlayAnim(EAnimState state, bool isloop = false, Action onComplete = null)
+        public virtual void PlayAnim(TAnimState state, bool isloop = false, Action onComplete = null)
         {
             _animComponent.Play(state, isloop, onComplete);
         }

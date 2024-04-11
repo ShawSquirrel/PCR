@@ -12,7 +12,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         protected override void OnEnter()
         {
             base.OnEnter();
-            mTarget.PlayAnim(EAnimState.Attack, false);
+            mTarget.PlayAnim(TAnimState.Attack, false);
         }
 
         protected override void OnUpdate()

@@ -11,16 +11,20 @@
 
 namespace GameConfig
 { 
-    public enum SkillKind
+    public enum TSkillType
     {
         /// <summary>
-        /// 基础
+        /// 大剑
         /// </summary>
-        Base = 0,
+        Sword = 0,
         /// <summary>
-        /// 升级
+        /// 法杖
         /// </summary>
-        Upgrade = 1,
+        Staff = 1,
+        /// <summary>
+        /// 弓
+        /// </summary>
+        Bow = 2,
     }
 
 } 

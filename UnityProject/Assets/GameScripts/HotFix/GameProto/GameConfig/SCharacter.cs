@@ -12,41 +12,79 @@ using Luban;
 
 namespace GameConfig
 {
-public partial class SCharacter
+public sealed partial class SCharacter : Luban.BeanBase
 {
-    private readonly System.Collections.Generic.Dictionary<int, SCharacter2> _dataMap;
-    private readonly System.Collections.Generic.List<SCharacter2> _dataList;
-    
-    public SCharacter(ByteBuf _buf)
+    public SCharacter(ByteBuf _buf) 
     {
-        _dataMap = new System.Collections.Generic.Dictionary<int, SCharacter2>();
-        _dataList = new System.Collections.Generic.List<SCharacter2>();
+        Id = _buf.ReadInt();
+        CharacterType = (TCharacterType)_buf.ReadInt();
+        Name = _buf.ReadString();
+        Hp = _buf.ReadFloat();
+        Atk = _buf.ReadFloat();
+        Def = _buf.ReadFloat();
+        Speed = _buf.ReadFloat();
+    }
+
+    public static SCharacter DeserializeSCharacter(ByteBuf _buf)
+    {
+        return new SCharacter(_buf);
+    }
+
+    /// <summary>
+    /// 这是id
+    /// </summary>
+    public readonly int Id;
+    /// <summary>
+    /// 人物
+    /// </summary>
+    public readonly TCharacterType CharacterType;
+    /// <summary>
+    /// 人物名字
+    /// </summary>
+    public readonly string Name;
+    /// <summary>
+    /// 血量
+    /// </summary>
+    public readonly float Hp;
+    /// <summary>
+    /// 攻击
+    /// </summary>
+    public readonly float Atk;
+    /// <summary>
+    /// 防御
+    /// </summary>
+    public readonly float Def;
+    /// <summary>
+    /// 速度
+    /// </summary>
+    public readonly float Speed;
+   
+    public const int __ID__ = 142444566;
+    public override int GetTypeId() => __ID__;
+
+    public  void ResolveRef(Tables tables)
+    {
         
-        for(int n = _buf.ReadSize() ; n > 0 ; --n)
-        {
-            SCharacter2 _v;
-            _v = SCharacter2.DeserializeSCharacter2(_buf);
-            _dataList.Add(_v);
-            _dataMap.Add(_v.Id, _v);
-        }
+        
+        
+        
+        
+        
+        
     }
 
-    public System.Collections.Generic.Dictionary<int, SCharacter2> DataMap => _dataMap;
-    public System.Collections.Generic.List<SCharacter2> DataList => _dataList;
-
-    public SCharacter2 GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-    public SCharacter2 Get(int key) => _dataMap[key];
-    public SCharacter2 this[int key] => _dataMap[key];
-
-    public void ResolveRef(Tables tables)
+    public override string ToString()
     {
-        foreach(var _v in _dataList)
-        {
-            _v.ResolveRef(tables);
-        }
+        return "{ "
+        + "id:" + Id + ","
+        + "characterType:" + CharacterType + ","
+        + "name:" + Name + ","
+        + "hp:" + Hp + ","
+        + "atk:" + Atk + ","
+        + "def:" + Def + ","
+        + "speed:" + Speed + ","
+        + "}";
     }
-
 }
 
 }
-

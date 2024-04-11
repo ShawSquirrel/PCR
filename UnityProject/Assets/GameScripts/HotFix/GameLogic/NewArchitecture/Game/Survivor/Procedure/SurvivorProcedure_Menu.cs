@@ -18,7 +18,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GameEvent.AddEventListener(EventID.ReturnSelectGameID, OnReturnSelectGame);
             GameEvent.AddEventListener(EventID.OpenSelectCharacterPanel, OnOpenSelectCharacterPanel);
             GameEvent.AddEventListener(EventID.CloseSelectCharacterPanel, OnCloseSelectCharacterPanel);
-            GameEvent.AddEventListener<TCharacterID>(EventID.SelectCharacter, OnSelectCharacter);
+            GameEvent.AddEventListener<TCharacterType>(EventID.SelectCharacter, OnSelectCharacter);
             GameEvent.AddEventListener(EventID.StartGame, OnStartGame);
         }
 
@@ -28,7 +28,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GameEvent.RemoveEventListener(EventID.ReturnSelectGameID, OnReturnSelectGame);
             GameEvent.RemoveEventListener(EventID.OpenSelectCharacterPanel, OnOpenSelectCharacterPanel);
             GameEvent.RemoveEventListener(EventID.CloseSelectCharacterPanel, OnCloseSelectCharacterPanel);
-            GameEvent.RemoveEventListener<TCharacterID>(EventID.SelectCharacter, OnSelectCharacter);
+            GameEvent.RemoveEventListener<TCharacterType>(EventID.SelectCharacter, OnSelectCharacter);
             GameEvent.RemoveEventListener(EventID.StartGame, OnStartGame);
         }
 
@@ -48,7 +48,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         private void OnOpenSelectCharacterPanel()
         {
-            var list = ConfigSystem.Instance.Tables.SCharacter.DataList;
+            var list = ConfigSystem.Instance.Tables.TCharacter.DataList;
             List<UI_SelectCharacterData> uiSelectCharacterData = new List<UI_SelectCharacterData>();
             foreach (var character in list)
             {
@@ -59,7 +59,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
                 });
             }
 
-            TCharacterID characterID = (TCharacterID)PlayerPrefs.GetInt("SelectCharacter", 0);
+            TCharacterType characterID = (TCharacterType)PlayerPrefs.GetInt("SelectCharacter", 0);
 
             GameModule.UI.ShowUI<UI_SelectCharacter>(uiSelectCharacterData, characterID);
         }
@@ -69,7 +69,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GameModule.UI.CloseWindow<UI_SelectCharacter>();
         }
 
-        private void OnSelectCharacter(TCharacterID characterID)
+        private void OnSelectCharacter(TCharacterType characterID)
         {
             PlayerPrefsUtils.SetInt("SelectCharacter", (int)characterID);
             SurvivorRoot.Instance.GetModel<GameModel>().SelectCharacter.Value = characterID;

@@ -90,7 +90,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             _Rigidbody2D.velocity = Vector2.zero;
         }
 
-        public void PlayAnim(EAnimState state, bool isLoop, Action onComplete = null)
+        public void PlayAnim(TAnimState state, bool isLoop, Action onComplete = null)
         {
             _Anim.Play(state, isLoop, onComplete);
         }

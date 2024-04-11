@@ -6,7 +6,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class InputSystem : Core.System
     {
-        private static string Tag = "InputSystem\t";
+        private const string Tag = "InputSystem\t";
 
         public override void Awake()
         {
@@ -20,7 +20,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             {
                 case RuntimePlatform.WindowsEditor:
                 case RuntimePlatform.WindowsPlayer:
-                    MLog.Debug($"{Tag}添加Update事件");
                     Utility.Unity.AddUpdateListener(Update);
                     break;
                 case RuntimePlatform.Android:

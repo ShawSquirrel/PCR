@@ -16,8 +16,8 @@ namespace GameLogic.Survivor
 
         public SwordSkill() : base()
         {
-            _skillType = SkillType.Sword;
-            _SkillAttribute = Game._SurvivorGameRoot._Skill.GetSkillBySkillType(SkillType.Sword);
+            _skillType = TSkillType.Sword;
+            _SkillAttribute = Game._SurvivorGameRoot._Skill.GetSkillBySkillType(TSkillType.Sword);
             _Obj = GameModule.Resource.LoadAsset<GameObject>("Sword");
             _TF = _Obj.transform;
             _TF.SetParent(Game._SurvivorGameRoot._Skill._TF);

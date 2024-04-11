@@ -11,7 +11,7 @@
 
 namespace GameConfig
 { 
-    public enum EAnimState
+    public enum TAnimState
     {
         BalloonFlyingDown = 0,
         BalloonFlyingLoop = 1,
