@@ -18,5 +18,8 @@ namespace GameLogic.NewArchitecture.Core
          IUnit SetRotation(Quaternion quaternion);
          IUnit SetParent(Transform parent);
          IUnit SetParent(Unit parent);
+         string GetName();
+
+         IUnit SetLayer(LayerMask layerMask);
     }
 }

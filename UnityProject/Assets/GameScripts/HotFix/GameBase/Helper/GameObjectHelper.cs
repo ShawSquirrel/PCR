@@ -10,5 +10,7 @@ namespace GameBase
                 return;
             self.SetActive(isActive);
         }
+        
+        
     }
 }

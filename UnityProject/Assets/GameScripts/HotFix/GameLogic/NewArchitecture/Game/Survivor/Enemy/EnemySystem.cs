@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameLogic.NewArchitecture.Core;
 using GameLogic.Survivor;
-using TEngine;
+using Utility = TEngine.Utility;
 
 namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class EnemySystem : Core.System
     {
-        public List<IEnemy> _List_Enemy = new List<IEnemy>();
+        private Dictionary<IUnit, IEnemy> _dict_Enemy = new Dictionary<IUnit, IEnemy>();
         public override void Awake()
         {
             base.Awake();
-            _List_Enemy = new List<IEnemy>();
+            _dict_Enemy = new Dictionary<IUnit, IEnemy>();
         }
 
         public override void Init()
@@ -35,24 +36,24 @@ namespace GameLogic.NewArchitecture.Game.Survivor
                     break;
             }
             enemy.Init();
-            _List_Enemy.Add(enemy);
+            _dict_Enemy[enemy.GetUnit()] = enemy;
         }
 
         public override void Release()
         {
             base.Release();
             Utility.Unity.RemoveFixedUpdateListener(FixedUpdate);
-            foreach (IEnemy enemy in _List_Enemy)
+            foreach (var (key, value) in _dict_Enemy)
             {
-                enemy.Destroy();
+                value.Destroy();
             }
-            _List_Enemy.Clear();
+            _dict_Enemy.Clear();
         }
 
         public override void Destroy()
         {
             base.Destroy();
-            _List_Enemy = null;
+            _dict_Enemy = null;
         }
         
         

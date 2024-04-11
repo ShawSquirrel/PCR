@@ -9,7 +9,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public abstract class AEnemy : IEnemy
     {
-        public Unit _Unit;
+        protected Unit _unit;
         public FSM<Enum_EnemyState> _FSM = new FSM<Enum_EnemyState>();
         public Rigidbody2D _Rigidbody2D;
         public AnimComponent _Anim;
@@ -25,11 +25,12 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public virtual void InitUnit(string prefabName)
         {
             GameObject obj = GameModule.Resource.LoadAsset<GameObject>(prefabName);
-            _Unit = new Unit(obj);
-            _Unit.SetName(prefabName);
-            _Rigidbody2D = _Unit.GetComponentInChildren<Rigidbody2D>();
-            _Anim = _Unit.GetComponentInChildren<AnimComponent>();
-            _Body = _Unit.Find("Body");
+            _unit = new Unit(obj);
+            _unit.SetName(prefabName);
+            _Rigidbody2D = _unit.GetComponentInChildren<Rigidbody2D>();
+            _Anim = _unit.GetComponentInChildren<AnimComponent>();
+            _Body = _unit.Find("Body");
+            _unit.SetLayer(LayerMask.NameToLayer("Enemy"));
 
         }
 
@@ -54,6 +55,11 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
         }
 
+        public IUnit GetUnit()
+        {
+            return _unit;
+        }
+
         public virtual void Init()
         {
            _FSM.StartState(Enum_EnemyState.Walk);
@@ -71,17 +77,17 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         public virtual void Destroy()
         {
-            if (_Unit != null)
+            if (_unit != null)
             {
-                _Unit.Destroy();
-                _Unit = null;
+                _unit.Destroy();
+                _unit = null;
             }
         }
 
         public Vector3 GetTowards()
         {
             Vector3 pos = SurvivorRoot.Instance.GetModel<CharacterModel>()._Unit.Value.LocalPosition;
-            Vector3 distance = pos - _Unit.Position;
+            Vector3 distance = pos - _unit.Position;
             return distance.magnitude > 0.5f ? distance.normalized : Vector3.zero;
         }
 

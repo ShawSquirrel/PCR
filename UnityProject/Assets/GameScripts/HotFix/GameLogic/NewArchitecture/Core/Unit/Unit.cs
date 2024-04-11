@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using NotImplementedException = System.NotImplementedException;
 
 namespace GameLogic.NewArchitecture.Core
 {
     public class Unit : IUnit
     {
-        public static Dictionary<GameObject, Unit> S_GameObjectToUnitDict;
+        public static Dictionary<GameObject, IUnit> S_GameObjectToUnitDict;
 
         static Unit()
         {
-            S_GameObjectToUnitDict = new Dictionary<GameObject, Unit>();
+            S_GameObjectToUnitDict = new Dictionary<GameObject, IUnit>();
         }
 
         public GameObject _Obj;
@@ -132,6 +133,17 @@ namespace GameLogic.NewArchitecture.Core
             return SetParent(parent._TF);
         }
 
+        public virtual string GetName()
+        {
+            return _Obj.name;
+        }
+
+        public IUnit SetLayer(LayerMask layerMask)
+        {
+            _Obj.layer = layerMask;
+            return this;
+        }
+
         public virtual IUnit SetParent(Transform parent)
         {
             _TF.SetParent(parent);
@@ -142,5 +154,7 @@ namespace GameLogic.NewArchitecture.Core
         {
            return _TF.Find(name);
         }
+
+       
     }
 }

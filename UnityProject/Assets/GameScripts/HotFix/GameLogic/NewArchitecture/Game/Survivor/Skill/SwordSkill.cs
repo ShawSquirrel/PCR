@@ -12,6 +12,19 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             base.Awake();
             InitUnit("SwordSkill");
             _lastRunTime = _time;
+            AddListen();
+        }
+
+        private void AddListen()
+        {
+            _unit.AddComponent<SkillCollider2DEvent>();
+            _unit.GetComponent<SkillCollider2DEvent>().AddListen_TriggerEnter(OnTriggerEnter);
+            
+        }
+
+        private void OnTriggerEnter(IUnit iUnit)
+        {
+            MLog.Error(iUnit.GetName());
         }
 
         protected override void InitUnit(string prefabName)
