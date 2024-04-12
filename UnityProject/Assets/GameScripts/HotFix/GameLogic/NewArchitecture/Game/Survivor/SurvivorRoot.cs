@@ -65,7 +65,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             
             
             GetSystem<SkillSystem>().CreateSkill(TSkillType.Sword);
-            GetSystem<EnemySystem>().CreateEnemy(Enum_EnemyType.Normal);
+            GetSystem<EnemySystem>().CreateEnemy(TCharacterType.BingChuanJingHua);
 
         }
 

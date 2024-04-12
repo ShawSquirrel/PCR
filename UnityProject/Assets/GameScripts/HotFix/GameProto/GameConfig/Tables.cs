@@ -16,12 +16,14 @@ public partial class Tables
     public TAnim TAnim {get; }
     public TSkill TSkill {get; }
     public TCharacter TCharacter {get; }
+    public TEnemy TEnemy {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
         TAnim = new TAnim(loader("tanim"));
         TSkill = new TSkill(loader("tskill"));
         TCharacter = new TCharacter(loader("tcharacter"));
+        TEnemy = new TEnemy(loader("tenemy"));
         ResolveRef();
     }
     
@@ -30,6 +32,7 @@ public partial class Tables
         TAnim.ResolveRef(this);
         TSkill.ResolveRef(this);
         TCharacter.ResolveRef(this);
+        TEnemy.ResolveRef(this);
     }
 }
 

@@ -23,7 +23,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             base.Init();
 
             var id = SurvivorRoot.Instance.GetModel<GameModel>().SelectCharacter.Value;
-            var sCharacter = SurvivorConfig.GetCharacterById(id);
+            var sCharacter = SurvivorConfig.GetCharacterByType(id);
             GameObject obj = GameModule.Resource.LoadAsset<GameObject>(sCharacter.Name);
             _Unit.Value = new Unit(obj, null, sCharacter.Name);
 

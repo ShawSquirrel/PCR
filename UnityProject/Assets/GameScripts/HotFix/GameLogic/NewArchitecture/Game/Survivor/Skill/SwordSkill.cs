@@ -12,19 +12,28 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             base.Awake();
             InitUnit("SwordSkill");
             _lastRunTime = _time;
-            AddListen();
+            _unit.AddComponent<SkillCollider2DEvent>();
         }
 
-        private void AddListen()
+        public override void Init()
         {
-            _unit.AddComponent<SkillCollider2DEvent>();
+            base.Init();
             _unit.GetComponent<SkillCollider2DEvent>().AddListen_TriggerEnter(OnTriggerEnter);
-            
         }
+
+        public override void Release()
+        {
+            base.Release();
+            _unit.GetComponent<SkillCollider2DEvent>().RemoveListen_TriggerEnter(OnTriggerEnter);
+        }
+        
 
         private void OnTriggerEnter(IUnit iUnit)
         {
-            MLog.Error(iUnit.GetName());
+            EnemySystem system = SurvivorRoot.Instance.GetSystem<EnemySystem>();
+            IEnemy enemy = system.GetEnemyByUnit(iUnit);
+            if (enemy == null) return;
+            enemy.Damage(50);
         }
 
         protected override void InitUnit(string prefabName)

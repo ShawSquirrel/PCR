@@ -31,7 +31,10 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             _Anim = _unit.GetComponentInChildren<AnimComponent>();
             _Body = _unit.Find("Body");
             _unit.SetLayer(LayerMask.NameToLayer("Enemy"));
-
+            _Body.gameObject.layer = (LayerMask.NameToLayer("Enemy"));
+            
+            
+            Log.Debug($"{GetType().Name} {_unit.GetName()} InitUnit 初始化");
         }
 
         public virtual void InitFSM()
@@ -51,8 +54,16 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
         }
 
-        public virtual void Damage()
+        public virtual void Damage(float damage)
         {
+            EnemySystem enemySystem = SurvivorRoot.Instance.GetSystem<EnemySystem>();
+            EnemyData data = enemySystem.GetEnemyDataByUnit(this);
+            data._CurHp -= (int)damage;
+            Log.Debug($"{GetType().Name} {_unit.GetName()} Damage 受到{damage}");
+            if (data._CurHp <= 0)
+            {
+                Die();
+            }
         }
 
         public IUnit GetUnit()
@@ -62,13 +73,14 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         public virtual void Init()
         {
-           _FSM.StartState(Enum_EnemyState.Walk);
-           Utility.Unity.AddFixedUpdateListener(_FSM.FixedUpdate);
+            _FSM.StartState(Enum_EnemyState.Walk);
+            Utility.Unity.AddFixedUpdateListener(_FSM.FixedUpdate);
         }
 
         public virtual void Release()
         {
             Utility.Unity.RemoveFixedUpdateListener(_FSM.FixedUpdate);
+            Log.Debug($"{GetType().Name} {_unit.GetName()} Release");
         }
 
         public virtual void Awake()
@@ -79,6 +91,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             if (_unit != null)
             {
+                Log.Debug($"{GetType().Name} {_unit.GetName()} Destroy");
                 _unit.Destroy();
                 _unit = null;
             }
@@ -105,8 +118,13 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
         }
 
-        public void Die()
+        public virtual void Die()
         {
+            Log.Debug($"{GetType().Name} {_unit.GetName()} Die 死亡");
+            EnemySystem enemySystem = SurvivorRoot.Instance.GetSystem<EnemySystem>();
+            enemySystem.DieEnemy(this);
+            Release();
+            Destroy();
         }
 
         public void UpdateTowards()
@@ -122,7 +140,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
                     break;
             }
         }
-        
+
         protected virtual void SetFlipX(bool isLeft)
         {
             Vector3 scale = _Body.localScale;
@@ -141,6 +159,5 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
             _Body.localScale = scale;
         }
-
     }
 }

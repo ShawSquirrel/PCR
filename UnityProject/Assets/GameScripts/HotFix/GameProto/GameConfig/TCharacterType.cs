@@ -21,6 +21,10 @@ namespace GameConfig
         /// 草野优衣
         /// </summary>
         CaoYeYouYi = 1,
+        /// <summary>
+        /// 冰川镜华
+        /// </summary>
+        BingChuanJingHua = 2,
     }
 
 } 

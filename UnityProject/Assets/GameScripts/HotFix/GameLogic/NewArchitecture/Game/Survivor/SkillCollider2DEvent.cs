@@ -25,7 +25,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            IUnit unit = other.gameObject.GetUnit();
+            IUnit unit = null;
+            unit = other.transform.parent.gameObject.GetUnit();
             OnTriggerEnter?.Invoke(unit);
         }
     }

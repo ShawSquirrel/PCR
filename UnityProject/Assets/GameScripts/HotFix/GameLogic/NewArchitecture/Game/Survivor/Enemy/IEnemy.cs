@@ -6,7 +6,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     {
         void Move();
         void Atk();
-        void Damage();
+        void Damage(float damage);
         IUnit GetUnit();
+
+        void Die();
     }
 }
