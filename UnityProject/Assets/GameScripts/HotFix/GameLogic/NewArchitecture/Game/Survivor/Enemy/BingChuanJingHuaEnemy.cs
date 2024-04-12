@@ -1,4 +1,6 @@
-﻿namespace GameLogic.NewArchitecture.Game.Survivor
+﻿using System.Collections.Generic;
+
+namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class BingChuanJingHuaEnemy : AEnemy
     {

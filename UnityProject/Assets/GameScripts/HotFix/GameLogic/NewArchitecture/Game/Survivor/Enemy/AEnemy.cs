@@ -22,6 +22,10 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             InitFSM();
         }
 
+        /// <summary>
+        /// 初始化Unit
+        /// </summary>
+        /// <param name="prefabName"></param>
         public virtual void InitUnit(string prefabName)
         {
             GameObject obj = GameModule.Resource.LoadAsset<GameObject>(prefabName);
@@ -32,11 +36,14 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             _Body = _unit.Find("Body");
             _unit.SetLayer(LayerMask.NameToLayer("Enemy"));
             _Body.gameObject.layer = (LayerMask.NameToLayer("Enemy"));
-            
-            
+
+
             Log.Debug($"{GetType().Name} {_unit.GetName()} InitUnit 初始化");
         }
 
+        /// <summary>
+        /// 状态机初始化
+        /// </summary>
         public virtual void InitFSM()
         {
             _FSM.AddState(Enum_EnemyState.Walk, new EnemyWalkProcedure(_FSM, this));
@@ -97,6 +104,10 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             }
         }
 
+        /// <summary>
+        /// 获取朝向
+        /// </summary>
+        /// <returns></returns>
         public Vector3 GetTowards()
         {
             Vector3 pos = SurvivorRoot.Instance.GetModel<CharacterModel>()._Unit.Value.LocalPosition;
@@ -104,20 +115,36 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             return distance.magnitude > 0.5f ? distance.normalized : Vector3.zero;
         }
 
+        /// <summary>
+        /// 重置速度
+        /// </summary>
         public void ResetSpeed()
         {
             _Rigidbody2D.velocity = Vector2.zero;
         }
 
+        /// <summary>
+        /// 播放动画
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="isLoop"></param>
+        /// <param name="onComplete"></param>
         public void PlayAnim(TAnimState state, bool isLoop, Action onComplete = null)
         {
             _Anim.Play(state, isLoop, onComplete);
         }
 
+        /// <summary>
+        /// 设置碰撞盒是否启用
+        /// </summary>
+        /// <param name="isEnable"></param>
         public void SetColliderBoxEnable(bool isEnable)
         {
         }
 
+        /// <summary>
+        /// 死亡
+        /// </summary>
         public virtual void Die()
         {
             Log.Debug($"{GetType().Name} {_unit.GetName()} Die 死亡");
@@ -127,6 +154,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             Destroy();
         }
 
+        /// <summary>
+        /// 更新朝向
+        /// </summary>
         public void UpdateTowards()
         {
             Vector3 towards = GetTowards();
@@ -141,6 +171,10 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             }
         }
 
+        /// <summary>
+        /// 设置镜像反转
+        /// </summary>
+        /// <param name="isLeft"></param>
         protected virtual void SetFlipX(bool isLeft)
         {
             Vector3 scale = _Body.localScale;

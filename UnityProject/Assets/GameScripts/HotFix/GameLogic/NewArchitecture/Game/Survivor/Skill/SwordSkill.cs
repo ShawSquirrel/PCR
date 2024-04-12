@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using GameLogic.NewArchitecture.Core;
 using TEngine;
 using UnityEngine;
@@ -7,9 +8,14 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class SwordSkill : ASKill
     {
+        /// <summary>
+        /// 避免多次碰撞
+        /// </summary>
+        private HashSet<IEnemy> _set_Enemy = new HashSet<IEnemy>();
         public override void Awake()
         {
             base.Awake();
+            _set_Enemy = new HashSet<IEnemy>();
             InitUnit("SwordSkill");
             _lastRunTime = _time;
             _unit.AddComponent<SkillCollider2DEvent>();
@@ -33,6 +39,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             EnemySystem system = SurvivorRoot.Instance.GetSystem<EnemySystem>();
             IEnemy enemy = system.GetEnemyByUnit(iUnit);
             if (enemy == null) return;
+            
+            if (_set_Enemy.Add(enemy) == false) return;
             enemy.Damage(50);
         }
 
@@ -52,6 +60,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             base.Update();
             if (_time - _lastRunTime > 2f)
             {
+                _set_Enemy.Clear();
                 Run();
                 _lastRunTime = _time;
             }
