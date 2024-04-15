@@ -6,9 +6,9 @@ namespace GameLogic.NewArchitecture.Game.Main
     {
         private FSM<MainProcedureType> _fsm;
 
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
             InitFSM();
         }
 

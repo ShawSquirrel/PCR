@@ -12,9 +12,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         public bool IsMoving => Speed != Vector2.zero;
 
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
             _FSM.AddState(Enum_ChracterState.Idle, new CharacterIdleProcedure(_FSM, this));
             _FSM.AddState(Enum_ChracterState.Walk, new CharacterWalkProcedure(_FSM, this));
             _FSM.AddState(Enum_ChracterState.Attack, new CharacterAttackProcedure(_FSM, this));

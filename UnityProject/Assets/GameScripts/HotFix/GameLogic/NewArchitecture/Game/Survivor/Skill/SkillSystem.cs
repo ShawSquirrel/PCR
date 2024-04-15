@@ -11,9 +11,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         private Dictionary<TSkillType, ASKill> ASKills = new Dictionary<TSkillType, ASKill>();
         public float _SkillTime { get; private set; }
 
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
         }
 
         public override void Init()
@@ -52,7 +52,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             switch (skillType)
             {
                 case TSkillType.Sword:
-                    ASKills.Add(skillType, new SwordSkill());
+                    ASKills.Add(skillType, new SwordSkillController());
                     break;
                 case TSkillType.Staff:
                     break;

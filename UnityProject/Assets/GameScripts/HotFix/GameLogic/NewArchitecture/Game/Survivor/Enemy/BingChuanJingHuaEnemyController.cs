@@ -2,11 +2,11 @@
 
 namespace GameLogic.NewArchitecture.Game.Survivor
 {
-    public class BingChuanJingHuaEnemy : AEnemy
+    public class BingChuanJingHuaEnemyController : AEnemy
     {
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
             InitUnit("冰川镜华");
         }
 

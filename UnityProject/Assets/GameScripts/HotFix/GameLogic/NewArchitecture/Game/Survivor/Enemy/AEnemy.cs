@@ -18,7 +18,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 
         public AEnemy()
         {
-            Awake();
+            Create();
             InitFSM();
         }
 
@@ -90,7 +90,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             Log.Debug($"{GetType().Name} {_unit.GetName()} Release");
         }
 
-        public virtual void Awake()
+        public virtual void Create()
         {
         }
 

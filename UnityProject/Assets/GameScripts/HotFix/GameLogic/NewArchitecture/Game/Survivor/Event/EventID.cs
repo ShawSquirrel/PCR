@@ -8,5 +8,6 @@
         public const int SelectCharacter = 20003;
         public const int StartGame = 20004;
         public const int ReturnMenu = 20005;
+        public const int SetBloodID = 20006;
     }
 }

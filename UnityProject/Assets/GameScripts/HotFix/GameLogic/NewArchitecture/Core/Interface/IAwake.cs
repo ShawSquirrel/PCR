@@ -2,7 +2,7 @@
 {
     public interface IAwake
     {
-        void Awake();
+        void Create();
         void Destroy();
     }
 }

@@ -5,9 +5,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     public class SurvivorProcedureSystem : Core.System
     {
         private FSM<SurvivorProcedureType> _fsm;
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
             InitFSM();
         }
 

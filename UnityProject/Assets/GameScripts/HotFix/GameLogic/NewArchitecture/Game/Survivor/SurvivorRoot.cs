@@ -29,7 +29,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             InitUnit(null, "SurvivorRoot");
             AddSystem<SurvivorProcedureSystem>();
             AddSystem<InputSystem>();
-            AddSystem<MoveSystem>();
             AddSystem<CharacterSystem>();
             AddSystem<CameraSystem>();
             AddSystem<MapSystem>();
@@ -56,7 +55,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GetModel<CharacterModel>().Init();
             
             GetSystem<InputSystem>().Init();
-            GetSystem<MoveSystem>().Init();
             GetSystem<CharacterSystem>().Init();
             GetSystem<CameraSystem>().Init();
             GetSystem<MapSystem>().Init();
@@ -75,7 +73,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             GetModel<CharacterModel>().Release();
             
             GetSystem<InputSystem>().Release();
-            GetSystem<MoveSystem>().Release();
             GetSystem<CharacterSystem>().Release();
             GetSystem<CameraSystem>().Release();
             GetSystem<MapSystem>().Release();

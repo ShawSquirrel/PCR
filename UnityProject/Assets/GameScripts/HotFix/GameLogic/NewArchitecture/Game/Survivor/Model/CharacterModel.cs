@@ -13,11 +13,6 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         public readonly BindableValue<float> _SkillAngle = new BindableValue<float>();
         public readonly BindableValue<float> _Blood = new BindableValue<float>();
 
-        public override void Awake()
-        {
-            base.Awake();
-        }
-
         public override void Init()
         {
             base.Init();
@@ -31,6 +26,8 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             _CharacterComponent.Value._Rigidbody2D = _Unit.Value.GetComponentInChildren<Rigidbody2D>();
             _CharacterComponent.Value._Anim = _Unit.Value.GetComponentInChildren<AnimComponent>();
             _CharacterComponent.Value._Body = new Unit(_Unit.Value._TF.Find("Body").gameObject);
+            
+            _Blood.AddListen((hp) => GameEvent.Send(EventID.SetBloodID, hp));
         }
 
         public override void Release()

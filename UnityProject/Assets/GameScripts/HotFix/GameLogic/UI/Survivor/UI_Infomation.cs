@@ -1,4 +1,4 @@
-using GameLogic.Survivor;
+using GameLogic.NewArchitecture.Game.Survivor;
 using UnityEngine.UI;
 using TEngine;
 
@@ -17,13 +17,13 @@ namespace GameLogic
         public override void OnCreate()
         {
             base.OnCreate();
-            GameEvent.AddEventListener<float>(UIEventID_Survivor.SetBlood, SetBlood);
+            GameEvent.AddEventListener<float>(EventID.SetBloodID, SetBlood);
         }
 
         public override void OnDestroy()
         {
             base.OnDestroy();
-            GameEvent.RemoveEventListener<float>(UIEventID_Survivor.SetBlood, SetBlood);
+            GameEvent.RemoveEventListener<float>(EventID.SetBloodID, SetBlood);
         }
 
         private void SetBlood(float percent)

@@ -8,9 +8,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     {
         private const string Tag = "InputSystem\t";
 
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
         }
 
         public override void Init()

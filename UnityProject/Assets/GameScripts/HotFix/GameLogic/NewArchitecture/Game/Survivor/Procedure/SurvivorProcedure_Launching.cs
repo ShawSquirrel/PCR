@@ -23,8 +23,17 @@ namespace GameLogic.NewArchitecture.Game.Survivor
         {
             base.OnEnter();
             GameModule.UI.ShowUI<UI_SurvivorStick>();
+            GameModule.UI.ShowUI<UI_Infomation>();
         }
 
+        protected override void OnExit()
+        {
+            base.OnExit();
+            GameModule.UI.CloseWindow<UI_SurvivorStick>();
+            GameModule.UI.CloseWindow<UI_Infomation>();
+            GameModule.UI.CloseWindow<UI_Result>();
+        }
+        
         private void OnReturnMenu()
         {
             mFSM.ChangeState(SurvivorProcedureType.Menu);

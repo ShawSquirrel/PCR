@@ -6,7 +6,7 @@ namespace GameLogic.NewArchitecture.Core
     {
         public Unit Unit { get; private set; }
 
-        public virtual void Awake()
+        public virtual void Create()
         {
         }
 

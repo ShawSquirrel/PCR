@@ -8,9 +8,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     {
         private CinemachineVirtualCamera _camera;
 
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
         }
 
         public override void Init()

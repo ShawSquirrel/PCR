@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GameLogic.NewArchitecture.Game.Survivor
 {
-    public class SwordSkill : ASKill
+    public class SwordSkillController : ASKill
     {
         /// <summary>
         /// 避免多次碰撞

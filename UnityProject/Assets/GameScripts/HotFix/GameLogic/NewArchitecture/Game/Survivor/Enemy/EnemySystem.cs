@@ -9,9 +9,9 @@ namespace GameLogic.NewArchitecture.Game.Survivor
     {
         private Dictionary<IUnit, IEnemy> _dict_Enemy = new Dictionary<IUnit, IEnemy>();
         private Dictionary<IEnemy, EnemyData> _dict_EnemyData = new Dictionary<IEnemy, EnemyData>();
-        public override void Awake()
+        public override void Create()
         {
-            base.Awake();
+            base.Create();
             _dict_Enemy = new Dictionary<IUnit, IEnemy>();
             _dict_EnemyData = new Dictionary<IEnemy, EnemyData>();
         }
@@ -33,7 +33,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             switch (enemyType)
             {
                 case TCharacterType.BingChuanJingHua:
-                    enemy = new BingChuanJingHuaEnemy();
+                    enemy = new BingChuanJingHuaEnemyController();
                     break;
             }
 

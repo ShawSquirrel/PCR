@@ -66,7 +66,7 @@ namespace GameLogic.NewArchitecture.Core
             }
 
             t = new T();
-            t.Awake();
+            t.Create();
             _systemDict.Add(type, t);
             if (hasUnit)
             {
