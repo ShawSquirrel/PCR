@@ -6,7 +6,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class CharacterIdleProcedure : CharacterProcedureBase
     {
-        public CharacterIdleProcedure(FSM<Enum_ChracterState> fsm, CharacterSystem target) : base(fsm, target)
+        public CharacterIdleProcedure(FSM<Enum_ChracterState> fsm, ACharacter target) : base(fsm, target)
         {
         }
 

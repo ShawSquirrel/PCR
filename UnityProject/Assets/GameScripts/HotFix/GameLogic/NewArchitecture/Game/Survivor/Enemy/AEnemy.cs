@@ -150,8 +150,13 @@ namespace GameLogic.NewArchitecture.Game.Survivor
             Log.Debug($"{GetType().Name} {_unit.GetName()} Die 死亡");
             EnemySystem enemySystem = SurvivorRoot.Instance.GetSystem<EnemySystem>();
             enemySystem.DieEnemy(this);
-            Release();
-            Destroy();
+            
+            
+            _FSM.ChangeState(Enum_EnemyState.Die);
+
+            GameObject obj = GameModule.Resource.LoadAsset<GameObject>("ExpBall1");
+            // Release();
+            // Destroy();
         }
 
         /// <summary>

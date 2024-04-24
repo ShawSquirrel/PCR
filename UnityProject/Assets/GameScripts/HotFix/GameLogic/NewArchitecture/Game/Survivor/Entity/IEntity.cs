@@ -2,8 +2,8 @@
 
 namespace GameLogic.NewArchitecture.Game.Survivor
 {
-    public interface ICharacter : IEntity, IAwake, IInit
+    public interface IEntity
     {
-        
+        IUnit GetUnit();
     }
 }

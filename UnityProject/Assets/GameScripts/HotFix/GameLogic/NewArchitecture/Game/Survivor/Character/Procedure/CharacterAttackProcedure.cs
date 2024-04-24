@@ -5,7 +5,7 @@ namespace GameLogic.NewArchitecture.Game.Survivor
 {
     public class CharacterAttackProcedure : CharacterProcedureBase
     {
-        public CharacterAttackProcedure(FSM<Enum_ChracterState> fsm, CharacterSystem target) : base(fsm, target)
+        public CharacterAttackProcedure(FSM<Enum_ChracterState> fsm, ACharacter target) : base(fsm, target)
         {
         }
 
